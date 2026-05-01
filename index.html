@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Steven Wilen — Instructional Content</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+
+      /* ── Process section ─────────────────────────────────────────── */
+
+      #process-section {
+        position: relative;
+        height: 500vh;
+        background: #F7F5F0;
+        padding-block: 0;
+        /* break out of #portfolio max-width: 760px */
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+      }
+
+      #process-sticky {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 60px;
+        padding: 60px 80px;
+        background: #F7F5F0;
+      }
+
+      #process-image-wrap {
+        position: relative;
+        width: 52%;
+        max-width: 600px;
+        aspect-ratio: 4 / 3;
+        flex-shrink: 0;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+      }
+
+      #process-image-wrap img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      #img-bottom {
+        opacity: 1;
+        z-index: 1;
+      }
+
+      #img-top {
+        opacity: 0;
+        z-index: 2;
+      }
+
+      #process-text-panel {
+        width: 36%;
+        max-width: 380px;
+        position: relative;
+        min-height: 220px;
+      }
+
+      .step-text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        transform: translateY(16px);
+        transition: none;
+        will-change: opacity, transform;
+      }
+
+      .step-text[data-step="1"] {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .step-number {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #3A7C5A;
+        margin: 0 0 12px;
+        font-family: 'Inter', sans-serif;
+      }
+
+      .step-text h2 {
+        font-size: 26px;
+        font-weight: 700;
+        color: #1A1A18;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        margin: 0 0 14px;
+        font-family: 'Inter', sans-serif;
+      }
+
+      .step-text p {
+        font-size: 15px;
+        color: #6B6B60;
+        line-height: 1.65;
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+      }
+
+      /* ── Interactive course section ──────────────────────────────── */
+
+      #interactive-course-section {
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        background: #F7F5F0;
+        padding: 80px;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* ── Mobile ──────────────────────────────────────────────────── */
+
+      @media (max-width: 768px) {
+
+        #process-section {
+          height: auto;
+        }
+
+        #process-sticky {
+          flex-direction: column;
+          height: auto;
+          padding: 40px 24px;
+          position: static;
+        }
+
+        #process-image-wrap {
+          width: 100%;
+          max-width: 100%;
+        }
+
+        #process-text-panel {
+          width: 100%;
+          max-width: 100%;
+          position: static;
+          min-height: 0;
+        }
+
+        .step-text {
+          position: static;
+          opacity: 1;
+          transform: none;
+          margin-bottom: 48px;
+        }
+
+        #interactive-course-section {
+          padding: 40px 24px;
+        }
+
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <main id="portfolio">
+
+      <!-- ============================================================
+           SECTION 1 — HERO
+      ============================================================ -->
+      <section id="hero" aria-labelledby="hero-headline">
+
+        <div id="hero-intro">
+          <h1 id="hero-headline">I turn what your team knows into content they can teach.</h1>
+          <p id="hero-subheadline">Instructional content for anyone with complex knowledge worth teaching.</p>
+        </div>
+
+      </section>
+
+
+      <!-- ============================================================
+           SECTION 2 — PROCESS
+      ============================================================ -->
+      <section id="process-section">
+
+        <div id="process-sticky">
+
+          <div id="process-image-wrap">
+            <img id="img-bottom" src="sequence_1_photo.png" alt="Step 1 — raw source materials">
+            <img id="img-top" src="course_draft_structure.png" alt="Step 2 — course structure">
+          </div>
+
+          <div id="process-text-panel">
+
+            <div class="step-text" data-step="1">
+              <p class="step-number">01</p>
+              <h2>You send source material</h2>
+              <p>Existing docs, a product recording, a walkthrough video — whatever you have. I work from raw material. No polished brief needed.</p>
+            </div>
+
+            <div class="step-text" data-step="2">
+              <p class="step-number">02</p>
+              <h2>I map a structure</h2>
+              <p>Before anything gets written, I break the subject into a proposed curriculum: modules, sequence, and what each lesson needs to accomplish. You review it, we align, then I start building.</p>
+            </div>
+
+            <div class="step-text" data-step="3">
+              <p class="step-number">03</p>
+              <h2>Drafts go out in stages</h2>
+              <p>Scripts first, then recordings, then supporting text and diagrams — in reviewable pieces, not all at once when it's too late to redirect. I use Claude and other AI tools to keep the pace fast without sacrificing accuracy.</p>
+            </div>
+
+            <div class="step-text" data-step="4">
+              <p class="step-number">04</p>
+              <h2>Revisions happen in defined rounds</h2>
+              <p>Each round has a clear scope and a close. No open-ended feedback loops, no ambiguity about what's still in play.</p>
+            </div>
+
+            <div class="step-text" data-step="5">
+              <p class="step-number">05</p>
+              <h2>Delivery is ready to publish</h2>
+              <p>Final files are named, organized, and formatted for your LMS. Nothing left for you to assemble.</p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ============================================================
+           INTERACTIVE COURSE
+      ============================================================ -->
+      <section id="interactive-course-section">
+
+        <div id="interactive-course">
+
+          <section id="dummy-course-mockup" aria-hidden="true">
+
+            <div id="mockup-shell">
+
+              <nav id="mockup-nav">
+
+                <div id="mockup-nav-header">
+                  <span class="mockup-kicker">Course</span>
+                  <p id="mockup-course-title">Product Certification Program</p>
+                </div>
+
+                <ul id="mockup-overview-nav" class="mockup-lesson-list">
+                  <li class="mockup-lesson mockup-lesson--active">Overview</li>
+                </ul>
+
+                <ol id="mockup-module-list">
+
+                  <li class="mockup-module">
+                    <p class="mockup-module-title">Module 1: Product Overview</p>
+                    <ul class="mockup-lesson-list">
+                      <li class="mockup-lesson">Introduction to the Platform</li>
+                      <li class="mockup-lesson">Key Concepts and Terminology</li>
+                    </ul>
+                  </li>
+
+                  <li class="mockup-module">
+                    <p class="mockup-module-title">Module 2: Core Features Walkthrough</p>
+                    <ul class="mockup-lesson-list">
+                      <li class="mockup-lesson">Core Features Overview</li>
+                      <li class="mockup-lesson">Hands-On Walkthrough</li>
+                      <li class="mockup-lesson">Common Use Patterns</li>
+                    </ul>
+                  </li>
+
+                  <li class="mockup-module">
+                    <p class="mockup-module-title">Module 3: Advanced Use Cases</p>
+                    <ul class="mockup-lesson-list">
+                      <li class="mockup-lesson">Advanced Configuration</li>
+                      <li class="mockup-lesson">Integration Scenarios</li>
+                    </ul>
+                  </li>
+
+                  <li class="mockup-module mockup-module--standalone">
+                    <ul class="mockup-lesson-list">
+                      <li class="mockup-lesson">Practice Questions</li>
+                    </ul>
+                  </li>
+
+                </ol>
+
+              </nav>
+
+              <div id="mockup-content">
+
+                <div id="mockup-progress">
+                  <span id="mockup-progress-label">Course Progress — 40% Complete</span>
+                  <div id="mockup-progress-track">
+                    <div id="mockup-progress-fill"></div>
+                  </div>
+                </div>
+
+                <div id="mockup-lesson"></div>
+
+              </div>
+
+            </div>
+
+          </section>
+
+        </div>
+
+      </section>
+
+
+      <!-- ============================================================
+           SECTION 3 — WORK SAMPLE
+      ============================================================ -->
+      <section id="work-sample" aria-labelledby="featured-course-title">
+
+        <article id="featured-course" aria-labelledby="featured-course-title">
+
+          <h2 id="featured-course-title">Morpheus Drive Quick Start</h2>
+
+          <p id="course-description">A structured onboarding course built for a robotics hardware company's LMS. Covers hardware setup, app connection, and movement control — from unboxing to operational in three modules.</p>
+
+          <div id="course-card-content">
+
+            <section id="course-modules" aria-labelledby="course-modules-heading">
+              <h2 id="course-modules-heading">Modules</h2>
+              <ol id="module-list">
+                <li>Morpheus Drive Hardware Setup</li>
+                <li>CoreOS App Setup</li>
+                <li>Scanning and Movement</li>
+              </ol>
+            </section>
+
+            <section id="course-videos" aria-labelledby="course-videos-heading">
+              <h2 id="course-videos-heading">Video tutorials</h2>
+              <ol id="video-list">
+                <li>Morpheus Drive Setup</li>
+                <li>CoreOS App Setup</li>
+                <li>Scanning and Movement</li>
+              </ol>
+            </section>
+
+            <section id="course-deliverables" aria-labelledby="course-deliverables-heading">
+              <h2 id="course-deliverables-heading">Deliverables</h2>
+              <ul id="deliverables-list">
+                <li>Structured curriculum</li>
+                <li>Video tutorials</li>
+                <li>LMS integration</li>
+              </ul>
+            </section>
+
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- ============================================================
+           SECTION 4 — SERVICES
+      ============================================================ -->
+      <section id="services" aria-labelledby="services-heading">
+
+        <h2 id="services-heading">What I build</h2>
+
+        <ul id="services-list">
+
+          <li id="service-curriculum-design">
+            <article class="service-item">
+              <h3>Curriculum design</h3>
+              <p>Turning a system or process into a structured learning path.</p>
+            </article>
+          </li>
+
+          <li id="service-written-content">
+            <article class="service-item">
+              <h3>Written content</h3>
+              <p>Documentation, SOPs, knowledge base articles, and course text.</p>
+            </article>
+          </li>
+
+          <li id="service-video-tutorials">
+            <article class="service-item">
+              <h3>Video tutorials</h3>
+              <p>Script, structure, and production.</p>
+            </article>
+          </li>
+
+          <li id="service-visual-diagram">
+            <article class="service-item">
+              <h3>Visual and diagram work</h3>
+              <p>Diagrams, flowcharts, and supporting graphics.</p>
+            </article>
+          </li>
+
+          <li id="service-lms-packages">
+            <article class="service-item">
+              <h3>LMS-ready content packages</h3>
+              <p>Formatted and organized for direct publishing.</p>
+            </article>
+          </li>
+
+        </ul>
+
+      </section>
+
+
+      <!-- ============================================================
+           SECTION 5 — CONTACT
+      ============================================================ -->
+      <section id="contact" aria-labelledby="contact-heading">
+
+        <h2 id="contact-heading">Let's talk about what you need built.</h2>
+
+        <p id="contact-body">If you're a CTO, Head of Customer Success, or Training Manager looking to turn your product knowledge into something teachable — I'd like to hear about it.</p>
+
+        <a id="contact-email-link" href="mailto:steven.wilen@gmail.com">Get in touch</a>
+
+      </section>
+
+    </main>
+
+
+    <footer id="site-footer">
+      <p id="footer-name">Steven Wilen</p>
+    </footer>
+
+    <!-- Course mockup interactivity -->
+    <script src="script.js"></script>
+
+    <!-- Process section scroll animation -->
+    <script>
+      (function () {
+
+        var images = [
+          'sequence_1_photo.png',
+          'course_draft_structure.png',
+          'course_draft_draft.png',
+          'course_draft_revisions.png',
+          'course_draft_ss.png'
+        ];
+
+        var imgBottom      = document.getElementById('img-bottom');
+        var imgTop         = document.getElementById('img-top');
+        var stepTexts      = document.querySelectorAll('.step-text');
+        var processSection = document.getElementById('process-section');
+        var ticking        = false;
+
+        function getScrollState() {
+          var sectionTop = processSection.offsetTop;
+          var scrollY    = window.scrollY - sectionTop;
+          var stepHeight = processSection.offsetHeight / 5;
+
+          // Before or at section entry — show Step 1 fully, no crossfade
+          if (scrollY <= 0) return { step: 1, progress: 0.3 };
+
+          var rawStep  = scrollY / stepHeight;
+          var step     = Math.min(Math.floor(rawStep) + 1, 5);
+          var progress = rawStep % 1;
+
+          return { step: step, progress: progress };
+        }
+
+        function updateImages(step, progress) {
+          imgBottom.src = images[step - 1];
+
+          if (step < images.length) {
+            imgTop.src = images[step];
+          }
+
+          if (step < 5) {
+            imgTop.style.opacity = progress < 0.4 ? 0 : (progress - 0.4) / 0.4;
+          } else {
+            imgTop.style.opacity = 0;
+          }
+        }
+
+        function updateText(step, progress) {
+          stepTexts.forEach(function (block) {
+            var blockStep = parseInt(block.dataset.step, 10);
+
+            if (blockStep === step) {
+              var fadeIn     = progress < 0.15 ? progress / 0.15 : 1;
+              var fadeOut    = progress > 0.80 ? 1 - ((progress - 0.80) / 0.20) : 1;
+              var opacity    = Math.min(fadeIn, fadeOut);
+              var translateY = (1 - Math.min(progress / 0.15, 1)) * 16;
+              block.style.opacity   = opacity;
+              block.style.transform = 'translateY(' + translateY + 'px)';
+            } else if (blockStep === step + 1 && progress > 0.75) {
+              var t = (progress - 0.75) / 0.25;
+              block.style.opacity   = t;
+              block.style.transform = 'translateY(' + (16 * (1 - t)) + 'px)';
+            } else {
+              block.style.opacity   = 0;
+              block.style.transform = 'translateY(16px)';
+            }
+          });
+        }
+
+        function onScroll() {
+          if (!ticking) {
+            requestAnimationFrame(function () {
+              var state = getScrollState();
+              updateImages(state.step, state.progress);
+              updateText(state.step, state.progress);
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // Preload all images
+        images.forEach(function (src) {
+          var img = new Image();
+          img.src = src;
+        });
+
+        // Set correct state immediately (handles mid-page refresh)
+        onScroll();
+
+      }());
+    </script>
+
+  </body>
+</html>
