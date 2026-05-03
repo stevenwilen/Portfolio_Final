@@ -571,7 +571,7 @@
       }());
     </script>
 
-    <!-- Background video scroll scrub -->
+    <!-- Background video scroll control -->
     <script>
       (function () {
 
@@ -583,31 +583,15 @@
           return;
         }
 
-        // Keep paused — we manually control currentTime
+        // Frozen until the user scrolls
         video.pause();
 
-        var lastScrollY = window.scrollY;
-        var ticking    = false;
-        var SEC_PER_PX = 0.005; // seconds of video per pixel scrolled — tune for speed
+        var scrollTimer = null;
 
         function onScroll() {
-          if (!ticking) {
-            requestAnimationFrame(function () {
-              var y     = window.scrollY;
-              var delta = y - lastScrollY;
-              lastScrollY = y;
-
-              var dur = video.duration;
-              if (delta !== 0 && dur) {
-                var t = video.currentTime + delta * SEC_PER_PX;
-                // Loop cleanly in both directions
-                video.currentTime = ((t % dur) + dur) % dur;
-              }
-
-              ticking = false;
-            });
-            ticking = true;
-          }
+          if (video.paused) video.play();
+          clearTimeout(scrollTimer);
+          scrollTimer = setTimeout(function () { video.pause(); }, 150);
         }
 
         window.addEventListener('scroll', onScroll, { passive: true });
