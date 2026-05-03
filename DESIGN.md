@@ -154,18 +154,18 @@ Steven Wilen
 
 ### Color — two tone only, no accent color
 
-- **Background:** #F7F5F0 — warm off-white, used on all light sections
+- **Background:** #FAFAF8 — near-white with barely perceptible warmth, used on all light sections
 - **Primary text / Headlines:** #12243A — very dark navy, not pure black
 - **Secondary text:** #6B6B60 — muted warm grey for body copy and labels
 - **Dark sections:** #12243A — full-bleed dark navy for contact section and any contrast sections
-- **Dark section text:** #F7F5F0 — warm off-white text on dark navy backgrounds
+- **Dark section text:** #FAFAF8 — warm off-white text on dark navy backgrounds
 - **Borders / dividers:** #E8E6E0 — soft warm-toned, very subtle
 - **No accent color anywhere on the site**
 
 ### Buttons — outline style only
 
-- **On light backgrounds:** Transparent fill, #12243A border (1.5px), #12243A text. Hover: fills solid #12243A, text becomes #F7F5F0
-- **On dark backgrounds:** Transparent fill, #F7F5F0 border (1.5px), #F7F5F0 text. Hover: fills solid #F7F5F0, text becomes #12243A
+- **On light backgrounds:** Transparent fill, #12243A border (1.5px), #12243A text. Hover: fills solid #12243A, text becomes #FAFAF8
+- **On dark backgrounds:** Transparent fill, #FAFAF8 border (1.5px), #FAFAF8 text. Hover: fills solid #FAFAF8, text becomes #12243A
 - **Border radius:** 4px — slightly rounded, not pill shaped
 - **Padding:** 12px 28px
 - **No shadows, no gradients, no color fills by default**
