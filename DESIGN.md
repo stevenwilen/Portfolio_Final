@@ -20,6 +20,8 @@
 
 The site leads with the work, not the person. No bio up front, no credentials. The visitor experiences the process of building a course — step by step — before they ever see a finished product. By the time they reach the work sample, they already understand exactly what went into it.
 
+Visual reference: Cambrian Innovation (cambrianinnovation.com) — adapted to warm off-white base instead of teal, with a strict two-tone palette of off-white and dark navy. No accent color.
+
 The visitor's intended first reaction: *"I want something that looks like that for my product."*
 
 ---
@@ -29,29 +31,42 @@ The visitor's intended first reaction: *"I want something that looks like that f
 Sections appear in this order on the page:
 
 ### Section 1 — Hero
-- Headline and subheadline only
+- Headline left, strong visual right — split layout, not centered
+- Small uppercase section label above the headline
+- Headline is very large, ultra-heavy font weight, tight leading
+- Subheadline below in regular weight, smaller size
+- Outline style CTA button — no fill, dark navy border and text
 - No work sample here
 - One signature fade-in reveal on page load
 
 ### Section 2 — Process (scrolling animation)
-- The backbone of the entire page
-- Each scroll step reveals one stage of the process
-- Uses a dummy course as the working example — not the Morpheus Drive project
-- The dummy course subject should be generic and universally relatable (e.g. employee onboarding or product training)
-- At the final scroll step, the completed course is revealed in full
-- Animation spec: [PENDING — to be discussed]
+- Sticky image left, step text right
+- Step 1 visible immediately on arrival — no scroll needed to trigger it
+- Each scroll step crossfades the image and updates the step text
+- Step numbers in dark navy, small uppercase tracked
+- Final image (course_draft_ss.png) fades out naturally into the interactive course below
+- Uses a dummy course as the working example
 
-### Section 3 — Work sample
-- Morpheus Drive Quick Start featured as a real completed project
+### Section 3 — Interactive course
+- Real coded course mockup in normal document flow directly below process section
+- No fixed overlay — just the next thing on the page as you scroll past Step 5
+
+### Section 4 — Work sample
+- Morpheus Drive Quick Start as a real completed project
 - Structured project card format
-- Positioned after the process section as proof that the process works
+- Full-width or two-column layout — Cambrian-style split with text left, visual right
 
-### Section 4 — Services
-- Explains what Steven offers, in what forms
+### Section 5 — Services
+- Three-column layout like Cambrian's approach section (Image 4)
+- Large icon or graphic above each service
+- Bold heading, short description below
+- Clean, generous spacing
 
-### Section 5 — Contact
-- Single clean close
-- Primary CTA: direct email
+### Section 6 — Contact
+- Full-width dark navy section — Cambrian's dark contrast section style
+- Large bold headline on the left
+- Outline CTA button — white border and text on dark navy background
+- No form — just the email CTA
 
 ---
 
@@ -59,8 +74,10 @@ Sections appear in this order on the page:
 
 ### Hero section
 
+**Section label:** Instructional content developer
 **Headline:** I turn what your team knows into content they can teach.
 **Subheadline:** Instructional content for anyone with complex knowledge worth teaching.
+**CTA:** Get in touch
 
 ---
 
@@ -80,8 +97,6 @@ Each round has a clear scope and a close. No open-ended feedback loops, no ambig
 
 **Step 5:** Delivery is ready to publish
 Final files are named, organized, and formatted for your LMS. Nothing left for you to assemble.
-
-**Final reveal:** Completed course shown in full — dummy course example
 
 ---
 
@@ -108,7 +123,8 @@ A structured onboarding course built for a robotics hardware company's LMS. Cove
 
 ### Services section
 
-**Heading:** What I build
+**Section label:** What I build
+**Heading:** Every format your knowledge needs
 
 - **Curriculum design** — Turning a system or process into a structured learning path.
 - **Written content** — Documentation, SOPs, knowledge base articles, and course text.
@@ -120,10 +136,9 @@ A structured onboarding course built for a robotics hardware company's LMS. Cove
 
 ### Contact section
 
+**Section label:** Work with me
 **Headline:** Let's talk about what you need built.
-
 **Body:** If you're a CTO, Head of Customer Success, or Training Manager looking to turn your product knowledge into something teachable — I'd like to hear about it.
-
 **CTA label:** Get in touch
 **CTA link:** mailto:steven.wilen@gmail.com
 
@@ -137,105 +152,73 @@ Steven Wilen
 
 ## 5. Visual identity [LOCKED]
 
-### Color
-- **Background:** Warm off-white — slightly creamy, soft on the eye (approx. #F7F5F0)
-- **Text:** Near-black (approx. #1A1A18)
-- **Accent:** Warm green — used on CTAs, highlights, and key details (approx. #3A7C5A)
-- **Secondary text:** Muted mid-tone for labels and supporting copy (approx. #6B6B60)
-- **Borders / dividers:** Subtle, low-contrast, warm-toned
+### Color — two tone only, no accent color
+
+- **Background:** #F7F5F0 — warm off-white, used on all light sections
+- **Primary text / Headlines:** #12243A — very dark navy, not pure black
+- **Secondary text:** #6B6B60 — muted warm grey for body copy and labels
+- **Dark sections:** #12243A — full-bleed dark navy for contact section and any contrast sections
+- **Dark section text:** #F7F5F0 — warm off-white text on dark navy backgrounds
+- **Borders / dividers:** #E8E6E0 — soft warm-toned, very subtle
+- **No accent color anywhere on the site**
+
+### Buttons — outline style only
+
+- **On light backgrounds:** Transparent fill, #12243A border (1.5px), #12243A text. Hover: fills solid #12243A, text becomes #F7F5F0
+- **On dark backgrounds:** Transparent fill, #F7F5F0 border (1.5px), #F7F5F0 text. Hover: fills solid #F7F5F0, text becomes #12243A
+- **Border radius:** 4px — slightly rounded, not pill shaped
+- **Padding:** 12px 28px
+- **No shadows, no gradients, no color fills by default**
 
 ### Typography
+
 - **Approach:** All sans-serif — geometric, clean, modern
 - **Typeface:** Inter — loaded from Google Fonts
-- **Heading weight:** Heavy — large, confident, tight letter-spacing
-- **Body weight:** Regular — comfortable reading size, generous line height
-- **Labels / kickers:** Small, uppercase, tracked out, secondary text color
+- **Hero headline:** 700-800 weight, very large (clamp 48px–80px), letter-spacing -0.03em, line-height 1.05
+- **Section headlines:** 700 weight, large (clamp 36px–56px), letter-spacing -0.02em
+- **Section labels / kickers:** 500 weight, 11px, letter-spacing 0.12em, uppercase, #6B6B60
+- **Body copy:** 400 weight, 16px, line-height 1.7, #6B6B60
+- **Step numbers:** 500 weight, 11px, uppercase, tracked, #12243A
+
+### Layout — Cambrian-inspired
+
+- **Split layouts:** Headline/text left (45%), visual/image right (55%) — not centered
+- **Section padding:** 120px top and bottom on desktop
+- **Max content width:** 1200px centered
+- **Three-column services:** Equal columns, generous gap, icon above, heading, description
+- **Full-bleed dark contact section:** No max-width constraint on background, content still 1200px
 
 ### Motion and animation
-- **Approach:** Scroll-driven in the process section only — everything else is static
+
 - **Hero:** Single fade-in with subtle upward drift on page load
-- **Process section:** Scroll-triggered animation at each step — spec [PENDING]
-- **Everything else:** Sits still. No entrances, no parallax, no flourishes.
-- **CTA hover:** Subtle tonal shift on green button — no movement
-
-### Work sample display
-- **Format:** Structured project card
-- **Shows:** Course components, scope, and structure of what was built
-- **Content:** Course title, description, three modules, three videos, deliverables list
-- **Feel:** Clean, designed, breaks the deliverable into its parts
-
-### Spacing
-- **Approach:** Generous — lots of breathing room between sections and elements
-- **Sections:** Wide vertical padding, content never feels crowded
-- **Feel:** Premium, unhurried, confident
+- **Process section:** Scroll-driven image crossfade — sticky layout, image left, text right
+- **Everything else:** Sits still. No scroll animations outside the process section.
+- **Button hover:** Fill transition only — 150ms ease. No movement.
 
 ### Navigation
+
 - **Approach:** No navigation bar
 - **Reasoning:** Page tells its own story top to bottom
 
 ### Mobile behavior
-- **Approach:** Simplified — everything stacks vertically
-- **No complex layouts on mobile** — single column, clean, readable
+
+- **Approach:** Simplified — everything stacks vertically, single column
+- **Split layouts collapse:** Text stacks above image on mobile
+- **Process section:** Static list of 5 steps, no scroll animation
 - **Full experience on desktop only**
 
 ---
 
 ## 6. Build phases [LOCKED]
 
-- **Phase 1:** Complete DESIGN.md — all visual decisions locked ✓ *complete*
-- **Phase 2:** HTML structure only, no CSS ✓ *complete*
-- **Phase 3:** Layout and spacing only ✓ *complete*
+- **Phase 1:** Complete DESIGN.md ✓ *complete*
+- **Phase 2:** HTML structure ✓ *complete*
+- **Phase 3:** Layout and spacing ✓ *complete*
 - **Phase 4:** Colors and typography ✓ *complete*
 - **Phase 5:** Animations and interactions ✓ *complete*
 
-**Note:** Layout has been revised after Phase 5. Process animation spec is PENDING. Dummy course mockup built as design reference ahead of process section build.
-
-No spontaneous visual decisions inside the code. Every decision is made in chat first and recorded here.
+**Current status:** Full visual redesign in progress — Cambrian-inspired two-tone style replacing previous amber accent design.
 
 ---
 
-## 7. Dummy course mockup [LOCKED]
-
-A fully interactive LMS-style prototype built as a design reference. Lives below the footer in index.html — not part of the final page layout. Purpose: screenshotted as a visual asset for the process scroll animation section.
-
-### Visual treatment
-- **Shell:** White background, subtle border, soft drop shadow — reads as an elevated card separate from the page
-- **Sidebar:** White background with a single right-side divider. Modern, not dark. Green accent indicator on the active lesson (left border + tinted background). Module headers in small uppercase muted text.
-- **Content area:** White background, generous padding
-
-### Course content
-**Course title:** Product Certification Program
-
-**Structure:**
-- Module 1: Product Overview
-- Module 2: Core Features Walkthrough
-- Module 3: Advanced Use Cases
-- *(standalone, no module label)* — Practice Questions
-
-**Lessons and layouts:**
-
-| Lesson | Layout |
-|---|---|
-| Introduction to the Platform | Written + hub diagram |
-| Key Concepts and Terminology | Written + glossary (6 terms, two-column) |
-| Core Features Overview | Written + video + flow diagram |
-| Hands-On Walkthrough | Written + video |
-| Common Use Patterns | Written + three-column use case cards |
-| Advanced Configuration | Written + decision diagram (branching flow) |
-| Integration Scenarios | Written + hub diagram |
-| Practice Questions | Interactive quiz cards (4 questions, click to reveal correct/incorrect) |
-
-### Interactivity
-- Clicking any lesson in the sidebar switches the active state, renders the lesson content, and updates the progress bar
-- Next lesson button appears bottom-right of each lesson — shows the next lesson title, advances on click
-- Practice Questions: clicking an answer option highlights it green (correct) or red (incorrect)
-- Progress bar reflects position of current lesson across all 8 lessons
-
-### Decisions
-- No Module 4 / Certification Assessment — removed
-- Practice Questions sits outside any module, separated by a subtle top divider
-- Hub diagram center box uses doubled horizontal padding for legibility
-
----
-
-*Last updated: Dummy course mockup built and documented — process animation spec PENDING*
+*Last updated: Full visual redesign — Cambrian-inspired, two-tone navy and off-white, outline buttons, no accent color*

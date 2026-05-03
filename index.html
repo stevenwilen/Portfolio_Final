@@ -14,7 +14,7 @@
         height: 500vh;
         background: #F7F5F0;
         padding-block: 0;
-        /* break out of #portfolio max-width: 760px */
+        /* break out of #portfolio max-width: 1200px */
         width: 100vw;
         margin-left: calc(-50vw + 50%);
       }
@@ -38,8 +38,6 @@
         aspect-ratio: 4 / 3;
         flex-shrink: 0;
         border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 4px 32px rgba(0,0,0,0.08);
       }
 
       #process-image-wrap img {
@@ -48,7 +46,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
       }
 
       #img-bottom {
@@ -86,10 +84,10 @@
 
       .step-number {
         font-size: 11px;
-        font-weight: 600;
+        font-weight: 500;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: #3A7C5A;
+        color: #12243A;
         margin: 0 0 12px;
         font-family: 'Inter', sans-serif;
       }
@@ -97,7 +95,7 @@
       .step-text h2 {
         font-size: 26px;
         font-weight: 700;
-        color: #1A1A18;
+        color: #12243A;
         letter-spacing: -0.02em;
         line-height: 1.2;
         margin: 0 0 14px;
@@ -118,8 +116,7 @@
         width: 100vw;
         margin-left: calc(-50vw + 50%);
         background: #F7F5F0;
-        padding: 80px;
-        min-height: 100vh;
+        padding: 48px 80px 80px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -163,6 +160,40 @@
           padding: 40px 24px;
         }
 
+      }
+
+      /* ── Step 5 grand reveal section ─────────────────────────────── */
+
+      #step5-section {
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        background: #F7F5F0;
+        padding: 80px 40px 60px;
+        text-align: center;
+      }
+
+      #step5-section .step-number {
+        display: block;
+        margin-bottom: 16px;
+      }
+
+      #step5-section h2 {
+        font-size: 44px;
+        font-weight: 800;
+        letter-spacing: -0.035em;
+        line-height: 1.1;
+        color: #12243A;
+        margin: 0 0 20px;
+        font-family: 'Inter', sans-serif;
+      }
+
+      #step5-section p:not(.step-number) {
+        font-size: 17px;
+        color: #6B6B60;
+        line-height: 1.65;
+        margin: 0 auto;
+        max-width: 460px;
+        font-family: 'Inter', sans-serif;
       }
 
     </style>
@@ -222,16 +253,20 @@
               <p>Each round has a clear scope and a close. No open-ended feedback loops, no ambiguity about what's still in play.</p>
             </div>
 
-            <div class="step-text" data-step="5">
-              <p class="step-number">05</p>
-              <h2>Delivery is ready to publish</h2>
-              <p>Final files are named, organized, and formatted for your LMS. Nothing left for you to assemble.</p>
-            </div>
-
           </div>
 
         </div>
 
+      </section>
+
+
+      <!-- ============================================================
+           SECTION 2b — STEP 5: DELIVERY
+      ============================================================ -->
+      <section id="step5-section">
+        <p class="step-number">05</p>
+        <h2>Delivery is ready to publish.</h2>
+        <p>Final files are named, organized, and formatted for your LMS. Nothing left for you to assemble.</p>
       </section>
 
 
@@ -443,42 +478,41 @@
           'sequence_1_photo.png',
           'course_draft_structure.png',
           'course_draft_draft.png',
-          'course_draft_revisions.png',
-          'course_draft_ss.png'
+          'course_draft_revisions.png'
         ];
 
-        var imgBottom      = document.getElementById('img-bottom');
-        var imgTop         = document.getElementById('img-top');
-        var stepTexts      = document.querySelectorAll('.step-text');
-        var processSection = document.getElementById('process-section');
-        var ticking        = false;
+        var imgBottom        = document.getElementById('img-bottom');
+        var imgTop           = document.getElementById('img-top');
+        var stepTexts        = document.querySelectorAll('.step-text');
+        var processSection   = document.getElementById('process-section');
+        var processImageWrap = document.getElementById('process-image-wrap');
+        var ticking          = false;
 
         function getScrollState() {
           var sectionTop = processSection.offsetTop;
           var scrollY    = window.scrollY - sectionTop;
-          var stepHeight = processSection.offsetHeight / 5;
+          var vh         = window.innerHeight;
 
-          // Before or at section entry — show Step 1 fully, no crossfade
-          if (scrollY <= 0) return { step: 1, progress: 0.3 };
-
-          var rawStep  = scrollY / stepHeight;
-          var step     = Math.min(Math.floor(rawStep) + 1, 5);
-          var progress = rawStep % 1;
-
-          return { step: step, progress: progress };
+          // Steps 1–3: 100vh each. Step 4: 200vh (double dwell time).
+          if (scrollY <= 0)       return { step: 1, progress: 0.3 };
+          if (scrollY < vh)       return { step: 1, progress: scrollY / vh };
+          if (scrollY < 2 * vh)   return { step: 2, progress: (scrollY - vh) / vh };
+          if (scrollY < 3 * vh)   return { step: 3, progress: (scrollY - 2 * vh) / vh };
+          return                         { step: 4, progress: Math.min((scrollY - 3 * vh) / (2 * vh), 1) };
         }
 
         function updateImages(step, progress) {
           imgBottom.src = images[step - 1];
 
-          if (step < images.length) {
-            imgTop.src = images[step];
-          }
-
-          if (step < 5) {
-            imgTop.style.opacity = progress < 0.4 ? 0 : (progress - 0.4) / 0.4;
+          if (step < 4) {
+            // Steps 1–3: crossfade to next image
+            processImageWrap.style.opacity = '1';
+            imgTop.src                     = images[step];
+            imgTop.style.opacity           = progress < 0.80 ? '0' : String((progress - 0.80) / 0.20);
           } else {
-            imgTop.style.opacity = 0;
+            // Step 4: fade image out as step 5 section comes into view
+            processImageWrap.style.opacity = progress < 0.80 ? '1' : String(1 - (progress - 0.80) / 0.20);
+            imgTop.style.opacity           = '0';
           }
         }
 
@@ -487,16 +521,12 @@
             var blockStep = parseInt(block.dataset.step, 10);
 
             if (blockStep === step) {
-              var fadeIn     = progress < 0.15 ? progress / 0.15 : 1;
+              var fadeIn     = (step === 1) ? 1 : (progress < 0.15 ? progress / 0.15 : 1);
               var fadeOut    = progress > 0.80 ? 1 - ((progress - 0.80) / 0.20) : 1;
               var opacity    = Math.min(fadeIn, fadeOut);
-              var translateY = (1 - Math.min(progress / 0.15, 1)) * 16;
+              var translateY = (step === 1) ? 0 : (1 - Math.min(progress / 0.15, 1)) * 16;
               block.style.opacity   = opacity;
               block.style.transform = 'translateY(' + translateY + 'px)';
-            } else if (blockStep === step + 1 && progress > 0.75) {
-              var t = (progress - 0.75) / 0.25;
-              block.style.opacity   = t;
-              block.style.transform = 'translateY(' + (16 * (1 - t)) + 'px)';
             } else {
               block.style.opacity   = 0;
               block.style.transform = 'translateY(16px)';
