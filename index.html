@@ -571,59 +571,27 @@
       }());
     </script>
 
-    <!-- Background video scroll speed -->
+    <!-- Background video scroll control -->
     <script>
       (function () {
 
         var video = document.getElementById('bg-video');
         if (!video) return;
 
-        // Pause on mobile — CSS display:none alone isn't always enough
         if (window.matchMedia('(max-width: 768px)').matches) {
           video.pause();
           return;
         }
 
-        var SLOW_RATE   = 0.25; // idle — very slow
-        var FAST_RATE   = 3;    // while scrolling
-        var RETURN_MS   = 500;  // ms to ease back to slow
-
-        video.playbackRate = SLOW_RATE;
+        // Start paused — only plays while scrolling
+        video.pause();
 
         var scrollTimer = null;
-        var rafId       = null;
-
-        function cancelReturn() {
-          if (rafId !== null) {
-            cancelAnimationFrame(rafId);
-            rafId = null;
-          }
-        }
-
-        function animateReturn() {
-          var startRate = video.playbackRate;
-          var startTime = performance.now();
-
-          function step(now) {
-            var t     = Math.min((now - startTime) / RETURN_MS, 1);
-            var eased = 1 - Math.pow(1 - t, 2); // ease-out quad
-            video.playbackRate = startRate + (SLOW_RATE - startRate) * eased;
-            if (t < 1) {
-              rafId = requestAnimationFrame(step);
-            } else {
-              video.playbackRate = SLOW_RATE;
-              rafId = null;
-            }
-          }
-
-          rafId = requestAnimationFrame(step);
-        }
 
         function onScroll() {
-          cancelReturn();
+          if (video.paused) video.play();
           clearTimeout(scrollTimer);
-          video.playbackRate = FAST_RATE;
-          scrollTimer = setTimeout(animateReturn, 80);
+          scrollTimer = setTimeout(function () { video.pause(); }, 150);
         }
 
         window.addEventListener('scroll', onScroll, { passive: true });

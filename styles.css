@@ -48,6 +48,7 @@ body {
   object-fit: cover;
   z-index: 0;
   pointer-events: none;
+  opacity: 0.15;
 }
 
 /* Content layers sit above the video */
