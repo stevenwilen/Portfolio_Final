@@ -571,7 +571,7 @@
       }());
     </script>
 
-    <!-- Background video scroll control -->
+    <!-- Background video scroll scrub -->
     <script>
       (function () {
 
@@ -583,15 +583,29 @@
           return;
         }
 
-        // Frozen until the user scrolls
         video.pause();
 
-        var scrollTimer = null;
+        var lastY      = window.scrollY;
+        var ticking    = false;
+        var SEC_PER_PX = 0.004;
 
         function onScroll() {
-          if (video.paused) video.play();
-          clearTimeout(scrollTimer);
-          scrollTimer = setTimeout(function () { video.pause(); }, 150);
+          if (!ticking) {
+            requestAnimationFrame(function () {
+              var y     = window.scrollY;
+              var delta = y - lastY;
+              lastY = y;
+
+              var dur = video.duration;
+              if (delta !== 0 && dur) {
+                var t = video.currentTime + delta * SEC_PER_PX;
+                video.currentTime = ((t % dur) + dur) % dur;
+              }
+
+              ticking = false;
+            });
+            ticking = true;
+          }
         }
 
         window.addEventListener('scroll', onScroll, { passive: true });
