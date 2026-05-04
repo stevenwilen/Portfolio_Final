@@ -12,7 +12,7 @@
       #process-section {
         position: relative;
         height: 500vh;
-        background: transparent;
+        background: #FAFAF8;
         padding-block: 0;
         /* break out of #portfolio max-width: 1200px */
         width: 100vw;
@@ -28,7 +28,7 @@
         justify-content: center;
         gap: 60px;
         padding: 60px 80px;
-        background: transparent;
+        background: #FAFAF8;
       }
 
       #process-image-wrap {
@@ -115,7 +115,7 @@
       #interactive-course-section {
         width: 100vw;
         margin-left: calc(-50vw + 50%);
-        background: transparent;
+        background: #FAFAF8;
         padding: 48px 80px 80px;
         display: flex;
         align-items: center;
@@ -160,13 +160,6 @@
           padding: 40px 24px;
         }
 
-        #process-section,
-        #process-sticky,
-        #step5-section,
-        #interactive-course-section {
-          background: #FAFAF8;
-        }
-
       }
 
       /* ── Step 5 grand reveal section ─────────────────────────────── */
@@ -174,7 +167,7 @@
       #step5-section {
         width: 100vw;
         margin-left: calc(-50vw + 50%);
-        background: transparent;
+        background: #FAFAF8;
         padding: 80px 40px 60px;
         text-align: center;
       }
@@ -206,10 +199,6 @@
     </style>
   </head>
   <body>
-
-    <video id="bg-video" autoplay muted loop playsinline>
-      <source src="hero_bg.mp4" type="video/mp4">
-    </video>
 
     <main id="portfolio">
 
@@ -567,48 +556,6 @@
 
         // Set correct state immediately (handles mid-page refresh)
         onScroll();
-
-      }());
-    </script>
-
-    <!-- Background video scroll scrub -->
-    <script>
-      (function () {
-
-        var video = document.getElementById('bg-video');
-        if (!video) return;
-
-        if (window.matchMedia('(max-width: 768px)').matches) {
-          video.pause();
-          return;
-        }
-
-        video.pause();
-
-        var lastY      = window.scrollY;
-        var ticking    = false;
-        var SEC_PER_PX = 0.004;
-
-        function onScroll() {
-          if (!ticking) {
-            requestAnimationFrame(function () {
-              var y     = window.scrollY;
-              var delta = y - lastY;
-              lastY = y;
-
-              var dur = video.duration;
-              if (delta !== 0 && dur) {
-                var t = video.currentTime + delta * SEC_PER_PX;
-                video.currentTime = ((t % dur) + dur) % dur;
-              }
-
-              ticking = false;
-            });
-            ticking = true;
-          }
-        }
-
-        window.addEventListener('scroll', onScroll, { passive: true });
 
       }());
     </script>
