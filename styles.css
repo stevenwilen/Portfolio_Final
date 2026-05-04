@@ -299,6 +299,7 @@ body {
 
 #mockup-shell {
   display: flex;
+  width: 100%;
   min-height: 680px;
   border: 1px solid #e0e0e0;
   border-radius: 6px;
@@ -420,12 +421,14 @@ body {
 
 #mockup-content {
   flex: 1;
+  min-width: 0;
   background-color: #FFFFFF;
   padding: 2.5rem 3rem;
   display: flex;
   flex-direction: column;
   gap: 2.25rem;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 
