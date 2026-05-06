@@ -154,6 +154,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var navItems      = document.querySelectorAll('#dummy-course-mockup .mockup-lesson');
   var lessonEl      = document.getElementById('mockup-lesson');
+  var nextSlot      = document.getElementById('mockup-next-slot');
   var progressFill  = document.getElementById('mockup-progress-fill');
   var progressLabel = document.getElementById('mockup-progress-label');
 
@@ -482,24 +483,21 @@ document.addEventListener('DOMContentLoaded', function () {
       case 'quiz':                 html += renderQuiz(l);                           break;
     }
 
-    if (index < lessons.length - 1) {
-      html += '<div class="mc-next-wrap">' +
-        '<button class="mc-next-btn" data-next="' + (index + 1) + '">' +
-          esc(lessons[index + 1].title) +
-          '<span class="mc-next-arrow" aria-hidden="true">&#8594;</span>' +
-        '</button>' +
-      '</div>';
-    }
-
     lessonEl.innerHTML = html;
 
     if (l.layout === 'quiz') initQuiz();
 
-    var nextBtn = lessonEl.querySelector('.mc-next-btn');
-    if (nextBtn) {
-      nextBtn.addEventListener('click', function () {
-        navigateTo(parseInt(nextBtn.getAttribute('data-next'), 10));
+    if (index < lessons.length - 1) {
+      nextSlot.innerHTML =
+        '<button class="mc-next-btn" data-next="' + (index + 1) + '">' +
+          esc(lessons[index + 1].title) +
+          '<span class="mc-next-arrow" aria-hidden="true">&#8594;</span>' +
+        '</button>';
+      nextSlot.querySelector('.mc-next-btn').addEventListener('click', function () {
+        navigateTo(index + 1);
       });
+    } else {
+      nextSlot.innerHTML = '';
     }
   }
 
