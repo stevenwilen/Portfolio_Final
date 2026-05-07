@@ -96,6 +96,27 @@ body {
   margin: 0 0 80px;
 }
 
+#process-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 480px);
+  gap: clamp(40px, 5vw, 80px);
+  align-items: start;
+}
+
+#process-spline {
+  position: sticky;
+  top: 80px;
+  width: 100%;
+  height: min(720px, calc(100vh - 120px));
+}
+
+#process-spline spline-viewer {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 #process-steps {
   display: flex;
   flex-direction: column;
@@ -164,57 +185,11 @@ body {
 }
 
 .p-step-right {
-  display: flex;
-  gap: 48px;
   padding-bottom: 64px;
-  align-items: center;
 }
 
 .p-step:last-child .p-step-right {
   padding-bottom: 0;
-}
-
-.p-icon {
-  flex-shrink: 0;
-  order: 2;
-  width: 120px;
-  height: 120px;
-  border: 1.5px solid #e8e8e8;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fafafa;
-  transform: scale(0.82);
-  transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
-}
-
-.p-step.is-visible .p-icon {
-  transform: scale(1);
-  transition: border-color 0.18s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.22s, box-shadow 0.18s ease;
-}
-
-.p-icon:hover {
-  border-color: #000000;
-  transform: scale(1.06) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.p-icon svg {
-  width: 52px;
-  height: 52px;
-  display: block;
-}
-
-.p-step[data-step="5"] .p-icon {
-  background: #000000;
-  border-color: #000000;
-}
-
-.p-step[data-step="5"] .p-icon:hover {
-  background: #111111;
-  border-color: #111111;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .p-step-body {
@@ -1932,25 +1907,22 @@ body {
     margin-bottom: 48px;
   }
 
+  #process-layout {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  #process-spline {
+    display: none;
+  }
+
   .p-step {
     grid-template-columns: 44px 1fr;
     gap: 0 14px;
   }
 
   .p-step-right {
-    gap: 16px;
     padding-bottom: 40px;
-  }
-
-  .p-icon {
-    width: 72px;
-    height: 72px;
-    border-radius: 12px;
-  }
-
-  .p-icon svg {
-    width: 32px;
-    height: 32px;
   }
 
   .p-step-body h3 {
