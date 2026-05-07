@@ -84,7 +84,8 @@ body {
    ============================================================= */
 
 #process {
-  padding-block: 120px;
+  padding-block: 120px 70px;
+  overflow: hidden;
 }
 
 #process > h2 {
@@ -104,8 +105,6 @@ body {
 }
 
 #process-spline {
-  position: sticky;
-  top: 80px;
   width: 100%;
   height: min(720px, calc(100vh - 120px));
 }
@@ -173,7 +172,7 @@ body {
   width: 100%;
   height: 0%;
   background: #000000;
-  transition: height 0.9s cubic-bezier(0.4, 0, 0.2, 1) 0.35s;
+  transition: height 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.35s;
 }
 
 .p-step.is-visible .p-connector-fill {
@@ -220,7 +219,21 @@ body {
    ============================================================= */
 
 #work-sample {
-  padding-block: 120px;
+  padding-block: 70px 120px;
+  background-color: #f2f2f2;
+  position: relative;
+  isolation: isolate;
+}
+
+#work-sample::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  background-color: #f2f2f2;
+  z-index: -1;
 }
 
 .morpheus-kicker {
