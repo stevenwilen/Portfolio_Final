@@ -1,155 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-  // ─── Hero reveal ─────────────────────────────────────────────
-  document.getElementById('hero').classList.add('is-visible');
-
-
-  // ─── Process section scroll animation ────────────────────────
-
-  var processSection   = document.getElementById('process-section');
-  var processVideos    = [
-    document.getElementById('video-2'),
-    document.getElementById('video-3'),
-    document.getElementById('video-4'),
-    document.getElementById('video-5')
-  ];
-  var processTextBlocks = document.querySelectorAll('.text-block');
-  var interactiveCourse = document.getElementById('interactive-course');
-  var loadingOverlay    = document.getElementById('loading-overlay');
-
-  if (processSection && processVideos[0]) {
-
-    var isMobile = window.innerWidth < 768;
-
-    if (isMobile) {
-
-      if (loadingOverlay) loadingOverlay.style.display = 'none';
-
-    } else {
-
-      var readyCount = 0;
-
-      function onVideoReady() {
-        readyCount++;
-        if (readyCount >= processVideos.length) {
-          loadingOverlay.style.opacity = '0';
-          setTimeout(function () { loadingOverlay.style.display = 'none'; }, 400);
-        }
-      }
-
-      processVideos.forEach(function (v) {
-        if (v.readyState >= 4) {
-          onVideoReady();
-        } else {
-          v.addEventListener('canplaythrough', function handler() {
-            v.removeEventListener('canplaythrough', handler);
-            onVideoReady();
-          });
-        }
-      });
-
-      // Failsafe: hide overlay after 10s regardless of video state
-      setTimeout(function () {
-        if (loadingOverlay && loadingOverlay.style.display !== 'none') {
-          loadingOverlay.style.opacity = '0';
-          setTimeout(function () { loadingOverlay.style.display = 'none'; }, 400);
-        }
-      }, 10000);
-
-      var sectionTop = processSection.getBoundingClientRect().top + window.scrollY;
-      var stepHeight = processSection.offsetHeight / 4;
-
-      function getScrollState() {
-        var scrolled = window.scrollY - sectionTop;
-        if (scrolled < 0 || scrolled > stepHeight * 4) return null;
-        var stepIndex    = Math.min(Math.floor(scrolled / stepHeight), 3);
-        var stepProgress = (scrolled % stepHeight) / stepHeight;
-        return { stepIndex: stepIndex, stepProgress: stepProgress };
-      }
-
-      function updateVideo(state) {
-        processVideos.forEach(function (video, i) {
-          if (i === state.stepIndex) {
-            video.style.opacity = 1;
-            if (video.duration) {
-              video.currentTime = state.stepProgress * video.duration;
-            }
-          } else {
-            video.style.opacity = 0;
-          }
-        });
-      }
-
-      function updateText(state) {
-        processTextBlocks.forEach(function (block) {
-          var step = parseInt(block.dataset.step, 10);
-          if (step === state.stepIndex) {
-            var p          = state.stepProgress;
-            var opacity    = p < 0.3 ? p / 0.3 : p > 0.7 ? (1 - p) / 0.3 : 1;
-            var translateY = (1 - Math.min(p / 0.3, 1)) * 30;
-            block.style.opacity   = opacity;
-            block.style.transform = 'translateY(' + translateY + 'px)';
-          } else {
-            block.style.opacity   = 0;
-            block.style.transform = 'translateY(30px)';
-          }
-        });
-      }
-
-      function updateCourseReveal(state) {
-        if (state.stepIndex === 3 && state.stepProgress > 0.85) {
-          var fadeProgress = (state.stepProgress - 0.85) / 0.15;
-          interactiveCourse.style.opacity      = fadeProgress;
-          interactiveCourse.style.pointerEvents = fadeProgress > 0.9 ? 'all' : 'none';
-          processVideos[3].style.opacity = 1 - fadeProgress;
-        } else {
-          interactiveCourse.style.opacity      = 0;
-          interactiveCourse.style.pointerEvents = 'none';
-        }
-      }
-
-      function resetProcess() {
-        processVideos.forEach(function (v) { v.style.opacity = 0; });
-        processTextBlocks.forEach(function (b) {
-          b.style.opacity   = 0;
-          b.style.transform = 'translateY(30px)';
-        });
-        interactiveCourse.style.opacity      = 0;
-        interactiveCourse.style.pointerEvents = 'none';
-      }
-
-      var ticking = false;
-      window.addEventListener('scroll', function () {
-        if (!ticking) {
-          requestAnimationFrame(function () {
-            var state = getScrollState();
-            if (state) {
-              updateVideo(state);
-              updateText(state);
-              updateCourseReveal(state);
-            } else {
-              resetProcess();
-            }
-            ticking = false;
-          });
-          ticking = true;
-        }
-      });
-
-      // Apply correct state immediately for mid-page refreshes
-      (function () {
-        var state = getScrollState();
-        if (state) {
-          updateVideo(state);
-          updateText(state);
-          updateCourseReveal(state);
-        }
-      }());
-
-    }
-  }
-
-
   // ─── Dummy course mockup ──────────────────────────────────────
 
   var navItems      = document.querySelectorAll('#dummy-course-mockup .mockup-lesson');
@@ -320,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   ];
 
-  var currentIndex = 0; // Introduction to the Platform active on load
+  var currentIndex = 0;
 
   // ── Render helpers ────────────────────────────────────────────
 
@@ -374,13 +224,11 @@ document.addEventListener('DOMContentLoaded', function () {
     var n = lesson.diagramNodes;
     var html = '<h3 class="mc-diagram-heading">' + esc(lesson.diagramHeading) + '</h3>';
     html += '<div class="mc-decision">';
-    // Top row: trigger → decision node
     html += '<div class="mc-decision-top">' +
       '<div class="mc-step-box">' + esc(n[0]) + '</div>' +
       '<span class="mc-arrow" aria-hidden="true">&#8594;</span>' +
       '<div class="mc-decision-node">' + esc(n[1]) + '</div>' +
     '</div>';
-    // Two branches
     html += '<div class="mc-decision-branches">';
     html += '<div class="mc-branch">' +
       '<span class="mc-branch-label">Yes</span>' +

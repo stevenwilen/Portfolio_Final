@@ -5,229 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Steven Wilen — Instructional Content</title>
     <link rel="stylesheet" href="styles.css" />
-    <style>
-
-      /* ── Process section ─────────────────────────────────────────── */
-
-      #process-section {
-        position: relative;
-        height: 520vh;
-        background: #ffffff;
-        padding-block: 0;
-        /* break out of #portfolio max-width: 1200px */
-        width: 100vw;
-        margin-left: calc(-50vw + 50%);
-      }
-
-      #process-sticky {
-        position: sticky;
-        top: 0;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 60px;
-        padding: 60px 80px;
-        background: #ffffff;
-      }
-
-      #process-image-wrap {
-        position: relative;
-        width: 52%;
-        max-width: 600px;
-        aspect-ratio: 4 / 3;
-        flex-shrink: 0;
-        border-radius: 12px;
-      }
-
-      .step-placeholder {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #f2f2f2;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: 'Inter', sans-serif;
-        font-size: 13px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: #aaaaaa;
-      }
-
-      #img-bottom {
-        opacity: 1;
-        z-index: 1;
-      }
-
-      #img-top {
-        opacity: 0;
-        z-index: 2;
-      }
-
-      #process-text-panel {
-        width: 36%;
-        max-width: 380px;
-        position: relative;
-        min-height: 220px;
-      }
-
-      .step-text {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        opacity: 0;
-        transform: translateY(16px);
-        transition: none;
-        will-change: opacity, transform;
-      }
-
-      .step-text[data-step="1"] {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .step-number {
-        font-size: 11px;
-        font-weight: 500;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: #000000;
-        margin: 0 0 12px;
-        font-family: 'Inter', sans-serif;
-      }
-
-      .step-text h2 {
-        font-size: 26px;
-        font-weight: 700;
-        color: #000000;
-        letter-spacing: -0.02em;
-        line-height: 1.2;
-        margin: 0 0 14px;
-        font-family: 'Inter', sans-serif;
-      }
-
-      .step-text p {
-        font-size: 15px;
-        color: #666666;
-        line-height: 1.65;
-        margin: 0;
-        font-family: 'Inter', sans-serif;
-      }
-
-      /* ── Step 5 centered overlay ────────────────────────────────── */
-
-      #process-sticky > .step-text[data-step="5"] {
-        inset: 0;
-        width: 100%;
-        max-width: none;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 60px 80px;
-      }
-
-      #process-sticky > .step-text[data-step="5"] h2 {
-        font-size: 44px;
-        font-weight: 800;
-        letter-spacing: -0.035em;
-        line-height: 1.1;
-        margin: 0 0 20px;
-      }
-
-      #process-sticky > .step-text[data-step="5"] p:not(.step-number) {
-        font-size: 17px;
-        max-width: 460px;
-      }
-
-      /* ── Process progress bar ───────────────────────────────────── */
-
-      #process-progress {
-        position: absolute;
-        bottom: 32px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 6px;
-        z-index: 10;
-      }
-
-      .progress-segment {
-        width: 56px;
-        height: 2px;
-        background: #e0e0e0;
-        border-radius: 1px;
-        overflow: hidden;
-      }
-
-      .progress-segment-fill {
-        height: 100%;
-        width: 0%;
-        background: #000000;
-        border-radius: 1px;
-      }
-
-      @media (max-width: 768px) {
-        #process-progress { display: none; }
-      }
-
-      /* ── Interactive course section ──────────────────────────────── */
-
-      #interactive-course-section {
-        width: 100vw;
-        margin-left: calc(-50vw + 50%);
-        background: #ffffff;
-        padding: 0 80px 80px;
-      }
-
-      /* ── Mobile ──────────────────────────────────────────────────── */
-
-      @media (max-width: 768px) {
-
-        #process-section {
-          height: auto;
-        }
-
-        #process-sticky {
-          flex-direction: column;
-          height: auto;
-          padding: 40px 24px;
-          position: static;
-        }
-
-        #process-image-wrap {
-          width: 100%;
-          max-width: 100%;
-        }
-
-        #process-text-panel {
-          width: 100%;
-          max-width: 100%;
-          position: static;
-          min-height: 0;
-        }
-
-        .step-text {
-          position: static;
-          opacity: 1;
-          transform: none;
-          margin-bottom: 48px;
-        }
-
-        #interactive-course-section {
-          padding: 40px 24px;
-        }
-
-      }
-
-
-    </style>
   </head>
   <body>
 
@@ -249,56 +26,128 @@
       <!-- ============================================================
            SECTION 2 — PROCESS
       ============================================================ -->
-      <section id="process-section">
+      <section id="process" aria-labelledby="process-heading">
 
-        <div id="process-sticky">
+        <h2 id="process-heading">How I work</h2>
 
-          <div id="process-image-wrap">
-            <div id="img-bottom" class="step-placeholder">Image placeholder</div>
-            <div id="img-top" class="step-placeholder">Image placeholder</div>
-          </div>
+        <div id="process-steps">
 
-          <div id="process-text-panel">
-
-            <div class="step-text" data-step="1">
-              <p class="step-number">01</p>
-              <h2>You send source material</h2>
-              <p>Existing docs, a product recording, a walkthrough video — whatever you have. I work from raw material. No polished brief needed.</p>
+          <article class="p-step" data-step="1">
+            <div class="p-step-left">
+              <span class="p-num" aria-hidden="true">01</span>
+              <div class="p-connector"><div class="p-connector-fill"></div></div>
             </div>
-
-            <div class="step-text" data-step="2">
-              <p class="step-number">02</p>
-              <h2>I map a structure</h2>
-              <p>Before anything gets written, I break the subject into a proposed curriculum: modules, sequence, and what each lesson needs to accomplish. You review it, we align, then I start building.</p>
+            <div class="p-step-right">
+              <div class="p-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="1" y="10" width="19" height="16" rx="2" stroke="#cccccc" stroke-width="1.4" transform="rotate(-9 10 18)"/>
+                  <rect x="5" y="8" width="19" height="16" rx="2" stroke="#999999" stroke-width="1.4" transform="rotate(-4 14 16)"/>
+                  <rect x="9" y="6" width="19" height="16" rx="2" stroke="#000000" stroke-width="1.4"/>
+                  <line x1="13" y1="11" x2="24" y2="11" stroke="#000000" stroke-width="1.2" stroke-linecap="round"/>
+                  <line x1="13" y1="15" x2="22" y2="15" stroke="#000000" stroke-width="1.2" stroke-linecap="round"/>
+                  <line x1="13" y1="19" x2="24" y2="19" stroke="#000000" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="p-step-body">
+                <h3>You send source material</h3>
+                <p>Existing docs, a product recording, a walkthrough video — whatever you have. I work from raw material. No polished brief needed.</p>
+              </div>
             </div>
+          </article>
 
-            <div class="step-text" data-step="3">
-              <p class="step-number">03</p>
-              <h2>Drafts go out in stages</h2>
-              <p>Scripts first, then recordings, then supporting text and diagrams — in reviewable pieces, not all at once when it's too late to redirect. I use Claude and other AI tools to keep the pace fast without sacrificing accuracy.</p>
+          <article class="p-step" data-step="2">
+            <div class="p-step-left">
+              <span class="p-num" aria-hidden="true">02</span>
+              <div class="p-connector"><div class="p-connector-fill"></div></div>
             </div>
-
-            <div class="step-text" data-step="4">
-              <p class="step-number">04</p>
-              <h2>Revisions happen in defined rounds</h2>
-              <p>Each round has a clear scope and a close. No open-ended feedback loops, no ambiguity about what's still in play.</p>
+            <div class="p-step-right">
+              <div class="p-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="3" y1="3" x2="3" y2="29" stroke="#e8e8e8" stroke-width="1"/>
+                  <line x1="11" y1="3" x2="11" y2="29" stroke="#e8e8e8" stroke-width="1"/>
+                  <line x1="21" y1="3" x2="21" y2="29" stroke="#e8e8e8" stroke-width="1"/>
+                  <line x1="29" y1="3" x2="29" y2="29" stroke="#e8e8e8" stroke-width="1"/>
+                  <line x1="3" y1="3" x2="29" y2="3" stroke="#e8e8e8" stroke-width="1"/>
+                  <line x1="3" y1="11" x2="29" y2="11" stroke="#e8e8e8" stroke-width="1"/>
+                  <line x1="3" y1="21" x2="29" y2="21" stroke="#e8e8e8" stroke-width="1"/>
+                  <line x1="3" y1="29" x2="29" y2="29" stroke="#e8e8e8" stroke-width="1"/>
+                  <rect x="4" y="4" width="16" height="16" rx="1" stroke="#000000" stroke-width="1.5"/>
+                  <rect x="22" y="4" width="6" height="16" rx="1" stroke="#000000" stroke-width="1.5"/>
+                  <rect x="4" y="22" width="24" height="6" rx="1" stroke="#000000" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <div class="p-step-body">
+                <h3>I map a structure</h3>
+                <p>Before anything gets written, I break the subject into a proposed curriculum: modules, sequence, and what each lesson needs to accomplish. You review it, we align, then I start building.</p>
+              </div>
             </div>
+          </article>
 
-          </div>
+          <article class="p-step" data-step="3">
+            <div class="p-step-left">
+              <span class="p-num" aria-hidden="true">03</span>
+              <div class="p-connector"><div class="p-connector-fill"></div></div>
+            </div>
+            <div class="p-step-right">
+              <div class="p-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="2" y="14" width="18" height="14" rx="2" stroke="#cccccc" stroke-width="1.4"/>
+                  <rect x="5" y="10" width="18" height="14" rx="2" stroke="#888888" stroke-width="1.4"/>
+                  <rect x="8" y="6" width="18" height="14" rx="2" stroke="#000000" stroke-width="1.4"/>
+                  <line x1="12" y1="10.5" x2="22" y2="10.5" stroke="#000000" stroke-width="1.2" stroke-linecap="round"/>
+                  <line x1="12" y1="14.5" x2="20" y2="14.5" stroke="#000000" stroke-width="1.2" stroke-linecap="round"/>
+                  <line x1="12" y1="18.5" x2="22" y2="18.5" stroke="#000000" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="p-step-body">
+                <h3>Drafts go out in stages</h3>
+                <p>Scripts first, then recordings, then supporting text and diagrams — in reviewable pieces, not all at once when it's too late to redirect. I use Claude and other AI tools to keep the pace fast without sacrificing accuracy.</p>
+              </div>
+            </div>
+          </article>
 
-          <div class="step-text" data-step="5">
-            <p class="step-number">05</p>
-            <h2>Delivery is ready to publish.</h2>
-            <p>Final files are named, organized, and formatted for your LMS. Nothing left for you to assemble.</p>
-          </div>
+          <article class="p-step" data-step="4">
+            <div class="p-step-left">
+              <span class="p-num" aria-hidden="true">04</span>
+              <div class="p-connector"><div class="p-connector-fill"></div></div>
+            </div>
+            <div class="p-step-right">
+              <div class="p-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16 4C9.4 4 4 9.4 4 16C4 22.6 9.4 28 16 28C22.6 28 28 22.6 28 16C28 11.8 25.7 8.1 22.2 6" stroke="#000000" stroke-width="1.4" stroke-linecap="round"/>
+                  <polyline points="20,2 23.5,6.5 19,9" stroke="#000000" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  <polyline points="10.5,16 14,19.5 21.5,12" stroke="#000000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="p-step-body">
+                <h3>Revisions happen in defined rounds</h3>
+                <p>Each round has a clear scope and a close. No open-ended feedback loops, no ambiguity about what's still in play.</p>
+              </div>
+            </div>
+          </article>
 
-          <div id="process-progress">
-            <div class="progress-segment"><div class="progress-segment-fill"></div></div>
-            <div class="progress-segment"><div class="progress-segment-fill"></div></div>
-            <div class="progress-segment"><div class="progress-segment-fill"></div></div>
-            <div class="progress-segment"><div class="progress-segment-fill"></div></div>
-            <div class="progress-segment"><div class="progress-segment-fill"></div></div>
-          </div>
+          <article class="p-step" data-step="5">
+            <div class="p-step-left">
+              <span class="p-num" aria-hidden="true">05</span>
+              <div class="p-connector"><div class="p-connector-fill"></div></div>
+            </div>
+            <div class="p-step-right">
+              <div class="p-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="4" y="2" width="20" height="26" rx="2" stroke="#ffffff" stroke-width="1.4"/>
+                  <line x1="8" y1="9" x2="20" y2="9" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
+                  <line x1="8" y1="13" x2="18" y2="13" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
+                  <line x1="8" y1="17" x2="20" y2="17" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
+                  <circle cx="25" cy="25" r="6" fill="#ffffff"/>
+                  <polyline points="21.5,25 24,27.5 28.5,21.5" stroke="#000000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="p-step-body">
+                <h3>Delivery is ready to publish.</h3>
+                <p>Final files are named, organized, and formatted for your LMS. Nothing left for you to assemble.</p>
+              </div>
+            </div>
+          </article>
 
         </div>
 
@@ -306,92 +155,258 @@
 
 
       <!-- ============================================================
-           INTERACTIVE COURSE
+           FEATURES SHOWCASE — card grid
       ============================================================ -->
-      <section id="interactive-course-section">
+      <section id="features-showcase" aria-labelledby="features-heading">
 
-        <div id="interactive-course">
+        <div id="features-intro">
+          <h2 id="features-heading">Every format, built and ready.</h2>
+          <p id="features-subhead">From first lesson to completion certificate — I build whatever the content needs and deliver it LMS-ready.</p>
+        </div>
 
-          <section id="dummy-course-mockup" aria-hidden="true">
+        <div id="features-grid">
 
-            <div class="mockup-frame">
-
-            <button id="mockup-fullscreen-btn" aria-label="View fullscreen">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M1 6V1h5M15 6V1h-5M1 10v5h5M15 10v5h-5"/>
-              </svg>
-            </button>
-
-            <div id="mockup-shell">
-
-              <nav id="mockup-nav">
-
-                <div id="mockup-nav-header">
-                  <span class="mockup-kicker">Course</span>
-                  <p id="mockup-course-title">Product Certification Program</p>
+          <!-- 1. Video Lesson -->
+          <article class="fc-card" style="--accent: #2563EB">
+            <div class="fc-preview">
+              <div class="fcp-video-screen">
+                <div class="fcp-play-btn">
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
                 </div>
-
-                <ul id="mockup-overview-nav" class="mockup-lesson-list">
-                  <li class="mockup-lesson mockup-lesson--active">Overview</li>
-                </ul>
-
-                <ol id="mockup-module-list">
-
-                  <li class="mockup-module">
-                    <p class="mockup-module-title">Module 1: Product Overview</p>
-                    <ul class="mockup-lesson-list">
-                      <li class="mockup-lesson">Introduction to the Platform</li>
-                      <li class="mockup-lesson">Key Concepts and Terminology</li>
-                    </ul>
-                  </li>
-
-                  <li class="mockup-module">
-                    <p class="mockup-module-title">Module 2: Core Features Walkthrough</p>
-                    <ul class="mockup-lesson-list">
-                      <li class="mockup-lesson">Core Features Overview</li>
-                      <li class="mockup-lesson">Hands-On Walkthrough</li>
-                      <li class="mockup-lesson">Common Use Patterns</li>
-                    </ul>
-                  </li>
-
-                  <li class="mockup-module">
-                    <p class="mockup-module-title">Module 3: Advanced Use Cases</p>
-                    <ul class="mockup-lesson-list">
-                      <li class="mockup-lesson">Advanced Configuration</li>
-                      <li class="mockup-lesson">Integration Scenarios</li>
-                    </ul>
-                  </li>
-
-                  <li class="mockup-module mockup-module--standalone">
-                    <ul class="mockup-lesson-list">
-                      <li class="mockup-lesson">Practice Questions</li>
-                    </ul>
-                  </li>
-
-                </ol>
-
-              </nav>
-
-              <div id="mockup-content">
-
-                <div id="mockup-progress">
-                  <span id="mockup-progress-label">Course Progress — 40% Complete</span>
-                  <div id="mockup-progress-track">
-                    <div id="mockup-progress-fill"></div>
-                  </div>
-                </div>
-
-                <div id="mockup-lesson"></div>
-
+                <span class="fcp-timecode">2:47</span>
               </div>
+              <div class="fcp-progress-bar"><div class="fcp-progress-fill" style="width:38%"></div></div>
+              <div class="fcp-rows" style="margin-top:8px">
+                <div class="fcp-label-tiny">Transcript</div>
+                <div class="fcp-bar" style="width:88%"></div>
+                <div class="fcp-bar" style="width:72%"></div>
+              </div>
+            </div>
+            <div class="fc-label">
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+              <span>Video Lesson</span>
+            </div>
+          </article>
 
-              <div id="mockup-next-slot"></div>
+          <!-- 2. Written Content -->
+          <article class="fc-card" style="--accent: #0D9488">
+            <div class="fc-preview">
+              <div class="fcp-article-title">Introduction to Core Concepts</div>
+              <div class="fcp-rows">
+                <div class="fcp-bar" style="width:100%"></div>
+                <div class="fcp-bar" style="width:92%"></div>
+                <div class="fcp-bar" style="width:78%"></div>
+              </div>
+              <div class="fcp-article-sub">Key Takeaways</div>
+              <div class="fcp-rows">
+                <div class="fcp-bar" style="width:85%"></div>
+                <div class="fcp-bar" style="width:60%"></div>
+              </div>
+            </div>
+            <div class="fc-label">
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              <span>Written Content</span>
+            </div>
+          </article>
 
-            </div><!-- #mockup-shell -->
+          <!-- 3. Slide Deck -->
+          <article class="fc-card" style="--accent: #7C3AED">
+            <div class="fc-preview fcp-slide-bg">
+              <div class="fcp-slide">
+                <div class="fcp-slide-header"></div>
+                <div class="fcp-slide-body">
+                  <div class="fcp-slide-title">Module 2: Core Features</div>
+                  <div class="fcp-slide-bullets">
+                    <div class="fcp-bullet"><span class="fcp-dot"></span><div class="fcp-bar" style="width:70%"></div></div>
+                    <div class="fcp-bullet"><span class="fcp-dot"></span><div class="fcp-bar" style="width:55%"></div></div>
+                    <div class="fcp-bullet"><span class="fcp-dot"></span><div class="fcp-bar" style="width:63%"></div></div>
+                  </div>
+                  <div class="fcp-slide-num">3 / 8</div>
+                </div>
+              </div>
+            </div>
+            <div class="fc-label">
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              <span>Slide Deck</span>
+            </div>
+          </article>
 
-            </div><!-- .mockup-frame -->
+          <!-- 4. Downloadable Resource -->
+          <article class="fc-card" style="--accent: #059669">
+            <div class="fc-preview fcp-center">
+              <div class="fcp-file-card">
+                <div class="fcp-file-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  <span class="fcp-file-ext">PDF</span>
+                </div>
+                <div class="fcp-file-name">Quick Reference Guide.pdf</div>
+                <div class="fcp-download-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="10" height="10" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Download
+                </div>
+              </div>
+            </div>
+            <div class="fc-label">
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Downloadable Resource</span>
+            </div>
+          </article>
 
-          </section>
+          <!-- 5. Interactive Diagram -->
+          <article class="fc-card" style="--accent: #D97706">
+            <div class="fc-preview fcp-center">
+              <div class="fcp-diagram">
+                <div class="fcp-label-tiny" style="margin-bottom:10px">Process flow</div>
+                <div class="fcp-flow">
+                  <div class="fcp-flow-box">Intake</div>
+                  <span class="fcp-flow-arrow">→</span>
+                  <div class="fcp-flow-box fcp-flow-box--accent">Review</div>
+                  <span class="fcp-flow-arrow">→</span>
+                  <div class="fcp-flow-box">Publish</div>
+                </div>
+                <div class="fcp-flow fcp-flow--sub">
+                  <div class="fcp-flow-node">Queue</div>
+                  <div class="fcp-flow-connector"></div>
+                  <div class="fcp-flow-node">Approve</div>
+                  <div class="fcp-flow-connector"></div>
+                  <div class="fcp-flow-node">Archive</div>
+                </div>
+              </div>
+            </div>
+            <div class="fc-label">
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              <span>Interactive Diagram</span>
+            </div>
+          </article>
+
+          <!-- 6. Knowledge Check -->
+          <article class="fc-card" style="--accent: #E11D48">
+            <div class="fc-preview">
+              <div class="fcp-question">Which component controls user permissions?</div>
+              <div class="fcp-options">
+                <div class="fcp-option">Pipeline</div>
+                <div class="fcp-option fcp-option--correct">Role</div>
+                <div class="fcp-option">Record</div>
+              </div>
+            </div>
+            <div class="fc-label">
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              <span>Knowledge Check</span>
+            </div>
+          </article>
+
+          <!-- 7. Scenario / Case Study -->
+          <article class="fc-card" style="--accent: #EA580C">
+            <div class="fc-preview">
+              <div class="fcp-scenario-badge">Scenario</div>
+              <div class="fcp-scenario-text">A new customer submits a support request outside business hours. The on-call rep is unavailable. What should happen next?</div>
+              <div class="fcp-scenario-prompt">How would you handle this?</div>
+            </div>
+            <div class="fc-label">
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <span>Scenario / Case Study</span>
+            </div>
+          </article>
+
+          <!-- 8. Reflection Prompt -->
+          <article class="fc-card" style="--accent: #4F46E5">
+            <div class="fc-preview">
+              <div class="fcp-reflect-prompt">Think about a time a process in your team broke down. What was the root cause?</div>
+              <div class="fcp-reflect-area">
+                <div class="fcp-reflect-line"></div>
+                <div class="fcp-reflect-line"></div>
+                <div class="fcp-reflect-line fcp-reflect-line--short"></div>
+                <span class="fcp-reflect-cursor"></span>
+              </div>
+            </div>
+            <div class="fc-label">
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              <span>Reflection Prompt</span>
+            </div>
+          </article>
+
+          <!-- 9. Assessment Quiz -->
+          <article class="fc-card" style="--accent: #0F172A">
+            <div class="fc-preview">
+              <div class="fcp-quiz-header">
+                <span class="fcp-quiz-title">Final Assessment</span>
+                <span class="fcp-quiz-score">8 / 10</span>
+              </div>
+              <div class="fcp-quiz-rows">
+                <div class="fcp-quiz-row fcp-quiz-row--correct"><span class="fcp-quiz-check">✓</span><div class="fcp-bar" style="width:75%"></div></div>
+                <div class="fcp-quiz-row fcp-quiz-row--correct"><span class="fcp-quiz-check">✓</span><div class="fcp-bar" style="width:60%"></div></div>
+                <div class="fcp-quiz-row fcp-quiz-row--wrong"><span class="fcp-quiz-check">✗</span><div class="fcp-bar" style="width:68%"></div></div>
+                <div class="fcp-quiz-row fcp-quiz-row--correct"><span class="fcp-quiz-check">✓</span><div class="fcp-bar" style="width:50%"></div></div>
+              </div>
+            </div>
+            <div class="fc-label">
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="M9 12l2 2 4-4"/></svg>
+              <span>Assessment Quiz</span>
+            </div>
+          </article>
+
+          <!-- 10. Progress Dashboard -->
+          <article class="fc-card" style="--accent: #0284C7">
+            <div class="fc-preview">
+              <div class="fcp-dash-header">
+                <span class="fcp-dash-title">Your Progress</span>
+                <span class="fcp-dash-pct">67%</span>
+              </div>
+              <div class="fcp-dash-track"><div class="fcp-dash-fill" style="width:67%"></div></div>
+              <div class="fcp-modules">
+                <div class="fcp-mod"><span class="fcp-mod-name">Module 1</span><div class="fcp-mod-track"><div class="fcp-mod-fill" style="width:100%"></div></div><span class="fcp-mod-done">✓</span></div>
+                <div class="fcp-mod"><span class="fcp-mod-name">Module 2</span><div class="fcp-mod-track"><div class="fcp-mod-fill" style="width:100%"></div></div><span class="fcp-mod-done">✓</span></div>
+                <div class="fcp-mod"><span class="fcp-mod-name">Module 3</span><div class="fcp-mod-track"><div class="fcp-mod-fill" style="width:33%"></div></div><span class="fcp-mod-pct">33%</span></div>
+                <div class="fcp-mod fcp-mod--locked"><span class="fcp-mod-name">Module 4</span><div class="fcp-mod-track"></div><span class="fcp-mod-lock">🔒</span></div>
+              </div>
+            </div>
+            <div class="fc-label">
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              <span>Progress Dashboard</span>
+            </div>
+          </article>
+
+          <!-- 11. Glossary / Terms -->
+          <article class="fc-card" style="--accent: #92400E">
+            <div class="fc-preview">
+              <div class="fcp-gloss-label">Glossary</div>
+              <div class="fcp-gloss-rows">
+                <div class="fcp-gloss-row">
+                  <span class="fcp-gloss-term">Pipeline</span>
+                  <span class="fcp-gloss-def">Automated sequence triggered by an event</span>
+                </div>
+                <div class="fcp-gloss-row">
+                  <span class="fcp-gloss-term">Record</span>
+                  <span class="fcp-gloss-def">A single unit of data in the system</span>
+                </div>
+                <div class="fcp-gloss-row">
+                  <span class="fcp-gloss-term">Role</span>
+                  <span class="fcp-gloss-def">Permission level assigned to a user</span>
+                </div>
+              </div>
+            </div>
+            <div class="fc-label">
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              <span>Glossary / Terms</span>
+            </div>
+          </article>
+
+          <!-- 12. Certificate -->
+          <article class="fc-card" style="--accent: #CA8A04">
+            <div class="fc-preview fcp-cert-bg">
+              <div class="fcp-cert">
+                <div class="fcp-cert-kicker">Certificate of Completion</div>
+                <div class="fcp-cert-name">Alex Johnson</div>
+                <div class="fcp-cert-course">Product Certification Program</div>
+                <div class="fcp-cert-divider"></div>
+                <div class="fcp-cert-seal">★</div>
+              </div>
+            </div>
+            <div class="fc-label">
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+              <span>Certificate</span>
+            </div>
+          </article>
 
         </div>
 
@@ -528,211 +543,29 @@
       <p id="footer-name">Steven Wilen</p>
     </footer>
 
-    <!-- Course mockup interactivity -->
-    <script src="script.js"></script>
-
-    <!-- Morpheus Drive LMS mockup -->
-    <script>
-      (function () {
-        var items   = document.querySelectorAll('.morpheus-item');
-        var content = document.getElementById('morpheus-content');
-        if (!items.length || !content) return;
-
-        var lessons = [
-          {
-            title: 'Morpheus Drive Hardware Setup',
-            overview: 'This walkthrough shows how to connect two motors and a battery to the Morpheus Drive. Follow along with the video to complete the setup.',
-            notes: [
-              'Each motor connects to one pair of terminals labeled M+ and M−',
-              'Make sure all wires are secured tightly before powering the system',
-              'Press the reset button after connecting power',
-              'A blinking blue light indicates the system is ready',
-              'If a motor spins in the wrong direction, swap the wires',
-              'Optional: add a switch to the red power wire for easy on/off control'
-            ]
-          },
-          {
-            title: 'CoreOS App Setup',
-            overview: 'This lesson covers downloading, installing, and pairing the CoreOS mobile app with your Morpheus Drive. A successful connection is required before scanning or movement control is possible.',
-            notes: [
-              'The app requires iOS 14+ or Android 10+',
-              'Enable Bluetooth before launching the app',
-              'Select “New Device” and hold the pairing button on the Drive for 3 seconds',
-              'A green indicator in the app confirms a successful connection',
-              'If pairing fails, restart the Drive and try again',
-              'Wi-Fi and Bluetooth must both be enabled for full functionality'
-            ]
-          },
-          {
-            title: 'Scanning and Movement',
-            overview: 'This lesson demonstrates how to initiate a scan and use manual movement controls through the CoreOS app. By the end, your Morpheus Drive will be fully operational.',
-            notes: [
-              'Tap “Scan” to begin — keep the Drive in open space for the first scan',
-              'Scans complete in approximately 90 seconds depending on area size',
-              'Use the directional pad to override automatic movement at any time',
-              'Avoid scanning on surfaces below 20°C',
-              'Save each scan to the app before starting a new one',
-              'Tap a saved scan to replay the mapped route automatically'
-            ]
-          }
-        ];
-
-        function renderLesson(idx) {
-          var l = lessons[idx];
-          var notes = l.notes.map(function (n) { return '<li>' + n + '</li>'; }).join('');
-          content.innerHTML =
-            '<p class="mc2-lesson-title">' + l.title + '</p>' +
-            '<h2 class="mc2-section-h">Overview</h2>' +
-            '<p class="mc2-body">' + l.overview + '</p>' +
-            '<div class="mc2-video">' +
-              '<div class="mc2-video-play">' +
-                '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>' +
-              '</div>' +
-            '</div>' +
-            '<h2 class="mc2-notes-h">Notes</h2>' +
-            '<ul class="mc2-notes">' + notes + '</ul>';
-          content.scrollTop = 0;
-        }
-
-        function navigateTo(idx) {
-          items.forEach(function (item) { item.classList.remove('morpheus-item--active'); });
-          items[idx].classList.add('morpheus-item--active');
-          renderLesson(idx);
-        }
-
-        items.forEach(function (item) {
-          item.addEventListener('click', function () {
-            navigateTo(parseInt(item.getAttribute('data-idx'), 10));
-          });
-        });
-
-        navigateTo(0);
-      }());
-    </script>
-
-    <!-- Mockup fullscreen -->
-    <script>
-      (function () {
-        var btn   = document.getElementById('mockup-fullscreen-btn');
-        var shell = document.getElementById('mockup-shell');
-
-        var ICON_EXPAND   = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6V1h5M15 6V1h-5M1 10v5h5M15 10v5h-5"/></svg>';
-        var ICON_COLLAPSE = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 1v5H1M10 1v5h5M6 15v-5H1M10 15v-5h5"/></svg>';
-
-        btn.addEventListener('click', function () {
-          if (!document.fullscreenElement) {
-            shell.requestFullscreen();
-          } else {
-            document.exitFullscreen();
-          }
-        });
-
-        document.addEventListener('fullscreenchange', function () {
-          btn.innerHTML = document.fullscreenElement ? ICON_COLLAPSE : ICON_EXPAND;
-          btn.setAttribute('aria-label', document.fullscreenElement ? 'Exit fullscreen' : 'View fullscreen');
-        });
-      }());
-    </script>
-
     <!-- Process section scroll animation -->
     <script>
       (function () {
+        var steps = document.querySelectorAll('.p-step');
+        if (!steps.length) return;
 
-        var images = [
-          'Step 1 — Source Materials',
-          'Step 2 — Course Structure',
-          'Step 3 — Draft',
-          'Step 4 — Revisions',
-          'Step 5 — Delivery'
-        ];
-
-        var imgBottom        = document.getElementById('img-bottom');
-        var imgTop           = document.getElementById('img-top');
-        var stepTexts        = document.querySelectorAll('.step-text');
-        var progressFills    = document.querySelectorAll('.progress-segment-fill');
-        var processSection   = document.getElementById('process-section');
-        var processImageWrap = document.getElementById('process-image-wrap');
-        var ticking          = false;
-
-        function getScrollState() {
-          var sectionTop = processSection.offsetTop;
-          var scrollY    = window.scrollY - sectionTop;
-          var vh         = window.innerHeight;
-
-          // Steps 1–3: 60vh each. Steps 4–5: 120vh each (double dwell).
-          var u = 0.6 * vh;
-          if (scrollY <= 0)       return { step: 1, progress: 0.3 };
-          if (scrollY < u)        return { step: 1, progress: scrollY / u };
-          if (scrollY < 2 * u)    return { step: 2, progress: (scrollY - u) / u };
-          if (scrollY < 3 * u)    return { step: 3, progress: (scrollY - 2 * u) / u };
-          if (scrollY < 5 * u)    return { step: 4, progress: Math.min((scrollY - 3 * u) / (2 * u), 1) };
-          return                         { step: 5, progress: Math.min((scrollY - 5 * u) / (2 * u), 1) };
-        }
-
-        function updateImages(step, progress) {
-          imgBottom.textContent = images[step - 1];
-
-          if (step < 4) {
-            // Steps 1–3: crossfade to next placeholder
-            processImageWrap.style.opacity = '1';
-            imgTop.textContent             = images[step];
-            imgTop.style.opacity           = progress < 0.80 ? '0' : String((progress - 0.80) / 0.20);
-          } else if (step === 4) {
-            // Step 4: fade placeholder out as step 5 begins
-            processImageWrap.style.opacity = progress < 0.80 ? '1' : String(1 - (progress - 0.80) / 0.20);
-            imgTop.style.opacity           = '0';
-          } else {
-            // Step 5: no placeholder
-            processImageWrap.style.opacity = '0';
-            imgTop.style.opacity           = '0';
-          }
-        }
-
-        function updateText(step, progress) {
-          stepTexts.forEach(function (block) {
-            var blockStep = parseInt(block.dataset.step, 10);
-
-            if (blockStep === step) {
-              var fadeIn     = (step === 1) ? 1 : (progress < 0.15 ? progress / 0.15 : 1);
-              var fadeOut    = (step < 5 && progress > 0.80) ? 1 - ((progress - 0.80) / 0.20) : 1;
-              var opacity    = Math.min(fadeIn, fadeOut);
-              var translateY = (step === 1) ? 0 : (1 - Math.min(progress / 0.15, 1)) * 16;
-              block.style.opacity   = opacity;
-              block.style.transform = 'translateY(' + translateY + 'px)';
-            } else {
-              block.style.opacity   = 0;
-              block.style.transform = 'translateY(16px)';
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
             }
           });
-        }
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-        function updateProgress(step, progress) {
-          progressFills.forEach(function (fill, i) {
-            var s = i + 1;
-            fill.style.width = s < step ? '100%' : s === step ? (progress * 100) + '%' : '0%';
-          });
-        }
-
-        function onScroll() {
-          if (!ticking) {
-            requestAnimationFrame(function () {
-              var state = getScrollState();
-              updateImages(state.step, state.progress);
-              updateText(state.step, state.progress);
-              updateProgress(state.step, state.progress);
-              ticking = false;
-            });
-            ticking = true;
-          }
-        }
-
-        window.addEventListener('scroll', onScroll, { passive: true });
-
-        // Set correct state immediately (handles mid-page refresh)
-        onScroll();
-
+        steps.forEach(function (step) { observer.observe(step); });
       }());
     </script>
+
+    <!-- Course mockup interactivity -->
+    <script src="script.js"></script>
+
+
 
   </body>
 </html>
