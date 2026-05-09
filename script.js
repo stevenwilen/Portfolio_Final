@@ -373,3 +373,348 @@ document.addEventListener('DOMContentLoaded', function () {
   navigateTo(currentIndex);
 
 });
+
+
+// ─── Teachable course player (Morpheus Drive sample) ──────────
+document.addEventListener('DOMContentLoaded', function () {
+
+  var player = document.querySelector('.tb-player');
+  if (!player) return;
+
+  var sidebarItems = player.querySelectorAll('.tb-lesson');
+  var mainEl       = player.querySelector('.tb-main');
+  var progressFill = player.querySelector('.tb-progress-fill');
+  var progressText = player.querySelector('.tb-progress-text');
+  var moduleSecs   = player.querySelectorAll('.tb-section');
+
+  if (!sidebarItems.length || !mainEl) return;
+
+  function esc(s) {
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  // ── Lesson data ─────────────────────────────────────────────
+  var lessons = [
+    {
+      type: 'diagram',
+      module: 1,
+      title: 'Board layout & terminals',
+      done: true,
+      overview: 'Before wiring up the Morpheus Drive, get familiar with where each terminal lives on the board. The diagram below labels every connection point referenced in the next video.',
+      legend: [
+        { label: 'M1 +/−', desc: 'Motor 1 terminals (left side)' },
+        { label: 'M2 +/−', desc: 'Motor 2 terminals (right side)' },
+        { label: 'V+ / V−', desc: 'Battery power input' },
+        { label: 'RST',    desc: 'Reset button — press after wiring power' },
+        { label: 'STAT',   desc: 'Status LED — solid blue once the system is ready' }
+      ]
+    },
+    {
+      type: 'video',
+      module: 1,
+      title: 'Connecting motors and the battery',
+      done: true,
+      duration: '3:08',
+      overview: 'This walkthrough shows how to connect two motors and a battery to the Morpheus Drive. Follow along with the video to complete the setup.',
+      notes: [
+        'Each motor connects to one pair of terminals labeled M+ and M−',
+        'Make sure all wires are secured tightly before powering the system',
+        'Press the reset button after connecting power',
+        'A blinking blue light indicates the system is ready',
+        'If a motor spins in the wrong direction, swap the wires',
+        'Optional: add a switch to the red power wire for easy on/off control'
+      ]
+    },
+    {
+      type: 'glossary',
+      module: 2,
+      title: 'Connection terminology',
+      done: true,
+      overview: 'Quick reference for the terms you\'ll see in the next video and inside the CoreOS app itself.',
+      terms: [
+        { term: 'Bluetooth',      def: 'Short-range wireless protocol used to connect the CoreOS app to the Morpheus Drive.' },
+        { term: 'Pairing',        def: 'The initial handshake between two Bluetooth devices. Only required once per device.' },
+        { term: 'CoreOS',         def: 'The companion mobile app for the Morpheus Drive. Available on the Android Play Store.' },
+        { term: 'Discovery mode', def: 'The state in which the Drive broadcasts its presence so the app can find it.' },
+        { term: 'Status LED',     def: 'The blue indicator on the Drive. Solid means ready to pair; blinking means pairing in progress.' }
+      ]
+    },
+    {
+      type: 'video',
+      module: 2,
+      title: 'Install & connect via Bluetooth',
+      done: false,
+      duration: '3:42',
+      overview: 'This walkthrough shows how to install the CoreOS app and connect it to the Morpheus Drive using Bluetooth. Follow along with the video to complete the setup.',
+      notes: [
+        'CoreOS is available on the Android Play Store',
+        'Make sure Bluetooth is enabled before connecting',
+        'Stay close to the Morpheus Drive during connection',
+        'If the device does not appear, confirm the board is powered on'
+      ]
+    },
+    {
+      type: 'pdf',
+      module: 3,
+      title: 'Controls quick reference',
+      done: false,
+      fileName: 'Morpheus Drive — Controls Reference.pdf',
+      fileSub: 'PDF · 4 pages · 312 KB',
+      overview: 'Print or save this reference card for quick lookup of every gesture and control used during scanning and driving.',
+      contains: [
+        'Anchor placement gestures',
+        'Scan completion checks',
+        'Paint mode controls',
+        'Manual driving inputs',
+        'Saved route playback shortcuts'
+      ]
+    },
+    {
+      type: 'video',
+      module: 3,
+      title: 'Scanning and manual control',
+      done: false,
+      duration: '4:12',
+      overview: 'This walkthrough shows how to scan your environment and control movement using the CoreOS app. Follow along with the video to complete the setup.',
+      notes: [
+        'Place an anchor to begin scanning',
+        'Move your phone around until the scan completes',
+        'Paint the areas where the robot can move',
+        'Leave space near edges to avoid collisions',
+        'Use the controls to move the robot'
+      ]
+    }
+  ];
+
+  var currentIndex = 3; // matches the initial active lesson in HTML
+
+  // ── Renderers ───────────────────────────────────────────────
+  function videoMedia(l) {
+    return '<div class="tb-video">' +
+      '<button class="tb-play" type="button" aria-label="Play lesson">' +
+        '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>' +
+      '</button>' +
+      '<div class="tb-video-controls">' +
+        '<span class="tb-timecode">0:00 / ' + esc(l.duration) + '</span>' +
+        '<div class="tb-video-bar"><div class="tb-video-fill" style="width:0%"></div></div>' +
+        '<span class="tb-video-fs" aria-hidden="true">' +
+          '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6V3h3M13 6V3h-3M3 10v3h3M13 10v3h-3"/></svg>' +
+        '</span>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function diagramMedia() {
+    return '<div class="tb-diagram">' +
+      '<svg class="tb-diagram-svg" viewBox="0 0 600 340" role="img" aria-label="Morpheus Drive board layout">' +
+        '<rect x="40" y="30" width="520" height="280" rx="14" fill="#22293a" stroke="#3a4256" stroke-width="2"/>' +
+        '<text x="60" y="62" fill="#94a3b8" font-family="ui-monospace,monospace" font-size="12" font-weight="600" letter-spacing="2">MORPHEUS DRIVE</text>' +
+        '<circle cx="510" cy="55" r="7" fill="#3b82f6"/>' +
+        '<circle cx="510" cy="55" r="11" fill="none" stroke="#3b82f6" stroke-opacity="0.35" stroke-width="2"/>' +
+        '<text x="494" y="80" fill="#94a3b8" font-size="10" text-anchor="end">STAT</text>' +
+        '<rect x="450" y="98" width="60" height="30" rx="6" fill="#3a4256" stroke="#475569" stroke-width="1"/>' +
+        '<text x="480" y="118" fill="#cbd5e1" font-size="10" font-weight="600" text-anchor="middle">RST</text>' +
+        '<path d="M110 152 L110 178" stroke="#475569" stroke-width="1" opacity="0.5"/>' +
+        '<path d="M230 152 L230 178" stroke="#475569" stroke-width="1" opacity="0.5"/>' +
+        '<path d="M350 152 L350 178" stroke="#475569" stroke-width="1" opacity="0.5"/>' +
+        '<text x="110" y="180" fill="#94a3b8" font-size="10" text-anchor="middle">Motor 1</text>' +
+        '<text x="230" y="180" fill="#94a3b8" font-size="10" text-anchor="middle">Motor 2</text>' +
+        '<text x="350" y="180" fill="#94a3b8" font-size="10" text-anchor="middle">Battery</text>' +
+        '<rect x="80"  y="200" width="60" height="30" rx="4" fill="#3a4256" stroke="#475569" stroke-width="1"/>' +
+        '<text x="110" y="220" fill="#34d399" font-size="11" font-weight="700" text-anchor="middle">M1+</text>' +
+        '<rect x="80"  y="240" width="60" height="30" rx="4" fill="#3a4256" stroke="#475569" stroke-width="1"/>' +
+        '<text x="110" y="260" fill="#f87171" font-size="11" font-weight="700" text-anchor="middle">M1−</text>' +
+        '<rect x="200" y="200" width="60" height="30" rx="4" fill="#3a4256" stroke="#475569" stroke-width="1"/>' +
+        '<text x="230" y="220" fill="#34d399" font-size="11" font-weight="700" text-anchor="middle">M2+</text>' +
+        '<rect x="200" y="240" width="60" height="30" rx="4" fill="#3a4256" stroke="#475569" stroke-width="1"/>' +
+        '<text x="230" y="260" fill="#f87171" font-size="11" font-weight="700" text-anchor="middle">M2−</text>' +
+        '<rect x="320" y="200" width="60" height="30" rx="4" fill="#3a4256" stroke="#475569" stroke-width="1"/>' +
+        '<text x="350" y="220" fill="#34d399" font-size="11" font-weight="700" text-anchor="middle">V+</text>' +
+        '<rect x="320" y="240" width="60" height="30" rx="4" fill="#3a4256" stroke="#475569" stroke-width="1"/>' +
+        '<text x="350" y="260" fill="#f87171" font-size="11" font-weight="700" text-anchor="middle">V−</text>' +
+      '</svg>' +
+    '</div>';
+  }
+
+  function pdfMedia(l) {
+    return '<div class="tb-file">' +
+      '<div class="tb-file-thumb">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">' +
+          '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>' +
+          '<polyline points="14 2 14 8 20 8"/>' +
+        '</svg>' +
+        '<span class="tb-file-ext">PDF</span>' +
+      '</div>' +
+      '<div class="tb-file-meta">' +
+        '<div class="tb-file-name">' + esc(l.fileName) + '</div>' +
+        '<div class="tb-file-sub">' + esc(l.fileSub) + '</div>' +
+      '</div>' +
+      '<button class="tb-file-dl" type="button">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">' +
+          '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>' +
+          '<polyline points="7 10 12 15 17 10"/>' +
+          '<line x1="12" y1="15" x2="12" y2="3"/>' +
+        '</svg>' +
+        'Download' +
+      '</button>' +
+    '</div>';
+  }
+
+  function mediaHTML(l) {
+    if (l.type === 'video')   return videoMedia(l);
+    if (l.type === 'diagram') return diagramMedia();
+    if (l.type === 'pdf')     return pdfMedia(l);
+    return '';
+  }
+
+  function overviewSection(text) {
+    return '<div class="tb-lesson-section">' +
+      '<h4 class="tb-lesson-subhead">Overview</h4>' +
+      '<p class="tb-lesson-body">' + esc(text) + '</p>' +
+    '</div>';
+  }
+
+  function bulletSection(items, heading) {
+    var lis = items.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('');
+    return '<div class="tb-lesson-section">' +
+      '<h4 class="tb-lesson-subhead">' + esc(heading) + '</h4>' +
+      '<ul class="tb-lesson-notes">' + lis + '</ul>' +
+    '</div>';
+  }
+
+  function legendSection(legend) {
+    var rows = legend.map(function (item) {
+      return '<div class="tb-legend-row">' +
+        '<dt class="tb-legend-label">' + esc(item.label) + '</dt>' +
+        '<dd class="tb-legend-desc">'  + esc(item.desc)  + '</dd>' +
+      '</div>';
+    }).join('');
+    return '<div class="tb-lesson-section">' +
+      '<h4 class="tb-lesson-subhead">Legend</h4>' +
+      '<dl class="tb-legend">' + rows + '</dl>' +
+    '</div>';
+  }
+
+  function glossarySection(terms) {
+    var rows = terms.map(function (t) {
+      return '<div class="tb-glossary-row">' +
+        '<dt class="tb-glossary-term">' + esc(t.term) + '</dt>' +
+        '<dd class="tb-glossary-def">'  + esc(t.def)  + '</dd>' +
+      '</div>';
+    }).join('');
+    return '<div class="tb-lesson-section">' +
+      '<h4 class="tb-lesson-subhead">Terms</h4>' +
+      '<dl class="tb-glossary">' + rows + '</dl>' +
+    '</div>';
+  }
+
+  function bodyHTML(l) {
+    if (l.type === 'video')    return overviewSection(l.overview) + bulletSection(l.notes, 'Notes');
+    if (l.type === 'diagram')  return overviewSection(l.overview) + legendSection(l.legend);
+    if (l.type === 'glossary') return overviewSection(l.overview) + glossarySection(l.terms);
+    if (l.type === 'pdf')      return overviewSection(l.overview) + bulletSection(l.contains, 'What\'s inside');
+    return '';
+  }
+
+  function actionsHTML(idx) {
+    var isFirst = idx === 0;
+    var isLast  = idx === lessons.length - 1;
+    return '' +
+      '<button class="tb-btn tb-btn--ghost" type="button" data-nav="prev"' + (isFirst ? ' disabled' : '') + '>← Previous</button>' +
+      '<button class="tb-btn tb-btn--primary" type="button" data-nav="next"' + (isLast ? ' disabled' : '') + '>' +
+        (isLast ? 'Course complete ✓' : 'Complete and continue →') +
+      '</button>';
+  }
+
+  function render(idx) {
+    var l = lessons[idx];
+    var html = mediaHTML(l) +
+      '<div class="tb-lesson-info">' +
+        '<div class="tb-lesson-eyebrow">Lesson ' + (idx + 1) + ' of ' + lessons.length + '</div>' +
+        '<h3 class="tb-lesson-heading">' + esc(l.title) + '</h3>' +
+        bodyHTML(l) +
+      '</div>' +
+      '<div class="tb-actions">' + actionsHTML(idx) + '</div>';
+    mainEl.innerHTML = html;
+  }
+
+  function syncSidebar() {
+    sidebarItems.forEach(function (li, i) {
+      li.classList.toggle('tb-lesson--active', i === currentIndex);
+      li.classList.toggle('tb-lesson--done', !!lessons[i].done);
+      if (i === currentIndex) {
+        li.setAttribute('aria-current', 'true');
+      } else {
+        li.removeAttribute('aria-current');
+      }
+    });
+
+    moduleSecs.forEach(function (sec) {
+      var m = parseInt(sec.getAttribute('data-module'), 10);
+      var inMod = lessons.filter(function (l) { return l.module === m; });
+      var done  = inMod.filter(function (l) { return l.done; }).length;
+      var meta  = sec.querySelector('.tb-section-meta');
+      if (meta) meta.textContent = done + ' / ' + inMod.length;
+    });
+  }
+
+  function syncProgress() {
+    var done = lessons.filter(function (l) { return l.done; }).length;
+    var pct  = Math.round((done / lessons.length) * 100);
+    if (progressFill) progressFill.style.width = pct + '%';
+    if (progressText) progressText.textContent = pct + '% complete';
+  }
+
+  function setActive(idx) {
+    if (idx < 0 || idx >= lessons.length) return;
+    currentIndex = idx;
+    syncSidebar();
+    render(idx);
+  }
+
+  function completeAndContinue() {
+    lessons[currentIndex].done = true;
+    if (currentIndex < lessons.length - 1) {
+      setActive(currentIndex + 1);
+    } else {
+      syncSidebar();
+      render(currentIndex);
+    }
+    syncProgress();
+  }
+
+  // ── Event delegation ────────────────────────────────────────
+  player.addEventListener('click', function (e) {
+    var lessonLi = e.target.closest('.tb-lesson');
+    if (lessonLi && player.contains(lessonLi)) {
+      var idx = parseInt(lessonLi.getAttribute('data-index'), 10);
+      if (!isNaN(idx)) setActive(idx);
+      return;
+    }
+
+    var navBtn = e.target.closest('[data-nav]');
+    if (navBtn) {
+      var dir = navBtn.getAttribute('data-nav');
+      if (dir === 'prev') setActive(currentIndex - 1);
+      else if (dir === 'next') completeAndContinue();
+    }
+  });
+
+  // Keyboard support for sidebar lessons
+  sidebarItems.forEach(function (li) {
+    li.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        var idx = parseInt(li.getAttribute('data-index'), 10);
+        if (!isNaN(idx)) setActive(idx);
+      }
+    });
+  });
+
+  // Initial sync (HTML already shows lesson 4; this just confirms state)
+  syncProgress();
+});
