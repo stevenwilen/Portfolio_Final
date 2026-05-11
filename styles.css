@@ -80,141 +80,6 @@ body {
 
 
 /* =============================================================
-   Process section
-   ============================================================= */
-
-#process {
-  padding-block: 120px 70px;
-  overflow: hidden;
-}
-
-#process > h2 {
-  font-size: clamp(36px, 4vw, 56px);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  color: #000000;
-  margin: 0 0 80px;
-}
-
-#process-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 480px);
-  gap: clamp(40px, 5vw, 80px);
-  align-items: start;
-}
-
-#process-spline {
-  width: 100%;
-  height: min(720px, calc(100vh - 120px));
-}
-
-#process-spline spline-viewer {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-#process-steps {
-  display: flex;
-  flex-direction: column;
-}
-
-.p-step {
-  display: grid;
-  grid-template-columns: 64px 1fr;
-  gap: 0 40px;
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.p-step.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.p-step:nth-child(2) { transition-delay: 0.06s; }
-.p-step:nth-child(3) { transition-delay: 0.12s; }
-.p-step:nth-child(4) { transition-delay: 0.18s; }
-.p-step:nth-child(5) { transition-delay: 0.24s; }
-
-.p-step-left {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.p-num {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  color: #aaaaaa;
-  line-height: 1;
-  padding-top: 2px;
-}
-
-.p-connector {
-  flex: 1;
-  width: 1px;
-  background: #ebebeb;
-  margin-top: 14px;
-  position: relative;
-  overflow: hidden;
-  min-height: 48px;
-}
-
-.p-connector-fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 0%;
-  background: #000000;
-  transition: height 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.35s;
-}
-
-.p-step.is-visible .p-connector-fill {
-  height: 100%;
-}
-
-.p-step:last-child .p-connector {
-  display: none;
-}
-
-.p-step-right {
-  padding-bottom: 64px;
-}
-
-.p-step:last-child .p-step-right {
-  padding-bottom: 0;
-}
-
-.p-step-body {
-  flex: 1;
-  padding-top: 6px;
-}
-
-.p-step-body h3 {
-  font-size: 1.125rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  line-height: 1.25;
-  color: #000000;
-  margin: 0 0 8px;
-}
-
-.p-step-body p {
-  font-size: 15px;
-  color: #666666;
-  line-height: 1.65;
-  margin: 0;
-  max-width: 42ch;
-}
-
-
-/* =============================================================
    Work sample — Morpheus Drive
    ============================================================= */
 
@@ -236,37 +101,24 @@ body {
   z-index: -1;
 }
 
-.morpheus-kicker {
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #888888;
-  margin: 0 0 14px;
-}
-
 #morpheus-title {
   font-family: 'Inter', sans-serif;
-  font-size: clamp(32px, 4vw, 52px);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  font-size: clamp(36px, 4.5vw, 64px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
   color: #000000;
-  margin: 0 0 16px;
+  text-align: center;
+  margin: 0 0 56px;
 }
 
-#morpheus-desc {
+#morpheus-caption {
   font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  color: #666666;
-  line-height: 1.7;
-  margin: 0;
-  max-width: 560px;
-}
-
-#morpheus-header {
-  margin-bottom: 48px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #888888;
+  text-align: center;
+  margin: 32px 0 0;
 }
 
 /* Teachable course player mock */
@@ -276,7 +128,7 @@ body {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-  margin: 0 0 48px;
+  margin: 0;
   font-family: 'Inter', sans-serif;
 }
 
@@ -2411,41 +2263,6 @@ body {
   #hero {
     padding-block-start: 4rem;
     padding-block-end: 1.5rem;
-  }
-
-  #process {
-    padding-block: 3.5rem;
-  }
-
-  #process > h2 {
-    margin-bottom: 48px;
-  }
-
-  #process-layout {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-
-  #process-spline {
-    display: none;
-  }
-
-  .p-step {
-    grid-template-columns: 44px 1fr;
-    gap: 0 14px;
-  }
-
-  .p-step-right {
-    padding-bottom: 40px;
-  }
-
-  .p-step-body h3 {
-    font-size: 1rem;
-  }
-
-  .p-step-body p {
-    font-size: 14px;
-    max-width: none;
   }
 
   #features-showcase {

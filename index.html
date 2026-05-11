@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Steven Wilen — Instructional Content</title>
     <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@latest/build/spline-viewer.js"></script>
   </head>
   <body>
 
@@ -25,17 +24,11 @@
 
 
       <!-- ============================================================
-           SECTION 3 — WORK SAMPLE
+           SECTION 2 — WORK SAMPLE
       ============================================================ -->
       <section id="work-sample" aria-labelledby="morpheus-title">
 
-        <div id="morpheus-header">
-          <p class="morpheus-kicker">Work sample — Robocor</p>
-          <div id="morpheus-header-body">
-            <h2 id="morpheus-title">Morpheus Drive Quick Start</h2>
-            <p id="morpheus-desc">A structured onboarding course built for a robotics hardware company's LMS. Covers hardware setup, app connection, and movement control — from unboxing to operational in three modules.</p>
-          </div>
-        </div>
+        <h2 id="morpheus-title">Here's what that looks like.</h2>
 
         <div class="tb-player" role="img" aria-label="Teachable course player preview for Morpheus Drive Quick Start">
 
@@ -185,11 +178,13 @@
           </div>
         </div>
 
+        <p id="morpheus-caption">A robotics company's customer onboarding course, built end-to-end.</p>
+
       </section>
 
 
       <!-- ============================================================
-           FEATURES SHOWCASE — card grid
+           SECTION 3 — FEATURES SHOWCASE (card grid)
       ============================================================ -->
       <section id="features-showcase">
 
@@ -447,93 +442,6 @@
 
 
       <!-- ============================================================
-           SECTION 3 — PROCESS
-      ============================================================ -->
-      <section id="process" aria-labelledby="process-heading">
-
-        <h2 id="process-heading">How I work</h2>
-
-        <div id="process-layout">
-
-          <div id="process-steps">
-
-            <article class="p-step" data-step="1">
-              <div class="p-step-left">
-                <span class="p-num" aria-hidden="true">01</span>
-                <div class="p-connector"><div class="p-connector-fill"></div></div>
-              </div>
-              <div class="p-step-right">
-                <div class="p-step-body">
-                  <h3>You send source material</h3>
-                  <p>Existing docs, a product recording, a walkthrough video — whatever you have. I work from raw material. No polished brief needed.</p>
-                </div>
-              </div>
-            </article>
-
-            <article class="p-step" data-step="2">
-              <div class="p-step-left">
-                <span class="p-num" aria-hidden="true">02</span>
-                <div class="p-connector"><div class="p-connector-fill"></div></div>
-              </div>
-              <div class="p-step-right">
-                <div class="p-step-body">
-                  <h3>I map a structure</h3>
-                  <p>Before anything gets written, I break the subject into a proposed curriculum: modules, sequence, and what each lesson needs to accomplish. You review it, we align, then I start building.</p>
-                </div>
-              </div>
-            </article>
-
-            <article class="p-step" data-step="3">
-              <div class="p-step-left">
-                <span class="p-num" aria-hidden="true">03</span>
-                <div class="p-connector"><div class="p-connector-fill"></div></div>
-              </div>
-              <div class="p-step-right">
-                <div class="p-step-body">
-                  <h3>Drafts go out in stages</h3>
-                  <p>Scripts first, then recordings, then supporting text and diagrams — in reviewable pieces, not all at once when it's too late to redirect. I use Claude and other AI tools to keep the pace fast without sacrificing accuracy.</p>
-                </div>
-              </div>
-            </article>
-
-            <article class="p-step" data-step="4">
-              <div class="p-step-left">
-                <span class="p-num" aria-hidden="true">04</span>
-                <div class="p-connector"><div class="p-connector-fill"></div></div>
-              </div>
-              <div class="p-step-right">
-                <div class="p-step-body">
-                  <h3>Revisions happen in defined rounds</h3>
-                  <p>Each round has a clear scope and a close. No open-ended feedback loops, no ambiguity about what's still in play.</p>
-                </div>
-              </div>
-            </article>
-
-            <article class="p-step" data-step="5">
-              <div class="p-step-left">
-                <span class="p-num" aria-hidden="true">05</span>
-                <div class="p-connector"><div class="p-connector-fill"></div></div>
-              </div>
-              <div class="p-step-right">
-                <div class="p-step-body">
-                  <h3>Delivery is ready to publish.</h3>
-                  <p>Final files are named, organized, and formatted for your LMS. Nothing left for you to assemble.</p>
-                </div>
-              </div>
-            </article>
-
-          </div>
-
-          <aside id="process-spline" aria-hidden="true">
-            <spline-viewer url="https://prod.spline.design/vYJf1LHKaTpMwtYk/scene.splinecode"></spline-viewer>
-          </aside>
-
-        </div>
-
-      </section>
-
-
-      <!-- ============================================================
            SECTION 4 — SERVICES
       ============================================================ -->
       <section id="services" aria-labelledby="services-heading">
@@ -601,37 +509,6 @@
     <footer id="site-footer">
       <p id="footer-name">Steven Wilen</p>
     </footer>
-
-    <!-- Process section scroll animation -->
-    <script>
-      (function () {
-        var steps = document.querySelectorAll('.p-step');
-        var processSection = document.getElementById('process');
-        if (!steps.length || !processSection) return;
-
-        var stepObserver = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-            }
-          });
-        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-
-        steps.forEach(function (step) { stepObserver.observe(step); });
-
-        // Reset all steps when the entire section sits below the viewport
-        // (i.e. user has scrolled back above it).
-        var resetObserver = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (!entry.isIntersecting && entry.boundingClientRect.top > 0) {
-              steps.forEach(function (step) { step.classList.remove('is-visible'); });
-            }
-          });
-        }, { threshold: 0 });
-
-        resetObserver.observe(processSection);
-      }());
-    </script>
 
     <!-- Course mockup interactivity -->
     <script src="script.js"></script>
