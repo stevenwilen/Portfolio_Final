@@ -8,6 +8,18 @@
   </head>
   <body>
 
+    <!-- Global decorative layers -->
+    <div class="bg-fx" aria-hidden="true">
+      <div class="bg-fx-grid"></div>
+      <div class="bg-fx-orb bg-fx-orb--a"></div>
+      <div class="bg-fx-orb bg-fx-orb--b"></div>
+      <div class="bg-fx-orb bg-fx-orb--c"></div>
+      <div class="bg-fx-noise"></div>
+    </div>
+
+    <!-- Cursor glow follower -->
+    <div class="cursor-glow" aria-hidden="true"></div>
+
     <main id="portfolio">
 
       <!-- ============================================================
@@ -15,9 +27,86 @@
       ============================================================ -->
       <section id="hero" aria-labelledby="hero-headline">
 
+        <!-- Hero atmospheric backdrop -->
+        <div class="hero-sky" aria-hidden="true">
+          <div class="hero-sky-gradient"></div>
+          <div class="hero-sky-cloud hero-sky-cloud--1"></div>
+          <div class="hero-sky-cloud hero-sky-cloud--2"></div>
+          <div class="hero-sky-cloud hero-sky-cloud--3"></div>
+          <svg class="hero-sky-lines" viewBox="0 0 1440 800" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#60a5fa" stop-opacity="0"/>
+                <stop offset="50%" stop-color="#3b82f6" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#60a5fa" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M-50,420 C260,360 420,520 720,440 C1020,360 1180,520 1490,460" stroke="url(#lineGrad)" stroke-width="1" fill="none"/>
+            <path d="M-50,520 C260,460 420,620 720,540 C1020,460 1180,620 1490,560" stroke="url(#lineGrad)" stroke-width="1" fill="none" opacity="0.6"/>
+            <path d="M-50,320 C260,260 420,420 720,340 C1020,260 1180,420 1490,360" stroke="url(#lineGrad)" stroke-width="1" fill="none" opacity="0.4"/>
+          </svg>
+        </div>
+
         <div id="hero-intro">
+
+          <span class="hero-badge" data-parallax="0.4">
+            <span class="hero-badge-stars" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="currentColor" width="12" height="12"><path d="M10 1l2.6 5.7 6.4.6-4.8 4.3 1.4 6.4L10 14.7 4.4 18l1.4-6.4L1 7.3l6.4-.6L10 1z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor" width="12" height="12"><path d="M10 1l2.6 5.7 6.4.6-4.8 4.3 1.4 6.4L10 14.7 4.4 18l1.4-6.4L1 7.3l6.4-.6L10 1z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor" width="12" height="12"><path d="M10 1l2.6 5.7 6.4.6-4.8 4.3 1.4 6.4L10 14.7 4.4 18l1.4-6.4L1 7.3l6.4-.6L10 1z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor" width="12" height="12"><path d="M10 1l2.6 5.7 6.4.6-4.8 4.3 1.4 6.4L10 14.7 4.4 18l1.4-6.4L1 7.3l6.4-.6L10 1z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor" width="12" height="12"><path d="M10 1l2.6 5.7 6.4.6-4.8 4.3 1.4 6.4L10 14.7 4.4 18l1.4-6.4L1 7.3l6.4-.6L10 1z"/></svg>
+            </span>
+            <span class="hero-badge-text">Trusted by teams who teach</span>
+          </span>
+
           <h1 id="hero-headline">I take scattered content and make it presentable.</h1>
           <p id="hero-subheadline">Send me voice memos, half-finished docs, old recordings, scattered notes — whatever you've got. I'll refine it into the course, guide, or video you've been meaning to build.</p>
+
+          <div class="hero-cta-row">
+            <a class="hero-cta" href="#contact">
+              <span>Start your project</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <span class="hero-cta-meta">Reply within 24h</span>
+          </div>
+        </div>
+
+        <!-- Floating preview chips -->
+        <div class="hero-float hero-float--card1" aria-hidden="true" data-parallax="0.18" data-mouse="6">
+          <div class="hero-fc-row">
+            <span class="hero-fc-dot"></span>
+            <span class="hero-fc-label">Voice memo · 12:48</span>
+          </div>
+          <div class="hero-fc-wave">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <div class="hero-float hero-float--card2" aria-hidden="true" data-parallax="0.28" data-mouse="10">
+          <div class="hero-fc-stack">
+            <div class="hero-fc-mini">
+              <span class="hero-fc-mini-icon">▶</span>
+              <span class="hero-fc-mini-text">Module 01 — Setup</span>
+              <span class="hero-fc-mini-check">✓</span>
+            </div>
+            <div class="hero-fc-mini">
+              <span class="hero-fc-mini-icon">▶</span>
+              <span class="hero-fc-mini-text">Module 02 — Workflows</span>
+              <span class="hero-fc-mini-check hero-fc-mini-check--active">✓</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-float hero-float--card3" aria-hidden="true" data-parallax="0.22" data-mouse="-8">
+          <div class="hero-fc-pill"><span class="hero-fc-pill-dot"></span>Published</div>
+          <div class="hero-fc-stat"><span class="hero-fc-stat-num" data-counter="240">0</span><span class="hero-fc-stat-suffix">+</span></div>
+          <div class="hero-fc-sub">Lessons shipped</div>
+        </div>
+
+        <div class="hero-scroll-cue" aria-hidden="true">
+          <span class="hero-scroll-cue-track"><span class="hero-scroll-cue-bead"></span></span>
+          <span class="hero-scroll-cue-label">Scroll</span>
         </div>
 
       </section>
@@ -28,7 +117,18 @@
       ============================================================ -->
       <section id="work-sample" aria-labelledby="morpheus-title">
 
-        <h2 id="morpheus-title">Here's what "presentable" looks like.</h2>
+        <div class="ws-bg" aria-hidden="true">
+          <div class="ws-bg-blob ws-bg-blob--a"></div>
+          <div class="ws-bg-blob ws-bg-blob--b"></div>
+          <div class="ws-bg-grid"></div>
+        </div>
+
+        <div class="section-eyebrow" data-reveal>
+          <span class="section-eyebrow-dot"></span>
+          <span>Live work sample</span>
+        </div>
+
+        <h2 id="morpheus-title" data-reveal>Here's what "presentable" looks like.</h2>
 
         <div class="tb-player" role="img" aria-label="Teachable course player preview for Morpheus Drive Quick Start">
 
@@ -225,8 +325,15 @@
       ============================================================ -->
       <section id="services" aria-labelledby="services-heading">
 
-        <div id="services-head">
-          <span id="services-eyebrow">The work</span>
+        <div class="services-bg" aria-hidden="true">
+          <div class="services-bg-tint services-bg-tint--peach"></div>
+          <div class="services-bg-tint services-bg-tint--mint"></div>
+          <div class="services-bg-tint services-bg-tint--lavender"></div>
+          <div class="services-bg-grid"></div>
+        </div>
+
+        <div id="services-head" data-reveal>
+          <span id="services-eyebrow"><span class="services-eyebrow-dot"></span>The work</span>
           <h2 id="services-heading">Whatever you have. <br><span class="services-heading-accent">Whatever you need.</span></h2>
           <p id="services-lead">Bring me what you've got — docs, recordings, scattered notes, a brain dump. I'll shape it into any of these, in any combination.</p>
         </div>
@@ -641,11 +748,34 @@
       ============================================================ -->
       <section id="contact" aria-labelledby="contact-heading">
 
-        <h2 id="contact-heading">Got a pile of raw material?</h2>
+        <div class="contact-card">
 
-        <p id="contact-body">If you've got expertise trapped in recordings, decks, docs, or someone's head — and you need it turned into something structured and presentable — send it over.</p>
+          <div class="contact-card-fx" aria-hidden="true">
+            <div class="contact-fx-orb contact-fx-orb--a"></div>
+            <div class="contact-fx-orb contact-fx-orb--b"></div>
+            <div class="contact-fx-grid"></div>
+          </div>
 
-        <a id="contact-email-link" href="mailto:steven.wilen@gmail.com">Get in touch</a>
+          <div class="contact-card-inner">
+            <span class="contact-eyebrow" data-reveal><span class="contact-eyebrow-dot"></span>Get in touch</span>
+            <h2 id="contact-heading" data-reveal>Got a pile of <span class="contact-heading-accent">raw material?</span></h2>
+            <p id="contact-body" data-reveal>If you've got expertise trapped in recordings, decks, docs, or someone's head — and you need it turned into something structured and presentable — send it over.</p>
+
+            <div class="contact-actions" data-reveal>
+              <a id="contact-email-link" href="mailto:steven.wilen@gmail.com">
+                <span>Get in touch</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <span class="contact-meta">Typical reply within 24 hours</span>
+            </div>
+
+            <ul class="contact-checklist" data-reveal>
+              <li><span class="contact-check">✓</span>Free 30-min scoping call</li>
+              <li><span class="contact-check">✓</span>Fixed-fee or per-project</li>
+              <li><span class="contact-check">✓</span>You keep every source file</li>
+            </ul>
+          </div>
+        </div>
 
       </section>
 
@@ -653,7 +783,49 @@
 
 
     <footer id="site-footer">
-      <p id="footer-name">Steven Wilen</p>
+      <div class="footer-inner">
+
+        <div class="footer-brand">
+          <div class="footer-mark">
+            <span class="footer-mark-glyph">S</span>
+          </div>
+          <p id="footer-name">Steven Wilen</p>
+          <p class="footer-tag">Instructional content for anyone with complex knowledge worth teaching.</p>
+        </div>
+
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h4 class="footer-col-heading">Work</h4>
+            <ul>
+              <li><a href="#work-sample">Sample course</a></li>
+              <li><a href="#services">Formats</a></li>
+              <li><a href="#contact">Start a project</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-col-heading">Formats</h4>
+            <ul>
+              <li>Video tutorials</li>
+              <li>Written guides</li>
+              <li>SOPs &amp; KB articles</li>
+              <li>Slide decks</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-col-heading">Contact</h4>
+            <ul>
+              <li><a href="mailto:steven.wilen@gmail.com">steven.wilen@gmail.com</a></li>
+              <li>Reply within 24h</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="footer-year">2026</span> Steven Wilen. All rights reserved.</span>
+        <span class="footer-bottom-sep" aria-hidden="true">•</span>
+        <span>Built one polished draft at a time.</span>
+      </div>
     </footer>
 
     <!-- Course mockup interactivity -->

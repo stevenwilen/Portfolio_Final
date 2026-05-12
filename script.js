@@ -829,3 +829,229 @@ document.addEventListener('DOMContentLoaded', function () {
   sectionObserver.observe(section);
 });
 
+
+// ─── Footer year ──────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function () {
+  var y = document.getElementById('footer-year');
+  if (y) y.textContent = new Date().getFullYear();
+});
+
+
+// ─── Reveal-on-scroll (data-reveal) ──────────────────────────
+document.addEventListener('DOMContentLoaded', function () {
+  var prefersReduced =
+    window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var els = document.querySelectorAll('[data-reveal]');
+  if (!els.length) return;
+
+  if (prefersReduced || !('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.classList.add('is-in'); });
+    return;
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+  els.forEach(function (el) { io.observe(el); });
+});
+
+
+// ─── Number counters (data-counter) ──────────────────────────
+document.addEventListener('DOMContentLoaded', function () {
+  var prefersReduced =
+    window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var counters = document.querySelectorAll('[data-counter]');
+  if (!counters.length) return;
+
+  function format(n) {
+    return String(Math.round(n));
+  }
+
+  function animate(el) {
+    var target = parseInt(el.getAttribute('data-counter'), 10);
+    if (isNaN(target)) return;
+    if (prefersReduced) { el.textContent = format(target); return; }
+
+    var duration = 1600;
+    var start = null;
+    var startVal = 0;
+
+    function step(ts) {
+      if (start === null) start = ts;
+      var p = Math.min((ts - start) / duration, 1);
+      // easeOutCubic
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = format(startVal + (target - startVal) * eased);
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = format(target);
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  if (!('IntersectionObserver' in window)) {
+    counters.forEach(animate);
+    return;
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        animate(entry.target);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.35 });
+
+  counters.forEach(function (el) { io.observe(el); });
+});
+
+
+// ─── Cursor glow follower ────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function () {
+  var glow = document.querySelector('.cursor-glow');
+  if (!glow) return;
+
+  if (window.matchMedia && window.matchMedia('(hover: none)').matches) {
+    glow.remove();
+    return;
+  }
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    glow.remove();
+    return;
+  }
+
+  var x = 0, y = 0;
+  var cx = 0, cy = 0;
+  var raf = null;
+
+  function loop() {
+    cx += (x - cx) * 0.18;
+    cy += (y - cy) * 0.18;
+    glow.style.transform = 'translate(' + (cx - 230) + 'px, ' + (cy - 230) + 'px)';
+    if (Math.abs(x - cx) > 0.5 || Math.abs(y - cy) > 0.5) {
+      raf = requestAnimationFrame(loop);
+    } else {
+      raf = null;
+    }
+  }
+
+  window.addEventListener('mousemove', function (e) {
+    x = e.clientX;
+    y = e.clientY;
+    glow.classList.add('is-active');
+    if (raf === null) raf = requestAnimationFrame(loop);
+  }, { passive: true });
+
+  window.addEventListener('mouseleave', function () {
+    glow.classList.remove('is-active');
+  });
+});
+
+
+// ─── Hero floats: idle bob + scroll parallax + mouse parallax ─
+document.addEventListener('DOMContentLoaded', function () {
+  var prefersReduced =
+    window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
+
+  var hero = document.getElementById('hero');
+  if (!hero) return;
+
+  var parallaxEls = hero.querySelectorAll('[data-parallax]');
+  if (!parallaxEls.length) return;
+
+  // Per-element config + state
+  var els = Array.prototype.map.call(parallaxEls, function (el) {
+    var phaseStyle = getComputedStyle(el).getPropertyValue('--phase').trim();
+    var phaseMs = parseFloat(phaseStyle) * (phaseStyle.indexOf('ms') !== -1 ? 1 : 1000);
+    if (isNaN(phaseMs)) phaseMs = 0;
+    return {
+      el: el,
+      pScroll: parseFloat(el.getAttribute('data-parallax')) || 0.2,
+      pMouse: parseFloat(el.getAttribute('data-mouse') || '0'),
+      phase: phaseMs
+    };
+  });
+
+  var mx = 0, my = 0;
+  var cmx = 0, cmy = 0;
+  var scrollOffset = 0;
+  var heroInView = true;
+  var rafId = null;
+
+  function tick(ts) {
+    cmx += (mx - cmx) * 0.08;
+    cmy += (my - cmy) * 0.08;
+
+    for (var i = 0; i < els.length; i++) {
+      var item = els[i];
+      // Idle sinusoidal bob (period 6500ms, amplitude 10px)
+      var bob = Math.sin((ts + item.phase) / 6500 * Math.PI * 2) * 10;
+      var ty = scrollOffset * item.pScroll + bob + (cmy * item.pMouse);
+      var tx = cmx * item.pMouse;
+      item.el.style.transform =
+        'translate3d(' + tx.toFixed(2) + 'px, ' + ty.toFixed(2) + 'px, 0)';
+    }
+
+    if (heroInView) {
+      rafId = requestAnimationFrame(tick);
+    } else {
+      rafId = null;
+    }
+  }
+
+  function start() {
+    if (rafId === null) rafId = requestAnimationFrame(tick);
+  }
+
+  hero.addEventListener('mousemove', function (e) {
+    var rect = hero.getBoundingClientRect();
+    mx = ((e.clientX - rect.left) / rect.width) - 0.5;
+    my = ((e.clientY - rect.top) / rect.height) - 0.5;
+    start();
+  }, { passive: true });
+
+  hero.addEventListener('mouseleave', function () {
+    mx = 0; my = 0;
+    start();
+  });
+
+  // Pause when hero leaves viewport
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        heroInView = entry.isIntersecting;
+        if (heroInView) start();
+      });
+    }, { threshold: 0 });
+    io.observe(hero);
+  }
+
+  // Scroll parallax
+  var ticking = false;
+  function onScroll() {
+    if (ticking || !heroInView) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      var rect = hero.getBoundingClientRect();
+      scrollOffset = -rect.top * 0.4;
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  start();
+});
+
+
+
