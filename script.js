@@ -403,7 +403,7 @@ document.addEventListener('DOMContentLoaded', function () {
       type: 'diagram',
       module: 1,
       title: 'Board layout & terminals',
-      done: true,
+      done: false,
       overview: 'Before wiring up the Morpheus Drive, get familiar with where each terminal lives on the board. The diagram below labels every connection point referenced in the next video.',
       legend: [
         { label: 'M1 +/−', desc: 'Motor 1 terminals (left side)' },
@@ -417,7 +417,7 @@ document.addEventListener('DOMContentLoaded', function () {
       type: 'video',
       module: 1,
       title: 'Connecting motors and the battery',
-      done: true,
+      done: false,
       duration: '3:08',
       overview: 'This walkthrough shows how to connect two motors and a battery to the Morpheus Drive. Follow along with the video to complete the setup.',
       notes: [
@@ -433,7 +433,7 @@ document.addEventListener('DOMContentLoaded', function () {
       type: 'glossary',
       module: 2,
       title: 'Connection terminology',
-      done: true,
+      done: false,
       overview: 'Quick reference for the terms you\'ll see in the next video and inside the CoreOS app itself.',
       terms: [
         { term: 'Bluetooth',      def: 'Short-range wireless protocol used to connect the CoreOS app to the Morpheus Drive.' },
@@ -490,7 +490,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   ];
 
-  var currentIndex = 3; // matches the initial active lesson in HTML
+  var currentIndex = 0; // matches the initial active lesson in HTML
+
+  // ── Auto-demo state ─────────────────────────────────────────
+  var STEP_MS = 5000;
+  var RESUME_AFTER_INTERACTION_MS = 8000;
+  var autoplayTimer = null;
+  var autoplayActive = false;
 
   // ── Renderers ───────────────────────────────────────────────
   function videoMedia(l) {
@@ -671,20 +677,46 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function setActive(idx) {
     if (idx < 0 || idx >= lessons.length) return;
+    for (var i = 0; i <= idx; i++) lessons[i].done = true;
     currentIndex = idx;
     syncSidebar();
+    syncProgress();
     render(idx);
   }
 
   function completeAndContinue() {
-    lessons[currentIndex].done = true;
-    if (currentIndex < lessons.length - 1) {
-      setActive(currentIndex + 1);
-    } else {
-      syncSidebar();
-      render(currentIndex);
+    var nextIdx = Math.min(currentIndex + 1, lessons.length - 1);
+    setActive(nextIdx);
+  }
+
+  // ── Auto-demo helpers ───────────────────────────────────────
+  function resetProgress() {
+    for (var i = 0; i < lessons.length; i++) lessons[i].done = false;
+  }
+
+  function scheduleNext(delayMs) {
+    if (autoplayTimer) {
+      clearTimeout(autoplayTimer);
+      autoplayTimer = null;
     }
-    syncProgress();
+    if (!autoplayActive) return;
+    autoplayTimer = setTimeout(advanceAuto, delayMs);
+  }
+
+  function advanceAuto() {
+    autoplayTimer = null;
+    if (currentIndex >= lessons.length - 1) {
+      resetProgress();
+      setActive(0);
+    } else {
+      setActive(currentIndex + 1);
+    }
+    scheduleNext(STEP_MS);
+  }
+
+  function pauseAutoplay(resumeAfterMs) {
+    if (!autoplayActive) return;
+    scheduleNext(resumeAfterMs);
   }
 
   // ── Event delegation ────────────────────────────────────────
@@ -692,7 +724,10 @@ document.addEventListener('DOMContentLoaded', function () {
     var lessonLi = e.target.closest('.tb-lesson');
     if (lessonLi && player.contains(lessonLi)) {
       var idx = parseInt(lessonLi.getAttribute('data-index'), 10);
-      if (!isNaN(idx)) setActive(idx);
+      if (!isNaN(idx)) {
+        setActive(idx);
+        pauseAutoplay(RESUME_AFTER_INTERACTION_MS);
+      }
       return;
     }
 
@@ -701,6 +736,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var dir = navBtn.getAttribute('data-nav');
       if (dir === 'prev') setActive(currentIndex - 1);
       else if (dir === 'next') completeAndContinue();
+      pauseAutoplay(RESUME_AFTER_INTERACTION_MS);
     }
   });
 
@@ -710,11 +746,86 @@ document.addEventListener('DOMContentLoaded', function () {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         var idx = parseInt(li.getAttribute('data-index'), 10);
-        if (!isNaN(idx)) setActive(idx);
+        if (!isNaN(idx)) {
+          setActive(idx);
+          pauseAutoplay(RESUME_AFTER_INTERACTION_MS);
+        }
       }
     });
   });
 
-  // Initial sync (HTML already shows lesson 4; this just confirms state)
+  // ── Auto-demo trigger: start when section enters view ──────
+  var prefersReducedMotion =
+    window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+    var viewObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          if (!autoplayActive) {
+            autoplayActive = true;
+            player.classList.add('is-autoplaying');
+          }
+          scheduleNext(STEP_MS);
+        } else if (autoplayTimer) {
+          clearTimeout(autoplayTimer);
+          autoplayTimer = null;
+        }
+      });
+    }, { threshold: 0.3 });
+
+    viewObserver.observe(player);
+  }
+
+  // Initial sync (HTML already shows lesson 1; this just confirms state)
   syncProgress();
 });
+
+
+// ─── Features grid: living preview animations ────────────────
+document.addEventListener('DOMContentLoaded', function () {
+
+  var grid    = document.getElementById('features-grid');
+  var section = document.getElementById('features-showcase');
+  if (!grid || !section) return;
+
+  var cards = grid.querySelectorAll('.fc-card');
+  if (!cards.length) return;
+
+  // Respect reduced-motion preference
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
+  }
+
+  grid.classList.add('has-anims');
+
+  // Card-level entry observer — adds .is-animating with a small stagger as each
+  // card scrolls into view. Cards stay observed so they can re-trigger after a reset.
+  var cardObserver = new IntersectionObserver(function (entries) {
+    var stagger = 0;
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting && !entry.target.classList.contains('is-animating')) {
+        var delay = stagger;
+        stagger += 90;
+        setTimeout(function () {
+          entry.target.classList.add('is-animating');
+        }, delay);
+      }
+    });
+  }, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
+
+  cards.forEach(function (card) { cardObserver.observe(card); });
+
+  // Section-level reset observer — when the whole section leaves the viewport,
+  // strip .is-animating from every card so re-entering replays the animations.
+  var sectionObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) {
+        cards.forEach(function (card) { card.classList.remove('is-animating'); });
+      }
+    });
+  }, { threshold: 0 });
+
+  sectionObserver.observe(section);
+});
+

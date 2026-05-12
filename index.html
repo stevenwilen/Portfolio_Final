@@ -16,8 +16,8 @@
       <section id="hero" aria-labelledby="hero-headline">
 
         <div id="hero-intro">
-          <h1 id="hero-headline">Turn what your team knows into content they can teach.</h1>
-          <p id="hero-subheadline">Instructional content for anyone with complex knowledge worth teaching.</p>
+          <h1 id="hero-headline">I take scattered content and make it presentable.</h1>
+          <p id="hero-subheadline">Send me voice memos, half-finished docs, old recordings, scattered notes — whatever you've got. I'll refine it into the course, guide, or video you've been meaning to build.</p>
         </div>
 
       </section>
@@ -28,7 +28,7 @@
       ============================================================ -->
       <section id="work-sample" aria-labelledby="morpheus-title">
 
-        <h2 id="morpheus-title">Here's what that looks like.</h2>
+        <h2 id="morpheus-title">Here's what "presentable" looks like.</h2>
 
         <div class="tb-player" role="img" aria-label="Teachable course player preview for Morpheus Drive Quick Start">
 
@@ -39,9 +39,13 @@
               <span class="tb-brand-name">Robocor</span>
             </div>
             <div class="tb-course-name">Morpheus Drive Quick Start</div>
+            <span class="tb-autoplay" aria-hidden="true">
+              <span class="tb-autoplay-dot"></span>
+              <span>Auto-walkthrough</span>
+            </span>
             <div class="tb-progress">
               <span class="tb-progress-bar"><span class="tb-progress-fill"></span></span>
-              <span class="tb-progress-text">50% complete</span>
+              <span class="tb-progress-text">0% complete</span>
             </div>
           </div>
 
@@ -55,10 +59,10 @@
               <div class="tb-section" data-module="1">
                 <div class="tb-section-title">
                   <span>1. Hardware Setup</span>
-                  <span class="tb-section-meta">2 / 2</span>
+                  <span class="tb-section-meta">0 / 2</span>
                 </div>
                 <ul class="tb-lessons">
-                  <li class="tb-lesson tb-lesson--done" data-index="0" role="button" tabindex="0">
+                  <li class="tb-lesson tb-lesson--active" data-index="0" role="button" tabindex="0" aria-current="true">
                     <span class="tb-lesson-icon" aria-hidden="true">
                       <svg class="tb-icon-circle" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/></svg>
                       <svg class="tb-icon-check" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -67,7 +71,7 @@
                     <span class="tb-lesson-title">Board layout &amp; terminals</span>
                     <span class="tb-lesson-duration">Diagram</span>
                   </li>
-                  <li class="tb-lesson tb-lesson--done" data-index="1" role="button" tabindex="0">
+                  <li class="tb-lesson" data-index="1" role="button" tabindex="0">
                     <span class="tb-lesson-icon" aria-hidden="true">
                       <svg class="tb-icon-circle" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/></svg>
                       <svg class="tb-icon-check" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -82,10 +86,10 @@
               <div class="tb-section" data-module="2">
                 <div class="tb-section-title">
                   <span>2. CoreOS App Setup</span>
-                  <span class="tb-section-meta">1 / 2</span>
+                  <span class="tb-section-meta">0 / 2</span>
                 </div>
                 <ul class="tb-lessons">
-                  <li class="tb-lesson tb-lesson--done" data-index="2" role="button" tabindex="0">
+                  <li class="tb-lesson" data-index="2" role="button" tabindex="0">
                     <span class="tb-lesson-icon" aria-hidden="true">
                       <svg class="tb-icon-circle" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/></svg>
                       <svg class="tb-icon-check" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -94,7 +98,7 @@
                     <span class="tb-lesson-title">Connection terminology</span>
                     <span class="tb-lesson-duration">Glossary</span>
                   </li>
-                  <li class="tb-lesson tb-lesson--active" data-index="3" role="button" tabindex="0" aria-current="true">
+                  <li class="tb-lesson" data-index="3" role="button" tabindex="0">
                     <span class="tb-lesson-icon" aria-hidden="true">
                       <svg class="tb-icon-circle" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/></svg>
                       <svg class="tb-icon-check" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -136,42 +140,75 @@
 
             <!-- Main player -->
             <main class="tb-main">
-              <div class="tb-video">
-                <button class="tb-play" type="button" aria-label="Play lesson">
-                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-                </button>
-                <div class="tb-video-controls">
-                  <span class="tb-timecode">1:24 / 3:42</span>
-                  <div class="tb-video-bar"><div class="tb-video-fill"></div></div>
-                  <span class="tb-video-fs" aria-hidden="true">
-                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6V3h3M13 6V3h-3M3 10v3h3M13 10v3h-3"/></svg>
-                  </span>
-                </div>
+              <div class="tb-diagram">
+                <svg class="tb-diagram-svg" viewBox="0 0 600 340" role="img" aria-label="Morpheus Drive board layout">
+                  <rect x="40" y="30" width="520" height="280" rx="14" fill="#22293a" stroke="#3a4256" stroke-width="2"/>
+                  <text x="60" y="62" fill="#94a3b8" font-family="ui-monospace,monospace" font-size="12" font-weight="600" letter-spacing="2">MORPHEUS DRIVE</text>
+                  <circle cx="510" cy="55" r="7" fill="#3b82f6"/>
+                  <circle cx="510" cy="55" r="11" fill="none" stroke="#3b82f6" stroke-opacity="0.35" stroke-width="2"/>
+                  <text x="494" y="80" fill="#94a3b8" font-size="10" text-anchor="end">STAT</text>
+                  <rect x="450" y="98" width="60" height="30" rx="6" fill="#3a4256" stroke="#475569" stroke-width="1"/>
+                  <text x="480" y="118" fill="#cbd5e1" font-size="10" font-weight="600" text-anchor="middle">RST</text>
+                  <path d="M110 152 L110 178" stroke="#475569" stroke-width="1" opacity="0.5"/>
+                  <path d="M230 152 L230 178" stroke="#475569" stroke-width="1" opacity="0.5"/>
+                  <path d="M350 152 L350 178" stroke="#475569" stroke-width="1" opacity="0.5"/>
+                  <text x="110" y="180" fill="#94a3b8" font-size="10" text-anchor="middle">Motor 1</text>
+                  <text x="230" y="180" fill="#94a3b8" font-size="10" text-anchor="middle">Motor 2</text>
+                  <text x="350" y="180" fill="#94a3b8" font-size="10" text-anchor="middle">Battery</text>
+                  <rect x="80"  y="200" width="60" height="30" rx="4" fill="#3a4256" stroke="#475569" stroke-width="1"/>
+                  <text x="110" y="220" fill="#34d399" font-size="11" font-weight="700" text-anchor="middle">M1+</text>
+                  <rect x="80"  y="240" width="60" height="30" rx="4" fill="#3a4256" stroke="#475569" stroke-width="1"/>
+                  <text x="110" y="260" fill="#f87171" font-size="11" font-weight="700" text-anchor="middle">M1−</text>
+                  <rect x="200" y="200" width="60" height="30" rx="4" fill="#3a4256" stroke="#475569" stroke-width="1"/>
+                  <text x="230" y="220" fill="#34d399" font-size="11" font-weight="700" text-anchor="middle">M2+</text>
+                  <rect x="200" y="240" width="60" height="30" rx="4" fill="#3a4256" stroke="#475569" stroke-width="1"/>
+                  <text x="230" y="260" fill="#f87171" font-size="11" font-weight="700" text-anchor="middle">M2−</text>
+                  <rect x="320" y="200" width="60" height="30" rx="4" fill="#3a4256" stroke="#475569" stroke-width="1"/>
+                  <text x="350" y="220" fill="#34d399" font-size="11" font-weight="700" text-anchor="middle">V+</text>
+                  <rect x="320" y="240" width="60" height="30" rx="4" fill="#3a4256" stroke="#475569" stroke-width="1"/>
+                  <text x="350" y="260" fill="#f87171" font-size="11" font-weight="700" text-anchor="middle">V−</text>
+                </svg>
               </div>
 
               <div class="tb-lesson-info">
-                <div class="tb-lesson-eyebrow">Lesson 4 of 6</div>
-                <h3 class="tb-lesson-heading">Install &amp; connect via Bluetooth</h3>
+                <div class="tb-lesson-eyebrow">Lesson 1 of 6</div>
+                <h3 class="tb-lesson-heading">Board layout &amp; terminals</h3>
 
                 <div class="tb-lesson-section">
                   <h4 class="tb-lesson-subhead">Overview</h4>
-                  <p class="tb-lesson-body">This walkthrough shows how to install the CoreOS app and connect it to the Morpheus Drive using Bluetooth. Follow along with the video to complete the setup.</p>
+                  <p class="tb-lesson-body">Before wiring up the Morpheus Drive, get familiar with where each terminal lives on the board. The diagram below labels every connection point referenced in the next video.</p>
                 </div>
 
                 <div class="tb-lesson-section">
-                  <h4 class="tb-lesson-subhead">Notes</h4>
-                  <ul class="tb-lesson-notes">
-                    <li>CoreOS is available on the Android Play Store</li>
-                    <li>Make sure Bluetooth is enabled before connecting</li>
-                    <li>Stay close to the Morpheus Drive during connection</li>
-                    <li>If the device does not appear, confirm the board is powered on</li>
-                  </ul>
+                  <h4 class="tb-lesson-subhead">Legend</h4>
+                  <dl class="tb-legend">
+                    <div class="tb-legend-row">
+                      <dt class="tb-legend-label">M1 +/−</dt>
+                      <dd class="tb-legend-desc">Motor 1 terminals (left side)</dd>
+                    </div>
+                    <div class="tb-legend-row">
+                      <dt class="tb-legend-label">M2 +/−</dt>
+                      <dd class="tb-legend-desc">Motor 2 terminals (right side)</dd>
+                    </div>
+                    <div class="tb-legend-row">
+                      <dt class="tb-legend-label">V+ / V−</dt>
+                      <dd class="tb-legend-desc">Battery power input</dd>
+                    </div>
+                    <div class="tb-legend-row">
+                      <dt class="tb-legend-label">RST</dt>
+                      <dd class="tb-legend-desc">Reset button — press after wiring power</dd>
+                    </div>
+                    <div class="tb-legend-row">
+                      <dt class="tb-legend-label">STAT</dt>
+                      <dd class="tb-legend-desc">Status LED — solid blue once the system is ready</dd>
+                    </div>
+                  </dl>
                 </div>
               </div>
 
               <div class="tb-actions">
-                <button class="tb-btn tb-btn--ghost" type="button">← Previous</button>
-                <button class="tb-btn tb-btn--primary" type="button">Complete and continue →</button>
+                <button class="tb-btn tb-btn--ghost" type="button" data-nav="prev" disabled>← Previous</button>
+                <button class="tb-btn tb-btn--primary" type="button" data-nav="next">Complete and continue →</button>
               </div>
             </main>
 
@@ -184,14 +221,61 @@
 
 
       <!-- ============================================================
-           SECTION 3 — FEATURES SHOWCASE (card grid)
+           SECTION 3 — SERVICES (raw material → every format)
       ============================================================ -->
-      <section id="features-showcase">
+      <section id="services" aria-labelledby="services-heading">
 
-        <div id="features-intro">
-          <h2 id="features-heading">Every format you'd need</h2>
+        <div id="services-head">
+          <span id="services-eyebrow">The work</span>
+          <h2 id="services-heading">Whatever you have. <br><span class="services-heading-accent">Whatever you need.</span></h2>
+          <p id="services-lead">Bring me what you've got — docs, recordings, scattered notes, a brain dump. I'll shape it into any of these, in any combination.</p>
         </div>
 
+        <!-- Intake band: raw inputs marquee -->
+        <div id="services-intake" aria-hidden="true">
+          <div class="services-intake-label">
+            <span class="services-intake-dot"></span>
+            <span>Raw material</span>
+          </div>
+          <div class="services-marquee" data-marquee>
+            <div class="services-marquee-track">
+              <span class="intake-chip"><span class="intake-chip-tag">.mp3</span>Voice memos</span>
+              <span class="intake-chip"><span class="intake-chip-tag">.pdf</span>Old SOPs</span>
+              <span class="intake-chip"><span class="intake-chip-tag">∞</span>Slack threads</span>
+              <span class="intake-chip"><span class="intake-chip-tag">.mov</span>Screen recordings</span>
+              <span class="intake-chip"><span class="intake-chip-tag">.txt</span>Scattered notes</span>
+              <span class="intake-chip"><span class="intake-chip-tag">✎</span>Whiteboard photos</span>
+              <span class="intake-chip"><span class="intake-chip-tag">@</span>Email chains</span>
+              <span class="intake-chip"><span class="intake-chip-tag">…</span>Brain dumps</span>
+              <span class="intake-chip"><span class="intake-chip-tag">.doc</span>Half-written drafts</span>
+              <span class="intake-chip"><span class="intake-chip-tag">▦</span>Spreadsheets</span>
+              <!-- duplicate for seamless loop -->
+              <span class="intake-chip" aria-hidden="true"><span class="intake-chip-tag">.mp3</span>Voice memos</span>
+              <span class="intake-chip" aria-hidden="true"><span class="intake-chip-tag">.pdf</span>Old SOPs</span>
+              <span class="intake-chip" aria-hidden="true"><span class="intake-chip-tag">∞</span>Slack threads</span>
+              <span class="intake-chip" aria-hidden="true"><span class="intake-chip-tag">.mov</span>Screen recordings</span>
+              <span class="intake-chip" aria-hidden="true"><span class="intake-chip-tag">.txt</span>Scattered notes</span>
+              <span class="intake-chip" aria-hidden="true"><span class="intake-chip-tag">✎</span>Whiteboard photos</span>
+              <span class="intake-chip" aria-hidden="true"><span class="intake-chip-tag">@</span>Email chains</span>
+              <span class="intake-chip" aria-hidden="true"><span class="intake-chip-tag">…</span>Brain dumps</span>
+              <span class="intake-chip" aria-hidden="true"><span class="intake-chip-tag">.doc</span>Half-written drafts</span>
+              <span class="intake-chip" aria-hidden="true"><span class="intake-chip-tag">▦</span>Spreadsheets</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Funnel / transition between intake and outputs -->
+        <div id="services-funnel" aria-hidden="true">
+          <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+            <path class="services-funnel-shape" d="M0,0 L1200,0 L760,80 L440,80 Z" />
+            <line class="services-funnel-line" x1="600" y1="40" x2="600" y2="80" />
+          </svg>
+          <div class="services-funnel-label">
+            <span>Shaped into</span>
+          </div>
+        </div>
+
+        <!-- Output: format card grid -->
         <div id="features-grid">
 
           <!-- 1. Video Lesson -->
@@ -212,7 +296,7 @@
             </div>
             <div class="fc-label">
               <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
-              <span>Video Lesson</span>
+              <span>Video Tutorial</span>
             </div>
           </article>
 
@@ -233,7 +317,7 @@
             </div>
             <div class="fc-label">
               <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-              <span>Written Content</span>
+              <span>Written Guide</span>
             </div>
           </article>
 
@@ -276,7 +360,7 @@
             </div>
             <div class="fc-label">
               <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              <span>Downloadable Resource</span>
+              <span>Quick Reference</span>
             </div>
           </article>
 
@@ -303,7 +387,7 @@
             </div>
             <div class="fc-label">
               <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-              <span>Interactive Diagram</span>
+              <span>Process Diagram</span>
             </div>
           </article>
 
@@ -336,61 +420,90 @@
             </div>
           </article>
 
-          <!-- 8. Reflection Prompt -->
+          <!-- 8. SOP / Process Doc -->
           <article class="fc-card" style="--accent: #4F46E5">
             <div class="fc-preview">
-              <div class="fcp-reflect-prompt">Think about a time a process in your team broke down. What was the root cause?</div>
-              <div class="fcp-reflect-area">
-                <div class="fcp-reflect-line"></div>
-                <div class="fcp-reflect-line"></div>
-                <div class="fcp-reflect-line fcp-reflect-line--short"></div>
-                <span class="fcp-reflect-cursor"></span>
+              <div class="fcp-sop-label">Standard Operating Procedure</div>
+              <div class="fcp-sop-steps">
+                <div class="fcp-sop-step">
+                  <span class="fcp-sop-num">01</span>
+                  <div class="fcp-sop-text">
+                    <div class="fcp-bar" style="width:75%"></div>
+                    <div class="fcp-bar" style="width:55%"></div>
+                  </div>
+                </div>
+                <div class="fcp-sop-step">
+                  <span class="fcp-sop-num">02</span>
+                  <div class="fcp-sop-text">
+                    <div class="fcp-bar" style="width:88%"></div>
+                    <div class="fcp-bar" style="width:62%"></div>
+                  </div>
+                </div>
+                <div class="fcp-sop-step">
+                  <span class="fcp-sop-num">03</span>
+                  <div class="fcp-sop-text">
+                    <div class="fcp-bar" style="width:70%"></div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="fc-label">
-              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-              <span>Reflection Prompt</span>
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>
+              <span>SOP / Process Doc</span>
             </div>
           </article>
 
-          <!-- 9. Assessment Quiz -->
+          <!-- 9. Knowledge Base Article -->
           <article class="fc-card" style="--accent: #0F172A">
             <div class="fc-preview">
-              <div class="fcp-quiz-header">
-                <span class="fcp-quiz-title">Final Assessment</span>
-                <span class="fcp-quiz-score">8 / 10</span>
+              <div class="fcp-kb-crumb">
+                <span>Docs</span>
+                <span class="fcp-kb-sep">/</span>
+                <span>Getting Started</span>
+                <span class="fcp-kb-sep">/</span>
+                <span class="fcp-kb-current">Setup</span>
               </div>
-              <div class="fcp-quiz-rows">
-                <div class="fcp-quiz-row fcp-quiz-row--correct"><span class="fcp-quiz-check">✓</span><div class="fcp-bar" style="width:75%"></div></div>
-                <div class="fcp-quiz-row fcp-quiz-row--correct"><span class="fcp-quiz-check">✓</span><div class="fcp-bar" style="width:60%"></div></div>
-                <div class="fcp-quiz-row fcp-quiz-row--wrong"><span class="fcp-quiz-check">✗</span><div class="fcp-bar" style="width:68%"></div></div>
-                <div class="fcp-quiz-row fcp-quiz-row--correct"><span class="fcp-quiz-check">✓</span><div class="fcp-bar" style="width:50%"></div></div>
+              <div class="fcp-article-title">How to configure your workspace</div>
+              <div class="fcp-rows">
+                <div class="fcp-bar" style="width:96%"></div>
+                <div class="fcp-bar" style="width:84%"></div>
+                <div class="fcp-bar" style="width:70%"></div>
+              </div>
+              <div class="fcp-kb-tags">
+                <span class="fcp-kb-tag">Setup</span>
+                <span class="fcp-kb-tag">Onboarding</span>
               </div>
             </div>
             <div class="fc-label">
-              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="M9 12l2 2 4-4"/></svg>
-              <span>Assessment Quiz</span>
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              <span>Knowledge Base Article</span>
             </div>
           </article>
 
-          <!-- 10. Progress Dashboard -->
-          <article class="fc-card" style="--accent: #0284C7">
-            <div class="fc-preview">
-              <div class="fcp-dash-header">
-                <span class="fcp-dash-title">Your Progress</span>
-                <span class="fcp-dash-pct">67%</span>
-              </div>
-              <div class="fcp-dash-track"><div class="fcp-dash-fill" style="width:67%"></div></div>
-              <div class="fcp-modules">
-                <div class="fcp-mod"><span class="fcp-mod-name">Module 1</span><div class="fcp-mod-track"><div class="fcp-mod-fill" style="width:100%"></div></div><span class="fcp-mod-done">✓</span></div>
-                <div class="fcp-mod"><span class="fcp-mod-name">Module 2</span><div class="fcp-mod-track"><div class="fcp-mod-fill" style="width:100%"></div></div><span class="fcp-mod-done">✓</span></div>
-                <div class="fcp-mod"><span class="fcp-mod-name">Module 3</span><div class="fcp-mod-track"><div class="fcp-mod-fill" style="width:33%"></div></div><span class="fcp-mod-pct">33%</span></div>
-                <div class="fcp-mod fcp-mod--locked"><span class="fcp-mod-name">Module 4</span><div class="fcp-mod-track"></div><span class="fcp-mod-lock">🔒</span></div>
+          <!-- 10. Screen Recording -->
+          <article class="fc-card" style="--accent: #DC2626">
+            <div class="fc-preview fcp-center">
+              <div class="fcp-screenrec">
+                <div class="fcp-screenrec-chrome">
+                  <span class="fcp-screenrec-dot"></span>
+                  <span class="fcp-screenrec-dot"></span>
+                  <span class="fcp-screenrec-dot"></span>
+                </div>
+                <div class="fcp-screenrec-body">
+                  <span class="fcp-screenrec-rec">
+                    <span class="fcp-screenrec-rec-dot"></span>
+                    REC
+                  </span>
+                  <span class="fcp-screenrec-time">00:42</span>
+                  <svg class="fcp-screenrec-cursor" viewBox="0 0 24 24" fill="#ffffff" stroke="#000000" stroke-width="1" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 3l14 9-6.5 1.2-2.7 6.5L5 3z"/>
+                  </svg>
+                </div>
               </div>
             </div>
             <div class="fc-label">
-              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-              <span>Progress Dashboard</span>
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><circle cx="12" cy="10.5" r="2.5" fill="currentColor" stroke="none"/></svg>
+              <span>Screen Recording</span>
             </div>
           </article>
 
@@ -419,73 +532,106 @@
             </div>
           </article>
 
-          <!-- 12. Certificate -->
-          <article class="fc-card" style="--accent: #CA8A04">
-            <div class="fc-preview fcp-cert-bg">
-              <div class="fcp-cert">
-                <div class="fcp-cert-kicker">Certificate of Completion</div>
-                <div class="fcp-cert-name">Alex Johnson</div>
-                <div class="fcp-cert-course">Product Certification Program</div>
-                <div class="fcp-cert-divider"></div>
-                <div class="fcp-cert-seal">★</div>
+          <!-- 12. FAQ -->
+          <article class="fc-card" style="--accent: #0891B2">
+            <div class="fc-preview">
+              <div class="fcp-faq-row fcp-faq-row--open">
+                <div class="fcp-faq-q"><span class="fcp-faq-toggle">−</span>How long does this take?</div>
+                <div class="fcp-faq-a">
+                  <div class="fcp-bar" style="width:88%"></div>
+                  <div class="fcp-bar" style="width:64%"></div>
+                </div>
+              </div>
+              <div class="fcp-faq-row">
+                <div class="fcp-faq-q"><span class="fcp-faq-toggle">+</span>What do I need to provide?</div>
+              </div>
+              <div class="fcp-faq-row">
+                <div class="fcp-faq-q"><span class="fcp-faq-toggle">+</span>Who keeps the source files?</div>
               </div>
             </div>
             <div class="fc-label">
-              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
-              <span>Certificate</span>
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span>FAQ</span>
+            </div>
+          </article>
+
+          <!-- 13. Lesson Plan / Course Module -->
+          <article class="fc-card" style="--accent: #CA8A04">
+            <div class="fc-preview">
+              <div class="fcp-module-header">
+                <span class="fcp-module-eyebrow">Module 02</span>
+                <span class="fcp-module-count">4 items</span>
+              </div>
+              <div class="fcp-module-title">Core Workflows</div>
+              <div class="fcp-module-items">
+                <div class="fcp-module-item">
+                  <span class="fcp-module-icon fcp-module-icon--video">▶</span>
+                  <div class="fcp-bar" style="width:78%"></div>
+                </div>
+                <div class="fcp-module-item">
+                  <span class="fcp-module-icon fcp-module-icon--doc">≡</span>
+                  <div class="fcp-bar" style="width:62%"></div>
+                </div>
+                <div class="fcp-module-item">
+                  <span class="fcp-module-icon fcp-module-icon--quiz">?</span>
+                  <div class="fcp-bar" style="width:55%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="fc-label">
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              <span>Lesson Plan / Course Module</span>
+            </div>
+          </article>
+
+          <!-- 14. Infographic -->
+          <article class="fc-card" style="--accent: #0284C7">
+            <div class="fc-preview fcp-center">
+              <div class="fcp-infographic">
+                <div class="fcp-info-stat">84%</div>
+                <div class="fcp-info-label">teams adopt within 2 weeks</div>
+                <div class="fcp-info-bars">
+                  <span class="fcp-info-bar" style="--h:38%"></span>
+                  <span class="fcp-info-bar" style="--h:62%"></span>
+                  <span class="fcp-info-bar" style="--h:80%"></span>
+                  <span class="fcp-info-bar" style="--h:100%"></span>
+                </div>
+              </div>
+            </div>
+            <div class="fc-label">
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+              <span>Infographic</span>
+            </div>
+          </article>
+
+          <!-- 15. Annotated Screenshot -->
+          <article class="fc-card" style="--accent: #BE185D">
+            <div class="fc-preview fcp-center">
+              <div class="fcp-annot">
+                <div class="fcp-annot-chrome">
+                  <span class="fcp-annot-dot"></span>
+                  <span class="fcp-annot-dot"></span>
+                  <span class="fcp-annot-dot"></span>
+                </div>
+                <div class="fcp-annot-body">
+                  <span class="fcp-annot-pill fcp-annot-pill--a"></span>
+                  <span class="fcp-annot-pill fcp-annot-pill--b"></span>
+                  <span class="fcp-annot-pill fcp-annot-pill--c"></span>
+                  <span class="fcp-annot-marker" style="top:22%; left:16%">1</span>
+                  <span class="fcp-annot-marker" style="top:60%; left:48%">2</span>
+                  <span class="fcp-annot-marker" style="top:34%; left:78%">3</span>
+                </div>
+              </div>
+            </div>
+            <div class="fc-label">
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" stroke="none"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span>Annotated Screenshot</span>
             </div>
           </article>
 
         </div>
 
-      </section>
-
-
-      <!-- ============================================================
-           SECTION 4 — SERVICES
-      ============================================================ -->
-      <section id="services" aria-labelledby="services-heading">
-
-        <h2 id="services-heading">What I build</h2>
-
-        <ul id="services-list">
-
-          <li id="service-curriculum-design">
-            <article class="service-item">
-              <h3>Curriculum design</h3>
-              <p>Turning a system or process into a structured learning path.</p>
-            </article>
-          </li>
-
-          <li id="service-written-content">
-            <article class="service-item">
-              <h3>Written content</h3>
-              <p>Documentation, SOPs, knowledge base articles, and course text.</p>
-            </article>
-          </li>
-
-          <li id="service-video-tutorials">
-            <article class="service-item">
-              <h3>Video tutorials</h3>
-              <p>Script, structure, and production.</p>
-            </article>
-          </li>
-
-          <li id="service-visual-diagram">
-            <article class="service-item">
-              <h3>Visual and diagram work</h3>
-              <p>Diagrams, flowcharts, and supporting graphics.</p>
-            </article>
-          </li>
-
-          <li id="service-lms-packages">
-            <article class="service-item">
-              <h3>LMS-ready content packages</h3>
-              <p>Formatted and organized for direct publishing.</p>
-            </article>
-          </li>
-
-        </ul>
+        <p id="services-outro">Bundled into an LMS, dropped into your knowledge base, or shipped as standalone files — your call.</p>
 
       </section>
 
@@ -495,9 +641,9 @@
       ============================================================ -->
       <section id="contact" aria-labelledby="contact-heading">
 
-        <h2 id="contact-heading">Let's talk about what you need built.</h2>
+        <h2 id="contact-heading">Got a pile of raw material?</h2>
 
-        <p id="contact-body">If you're a CTO, Head of Customer Success, or Training Manager looking to turn your product knowledge into something teachable — I'd like to hear about it.</p>
+        <p id="contact-body">If you've got expertise trapped in recordings, decks, docs, or someone's head — and you need it turned into something structured and presentable — send it over.</p>
 
         <a id="contact-email-link" href="mailto:steven.wilen@gmail.com">Get in touch</a>
 
