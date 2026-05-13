@@ -33,32 +33,62 @@
           <div class="hero-sky-cloud hero-sky-cloud--1"></div>
           <div class="hero-sky-cloud hero-sky-cloud--2"></div>
           <div class="hero-sky-cloud hero-sky-cloud--3"></div>
+          <div class="hero-sky-cloud hero-sky-cloud--4"></div>
+          <div class="hero-sky-cloud hero-sky-cloud--5"></div>
+
           <svg class="hero-sky-lines" viewBox="0 0 1440 800" preserveAspectRatio="none">
             <defs>
               <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#60a5fa" stop-opacity="0"/>
-                <stop offset="50%" stop-color="#3b82f6" stop-opacity="0.35"/>
-                <stop offset="100%" stop-color="#60a5fa" stop-opacity="0"/>
+                <stop offset="0%" stop-color="#000" stop-opacity="0"/>
+                <stop offset="50%" stop-color="#000" stop-opacity="0.18"/>
+                <stop offset="100%" stop-color="#000" stop-opacity="0"/>
               </linearGradient>
             </defs>
             <path d="M-50,420 C260,360 420,520 720,440 C1020,360 1180,520 1490,460" stroke="url(#lineGrad)" stroke-width="1" fill="none"/>
             <path d="M-50,520 C260,460 420,620 720,540 C1020,460 1180,620 1490,560" stroke="url(#lineGrad)" stroke-width="1" fill="none" opacity="0.6"/>
             <path d="M-50,320 C260,260 420,420 720,340 C1020,260 1180,420 1490,360" stroke="url(#lineGrad)" stroke-width="1" fill="none" opacity="0.4"/>
+            <path d="M-50,220 C260,180 420,300 720,240 C1020,180 1180,300 1490,260" stroke="url(#lineGrad)" stroke-width="1" fill="none" opacity="0.25"/>
+            <path d="M-50,620 C260,580 420,700 720,640 C1020,580 1180,700 1490,660" stroke="url(#lineGrad)" stroke-width="1" fill="none" opacity="0.25"/>
+          </svg>
+
+          <!-- Drifting particles -->
+          <div class="hero-sky-particles">
+            <span class="hero-particle" style="top: 14%; left: 8%;  --d: 18s; --delay: 0s;   --size: 4px;"></span>
+            <span class="hero-particle" style="top: 22%; left: 18%; --d: 22s; --delay: -3s;  --size: 3px;"></span>
+            <span class="hero-particle" style="top: 34%; left: 12%; --d: 26s; --delay: -7s;  --size: 5px;"></span>
+            <span class="hero-particle" style="top: 46%; left: 22%; --d: 20s; --delay: -2s;  --size: 3px;"></span>
+            <span class="hero-particle" style="top: 60%; left: 6%;  --d: 24s; --delay: -10s; --size: 4px;"></span>
+            <span class="hero-particle" style="top: 72%; left: 16%; --d: 28s; --delay: -5s;  --size: 3px;"></span>
+            <span class="hero-particle" style="top: 18%; left: 78%; --d: 22s; --delay: -1s;  --size: 4px;"></span>
+            <span class="hero-particle" style="top: 30%; left: 88%; --d: 26s; --delay: -6s;  --size: 3px;"></span>
+            <span class="hero-particle" style="top: 44%; left: 82%; --d: 24s; --delay: -9s;  --size: 5px;"></span>
+            <span class="hero-particle" style="top: 56%; left: 92%; --d: 20s; --delay: -4s;  --size: 3px;"></span>
+            <span class="hero-particle" style="top: 68%; left: 76%; --d: 30s; --delay: -12s; --size: 4px;"></span>
+            <span class="hero-particle" style="top: 80%; left: 86%; --d: 22s; --delay: -8s;  --size: 3px;"></span>
+            <span class="hero-particle" style="top: 12%; left: 48%; --d: 32s; --delay: -2s;  --size: 3px;"></span>
+            <span class="hero-particle" style="top: 76%; left: 50%; --d: 28s; --delay: -11s; --size: 4px;"></span>
+            <span class="hero-particle" style="top: 88%; left: 40%; --d: 24s; --delay: -6s;  --size: 3px;"></span>
+            <span class="hero-particle hero-particle--glow" style="top: 26%; left: 30%; --d: 14s; --delay: 0s;   --size: 6px;"></span>
+            <span class="hero-particle hero-particle--glow" style="top: 52%; left: 70%; --d: 16s; --delay: -5s;  --size: 6px;"></span>
+            <span class="hero-particle hero-particle--glow" style="top: 70%; left: 32%; --d: 18s; --delay: -3s;  --size: 5px;"></span>
+          </div>
+
+          <!-- Sparkles -->
+          <svg class="hero-sparkle hero-sparkle--1" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M10 1 L11.2 8.8 L19 10 L11.2 11.2 L10 19 L8.8 11.2 L1 10 L8.8 8.8 Z" fill="currentColor"/>
+          </svg>
+          <svg class="hero-sparkle hero-sparkle--2" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M10 1 L11.2 8.8 L19 10 L11.2 11.2 L10 19 L8.8 11.2 L1 10 L8.8 8.8 Z" fill="currentColor"/>
+          </svg>
+          <svg class="hero-sparkle hero-sparkle--3" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M10 1 L11.2 8.8 L19 10 L11.2 11.2 L10 19 L8.8 11.2 L1 10 L8.8 8.8 Z" fill="currentColor"/>
+          </svg>
+          <svg class="hero-sparkle hero-sparkle--4" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M10 1 L11.2 8.8 L19 10 L11.2 11.2 L10 19 L8.8 11.2 L1 10 L8.8 8.8 Z" fill="currentColor"/>
           </svg>
         </div>
 
         <div id="hero-intro">
-
-          <span class="hero-badge" data-parallax="0.4">
-            <span class="hero-badge-stars" aria-hidden="true">
-              <svg viewBox="0 0 20 20" fill="currentColor" width="12" height="12"><path d="M10 1l2.6 5.7 6.4.6-4.8 4.3 1.4 6.4L10 14.7 4.4 18l1.4-6.4L1 7.3l6.4-.6L10 1z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="12" height="12"><path d="M10 1l2.6 5.7 6.4.6-4.8 4.3 1.4 6.4L10 14.7 4.4 18l1.4-6.4L1 7.3l6.4-.6L10 1z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="12" height="12"><path d="M10 1l2.6 5.7 6.4.6-4.8 4.3 1.4 6.4L10 14.7 4.4 18l1.4-6.4L1 7.3l6.4-.6L10 1z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="12" height="12"><path d="M10 1l2.6 5.7 6.4.6-4.8 4.3 1.4 6.4L10 14.7 4.4 18l1.4-6.4L1 7.3l6.4-.6L10 1z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="12" height="12"><path d="M10 1l2.6 5.7 6.4.6-4.8 4.3 1.4 6.4L10 14.7 4.4 18l1.4-6.4L1 7.3l6.4-.6L10 1z"/></svg>
-            </span>
-            <span class="hero-badge-text">Trusted by teams who teach</span>
-          </span>
 
           <h1 id="hero-headline">I take scattered content and make it presentable.</h1>
           <p id="hero-subheadline">Send me voice memos, half-finished docs, old recordings, scattered notes — whatever you've got. I'll refine it into the course, guide, or video you've been meaning to build.</p>
@@ -73,7 +103,7 @@
         </div>
 
         <!-- Floating preview chips -->
-        <div class="hero-float hero-float--card1" aria-hidden="true" data-parallax="0.18" data-mouse="6">
+        <div class="hero-float hero-float--card1" aria-hidden="true" data-parallax="0.18">
           <div class="hero-fc-row">
             <span class="hero-fc-dot"></span>
             <span class="hero-fc-label">Voice memo · 12:48</span>
@@ -83,7 +113,7 @@
           </div>
         </div>
 
-        <div class="hero-float hero-float--card2" aria-hidden="true" data-parallax="0.28" data-mouse="10">
+        <div class="hero-float hero-float--card2" aria-hidden="true" data-parallax="0.28">
           <div class="hero-fc-stack">
             <div class="hero-fc-mini">
               <span class="hero-fc-mini-icon">▶</span>
@@ -98,15 +128,44 @@
           </div>
         </div>
 
-        <div class="hero-float hero-float--card3" aria-hidden="true" data-parallax="0.22" data-mouse="-8">
-          <div class="hero-fc-pill"><span class="hero-fc-pill-dot"></span>Published</div>
-          <div class="hero-fc-stat"><span class="hero-fc-stat-num" data-counter="240">0</span><span class="hero-fc-stat-suffix">+</span></div>
-          <div class="hero-fc-sub">Lessons shipped</div>
+        <!-- Document preview -->
+        <div class="hero-float hero-float--card4" aria-hidden="true" data-parallax="0.15">
+          <div class="hero-fc-doc-title">Quick Start Guide</div>
+          <div class="hero-fc-doc-rows">
+            <span class="hero-fc-doc-bar" style="width: 100%;"></span>
+            <span class="hero-fc-doc-bar" style="width: 92%;"></span>
+            <span class="hero-fc-doc-bar" style="width: 78%;"></span>
+            <span class="hero-fc-doc-bar" style="width: 88%;"></span>
+            <span class="hero-fc-doc-bar" style="width: 62%;"></span>
+          </div>
         </div>
 
-        <div class="hero-scroll-cue" aria-hidden="true">
-          <span class="hero-scroll-cue-track"><span class="hero-scroll-cue-bead"></span></span>
-          <span class="hero-scroll-cue-label">Scroll</span>
+        <!-- Slack thread snippet -->
+        <div class="hero-float hero-float--card5" aria-hidden="true" data-parallax="0.25">
+          <div class="hero-fc-chat">
+            <div class="hero-fc-chat-row">
+              <span class="hero-fc-chat-avatar">JD</span>
+              <div class="hero-fc-chat-bubble">
+                <span class="hero-fc-doc-bar" style="width: 92%;"></span>
+                <span class="hero-fc-doc-bar" style="width: 70%;"></span>
+              </div>
+            </div>
+            <div class="hero-fc-chat-row hero-fc-chat-row--reply">
+              <span class="hero-fc-chat-avatar hero-fc-chat-avatar--alt">MR</span>
+              <div class="hero-fc-chat-bubble">
+                <span class="hero-fc-doc-bar" style="width: 60%;"></span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-fc-chat-channel">#onboarding-help</div>
+        </div>
+
+        <!-- Mini video tile -->
+        <div class="hero-float hero-float--card6" aria-hidden="true" data-parallax="0.18">
+          <div class="hero-fc-play">
+            <span class="hero-fc-play-btn">▶</span>
+            <span class="hero-fc-play-time">2:47</span>
+          </div>
         </div>
 
       </section>
@@ -123,12 +182,12 @@
           <div class="ws-bg-grid"></div>
         </div>
 
-        <div class="section-eyebrow" data-reveal>
+        <div class="section-eyebrow">
           <span class="section-eyebrow-dot"></span>
           <span>Live work sample</span>
         </div>
 
-        <h2 id="morpheus-title" data-reveal>Here's what "presentable" looks like.</h2>
+        <h2 id="morpheus-title">Here's what "presentable" looks like.</h2>
 
         <div class="tb-player" role="img" aria-label="Teachable course player preview for Morpheus Drive Quick Start">
 
@@ -386,7 +445,7 @@
         <div id="features-grid">
 
           <!-- 1. Video Lesson -->
-          <article class="fc-card" style="--accent: #2563EB">
+          <article class="fc-card" style="--accent: #000">
             <div class="fc-preview">
               <div class="fcp-video-screen">
                 <div class="fcp-play-btn">
@@ -408,7 +467,7 @@
           </article>
 
           <!-- 2. Written Content -->
-          <article class="fc-card" style="--accent: #0D9488">
+          <article class="fc-card" style="--accent: #000">
             <div class="fc-preview">
               <div class="fcp-article-title">Introduction to Core Concepts</div>
               <div class="fcp-rows">
@@ -429,7 +488,7 @@
           </article>
 
           <!-- 3. Slide Deck -->
-          <article class="fc-card" style="--accent: #7C3AED">
+          <article class="fc-card" style="--accent: #000">
             <div class="fc-preview fcp-slide-bg">
               <div class="fcp-slide">
                 <div class="fcp-slide-header"></div>
@@ -451,7 +510,7 @@
           </article>
 
           <!-- 4. Downloadable Resource -->
-          <article class="fc-card" style="--accent: #059669">
+          <article class="fc-card" style="--accent: #000">
             <div class="fc-preview fcp-center">
               <div class="fcp-file-card">
                 <div class="fcp-file-icon">
@@ -472,7 +531,7 @@
           </article>
 
           <!-- 5. Interactive Diagram -->
-          <article class="fc-card" style="--accent: #D97706">
+          <article class="fc-card" style="--accent: #000">
             <div class="fc-preview fcp-center">
               <div class="fcp-diagram">
                 <div class="fcp-label-tiny" style="margin-bottom:10px">Process flow</div>
@@ -499,7 +558,7 @@
           </article>
 
           <!-- 6. Knowledge Check -->
-          <article class="fc-card" style="--accent: #E11D48">
+          <article class="fc-card" style="--accent: #000">
             <div class="fc-preview">
               <div class="fcp-question">Which component controls user permissions?</div>
               <div class="fcp-options">
@@ -515,7 +574,7 @@
           </article>
 
           <!-- 7. Scenario / Case Study -->
-          <article class="fc-card" style="--accent: #EA580C">
+          <article class="fc-card" style="--accent: #000">
             <div class="fc-preview">
               <div class="fcp-scenario-badge">Scenario</div>
               <div class="fcp-scenario-text">A new customer submits a support request outside business hours. The on-call rep is unavailable. What should happen next?</div>
@@ -528,7 +587,7 @@
           </article>
 
           <!-- 8. SOP / Process Doc -->
-          <article class="fc-card" style="--accent: #4F46E5">
+          <article class="fc-card" style="--accent: #000">
             <div class="fc-preview">
               <div class="fcp-sop-label">Standard Operating Procedure</div>
               <div class="fcp-sop-steps">
@@ -561,7 +620,7 @@
           </article>
 
           <!-- 9. Knowledge Base Article -->
-          <article class="fc-card" style="--accent: #0F172A">
+          <article class="fc-card" style="--accent: #000">
             <div class="fc-preview">
               <div class="fcp-kb-crumb">
                 <span>Docs</span>
@@ -588,7 +647,7 @@
           </article>
 
           <!-- 10. Screen Recording -->
-          <article class="fc-card" style="--accent: #DC2626">
+          <article class="fc-card" style="--accent: #000">
             <div class="fc-preview fcp-center">
               <div class="fcp-screenrec">
                 <div class="fcp-screenrec-chrome">
@@ -615,7 +674,7 @@
           </article>
 
           <!-- 11. Glossary / Terms -->
-          <article class="fc-card" style="--accent: #92400E">
+          <article class="fc-card" style="--accent: #000">
             <div class="fc-preview">
               <div class="fcp-gloss-label">Glossary</div>
               <div class="fcp-gloss-rows">
@@ -640,7 +699,7 @@
           </article>
 
           <!-- 12. FAQ -->
-          <article class="fc-card" style="--accent: #0891B2">
+          <article class="fc-card" style="--accent: #000">
             <div class="fc-preview">
               <div class="fcp-faq-row fcp-faq-row--open">
                 <div class="fcp-faq-q"><span class="fcp-faq-toggle">−</span>How long does this take?</div>
@@ -663,7 +722,7 @@
           </article>
 
           <!-- 13. Lesson Plan / Course Module -->
-          <article class="fc-card" style="--accent: #CA8A04">
+          <article class="fc-card" style="--accent: #000">
             <div class="fc-preview">
               <div class="fcp-module-header">
                 <span class="fcp-module-eyebrow">Module 02</span>
@@ -692,7 +751,7 @@
           </article>
 
           <!-- 14. Infographic -->
-          <article class="fc-card" style="--accent: #0284C7">
+          <article class="fc-card" style="--accent: #000">
             <div class="fc-preview fcp-center">
               <div class="fcp-infographic">
                 <div class="fcp-info-stat">84%</div>
@@ -712,7 +771,7 @@
           </article>
 
           <!-- 15. Annotated Screenshot -->
-          <article class="fc-card" style="--accent: #BE185D">
+          <article class="fc-card" style="--accent: #000">
             <div class="fc-preview fcp-center">
               <div class="fcp-annot">
                 <div class="fcp-annot-chrome">
@@ -758,7 +817,7 @@
 
           <div class="contact-card-inner">
             <span class="contact-eyebrow" data-reveal><span class="contact-eyebrow-dot"></span>Get in touch</span>
-            <h2 id="contact-heading" data-reveal>Got a pile of <span class="contact-heading-accent">raw material?</span></h2>
+            <h2 id="contact-heading" data-reveal>Got an idea for <span class="contact-heading-accent">a project?</span></h2>
             <p id="contact-body" data-reveal>If you've got expertise trapped in recordings, decks, docs, or someone's head — and you need it turned into something structured and presentable — send it over.</p>
 
             <div class="contact-actions" data-reveal>
