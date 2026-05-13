@@ -419,6 +419,7 @@ document.addEventListener('DOMContentLoaded', function () {
       title: 'Connecting motors and the battery',
       done: false,
       duration: '3:08',
+      frame: 'images/video-1.png',
       overview: 'This walkthrough shows how to connect two motors and a battery to the Morpheus Drive. Follow along with the video to complete the setup.',
       notes: [
         'Each motor connects to one pair of terminals labeled M+ and M−',
@@ -449,6 +450,7 @@ document.addEventListener('DOMContentLoaded', function () {
       title: 'Install & connect via Bluetooth',
       done: false,
       duration: '3:42',
+      frame: 'images/video-2.png',
       overview: 'This walkthrough shows how to install the CoreOS app and connect it to the Morpheus Drive using Bluetooth. Follow along with the video to complete the setup.',
       notes: [
         'CoreOS is available on the Android Play Store',
@@ -479,6 +481,7 @@ document.addEventListener('DOMContentLoaded', function () {
       title: 'Scanning and manual control',
       done: false,
       duration: '4:12',
+      frame: 'images/video-3.png',
       overview: 'This walkthrough shows how to scan your environment and control movement using the CoreOS app. Follow along with the video to complete the setup.',
       notes: [
         'Place an anchor to begin scanning',
@@ -500,7 +503,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // ── Renderers ───────────────────────────────────────────────
   function videoMedia(l) {
+    var frame = l.frame
+      ? '<img class="tb-video-frame" src="' + esc(l.frame) + '" alt="" />'
+      : '';
     return '<div class="tb-video">' +
+      frame +
       '<button class="tb-play" type="button" aria-label="Play lesson">' +
         '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>' +
       '</button>' +
