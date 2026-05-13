@@ -431,17 +431,16 @@ document.addEventListener('DOMContentLoaded', function () {
       ]
     },
     {
-      type: 'glossary',
+      type: 'annotated',
       module: 2,
-      title: 'Connection terminology',
+      title: 'CoreOS app at a glance',
       done: false,
-      overview: 'Quick reference for the terms you\'ll see in the next video and inside the CoreOS app itself.',
-      terms: [
-        { term: 'Bluetooth',      def: 'Short-range wireless protocol used to connect the CoreOS app to the Morpheus Drive.' },
-        { term: 'Pairing',        def: 'The initial handshake between two Bluetooth devices. Only required once per device.' },
-        { term: 'CoreOS',         def: 'The companion mobile app for the Morpheus Drive. Available on the Android Play Store.' },
-        { term: 'Discovery mode', def: 'The state in which the Drive broadcasts its presence so the app can find it.' },
-        { term: 'Status LED',     def: 'The blue indicator on the Drive. Solid means ready to pair; blinking means pairing in progress.' }
+      image: 'images/annotated-img.png',
+      overview: 'Before the next video walks through pairing, take a quick look at the CoreOS app. The labels on the screenshot point out the parts of the home screen you\'ll use in every session.',
+      notes: [
+        'You can return to this lesson any time you forget where a control lives.',
+        'The screen looks the same on phone and tablet, just larger on tablets.',
+        'Everything you see here is covered in detail in the videos that follow.'
       ]
     },
     {
@@ -577,10 +576,17 @@ document.addEventListener('DOMContentLoaded', function () {
     '</div>';
   }
 
+  function annotatedMedia(l) {
+    return '<div class="tb-annot">' +
+      '<img class="tb-annot-img" src="' + esc(l.image) + '" alt="" />' +
+    '</div>';
+  }
+
   function mediaHTML(l) {
-    if (l.type === 'video')   return videoMedia(l);
-    if (l.type === 'diagram') return diagramMedia();
-    if (l.type === 'pdf')     return pdfMedia(l);
+    if (l.type === 'video')     return videoMedia(l);
+    if (l.type === 'diagram')   return diagramMedia();
+    if (l.type === 'pdf')       return pdfMedia(l);
+    if (l.type === 'annotated') return annotatedMedia(l);
     return '';
   }
 
@@ -625,11 +631,28 @@ document.addEventListener('DOMContentLoaded', function () {
     '</div>';
   }
 
+  function annotationsSection(items) {
+    var rows = items.map(function (a) {
+      return '<div class="tb-annot-row">' +
+        '<span class="tb-annot-row-num">' + esc(a.num) + '</span>' +
+        '<div class="tb-annot-row-text">' +
+          '<span class="tb-annot-row-label">' + esc(a.label) + '</span>' +
+          '<span class="tb-annot-row-desc">'  + esc(a.desc)  + '</span>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+    return '<div class="tb-lesson-section">' +
+      '<h4 class="tb-lesson-subhead">Annotations</h4>' +
+      '<div class="tb-annot-list">' + rows + '</div>' +
+    '</div>';
+  }
+
   function bodyHTML(l) {
-    if (l.type === 'video')    return overviewSection(l.overview) + bulletSection(l.notes, 'Notes');
-    if (l.type === 'diagram')  return overviewSection(l.overview) + legendSection(l.legend);
-    if (l.type === 'glossary') return overviewSection(l.overview) + glossarySection(l.terms);
-    if (l.type === 'pdf')      return overviewSection(l.overview) + bulletSection(l.contains, 'What\'s inside');
+    if (l.type === 'video')     return overviewSection(l.overview) + bulletSection(l.notes, 'Notes');
+    if (l.type === 'diagram')   return overviewSection(l.overview) + legendSection(l.legend);
+    if (l.type === 'glossary')  return overviewSection(l.overview) + glossarySection(l.terms);
+    if (l.type === 'pdf')       return overviewSection(l.overview) + bulletSection(l.contains, 'What\'s inside');
+    if (l.type === 'annotated') return overviewSection(l.overview);
     return '';
   }
 
@@ -1072,3 +1095,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+
+
+// ─── About widget: click-outside and Escape to close ──────────
+document.addEventListener('DOMContentLoaded', function () {
+  var widget = document.getElementById('about-widget');
+  if (!widget) return;
+
+  document.addEventListener('click', function (e) {
+    if (!widget.open) return;
+    if (!widget.contains(e.target)) widget.open = false;
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && widget.open) widget.open = false;
+  });
+});

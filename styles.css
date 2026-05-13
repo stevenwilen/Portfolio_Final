@@ -993,7 +993,7 @@ img, svg { display: block; max-width: 100%; }
 .tb-body {
   display: grid;
   grid-template-columns: 300px 1fr;
-  height: 760px;
+  min-height: 760px;
 }
 
 .tb-sidebar {
@@ -3765,8 +3765,8 @@ img, svg { display: block; max-width: 100%; }
    RESPONSIVE
    ============================================================= */
 @media (max-width: 980px) {
-  .tb-body { grid-template-columns: 1fr; }
-  .tb-sidebar { border-right: none; border-bottom: 1px solid var(--c-border); }
+  /* Course player: keep the sidebar+main layout, just shrink the whole thing */
+  .tb-player { zoom: 0.78; }
   .footer-inner { grid-template-columns: 1fr; }
   .footer-cols { grid-template-columns: repeat(2, 1fr); }
   .hero-float--card4,
@@ -3780,9 +3780,14 @@ img, svg { display: block; max-width: 100%; }
   .hero-float { display: none; }
   .footer-cols { grid-template-columns: 1fr; gap: 24px; }
   .contact-checklist { gap: 14px; }
-  .tb-topbar { flex-wrap: wrap; gap: 12px; }
-  .tb-course-name { width: 100%; order: 3; text-align: left; }
+  /* Course player keeps its full desktop layout, just scales down further */
+  .tb-player { zoom: 0.5; }
   #features-grid { grid-template-columns: 1fr 1fr; }
+  #features-grid .fc-card--hide-narrow { display: none; }
+}
+
+@media (max-width: 420px) {
+  .tb-player { zoom: 0.38; }
 }
 
 
@@ -3796,4 +3801,282 @@ img, svg { display: block; max-width: 100%; }
     transition-duration: 0.001ms !important;
   }
   [data-reveal] { opacity: 1; transform: none; }
+}
+
+
+/* =============================================================
+   Floating About widget — fixed bottom-right
+   ============================================================= */
+#about-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 50;
+}
+#about-widget summary {
+  list-style: none;
+  cursor: pointer;
+  display: inline-block;
+  outline: none;
+}
+#about-widget summary::-webkit-details-marker { display: none; }
+
+.about-widget-trigger {
+  position: relative;
+  display: inline-flex;
+}
+.about-widget-avatar {
+  position: relative;
+  display: block;
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  background: #e5e5e5;
+  border: 2px solid #ffffff;
+  box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.18), 0 2px 4px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.28s var(--ease-out), box-shadow 0.28s var(--ease-out);
+}
+.about-widget-avatar img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+#about-widget summary:hover .about-widget-avatar,
+#about-widget[open] .about-widget-avatar {
+  transform: scale(1.06);
+  box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.22), 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.about-widget-status {
+  position: absolute;
+  bottom: 1px; right: 1px;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  border: 2px solid #ffffff;
+  animation: about-status-ring 2.2s ease-in-out infinite;
+}
+@keyframes about-status-ring {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(31, 209, 123, 0.55); }
+  50%      { box-shadow: 0 0 0 8px rgba(31, 209, 123, 0); }
+}
+
+.about-widget-card {
+  position: absolute;
+  bottom: 0;
+  right: 116px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(8px) scale(0.96);
+  transform-origin: bottom right;
+  transition: opacity 0.25s var(--ease-out), transform 0.3s var(--ease-out);
+}
+#about-widget[open] .about-widget-card {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0) scale(1);
+}
+.about-widget-card-inner {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 0;
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.18), 0 4px 10px rgba(0, 0, 0, 0.06);
+  width: clamp(420px, 40vw, 720px);
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+}
+.about-widget-name {
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: -0.01em;
+}
+.about-widget-status-text {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 10px;
+  font-size: 11px;
+  color: var(--c-ink-500);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.about-widget-status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  box-shadow: 0 0 0 2px var(--c-accent-dim);
+  animation: about-status-dot-pulse 1.8s ease-in-out infinite;
+}
+@keyframes about-status-dot-pulse {
+  0%, 100% { transform: scale(1);   opacity: 0.85; }
+  50%      { transform: scale(1.2); opacity: 1; }
+}
+.about-widget-bio {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--c-ink-600);
+  line-height: 1.55;
+}
+
+.about-widget-cover {
+  background: #e5e5e5;
+  flex: 0 0 42%;
+  overflow: hidden;
+  align-self: stretch;
+}
+.about-widget-cover img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.about-widget-card-body {
+  flex: 1;
+  padding: 20px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.about-widget-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 10px 16px;
+  background: #d8d8d8;
+  color: #000;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+.about-widget-email:hover { background: #c8c8c8; }
+.about-widget-email svg { flex-shrink: 0; }
+
+@media (max-width: 640px) {
+  #about-widget { bottom: 16px; right: 16px; }
+  .about-widget-avatar { width: 64px; height: 64px; }
+  .about-widget-status { width: 16px; height: 16px; }
+  .about-widget-card { right: 80px; }
+  .about-widget-card-inner {
+    width: calc(100vw - 96px);
+    max-width: 320px;
+    flex-direction: column;
+  }
+  .about-widget-cover {
+    flex: 0 0 auto;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+  }
+  .about-widget-card-body { padding: 14px 16px 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-widget-status,
+  .about-widget-status-dot,
+  .about-widget-avatar,
+  .about-widget-card { animation: none; transition: none; }
+}
+
+/* Backdrop dim when the About widget is open */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-out);
+  z-index: 40;
+}
+body:has(#about-widget[open])::before {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Annotated image lesson (Teachable course) */
+.tb-annot {
+  position: relative;
+  max-width: 420px;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f0f0f0;
+  border: 1px solid #e0e0e0;
+}
+.tb-annot-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.tb-annot-pin {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #1a1a1a;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.9), 0 4px 10px rgba(0, 0, 0, 0.2);
+  animation: tb-annot-pin-pulse 2.6s ease-in-out infinite;
+}
+@keyframes tb-annot-pin-pulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.9), 0 0 0 0 rgba(26, 26, 26, 0.3), 0 4px 10px rgba(0, 0, 0, 0.18); }
+  50%      { box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.9), 0 0 0 8px rgba(26, 26, 26, 0), 0 4px 10px rgba(0, 0, 0, 0.18); }
+}
+.tb-annot-pin:nth-of-type(2) { animation-delay: -0.65s; }
+.tb-annot-pin:nth-of-type(3) { animation-delay: -1.3s; }
+.tb-annot-pin:nth-of-type(4) { animation-delay: -1.95s; }
+
+.tb-annot-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+}
+.tb-annot-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.tb-annot-row-num {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #1a1a1a;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+}
+.tb-annot-row-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.45;
+}
+.tb-annot-row-label {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+.tb-annot-row-desc {
+  font-size: 13px;
+  color: #4a4a4a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tb-annot-pin { animation: none; }
 }

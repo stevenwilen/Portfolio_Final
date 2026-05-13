@@ -223,8 +223,8 @@
                       <svg class="tb-icon-check" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
                       <svg class="tb-icon-play" viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.5v9l7-4.5-7-4.5z"/></svg>
                     </span>
-                    <span class="tb-lesson-title">Connection terminology</span>
-                    <span class="tb-lesson-duration">Glossary</span>
+                    <span class="tb-lesson-title">CoreOS app at a glance</span>
+                    <span class="tb-lesson-duration">Annotated</span>
                   </li>
                   <li class="tb-lesson" data-index="3" role="button" tabindex="0">
                     <span class="tb-lesson-icon" aria-hidden="true">
@@ -638,7 +638,7 @@
           </article>
 
           <!-- 11. Glossary / Terms -->
-          <article class="fc-card" style="--accent: #000">
+          <article class="fc-card fc-card--hide-narrow" style="--accent: #000">
             <div class="fc-preview">
               <div class="fcp-gloss-label">Glossary</div>
               <div class="fcp-gloss-rows">
@@ -872,6 +872,35 @@
         <span>One draft at a time.</span>
       </div>
     </footer>
+
+    <!-- Floating About widget -->
+    <details id="about-widget">
+      <summary class="about-widget-trigger" aria-label="About Steven">
+        <span class="about-widget-avatar">
+          <img src="https://placehold.co/240x240/e5e5e5/1a1a1a?text=S" alt="Steven Wilen" />
+          <span class="about-widget-status" aria-hidden="true"></span>
+        </span>
+      </summary>
+      <div class="about-widget-card">
+        <div class="about-widget-card-inner">
+          <div class="about-widget-cover">
+            <img src="images/portrait.png" alt="Steven at work" />
+          </div>
+          <div class="about-widget-card-body">
+            <p class="about-widget-name">Steven Wilen</p>
+            <p class="about-widget-status-text">
+              <span class="about-widget-status-dot" aria-hidden="true"></span>
+              Currently taking new projects
+            </p>
+            <p class="about-widget-bio">Several years of turning expert knowledge into courses, guides, and videos. Based in the US, working with teams everywhere.</p>
+            <a class="about-widget-email" href="mailto:steven.wilen@gmail.com">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
+              <span>Email me</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </details>
 
     <!-- Course mockup interactivity -->
     <script src="script.js"></script>
