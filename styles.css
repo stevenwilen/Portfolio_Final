@@ -993,7 +993,7 @@ img, svg { display: block; max-width: 100%; }
 .tb-body {
   display: grid;
   grid-template-columns: 300px 1fr;
-  min-height: 760px;
+  height: 760px;
 }
 
 .tb-sidebar {
@@ -1989,9 +1989,9 @@ img, svg { display: block; max-width: 100%; }
 .fcp-options > .fcp-option:nth-child(1) { animation-delay: 0s; }
 .fcp-options > .fcp-option:nth-child(3) { animation-delay: -2.2s; }
 @keyframes fc-option-correct-ring {
-  0%, 60%, 100% { box-shadow: inset 3px 0 0 #000, 0 0 0 0 rgba(0,0,0,0.25);  transform: scale(1); }
-  70%           { box-shadow: inset 3px 0 0 #000, 0 0 0 6px rgba(0,0,0,0.06); transform: scale(1.02); }
-  85%           { box-shadow: inset 3px 0 0 #000, 0 0 0 10px rgba(0,0,0,0);    transform: scale(1.02); }
+  0%, 60%, 100% { box-shadow: inset 3px 0 0 #c0c0c0, 0 0 0 0 rgba(0,0,0,0.12);  transform: scale(1); }
+  70%           { box-shadow: inset 3px 0 0 #c0c0c0, 0 0 0 6px rgba(0,0,0,0.04); transform: scale(1.02); }
+  85%           { box-shadow: inset 3px 0 0 #c0c0c0, 0 0 0 10px rgba(0,0,0,0);    transform: scale(1.02); }
 }
 .fcp-option--correct { animation: fc-option-correct-ring 6.6s ease-in-out infinite; }
 
@@ -2289,7 +2289,7 @@ img, svg { display: block; max-width: 100%; }
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #1a1a1a;
+  color: var(--accent, #1a1a1a);
 }
 
 .fcp-timecode {
@@ -2547,10 +2547,10 @@ img, svg { display: block; max-width: 100%; }
 }
 
 .fcp-option--correct {
-  border-color: var(--accent, #000000);
+  border-color: #c0c0c0;
   color: #000000;
   font-weight: 600;
-  box-shadow: inset 3px 0 0 var(--accent, #000000);
+  box-shadow: inset 3px 0 0 #c0c0c0;
 }
 
 
@@ -3778,12 +3778,19 @@ img, svg { display: block; max-width: 100%; }
 
 @media (max-width: 640px) {
   .hero-float { transform: scale(0.55); transform-origin: top left; }
-  .hero-float--card2 { transform: scale(0.55); transform-origin: top right; }
-  .hero-float--card4 { transform: scale(0.55); transform-origin: top right; }
+  .hero-float--card2 { display: none; }
+  .hero-float--card4 { display: none; }
   .hero-float--card5 { transform: scale(0.55); transform-origin: bottom right; }
   .hero-float--card6 { transform: scale(0.55); transform-origin: bottom left; }
   .footer-cols { grid-template-columns: 1fr; gap: 24px; }
-  .contact-checklist { gap: 14px; }
+  .contact-checklist {
+    flex-direction: column;
+    align-items: flex-start;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 12px;
+  }
 
   /* Course player: hide sidebar + non-essential topbar UI, scale modestly */
   .tb-player { zoom: 0.78; }
