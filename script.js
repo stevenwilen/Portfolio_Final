@@ -517,30 +517,30 @@ document.addEventListener('DOMContentLoaded', function () {
   function diagramMedia() {
     return '<div class="tb-diagram">' +
       '<svg class="tb-diagram-svg" viewBox="0 0 600 340" role="img" aria-label="Morpheus Drive board layout">' +
-        '<rect x="40" y="30" width="520" height="280" rx="14" fill="#22293a" stroke="#3a4256" stroke-width="2"/>' +
-        '<text x="60" y="62" fill="#94a3b8" font-family="ui-monospace,monospace" font-size="12" font-weight="600" letter-spacing="2">MORPHEUS DRIVE</text>' +
+        '<rect x="40" y="30" width="520" height="280" rx="14" fill="#2e2e2e" stroke="#4a4a4a" stroke-width="2"/>' +
+        '<text x="60" y="62" fill="#9a9a9a" font-family="ui-monospace,monospace" font-size="12" font-weight="600" letter-spacing="2">MORPHEUS DRIVE</text>' +
         '<circle cx="510" cy="55" r="7" fill="#3b82f6"/>' +
         '<circle cx="510" cy="55" r="11" fill="none" stroke="#3b82f6" stroke-opacity="0.35" stroke-width="2"/>' +
-        '<text x="494" y="80" fill="#94a3b8" font-size="10" text-anchor="end">STAT</text>' +
-        '<rect x="450" y="98" width="60" height="30" rx="6" fill="#3a4256" stroke="#475569" stroke-width="1"/>' +
-        '<text x="480" y="118" fill="#cbd5e1" font-size="10" font-weight="600" text-anchor="middle">RST</text>' +
-        '<path d="M110 152 L110 178" stroke="#475569" stroke-width="1" opacity="0.5"/>' +
-        '<path d="M230 152 L230 178" stroke="#475569" stroke-width="1" opacity="0.5"/>' +
-        '<path d="M350 152 L350 178" stroke="#475569" stroke-width="1" opacity="0.5"/>' +
-        '<text x="110" y="180" fill="#94a3b8" font-size="10" text-anchor="middle">Motor 1</text>' +
-        '<text x="230" y="180" fill="#94a3b8" font-size="10" text-anchor="middle">Motor 2</text>' +
-        '<text x="350" y="180" fill="#94a3b8" font-size="10" text-anchor="middle">Battery</text>' +
-        '<rect x="80"  y="200" width="60" height="30" rx="4" fill="#3a4256" stroke="#475569" stroke-width="1"/>' +
+        '<text x="494" y="80" fill="#9a9a9a" font-size="10" text-anchor="end">STAT</text>' +
+        '<rect x="450" y="98" width="60" height="30" rx="6" fill="#4a4a4a" stroke="#5a5a5a" stroke-width="1"/>' +
+        '<text x="480" y="118" fill="#cccccc" font-size="10" font-weight="600" text-anchor="middle">RST</text>' +
+        '<path d="M110 152 L110 178" stroke="#5a5a5a" stroke-width="1" opacity="0.5"/>' +
+        '<path d="M230 152 L230 178" stroke="#5a5a5a" stroke-width="1" opacity="0.5"/>' +
+        '<path d="M350 152 L350 178" stroke="#5a5a5a" stroke-width="1" opacity="0.5"/>' +
+        '<text x="110" y="180" fill="#9a9a9a" font-size="10" text-anchor="middle">Motor 1</text>' +
+        '<text x="230" y="180" fill="#9a9a9a" font-size="10" text-anchor="middle">Motor 2</text>' +
+        '<text x="350" y="180" fill="#9a9a9a" font-size="10" text-anchor="middle">Battery</text>' +
+        '<rect x="80"  y="200" width="60" height="30" rx="4" fill="#4a4a4a" stroke="#5a5a5a" stroke-width="1"/>' +
         '<text x="110" y="220" fill="#34d399" font-size="11" font-weight="700" text-anchor="middle">M1+</text>' +
-        '<rect x="80"  y="240" width="60" height="30" rx="4" fill="#3a4256" stroke="#475569" stroke-width="1"/>' +
+        '<rect x="80"  y="240" width="60" height="30" rx="4" fill="#4a4a4a" stroke="#5a5a5a" stroke-width="1"/>' +
         '<text x="110" y="260" fill="#f87171" font-size="11" font-weight="700" text-anchor="middle">M1−</text>' +
-        '<rect x="200" y="200" width="60" height="30" rx="4" fill="#3a4256" stroke="#475569" stroke-width="1"/>' +
+        '<rect x="200" y="200" width="60" height="30" rx="4" fill="#4a4a4a" stroke="#5a5a5a" stroke-width="1"/>' +
         '<text x="230" y="220" fill="#34d399" font-size="11" font-weight="700" text-anchor="middle">M2+</text>' +
-        '<rect x="200" y="240" width="60" height="30" rx="4" fill="#3a4256" stroke="#475569" stroke-width="1"/>' +
+        '<rect x="200" y="240" width="60" height="30" rx="4" fill="#4a4a4a" stroke="#5a5a5a" stroke-width="1"/>' +
         '<text x="230" y="260" fill="#f87171" font-size="11" font-weight="700" text-anchor="middle">M2−</text>' +
-        '<rect x="320" y="200" width="60" height="30" rx="4" fill="#3a4256" stroke="#475569" stroke-width="1"/>' +
+        '<rect x="320" y="200" width="60" height="30" rx="4" fill="#4a4a4a" stroke="#5a5a5a" stroke-width="1"/>' +
         '<text x="350" y="220" fill="#34d399" font-size="11" font-weight="700" text-anchor="middle">V+</text>' +
-        '<rect x="320" y="240" width="60" height="30" rx="4" fill="#3a4256" stroke="#475569" stroke-width="1"/>' +
+        '<rect x="320" y="240" width="60" height="30" rx="4" fill="#4a4a4a" stroke="#5a5a5a" stroke-width="1"/>' +
         '<text x="350" y="260" fill="#f87171" font-size="11" font-weight="700" text-anchor="middle">V−</text>' +
       '</svg>' +
     '</div>';
@@ -681,7 +681,17 @@ document.addEventListener('DOMContentLoaded', function () {
     currentIndex = idx;
     syncSidebar();
     syncProgress();
-    render(idx);
+
+    // Fade out → swap content → fade in
+    mainEl.classList.add('tb-main--fading');
+    setTimeout(function () {
+      render(idx);
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          mainEl.classList.remove('tb-main--fading');
+        });
+      });
+    }, 260);
   }
 
   function completeAndContinue() {
