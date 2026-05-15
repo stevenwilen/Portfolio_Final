@@ -3781,7 +3781,7 @@ img, svg { display: block; max-width: 100%; }
   .hero-float--card2 { display: none; }
   .hero-float--card4 { display: none; }
   .hero-float--card5 { transform: scale(0.55); transform-origin: bottom right; }
-  .hero-float--card6 { transform: scale(0.55); transform-origin: bottom left; }
+  .hero-float--card6 { display: none; }
   .footer-cols { grid-template-columns: 1fr; gap: 24px; }
   .contact-checklist {
     flex-direction: column;
@@ -3792,12 +3792,13 @@ img, svg { display: block; max-width: 100%; }
     gap: 12px;
   }
 
-  /* Course player: hide sidebar + non-essential topbar UI, scale modestly */
-  .tb-player { zoom: 0.78; }
+  /* Course player: hide sidebar + non-essential topbar UI, render media at natural mobile size */
+  .tb-player { zoom: 1; }
   .tb-brand-name { display: none; }
   .tb-progress { display: none; }
   .tb-sidebar { display: none; }
-  .tb-body { grid-template-columns: 1fr; }
+  /* Body grows with content; min-height on .tb-main is set in JS to the tallest lesson */
+  .tb-body { grid-template-columns: 1fr; height: auto; }
 
   .tb-btn {
     padding: 8px 14px;
@@ -3806,8 +3807,8 @@ img, svg { display: block; max-width: 100%; }
   }
   .tb-btn svg { width: 13px; height: 13px; }
 
-  /* Tighter spacing, but bumped text now that we own the full width */
-  .tb-main { padding: 18px 20px 20px; gap: 16px; }
+  /* Page-level scroll instead of internal scroll, so the section can size to its tallest lesson */
+  .tb-main { padding: 18px 20px 20px; gap: 16px; overflow: visible; }
   .tb-course-name { font-size: 12px; }
   .tb-lesson-eyebrow { font-size: 10px; letter-spacing: 0.07em; }
   .tb-lesson-heading { font-size: 19px; }
@@ -3821,7 +3822,7 @@ img, svg { display: block; max-width: 100%; }
 }
 
 @media (max-width: 420px) {
-  .tb-player { zoom: 0.62; }
+  .tb-player { zoom: 1; }
   .tb-btn { padding: 7px 11px; font-size: 11px; }
   .tb-lesson-heading { font-size: 17px; }
 }

@@ -819,6 +819,51 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Initial sync (HTML already shows lesson 1; this just confirms state)
   syncProgress();
+
+  // ── Mobile: lock .tb-main to the tallest lesson's height ───
+  // Avoids the player jumping between lessons; shorter lessons get bottom whitespace.
+  var MOBILE_MAX = 640;
+
+  function lockMainHeight() {
+    if (window.innerWidth > MOBILE_MAX) {
+      mainEl.style.minHeight = '';
+      return;
+    }
+    mainEl.style.minHeight = '';
+    mainEl.style.visibility = 'hidden';
+    var maxH = 0;
+    for (var i = 0; i < lessons.length; i++) {
+      render(i);
+      if (mainEl.scrollHeight > maxH) maxH = mainEl.scrollHeight;
+    }
+    render(currentIndex);
+    mainEl.style.minHeight = maxH + 'px';
+    mainEl.style.visibility = '';
+  }
+
+  // Preload lesson images so their natural heights are known at measurement time
+  function preloadLessonImages() {
+    var urls = [];
+    lessons.forEach(function (l) {
+      if (l.frame) urls.push(l.frame);
+      if (l.image) urls.push(l.image);
+    });
+    return Promise.all(urls.map(function (url) {
+      return new Promise(function (resolve) {
+        var img = new Image();
+        img.onload = img.onerror = function () { resolve(); };
+        img.src = url;
+      });
+    }));
+  }
+
+  preloadLessonImages().then(lockMainHeight);
+
+  var resizeTimer = null;
+  window.addEventListener('resize', function () {
+    if (resizeTimer) clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(lockMainHeight, 200);
+  });
 });
 
 
