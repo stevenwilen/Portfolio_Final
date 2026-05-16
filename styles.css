@@ -324,67 +324,6 @@ img, svg { display: block; max-width: 100%; }
   50% { transform: translateY(-20px); }
 }
 
-/* Drifting particles */
-.hero-sky-particles {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-.hero-particle {
-  position: absolute;
-  width: var(--size, 4px);
-  height: var(--size, 4px);
-  border-radius: 50%;
-  background: rgba(140, 140, 140, 0.65);
-  box-shadow: 0 0 8px rgba(140, 140, 140, 0.3);
-  opacity: 0;
-  animation:
-    particle-drift var(--d, 22s) ease-in-out infinite,
-    particle-twinkle calc(var(--d, 22s) * 0.5) ease-in-out infinite;
-  animation-delay: var(--delay, 0s), var(--delay, 0s);
-}
-.hero-particle--glow {
-  background: rgba(140, 140, 140, 0.85);
-  box-shadow:
-    0 0 12px rgba(140, 140, 140, 0.5),
-    0 0 24px rgba(140, 140, 140, 0.2);
-}
-
-@keyframes particle-drift {
-  0%   { transform: translate(0, 0); }
-  25%  { transform: translate(20px, -30px); }
-  50%  { transform: translate(-15px, -50px); }
-  75%  { transform: translate(-25px, -20px); }
-  100% { transform: translate(0, 0); }
-}
-@keyframes particle-twinkle {
-  0%, 100% { opacity: 0.15; }
-  50%      { opacity: 0.65; }
-}
-
-/* Sparkle stars */
-.hero-sparkle {
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  color: rgba(120, 120, 120, 0.45);
-  opacity: 0;
-  animation: sparkle-twinkle 6s ease-in-out infinite;
-}
-.hero-sparkle--1 { top: 18%; left: 26%; animation-delay: 0s;   width: 14px; height: 14px; }
-.hero-sparkle--2 { top: 36%; left: 68%; animation-delay: -2s;  width: 18px; height: 18px; }
-.hero-sparkle--3 { top: 62%; left: 28%; animation-delay: -4s;  width: 12px; height: 12px; }
-.hero-sparkle--4 { top: 50%; left: 82%; animation-delay: -1.5s; width: 16px; height: 16px; }
-
-@keyframes sparkle-twinkle {
-  0%, 100% { opacity: 0; transform: scale(0.6) rotate(0deg); }
-  50%      { opacity: 0.55; transform: scale(1) rotate(180deg); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-particle, .hero-sparkle { animation: none; opacity: 0.3; }
-}
-
 #hero-intro {
   max-width: 920px;
   margin-inline: auto;
@@ -3818,7 +3757,7 @@ img, svg { display: block; max-width: 100%; }
     transform-origin: bottom right;
   }
   .hero-float--card1 {
-    top: 28%;
+    top: 45%;
     right: 6%;
     bottom: auto;
   }
