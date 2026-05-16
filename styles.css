@@ -368,6 +368,12 @@ img, svg { display: block; max-width: 100%; }
   line-height: 1.02;
   color: #1a1a1a;
   margin: 0 0 22px;
+  /* Solid 1px white outline (cardinal offsets) + soft halo — keeps text
+     legible over any floating card without dimming the cards themselves. */
+  text-shadow:
+    -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff,
+    0 0 4px #fff, 0 0 10px rgba(255, 255, 255, 0.95),
+    0 0 20px rgba(255, 255, 255, 0.7);
 }
 
 #hero-subheadline {
@@ -377,6 +383,10 @@ img, svg { display: block; max-width: 100%; }
   line-height: 1.6;
   margin: 0 auto;
   max-width: 640px;
+  text-shadow:
+    -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff,
+    0 0 3px #fff, 0 0 8px rgba(255, 255, 255, 0.95),
+    0 0 14px rgba(255, 255, 255, 0.6);
 }
 
 .hero-cta-row {
@@ -421,6 +431,10 @@ img, svg { display: block; max-width: 100%; }
   font-size: 13px;
   color: #6e6e6e;
   font-weight: 400;
+  text-shadow:
+    -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff,
+    0 0 3px #fff, 0 0 8px rgba(255, 255, 255, 0.95),
+    0 0 14px rgba(255, 255, 255, 0.6);
 }
 
 /* Floating preview cards — ghosted into the atmosphere */
@@ -1104,8 +1118,22 @@ img, svg { display: block; max-width: 100%; }
   overflow-y: auto;
 }
 
-.tb-main { transition: opacity 0.28s ease; }
-.tb-main.tb-main--fading { opacity: 0; }
+/* Fade only the media + lesson info during lesson swaps; the action buttons
+   (and their top divider) stay visible the whole time. */
+.tb-main > .tb-diagram,
+.tb-main > .tb-video,
+.tb-main > .tb-file,
+.tb-main > .tb-annot,
+.tb-main > .tb-lesson-info {
+  transition: opacity 0.28s ease;
+}
+.tb-main--fading > .tb-diagram,
+.tb-main--fading > .tb-video,
+.tb-main--fading > .tb-file,
+.tb-main--fading > .tb-annot,
+.tb-main--fading > .tb-lesson-info {
+  opacity: 0;
+}
 
 .tb-video {
   position: relative;
@@ -1500,7 +1528,7 @@ img, svg { display: block; max-width: 100%; }
   width: 100vw;
   margin-left: -50vw;
   z-index: -1;
-  background: #ffffff;
+  background: #f4faf7;
   overflow: hidden;
 }
 .services-bg-tint {
@@ -1531,11 +1559,10 @@ img, svg { display: block; max-width: 100%; }
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse at center, #000 0%, transparent 80%);
-  -webkit-mask-image: radial-gradient(ellipse at center, #000 0%, transparent 80%);
+    radial-gradient(circle, rgba(31, 209, 123, 0.22) 1.4px, transparent 1.6px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse at center, #000 0%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 0%, transparent 85%);
 }
 
 #services-head {
