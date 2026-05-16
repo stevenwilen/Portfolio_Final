@@ -3749,18 +3749,7 @@ img, svg { display: block; max-width: 100%; }
   .hero-float { transform: scale(0.55); transform-origin: top left; }
   .hero-float--card2 { display: none; }
   .hero-float--card4 { display: none; }
-  /* Flank the hero headline: card5 just above, card1 just below */
-  .hero-float--card5 {
-    top: 8%;
-    left: 3%;
-    transform: scale(0.55);
-    transform-origin: bottom right;
-  }
-  .hero-float--card1 {
-    top: 45%;
-    right: 6%;
-    bottom: auto;
-  }
+  .hero-float--card5 { transform: scale(0.55); transform-origin: bottom right; }
   .hero-float--card6 { display: none; }
   .footer-cols { grid-template-columns: 1fr; gap: 24px; }
   .contact-checklist {
