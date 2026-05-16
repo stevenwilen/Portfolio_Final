@@ -361,6 +361,9 @@ img, svg { display: block; max-width: 100%; }
   50% { transform: translateY(-3px); }
 }
 
+.hero-headline-accent {
+  color: #3d3f48;
+}
 #hero-headline {
   font-size: clamp(40px, 7vw, 80px);
   font-weight: 800;
@@ -409,7 +412,23 @@ img, svg { display: block; max-width: 100%; }
   font-size: 15px;
   border-radius: 6px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hero-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+  transform: translateX(-150%);
+  pointer-events: none;
+  z-index: -1;
+}
+.hero-cta:hover::after {
+  transform: translateX(150%);
+  transition: transform 0.85s linear;
 }
 .hero-cta svg {
   transition: transform 0.2s ease;
@@ -1528,43 +1547,9 @@ img, svg { display: block; max-width: 100%; }
   width: 100vw;
   margin-left: -50vw;
   z-index: -1;
-  background: #f4faf7;
+  background: #eaecf0;
   overflow: hidden;
 }
-.services-bg-tint {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.5;
-}
-.services-bg-tint--peach {
-  width: 540px; height: 540px;
-  top: -100px; left: -120px;
-  background: radial-gradient(circle, var(--c-peach), transparent 70%);
-  animation: orb-drift-a 26s ease-in-out infinite;
-}
-.services-bg-tint--mint {
-  width: 600px; height: 600px;
-  top: 40%; right: -180px;
-  background: radial-gradient(circle, var(--c-mint), transparent 70%);
-  animation: orb-drift-b 30s ease-in-out infinite;
-}
-.services-bg-tint--lavender {
-  width: 580px; height: 580px;
-  bottom: -100px; left: 30%;
-  background: radial-gradient(circle, var(--c-lavender), transparent 70%);
-  animation: orb-drift-c 32s ease-in-out infinite;
-}
-.services-bg-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(circle, rgba(31, 209, 123, 0.22) 1.4px, transparent 1.6px);
-  background-size: 28px 28px;
-  mask-image: radial-gradient(ellipse at center, #000 0%, transparent 85%);
-  -webkit-mask-image: radial-gradient(ellipse at center, #000 0%, transparent 85%);
-}
-
 #services-head {
   display: flex;
   flex-direction: column;
@@ -1586,8 +1571,8 @@ img, svg { display: block; max-width: 100%; }
   margin: 0;
 }
 .services-heading-accent {
-  color: #999;
   font-style: italic;
+  color: #3d3f48;
 }
 
 #services-lead {
@@ -1738,6 +1723,7 @@ img, svg { display: block; max-width: 100%; }
 /* ─── Card shell ────────────────────────────────────────────── */
 
 .fc-card {
+  position: relative;
   background: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
@@ -3605,7 +3591,23 @@ img, svg { display: block; max-width: 100%; }
   letter-spacing: -0.005em;
   border-radius: 6px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+#contact-email-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+  transform: translateX(-150%);
+  pointer-events: none;
+  z-index: -1;
+}
+#contact-email-link:hover::after {
+  transform: translateX(150%);
+  transition: transform 0.85s linear;
 }
 #contact-email-link svg {
   transition: transform 0.2s ease;
@@ -4145,4 +4147,30 @@ body:has(#about-widget[open])::before {
 
 @media (prefers-reduced-motion: reduce) {
   .tb-annot-pin { animation: none; }
+}
+
+
+/* =============================================================
+   FORMAT-CARD HOVER SHINE — diagonal sweep across the card on
+   hover/tap. .fc-card already has overflow: hidden so the pseudo
+   stays clipped to the card boundary.
+   ============================================================= */
+.fc-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, 0.55) 50%, transparent 65%);
+  transform: translateX(-110%);
+  pointer-events: none;
+  z-index: 4;
+  transition: transform 0s;
+}
+.fc-card:hover::after {
+  transform: translateX(110%);
+  transition: transform 0.95s linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fc-card::after,
+  .fc-card:hover::after { transition: none; transform: translateX(-110%); }
 }
