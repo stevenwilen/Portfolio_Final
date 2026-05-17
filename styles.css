@@ -4026,11 +4026,13 @@ img, svg { display: block; max-width: 100%; }
 }
 
 @media (max-width: 640px) {
-  .hero-float { transform: scale(0.55); transform-origin: top left; }
-  .hero-float--card2 { display: none; }
-  .hero-float--card4 { display: none; }
-  .hero-float--card5 { transform: scale(0.55); transform-origin: bottom right; }
-  .hero-float--card6 { display: none; }
+  /* Hide every background hero card on mobile — sky placeholders and floats */
+  .hero-sky-cloud,
+  .hero-float { display: none; }
+
+  /* Smaller work-sample heading on mobile */
+  #morpheus-title { font-size: 28px; }
+
   .footer-cols { grid-template-columns: 1fr; gap: 24px; }
   .contact-checklist {
     flex-direction: column;
