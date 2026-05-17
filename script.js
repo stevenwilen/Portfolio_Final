@@ -1059,11 +1059,15 @@ document.addEventListener('DOMContentLoaded', function () {
     var phaseStyle = getComputedStyle(el).getPropertyValue('--phase').trim();
     var phaseMs = parseFloat(phaseStyle) * (phaseStyle.indexOf('ms') !== -1 ? 1 : 1000);
     if (isNaN(phaseMs)) phaseMs = 0;
+    var rotStyle = getComputedStyle(el).getPropertyValue('--rot').trim();
+    var rotDeg = parseFloat(rotStyle);
+    if (isNaN(rotDeg)) rotDeg = 0;
     return {
       el: el,
       pScroll: parseFloat(el.getAttribute('data-parallax')) || 0.2,
       pMouse: parseFloat(el.getAttribute('data-mouse') || '0'),
-      phase: phaseMs
+      phase: phaseMs,
+      rot: rotDeg
     };
   });
 
@@ -1084,7 +1088,8 @@ document.addEventListener('DOMContentLoaded', function () {
       var ty = scrollOffset * item.pScroll + bob + (cmy * item.pMouse);
       var tx = cmx * item.pMouse;
       item.el.style.transform =
-        'translate3d(' + tx.toFixed(2) + 'px, ' + ty.toFixed(2) + 'px, 0)';
+        'translate3d(' + tx.toFixed(2) + 'px, ' + ty.toFixed(2) + 'px, 0)' +
+        (item.rot !== 0 ? ' rotate(' + item.rot + 'deg)' : '');
     }
 
     if (heroInView) {
