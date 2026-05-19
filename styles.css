@@ -121,13 +121,10 @@
      self-intersect on mobile where 100% < the largest fixed point). */
   --torn-top:
     polygon(
-      0 10px, 2.5% 3px, 5% 12px, 7.5% 1px, 10% 9px, 12.5% 4px,
-      15% 13px, 17.5% 2px, 20% 10px, 22.5% 5px, 25% 14px, 27.5% 1px,
-      30% 11px, 32.5% 3px, 35% 13px, 37.5% 2px, 40% 9px, 42.5% 4px,
-      45% 12px, 47.5% 1px, 50% 10px, 52.5% 3px, 55% 13px, 57.5% 2px,
-      60% 11px, 62.5% 4px, 65% 14px, 67.5% 1px, 70% 9px, 72.5% 3px,
-      75% 12px, 77.5% 2px, 80% 10px, 82.5% 4px, 85% 13px, 87.5% 1px,
-      90% 11px, 92.5% 3px, 95% 12px, 97.5% 2px, 100% 9px,
+      0 4px, 5% 1px, 10% 4px, 15% 2px, 20% 4px, 25% 1px,
+      30% 4px, 35% 2px, 40% 4px, 45% 1px, 50% 4px, 55% 2px,
+      60% 4px, 65% 1px, 70% 4px, 75% 2px, 80% 4px, 85% 1px,
+      90% 4px, 95% 2px, 100% 3px,
       100% 100%, 0 100%
     );
   /* Deckle at top AND bottom — percent-based, same mobile-safety reason */
@@ -321,7 +318,8 @@ img, svg { display: block; max-width: 100%; }
 /* When the headline wraps to 3 rows, reduce hero background-card weight
    so the title stays the dominant element. */
 @media (max-width: 1100px) {
-  .hero-float { opacity: 0.25; }
+  .hero-float { opacity: 0.15; }
+  .hero-float--card2 { display: none; }
 }
 
 @keyframes cloud-drift {
@@ -442,7 +440,7 @@ img, svg { display: block; max-width: 100%; }
   box-shadow: var(--sh-paper);
   z-index: 1;
   will-change: transform;
-  opacity: 1;
+  opacity: 0.75;
   color: var(--c-ink-800);
 }
 
@@ -748,6 +746,7 @@ img, svg { display: block; max-width: 100%; }
   transform: translateY(-2px);
   z-index: -1;
 }
+
 #work-sample > .section-eyebrow {
   display: flex;
   justify-content: center;
@@ -1474,31 +1473,33 @@ img, svg { display: block; max-width: 100%; }
   padding-block: clamp(2rem, 4vw, 3.5rem) clamp(2rem, 4vw, 4rem);
   isolation: isolate;
 }
+
 .services-bg {
   position: absolute;
   inset: -8px 0 0 50%;
   width: 100vw;
   margin-left: -50vw;
   z-index: -1;
-  background-color: var(--c-marigold);
+  background-color: var(--c-sky-bright);
   background-image: var(--paper-grain);
   background-repeat: repeat;
   background-size: 280px 280px;
   background-blend-mode: multiply;
   overflow: hidden;
+  border-radius: 0;
   clip-path: var(--torn-top);
+  filter: drop-shadow(0 8px 14px rgba(34, 28, 20, 0.22));
 }
 .services-bg::before {
   content: "";
   position: absolute;
-  /* Fill the parent fully; no translate, so no bottom seam exposes the
-     marigold underneath (iOS Safari clips the negative inset before the
-     transform applies, which leaked an orange strip at the section seam). */
   inset: 0;
   background: #fffaf0;
   clip-path: var(--torn-top);
+  transform: translateY(-2px);
   z-index: -1;
 }
+
 #services-head {
   display: flex;
   flex-direction: column;
