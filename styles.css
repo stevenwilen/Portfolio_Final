@@ -3672,7 +3672,7 @@ img, svg { display: block; max-width: 100%; }
 #site-footer {
   position: relative;
   margin-top: 0;
-  background-color: var(--c-ink-900);
+  background-color: #1a1a1a;
   background-image: var(--paper-grain-dense);
   background-repeat: repeat;
   background-size: 280px 280px;
@@ -3687,7 +3687,7 @@ img, svg { display: block; max-width: 100%; }
   position: absolute;
   inset: -8px 0 auto 0;
   height: 36px;
-  background-color: var(--c-ink-900);
+  background-color: #1a1a1a;
   background-image: var(--paper-grain-dense);
   background-repeat: repeat;
   background-size: 280px 280px;
