@@ -28,10 +28,10 @@
 
         <div id="hero-intro">
 
-          <h1 id="hero-headline"><span class="hero-headline-desktop">Take scattered content and make it <span class="hero-headline-accent">presentable</span></span><span class="hero-headline-mobile">Turn scattered content<br><span class="hero-headline-accent">presentable</span></span></h1>
-          <p id="hero-subheadline"><span class="hero-subheadline-lead">You've got the expertise. I'll do the rest. </span>Send me your recordings, drafts, or notes and I'll turn them into a course, guide, or video.</p>
+          <h1 id="hero-headline" data-reveal><span class="hero-headline-desktop">Take scattered content and make it <span class="hero-headline-accent">presentable</span></span><span class="hero-headline-mobile">Turn scattered content<br><span class="hero-headline-accent">presentable</span></span></h1>
+          <p id="hero-subheadline" data-reveal data-reveal-delay="1"><span class="hero-subheadline-lead">You've got the expertise. I'll do the rest. </span>Send me your recordings, drafts, or notes and I'll turn them into a course, guide, or video.</p>
 
-          <div class="hero-cta-row">
+          <div class="hero-cta-row" data-reveal data-reveal-delay="2">
             <a class="hero-cta" href="#contact">
               <span>Start your project</span>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -116,14 +116,14 @@
 
         <div class="ws-bg" aria-hidden="true"></div>
 
-        <div class="section-eyebrow">
+        <div class="section-eyebrow" data-reveal="left">
           <span class="section-eyebrow-dot"></span>
           <span>Live work sample</span>
         </div>
 
-        <h2 id="morpheus-title">Here's what "presentable" looks like.</h2>
+        <h2 id="morpheus-title" data-reveal data-reveal-delay="1">Here's what "presentable" looks like.</h2>
 
-        <div class="tb-player" role="img" aria-label="Teachable course player preview for Morpheus Drive Quick Start">
+        <div class="tb-player" role="img" aria-label="Teachable course player preview for Morpheus Drive Quick Start" data-reveal="tilt" data-reveal-delay="2">
 
           <!-- Top bar -->
           <div class="tb-topbar">
@@ -321,13 +321,13 @@
         <div class="services-bg" aria-hidden="true"></div>
 
         <div id="services-head">
-          <span id="services-eyebrow"><span class="services-eyebrow-dot"></span>The work</span>
-          <h2 id="services-heading">Whatever you have. <br><span class="services-heading-accent">Whatever you need.</span></h2>
-          <p id="services-lead">Bring me whatever you have. Docs, recordings, notes, a brain dump from a meeting. I'll turn it into any of these.</p>
+          <span id="services-eyebrow" data-reveal="left"><span class="services-eyebrow-dot"></span>The work</span>
+          <h2 id="services-heading" data-reveal data-reveal-delay="1">Whatever you have. <br><span class="services-heading-accent">Whatever you need.</span></h2>
+          <p id="services-lead" data-reveal data-reveal-delay="2">Bring me whatever you have. Docs, recordings, notes, a brain dump from a meeting. I'll turn it into any of these.</p>
         </div>
 
         <!-- Intake band: raw inputs marquee -->
-        <div id="services-intake" aria-hidden="true">
+        <div id="services-intake" aria-hidden="true" data-reveal>
           <div class="services-intake-label">
             <span class="services-intake-dot"></span>
             <span>Raw material</span>
@@ -360,7 +360,7 @@
         </div>
 
         <!-- Funnel / transition between intake and outputs -->
-        <div id="services-funnel" aria-hidden="true">
+        <div id="services-funnel" aria-hidden="true" data-reveal>
           <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
             <path class="services-funnel-shape" d="M0,0 L1200,0 L760,80 L440,80 Z" />
             <line class="services-funnel-line" x1="600" y1="40" x2="600" y2="80" />
@@ -374,7 +374,7 @@
         <div id="features-grid">
 
           <!-- 1. Video Lesson -->
-          <article class="fc-card" style="--accent: #ef8e5f">
+          <article class="fc-card" data-reveal style="--accent: #ef8e5f">
             <div class="fc-preview">
               <div class="fcp-video-screen">
                 <div class="fcp-play-btn">
@@ -396,7 +396,7 @@
           </article>
 
           <!-- 2. Written Content -->
-          <article class="fc-card" style="--accent: #000">
+          <article class="fc-card" data-reveal style="--accent: #000">
             <div class="fc-preview">
               <div class="fcp-article-title">Introduction to Core Concepts</div>
               <div class="fcp-rows">
@@ -417,7 +417,7 @@
           </article>
 
           <!-- 3. Slide Deck -->
-          <article class="fc-card" style="--accent: #000">
+          <article class="fc-card" data-reveal style="--accent: #000">
             <div class="fc-preview fcp-slide-bg">
               <div class="fcp-slide">
                 <div class="fcp-slide-header"></div>
@@ -439,7 +439,7 @@
           </article>
 
           <!-- 4. Downloadable Resource -->
-          <article class="fc-card" style="--accent: #000">
+          <article class="fc-card" data-reveal style="--accent: #000">
             <div class="fc-preview fcp-center">
               <div class="fcp-file-card">
                 <div class="fcp-file-icon">
@@ -460,7 +460,7 @@
           </article>
 
           <!-- 5. Interactive Diagram -->
-          <article class="fc-card" style="--accent: #000">
+          <article class="fc-card" data-reveal style="--accent: #000">
             <div class="fc-preview fcp-center">
               <div class="fcp-diagram">
                 <div class="fcp-label-tiny" style="margin-bottom:10px">Process flow</div>
@@ -487,7 +487,7 @@
           </article>
 
           <!-- 6. Knowledge Check -->
-          <article class="fc-card" style="--accent: #000">
+          <article class="fc-card" data-reveal style="--accent: #000">
             <div class="fc-preview">
               <div class="fcp-question">Which component controls user permissions?</div>
               <div class="fcp-options">
@@ -503,7 +503,7 @@
           </article>
 
           <!-- 7. Scenario / Case Study -->
-          <article class="fc-card" style="--accent: #000">
+          <article class="fc-card" data-reveal style="--accent: #000">
             <div class="fc-preview">
               <div class="fcp-scenario-badge">Scenario</div>
               <div class="fcp-scenario-text">A new customer submits a support request outside business hours. The on-call rep is unavailable. What should happen next?</div>
@@ -516,7 +516,7 @@
           </article>
 
           <!-- 8. SOP / Process Doc -->
-          <article class="fc-card" style="--accent: #000">
+          <article class="fc-card" data-reveal style="--accent: #000">
             <div class="fc-preview">
               <div class="fcp-sop-label">Standard Operating Procedure</div>
               <div class="fcp-sop-steps">
@@ -549,7 +549,7 @@
           </article>
 
           <!-- 9. Knowledge Base Article -->
-          <article class="fc-card" style="--accent: #000">
+          <article class="fc-card" data-reveal style="--accent: #000">
             <div class="fc-preview">
               <div class="fcp-kb-crumb">
                 <span>Docs</span>
@@ -576,7 +576,7 @@
           </article>
 
           <!-- 10. Screen Recording -->
-          <article class="fc-card" style="--accent: #000">
+          <article class="fc-card" data-reveal style="--accent: #000">
             <div class="fc-preview fcp-center">
               <div class="fcp-screenrec">
                 <div class="fcp-screenrec-chrome">
@@ -603,7 +603,7 @@
           </article>
 
           <!-- 11. Glossary / Terms -->
-          <article class="fc-card fc-card--hide-narrow" style="--accent: #000">
+          <article class="fc-card fc-card--hide-narrow" data-reveal style="--accent: #000">
             <div class="fc-preview">
               <div class="fcp-gloss-label">Glossary</div>
               <div class="fcp-gloss-rows">
@@ -628,7 +628,7 @@
           </article>
 
           <!-- 12. FAQ -->
-          <article class="fc-card" style="--accent: #000">
+          <article class="fc-card" data-reveal style="--accent: #000">
             <div class="fc-preview">
               <div class="fcp-faq-row fcp-faq-row--open">
                 <div class="fcp-faq-q"><span class="fcp-faq-toggle">−</span>How long does this take?</div>
@@ -651,7 +651,7 @@
           </article>
 
           <!-- 13. Lesson Plan / Course Module -->
-          <article class="fc-card" style="--accent: #000">
+          <article class="fc-card" data-reveal style="--accent: #000">
             <div class="fc-preview">
               <div class="fcp-module-header">
                 <span class="fcp-module-eyebrow">Module 02</span>
@@ -680,7 +680,7 @@
           </article>
 
           <!-- 14. Infographic -->
-          <article class="fc-card" style="--accent: #000">
+          <article class="fc-card" data-reveal style="--accent: #000">
             <div class="fc-preview fcp-center">
               <div class="fcp-infographic">
                 <div class="fcp-info-stat">84%</div>
@@ -700,7 +700,7 @@
           </article>
 
           <!-- 15. Annotated Screenshot -->
-          <article class="fc-card" style="--accent: #000">
+          <article class="fc-card" data-reveal style="--accent: #000">
             <div class="fc-preview fcp-center">
               <div class="fcp-annot">
                 <div class="fcp-annot-chrome">
@@ -767,11 +767,11 @@
           </div>
 
           <div class="contact-card-inner">
-            <span class="contact-eyebrow"><span class="contact-eyebrow-dot"></span>Get in touch</span>
-            <h2 id="contact-heading">Have something in mind?</h2>
-            <p id="contact-body">Got expertise stuck in recordings, decks, or somebody's head? Send it over and I'll turn it into something you can actually share.</p>
+            <span class="contact-eyebrow" data-reveal="left"><span class="contact-eyebrow-dot"></span>Get in touch</span>
+            <h2 id="contact-heading" data-reveal data-reveal-delay="1">Have something in mind?</h2>
+            <p id="contact-body" data-reveal data-reveal-delay="2">Got expertise stuck in recordings, decks, or somebody's head? Send it over and I'll turn it into something you can actually share.</p>
 
-            <div class="contact-actions">
+            <div class="contact-actions" data-reveal data-reveal-delay="3">
               <a id="contact-email-link" href="mailto:steven.wilen@gmail.com?subject=Project%20inquiry&amp;body=Hi%20Steven%2C%0A%0A">
                 <span>Get in touch</span>
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -858,7 +858,7 @@
               <span class="about-widget-status-dot" aria-hidden="true"></span>
               Currently taking new projects
             </p>
-            <p class="about-widget-bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+            <p class="about-widget-bio">I'm a 19 year old content developer in Ponte Vedra, Florida. Happy to work hybrid or fully online. This service will be a great fit if you have the expertise but don't have the time or tools to turn it into finished content.</p>
             <div class="about-widget-cta-row">
               <a class="about-widget-email" href="mailto:steven.wilen@gmail.com?subject=Project%20inquiry&amp;body=Hi%20Steven%2C%0A%0A">
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>

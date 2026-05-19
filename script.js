@@ -944,7 +944,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
 
-  els.forEach(function (el) { io.observe(el); });
+  els.forEach(function (el) {
+    var step = parseInt(el.getAttribute('data-reveal-delay'), 10);
+    if (!isNaN(step) && step > 0) {
+      el.style.setProperty('--d', (step * 120) + 'ms');
+    }
+    io.observe(el);
+  });
 });
 
 
