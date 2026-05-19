@@ -1692,15 +1692,16 @@ img, svg { display: block; max-width: 100%; }
   background-blend-mode: multiply;
   overflow: hidden;
   clip-path: var(--torn-top);
-  filter: drop-shadow(0 8px 14px rgba(34, 28, 20, 0.22));
 }
 .services-bg::before {
   content: "";
   position: absolute;
+  /* Fill the parent fully; no translate, so no bottom seam exposes the
+     marigold underneath (iOS Safari clips the negative inset before the
+     transform applies, which leaked an orange strip at the section seam). */
   inset: 0;
   background: #fffaf0;
   clip-path: var(--torn-top);
-  transform: translateY(-2px);
   z-index: -1;
 }
 #services-head {
@@ -3526,7 +3527,6 @@ img, svg { display: block; max-width: 100%; }
   background-size: 280px 280px;
   background-blend-mode: multiply;
   clip-path: var(--torn-top);
-  filter: drop-shadow(0 8px 14px rgba(34, 28, 20, 0.22));
 }
 #contact::after {
   content: "";
