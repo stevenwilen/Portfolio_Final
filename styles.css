@@ -341,7 +341,14 @@ img, svg { display: block; max-width: 100%; }
   font-style: italic;
   font-variation-settings: "opsz" 72;
   color: var(--c-vermillion);
+  background: linear-gradient(180deg, #ff7a5c 0%, var(--c-vermillion) 45%, var(--c-vermillion-2) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,0.35)) drop-shadow(0 2px 1px rgba(34,28,20,0.22));
   display: inline-block;
+  line-height: 1.2;
+  padding-bottom: 0.08em;
   letter-spacing: -0.015em;
 }
 
@@ -1529,7 +1536,14 @@ img, svg { display: block; max-width: 100%; }
   font-style: italic;
   font-variation-settings: "opsz" 60;
   color: var(--c-vermillion);
+  background: linear-gradient(180deg, #ff7a5c 0%, var(--c-vermillion) 45%, var(--c-vermillion-2) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,0.35)) drop-shadow(0 2px 1px rgba(34,28,20,0.22));
   display: inline-block;
+  line-height: 1.2;
+  padding-bottom: 0.08em;
 }
 
 #services-lead {
@@ -4055,7 +4069,6 @@ img, svg { display: block; max-width: 100%; }
   width: 100%; height: 100%;
   object-fit: cover;
   display: block;
-  mix-blend-mode: multiply;
 }
 .about-widget-card-body {
   flex: 1;
