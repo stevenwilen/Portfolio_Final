@@ -1105,14 +1105,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-// ─── About widget: click-outside and Escape to close ──────────
+// ─── About widget: tap-to-close (anywhere but Email me) + Escape ──
 document.addEventListener('DOMContentLoaded', function () {
   var widget = document.getElementById('about-widget');
   if (!widget) return;
 
   document.addEventListener('click', function (e) {
     if (!widget.open) return;
-    if (!widget.contains(e.target)) widget.open = false;
+    // The summary toggles the details natively — don't interfere.
+    var trigger = widget.querySelector('summary');
+    if (trigger && trigger.contains(e.target)) return;
+    // Tapping the email button shouldn't close the widget mid-action.
+    var email = widget.querySelector('.about-widget-email');
+    if (email && email.contains(e.target)) return;
+    widget.open = false;
   });
 
   document.addEventListener('keydown', function (e) {
