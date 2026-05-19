@@ -121,13 +121,13 @@
      self-intersect on mobile where 100% < the largest fixed point). */
   --torn-top:
     polygon(
-      0 6px, 2.5% 2px, 5% 5px, 7.5% 1px, 10% 4px, 12.5% 2px,
-      15% 5px, 17.5% 1px, 20% 4px, 22.5% 2px, 25% 5px, 27.5% 1px,
-      30% 4px, 32.5% 2px, 35% 5px, 37.5% 1px, 40% 4px, 42.5% 2px,
-      45% 5px, 47.5% 1px, 50% 4px, 52.5% 2px, 55% 5px, 57.5% 1px,
-      60% 4px, 62.5% 2px, 65% 5px, 67.5% 1px, 70% 4px, 72.5% 2px,
-      75% 5px, 77.5% 1px, 80% 4px, 82.5% 2px, 85% 5px, 87.5% 1px,
-      90% 4px, 92.5% 2px, 95% 5px, 97.5% 1px, 100% 4px,
+      0 10px, 2.5% 3px, 5% 12px, 7.5% 1px, 10% 9px, 12.5% 4px,
+      15% 13px, 17.5% 2px, 20% 10px, 22.5% 5px, 25% 14px, 27.5% 1px,
+      30% 11px, 32.5% 3px, 35% 13px, 37.5% 2px, 40% 9px, 42.5% 4px,
+      45% 12px, 47.5% 1px, 50% 10px, 52.5% 3px, 55% 13px, 57.5% 2px,
+      60% 11px, 62.5% 4px, 65% 14px, 67.5% 1px, 70% 9px, 72.5% 3px,
+      75% 12px, 77.5% 2px, 80% 10px, 82.5% 4px, 85% 13px, 87.5% 1px,
+      90% 11px, 92.5% 3px, 95% 12px, 97.5% 2px, 100% 9px,
       100% 100%, 0 100%
     );
   /* Deckle at top AND bottom — percent-based, same mobile-safety reason */
@@ -231,90 +231,6 @@ img, svg { display: block; max-width: 100%; }
 
 
 /* =============================================================
-   GLOBAL DECORATIVE BACKGROUND
-   ============================================================= */
-.bg-fx {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.bg-fx-grid {
-  display: none; /* paper-grain on body replaces the grid pattern */
-}
-
-.bg-fx-orb {
-  display: none; /* atmospheric orbs don't fit the paper-craft aesthetic */
-}
-.bg-fx-orb-keep {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.55;
-  will-change: transform;
-}
-.bg-fx-orb--a {
-  width: 540px; height: 540px;
-  top: -180px; left: -180px;
-  background: radial-gradient(circle, var(--c-peach) 0%, transparent 70%);
-  animation: orb-drift-a 22s ease-in-out infinite;
-}
-.bg-fx-orb--b {
-  width: 480px; height: 480px;
-  top: 30%; right: -160px;
-  background: radial-gradient(circle, var(--c-lavender) 0%, transparent 70%);
-  animation: orb-drift-b 28s ease-in-out infinite;
-}
-.bg-fx-orb--c {
-  width: 420px; height: 420px;
-  bottom: -120px; left: 20%;
-  background: radial-gradient(circle, var(--c-mint) 0%, transparent 70%);
-  opacity: 0.45;
-  animation: orb-drift-c 32s ease-in-out infinite;
-}
-
-.bg-fx-noise {
-  display: none; /* body already carries paper-grain, no extra noise */
-}
-
-@keyframes orb-drift-a {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(80px, 60px) scale(1.08); }
-}
-@keyframes orb-drift-b {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-60px, 80px) scale(1.05); }
-}
-@keyframes orb-drift-c {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(60px, -50px) scale(1.1); }
-}
-
-
-/* =============================================================
-   CURSOR GLOW
-   ============================================================= */
-.cursor-glow {
-  position: fixed;
-  top: 0; left: 0;
-  width: 460px; height: 460px;
-  pointer-events: none;
-  z-index: 1;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0) 60%);
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  mix-blend-mode: multiply;
-  will-change: transform, opacity;
-}
-.cursor-glow.is-active { opacity: 1; }
-@media (hover: none) { .cursor-glow { display: none; } }
-
-
-/* =============================================================
    HERO
    ============================================================= */
 #hero {
@@ -413,55 +329,11 @@ img, svg { display: block; max-width: 100%; }
   50%      { transform: translate(40px, -20px) rotate(var(--rot, 0deg)); }
 }
 
-.hero-sky-lines {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.55;
-  animation: lines-shift 18s ease-in-out infinite;
-}
-
-@keyframes lines-shift {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
-
 #hero-intro {
   max-width: 920px;
   margin-inline: auto;
   position: relative;
   z-index: 2;
-}
-
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(37, 99, 235, 0.18);
-  border-radius: 999px;
-  margin-bottom: 28px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--c-ink-700);
-  box-shadow: var(--sh-sm);
-  animation: badge-float 4s ease-in-out infinite;
-}
-.hero-badge-stars {
-  display: inline-flex;
-  gap: 1px;
-  color: #f59e0b;
-}
-.hero-badge-text {
-  letter-spacing: -0.005em;
-}
-@keyframes badge-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
 }
 
 /* Handwritten script accent — Caveat — for the word "presentable" */
@@ -585,8 +457,7 @@ img, svg { display: block; max-width: 100%; }
 
 .hero-float .hero-fc-row,
 .hero-float .hero-fc-label,
-.hero-float .hero-fc-mini-text,
-.hero-float .hero-fc-sub { color: var(--c-ink-900); }
+.hero-float .hero-fc-mini-text { color: var(--c-ink-900); }
 
 .hero-float .hero-fc-dot {
   background: var(--accent);
@@ -803,52 +674,6 @@ img, svg { display: block; max-width: 100%; }
   color: #fff;
 }
 
-.hero-fc-sub {
-  font-size: 12px;
-  color: #6e6e6e;
-  margin-top: 6px;
-  font-weight: 400;
-}
-
-.hero-scroll-cue {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  color: #6e6e6e;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-.hero-scroll-cue-track {
-  width: 1.5px;
-  height: 44px;
-  background: linear-gradient(180deg, #000, transparent);
-  position: relative;
-  overflow: hidden;
-  border-radius: 0;
-}
-.hero-scroll-cue-bead {
-  position: absolute;
-  top: -8px; left: 50%;
-  transform: translateX(-50%);
-  width: 4px; height: 12px;
-  background: #1a1a1a;
-  border-radius: 0;
-  animation: scroll-bead 2.2s ease-in-out infinite;
-}
-@keyframes scroll-bead {
-  0% { top: -8px; opacity: 0; }
-  20% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { top: 44px; opacity: 0; }
-}
-
 
 /* =============================================================
    SHARED SECTION ELEMENTS
@@ -923,36 +748,6 @@ img, svg { display: block; max-width: 100%; }
   transform: translateY(-2px);
   z-index: -1;
 }
-.ws-bg-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.5;
-}
-.ws-bg-blob--a {
-  width: 480px; height: 480px;
-  top: -100px; left: 5%;
-  background: radial-gradient(circle, var(--c-mint), transparent 70%);
-  animation: orb-drift-a 20s ease-in-out infinite;
-}
-.ws-bg-blob--b {
-  width: 520px; height: 520px;
-  bottom: -120px; right: 5%;
-  background: radial-gradient(circle, var(--c-peach), transparent 70%);
-  animation: orb-drift-b 24s ease-in-out infinite;
-}
-.ws-bg-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse at center, #000 0%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse at center, #000 0%, transparent 75%);
-  opacity: 0.6;
-}
-
 #work-sample > .section-eyebrow {
   display: flex;
   justify-content: center;
@@ -1220,7 +1015,7 @@ img, svg { display: block; max-width: 100%; }
 
 .tb-lesson .tb-icon-circle { display: block; }
 .tb-lesson--done .tb-icon-circle { display: none; }
-.tb-lesson--done .tb-icon-check { display: block; }
+.tb-lesson--done .tb-icon-check { display: block; color: var(--c-leaf); }
 .tb-lesson--active .tb-icon-circle,
 .tb-lesson--active .tb-icon-check { display: none; }
 .tb-lesson--active .tb-icon-play { display: block; }
@@ -1653,12 +1448,12 @@ img, svg { display: block; max-width: 100%; }
 }
 
 .tb-btn--primary {
-  background: #d4d4d4;
-  color: #1a1a1a;
+  background: var(--c-leaf);
+  color: #fff;
 }
 
 .tb-btn--primary:hover {
-  background: #c4c4c4;
+  background: var(--c-leaf-2);
 }
 
 .tb-btn--ghost {
@@ -3527,6 +3322,7 @@ img, svg { display: block; max-width: 100%; }
   background-size: 280px 280px;
   background-blend-mode: multiply;
   clip-path: var(--torn-top);
+  filter: drop-shadow(0 3px 5px rgba(34, 28, 20, 0.14));
 }
 #contact::after {
   content: "";
@@ -3786,15 +3582,6 @@ img, svg { display: block; max-width: 100%; }
   margin: 0;
   text-shadow: 0 2px 0 rgba(34, 28, 20, 0.08), 0 6px 14px rgba(34, 28, 20, 0.12);
 }
-.contact-heading-accent {
-  font-family: var(--ff-display);
-  font-weight: 800;
-  font-style: italic;
-  font-variation-settings: "opsz" 60;
-  color: var(--c-vermillion);
-  display: inline-block;
-}
-
 #contact-body {
   font-size: clamp(15px, 1.4vw, 17px);
   color: rgba(0, 0, 0, 0.7);
@@ -4351,31 +4138,6 @@ body:has(#about-widget[open])::before {
   height: auto;
   display: block;
 }
-.tb-annot-pin {
-  position: absolute;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: #1a1a1a;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.9), 0 4px 10px rgba(0, 0, 0, 0.2);
-  animation: tb-annot-pin-pulse 2.6s ease-in-out infinite;
-}
-@keyframes tb-annot-pin-pulse {
-  0%, 100% { box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.9), 0 0 0 0 rgba(26, 26, 26, 0.3), 0 4px 10px rgba(0, 0, 0, 0.18); }
-  50%      { box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.9), 0 0 0 8px rgba(26, 26, 26, 0), 0 4px 10px rgba(0, 0, 0, 0.18); }
-}
-.tb-annot-pin:nth-of-type(2) { animation-delay: -0.65s; }
-.tb-annot-pin:nth-of-type(3) { animation-delay: -1.3s; }
-.tb-annot-pin:nth-of-type(4) { animation-delay: -1.95s; }
-
 .tb-annot-list {
   display: flex;
   flex-direction: column;
@@ -4416,10 +4178,6 @@ body:has(#about-widget[open])::before {
   color: #4a4a4a;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .tb-annot-pin { animation: none; }
-}
-
 /* =============================================================
    FORMAT-CARD ANIMATION SLOWDOWN
    Overrides the inner-preview animation durations to be ~1.7× slower
@@ -4430,7 +4188,6 @@ body:has(#about-widget[open])::before {
 #features-grid .fcp-play-btn               { animation-duration: 6.1s; }
 #features-grid .fcp-progress-fill          { animation-duration: 17.9s; }
 #features-grid .fcp-timecode               { animation-duration: 2.6s; }
-#features-grid .fcp-cursor                 { animation-duration: 2.6s; }
 #features-grid .fcp-article-sub            { animation-duration: 10.2s; }
 #features-grid .fcp-slide-header::after    { animation-duration: 8.2s; }
 #features-grid .fcp-slide-bullets > .fcp-bullet { animation-duration: 13.6s; }

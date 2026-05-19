@@ -1000,48 +1000,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// ─── Cursor glow follower ────────────────────────────────────
-document.addEventListener('DOMContentLoaded', function () {
-  var glow = document.querySelector('.cursor-glow');
-  if (!glow) return;
-
-  if (window.matchMedia && window.matchMedia('(hover: none)').matches) {
-    glow.remove();
-    return;
-  }
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    glow.remove();
-    return;
-  }
-
-  var x = 0, y = 0;
-  var cx = 0, cy = 0;
-  var raf = null;
-
-  function loop() {
-    cx += (x - cx) * 0.18;
-    cy += (y - cy) * 0.18;
-    glow.style.transform = 'translate(' + (cx - 230) + 'px, ' + (cy - 230) + 'px)';
-    if (Math.abs(x - cx) > 0.5 || Math.abs(y - cy) > 0.5) {
-      raf = requestAnimationFrame(loop);
-    } else {
-      raf = null;
-    }
-  }
-
-  window.addEventListener('mousemove', function (e) {
-    x = e.clientX;
-    y = e.clientY;
-    glow.classList.add('is-active');
-    if (raf === null) raf = requestAnimationFrame(loop);
-  }, { passive: true });
-
-  window.addEventListener('mouseleave', function () {
-    glow.classList.remove('is-active');
-  });
-});
-
-
 // ─── Hero floats: idle bob + scroll parallax + mouse parallax ─
 document.addEventListener('DOMContentLoaded', function () {
   var prefersReduced =
