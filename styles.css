@@ -116,35 +116,34 @@
   --ff-body:    'Inter Tight', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   /* Deckle-edge paper boundary — subtle wavy line on the top, just enough
-     to read as torn paper without screaming "jagged". Pixel-based rather
-     than percent-based so the bumps stay consistent at any section width. */
+     to read as torn paper without screaming "jagged". Percent-based so the
+     polygon stays inside the element on any viewport (pixel-based versions
+     self-intersect on mobile where 100% < the largest fixed point). */
   --torn-top:
     polygon(
-      0 6px, 40px 2px, 80px 5px, 120px 1px, 160px 4px, 200px 2px,
-      240px 5px, 280px 1px, 320px 4px, 360px 2px, 400px 5px, 440px 1px,
-      480px 4px, 520px 2px, 560px 5px, 600px 1px, 640px 4px, 680px 2px,
-      720px 5px, 760px 1px, 800px 4px, 840px 2px, 880px 5px, 920px 1px,
-      960px 4px, 1000px 2px, 1040px 5px, 1080px 1px, 1120px 4px, 1160px 2px,
-      1200px 5px, 1240px 1px, 1280px 4px, 1320px 2px, 1360px 5px, 1400px 1px,
-      1440px 4px, 1480px 2px, 1520px 5px, 1560px 1px, 1600px 4px, 1640px 2px,
-      1680px 5px, 1720px 1px, 1760px 4px, 1800px 2px, 1840px 5px, 1880px 1px,
-      1920px 4px, 1960px 2px, 100% 4px,
+      0 6px, 2.5% 2px, 5% 5px, 7.5% 1px, 10% 4px, 12.5% 2px,
+      15% 5px, 17.5% 1px, 20% 4px, 22.5% 2px, 25% 5px, 27.5% 1px,
+      30% 4px, 32.5% 2px, 35% 5px, 37.5% 1px, 40% 4px, 42.5% 2px,
+      45% 5px, 47.5% 1px, 50% 4px, 52.5% 2px, 55% 5px, 57.5% 1px,
+      60% 4px, 62.5% 2px, 65% 5px, 67.5% 1px, 70% 4px, 72.5% 2px,
+      75% 5px, 77.5% 1px, 80% 4px, 82.5% 2px, 85% 5px, 87.5% 1px,
+      90% 4px, 92.5% 2px, 95% 5px, 97.5% 1px, 100% 4px,
       100% 100%, 0 100%
     );
-  /* Deckle at top AND bottom */
+  /* Deckle at top AND bottom — percent-based, same mobile-safety reason */
   --torn-both:
     polygon(
-      0 4px, 80px 1px, 160px 4px, 240px 2px, 320px 4px, 400px 1px,
-      480px 4px, 560px 2px, 640px 4px, 720px 1px, 800px 4px, 880px 2px,
-      960px 4px, 1040px 1px, 1120px 4px, 1200px 2px, 1280px 4px, 1360px 1px,
-      1440px 4px, 1520px 2px, 1600px 4px, 100% 3px,
-      100% calc(100% - 4px), 1520px calc(100% - 1px), 1440px calc(100% - 4px),
-      1360px calc(100% - 2px), 1280px calc(100% - 4px), 1200px calc(100% - 1px),
-      1120px calc(100% - 4px), 1040px calc(100% - 2px), 960px calc(100% - 4px),
-      880px calc(100% - 1px), 800px calc(100% - 4px), 720px calc(100% - 2px),
-      640px calc(100% - 4px), 560px calc(100% - 1px), 480px calc(100% - 4px),
-      400px calc(100% - 2px), 320px calc(100% - 4px), 240px calc(100% - 1px),
-      160px calc(100% - 4px), 80px calc(100% - 2px), 0 calc(100% - 3px)
+      0 4px, 5% 1px, 10% 4px, 15% 2px, 20% 4px, 25% 1px,
+      30% 4px, 35% 2px, 40% 4px, 45% 1px, 50% 4px, 55% 2px,
+      60% 4px, 65% 1px, 70% 4px, 75% 2px, 80% 4px, 85% 1px,
+      90% 4px, 95% 2px, 100% 3px,
+      100% calc(100% - 4px), 95% calc(100% - 1px), 90% calc(100% - 4px),
+      85% calc(100% - 2px), 80% calc(100% - 4px), 75% calc(100% - 1px),
+      70% calc(100% - 4px), 65% calc(100% - 2px), 60% calc(100% - 4px),
+      55% calc(100% - 1px), 50% calc(100% - 4px), 45% calc(100% - 2px),
+      40% calc(100% - 4px), 35% calc(100% - 1px), 30% calc(100% - 4px),
+      25% calc(100% - 2px), 20% calc(100% - 4px), 15% calc(100% - 1px),
+      10% calc(100% - 4px), 5% calc(100% - 2px), 0 calc(100% - 3px)
     );
 }
 
@@ -489,6 +488,8 @@ img, svg { display: block; max-width: 100%; }
      cream-shadow layer behind for depth + soft drop shadow on the ground. */
   text-shadow: 0 2px 0 rgba(34, 28, 20, 0.08), 0 6px 14px rgba(34, 28, 20, 0.12);
 }
+
+.hero-headline-mobile { display: none; }
 
 #hero-subheadline {
   font-family: var(--ff-body);
@@ -995,7 +996,6 @@ img, svg { display: block; max-width: 100%; }
   box-shadow: var(--sh-paper-lifted);
   margin: 0;
   font-family: inherit;
-  transform: rotate(-0.4deg);
 }
 
 .tb-topbar {
@@ -4041,6 +4041,9 @@ img, svg { display: block; max-width: 100%; }
   /* Hide every background hero card on mobile — sky placeholders and floats */
   .hero-sky-cloud,
   .hero-float { display: none; }
+
+  .hero-headline-desktop { display: none; }
+  .hero-headline-mobile { display: inline; }
 
   /* Smaller work-sample heading on mobile */
   #morpheus-title { font-size: 28px; }
