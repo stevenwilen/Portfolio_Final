@@ -838,18 +838,19 @@ img, svg { display: block; max-width: 100%; }
   line-height: 1.06;
   color: var(--c-ink-900);
   text-align: center;
-  margin: 0 auto 48px;
+  margin: 0 auto 22px;
   text-shadow: 0 2px 0 rgba(34, 28, 20, 0.08), 0 6px 14px rgba(34, 28, 20, 0.12);
 }
 
 #morpheus-intro {
   font-family: var(--ff-body);
   font-size: clamp(15px, 1.4vw, 17px);
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--c-ink-800);
   text-align: center;
   max-width: 620px;
-  margin: 0 auto 48px;
+  margin: 0 auto 88px;
+  text-wrap: balance;
   text-shadow: 0 1px 0 rgba(255, 250, 240, 0.4);
 }
 
@@ -1087,12 +1088,7 @@ img, svg { display: block; max-width: 100%; }
   border-radius: var(--r-lg);
   box-shadow: var(--sh-paper);
   overflow: hidden;
-  transform: rotate(-0.6deg);
 }
-
-/* Alternating tilt across the row */
-.ws-tools-grid > .ws-tool:nth-child(2) { transform: rotate(0.8deg); }
-.ws-tools-grid > .ws-tool:nth-child(3) { transform: rotate(-0.4deg); }
 
 /* Accent rule along the top edge of every card */
 .ws-tool::before {
@@ -1166,6 +1162,7 @@ img, svg { display: block; max-width: 100%; }
   font-size: 12.5px;
   line-height: 1.45;
   max-width: 90%;
+  text-wrap: balance;
 }
 
 .ws-tool-bubble--user {
@@ -2020,12 +2017,12 @@ img, svg { display: block; max-width: 100%; }
 }
 
 .tb-btn--primary {
-  background: var(--c-leaf);
+  background: #2a2a2a;
   color: #fff;
 }
 
 .tb-btn--primary:hover {
-  background: var(--c-leaf-2);
+  background: #404040;
 }
 
 .tb-btn--ghost {
@@ -4417,7 +4414,7 @@ img, svg { display: block; max-width: 100%; }
 
   /* Smaller work-sample heading on mobile */
   #morpheus-title { font-size: 28px; }
-  #morpheus-intro { font-size: 14px; margin-bottom: 32px; padding: 0 4px; }
+  #morpheus-intro { font-size: 14px; margin-bottom: 56px; padding: 0 4px; }
 
   /* Stage layout: tighter spacing + single-column tool stack */
   .ws-stage-head { gap: 14px; margin-bottom: 22px; }
@@ -4428,11 +4425,6 @@ img, svg { display: block; max-width: 100%; }
   .ws-stage-title p { font-size: 13.5px; }
   .ws-tools-grid { grid-template-columns: 1fr; gap: 22px; padding: 4px; }
   .ws-tools-grid > .ws-tool:nth-child(3) { grid-column: auto; }
-  /* Reduce tilt on mobile so single column feels intentional */
-  .ws-tool,
-  .ws-tools-grid > .ws-tool:nth-child(2),
-  .ws-tools-grid > .ws-tool:nth-child(3) { transform: rotate(-0.5deg); }
-  .ws-tools-grid > .ws-tool:nth-child(2n) { transform: rotate(0.6deg); }
   .ws-stage + .ws-stage { margin-top: 40px; }
   .ws-video-row { grid-template-columns: 1fr; gap: 18px; padding: 4px; }
   .ws-video { padding: 10px 10px 14px; }
