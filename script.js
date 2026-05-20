@@ -419,7 +419,7 @@ document.addEventListener('DOMContentLoaded', function () {
       title: 'Connecting motors and the battery',
       done: false,
       duration: '3:08',
-      frame: 'images/video-1.png',
+      frame: 'images/video-1.jpg',
       overview: 'This walkthrough shows how to connect two motors and a battery to the Morpheus Drive. Follow along with the video to complete the setup.',
       notes: [
         'Each motor connects to one pair of terminals labeled M+ and M−',
@@ -435,7 +435,7 @@ document.addEventListener('DOMContentLoaded', function () {
       module: 2,
       title: 'CoreOS app at a glance',
       done: false,
-      image: 'images/annotated-img.png',
+      image: 'images/annotated-img.jpg',
       overview: 'Before the next video walks through pairing, take a quick look at the CoreOS app. The labels on the screenshot point out the parts of the home screen you\'ll use in every session.',
       notes: [
         'You can return to this lesson any time you forget where a control lives.',
@@ -449,7 +449,7 @@ document.addEventListener('DOMContentLoaded', function () {
       title: 'Install & connect via Bluetooth',
       done: false,
       duration: '3:42',
-      frame: 'images/video-2.png',
+      frame: 'images/video-2.jpg',
       overview: 'This walkthrough shows how to install the CoreOS app and connect it to the Morpheus Drive using Bluetooth. Follow along with the video to complete the setup.',
       notes: [
         'CoreOS is available on the Android Play Store',
@@ -480,7 +480,7 @@ document.addEventListener('DOMContentLoaded', function () {
       title: 'Scanning and manual control',
       done: false,
       duration: '4:12',
-      frame: 'images/video-3.png',
+      frame: 'images/video-3.jpg',
       overview: 'This walkthrough shows how to scan your environment and control movement using the CoreOS app. Follow along with the video to complete the setup.',
       notes: [
         'Place an anchor to begin scanning',
@@ -501,10 +501,18 @@ document.addEventListener('DOMContentLoaded', function () {
   var autoplayActive = false;
 
   // ── Renderers ───────────────────────────────────────────────
+  // Render a <picture> with WebP source and JPEG fallback so modern browsers
+  // get the smaller asset. Derives the .webp path from the given .jpg URL.
+  function pictureTag(jpgUrl, klass) {
+    var webp = jpgUrl.replace(/\.jpg$/i, '.webp');
+    return '<picture>' +
+             '<source srcset="' + esc(webp) + '" type="image/webp">' +
+             '<img class="' + klass + '" src="' + esc(jpgUrl) + '" alt="" decoding="async" />' +
+           '</picture>';
+  }
+
   function videoMedia(l) {
-    var frame = l.frame
-      ? '<img class="tb-video-frame" src="' + esc(l.frame) + '" alt="" />'
-      : '';
+    var frame = l.frame ? pictureTag(l.frame, 'tb-video-frame') : '';
     return '<div class="tb-video">' +
       frame +
       '<button class="tb-play" type="button" aria-label="Play lesson">' +
@@ -578,7 +586,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function annotatedMedia(l) {
     return '<div class="tb-annot">' +
-      '<img class="tb-annot-img" src="' + esc(l.image) + '" alt="" />' +
+      pictureTag(l.image, 'tb-annot-img') +
     '</div>';
   }
 
@@ -841,12 +849,23 @@ document.addEventListener('DOMContentLoaded', function () {
     mainEl.style.visibility = '';
   }
 
+  // Pick .webp when the browser supports it, otherwise stick with .jpg —
+  // avoids fetching both formats since picture-tag rendering uses WebP too
+  function preferredUrl(jpgUrl) {
+    if (!preferredUrl._webp) {
+      var canvas = document.createElement('canvas');
+      preferredUrl._webp = !!(canvas.getContext && canvas.getContext('2d') &&
+        canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0);
+    }
+    return preferredUrl._webp ? jpgUrl.replace(/\.jpg$/i, '.webp') : jpgUrl;
+  }
+
   // Preload lesson images so their natural heights are known at measurement time
   function preloadLessonImages() {
     var urls = [];
     lessons.forEach(function (l) {
-      if (l.frame) urls.push(l.frame);
-      if (l.image) urls.push(l.image);
+      if (l.frame) urls.push(preferredUrl(l.frame));
+      if (l.image) urls.push(preferredUrl(l.image));
     });
     return Promise.all(urls.map(function (url) {
       return new Promise(function (resolve) {
@@ -857,7 +876,21 @@ document.addEventListener('DOMContentLoaded', function () {
     }));
   }
 
-  preloadLessonImages().then(lockMainHeight);
+  // Defer preload + lockMainHeight until the work-sample section is approaching
+  // the viewport. The section sits deep in the page, so loading its assets up
+  // front wastes bandwidth on visitors who bounce from the hero.
+  var workSampleSection = document.getElementById('work-sample');
+  if (!workSampleSection || !('IntersectionObserver' in window)) {
+    preloadLessonImages().then(lockMainHeight);
+  } else {
+    var preloadIO = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        preloadIO.disconnect();
+        preloadLessonImages().then(lockMainHeight);
+      }
+    }, { rootMargin: '800px 0px' });
+    preloadIO.observe(workSampleSection);
+  }
 
   var resizeTimer = null;
   window.addEventListener('resize', function () {

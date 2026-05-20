@@ -17,7 +17,7 @@
 
         <div class="site-wordmark" aria-label="Steven Wilen, Content Developer">
           <span class="site-wordmark-name">Steven Wilen</span>
-          <span class="site-wordmark-sep" aria-hidden="true">—</span>
+          <span class="site-wordmark-sep" aria-hidden="true">·</span>
           <span class="site-wordmark-role">Content Developer</span>
         </div>
 
@@ -34,7 +34,7 @@
 
         <div id="hero-intro">
 
-          <h1 id="hero-headline" data-reveal><span class="hero-headline-desktop">Take scattered content and make it <span class="hero-headline-accent">presentable</span></span><span class="hero-headline-mobile">Turn scattered content<br><span class="hero-headline-accent">presentable</span></span></h1>
+          <h1 id="hero-headline" data-reveal><span class="hero-headline-desktop">I take scattered content and make it <span class="hero-headline-accent">presentable</span></span><span class="hero-headline-mobile">Turn scattered content<br><span class="hero-headline-accent">presentable</span></span></h1>
           <p id="hero-subheadline" data-reveal data-reveal-delay="1"><span class="hero-subheadline-lead">You've got the expertise. I'll do the rest. </span>Send me your recordings, drafts, or notes and I'll turn them into a course, guide, or video.</p>
 
           <div class="hero-cta-row" data-reveal data-reveal-delay="2">
@@ -150,7 +150,7 @@
                 <video
                   class="ws-video-el"
                   src="videos/walkthrough-2.mp4"
-                  muted playsinline preload="auto"
+                  muted playsinline preload="metadata"
                   aria-label="Hardware walkthrough preview"></video>
                 <div class="ws-video-overlay" aria-hidden="true">
 <span class="ws-video-caption">Hardware walkthrough</span>
@@ -163,7 +163,7 @@
                 <video
                   class="ws-video-el"
                   src="videos/walkthrough-1.mp4"
-                  muted playsinline preload="auto"
+                  muted playsinline preload="metadata"
                   aria-label="Software walkthrough preview"></video>
                 <div class="ws-video-overlay" aria-hidden="true">
 <span class="ws-video-caption">Software walkthrough</span>
@@ -948,8 +948,12 @@
               <span class="contact-meta">Typical reply within 24 hours</span>
             </div>
 
+            <p class="contact-phone-line" data-reveal data-reveal-delay="3">
+              Prefer to talk? Call <a href="tel:+19044000352">904-400-0352</a>
+            </p>
+
             <ul class="contact-checklist">
-              <li><span class="contact-check">✓</span>Free 30-min scoping call</li>
+              <li><span class="contact-check">✓</span>Free sample on request</li>
               <li><span class="contact-check">✓</span>Fixed-fee or per-project</li>
               <li><span class="contact-check">✓</span>You keep every source file</li>
             </ul>
@@ -994,6 +998,7 @@
             <h4 class="footer-col-heading">Contact</h4>
             <ul>
               <li><a href="mailto:steven.wilen@gmail.com?subject=Project%20inquiry&amp;body=Hi%20Steven%2C%0A%0A">steven.wilen@gmail.com</a></li>
+              <li><a href="tel:+19044000352">904-400-0352</a></li>
               <li>Reply within 24h</li>
             </ul>
           </div>
@@ -1010,15 +1015,20 @@
     <!-- Floating About widget -->
     <details id="about-widget">
       <summary class="about-widget-trigger" aria-label="About Steven">
-        <span class="about-widget-avatar">
-          <img src="images/pfp.JPG" alt="Steven Wilen" />
-          <span class="about-widget-status" aria-hidden="true"></span>
+        <span class="about-widget-avatar about-widget-avatar--mark">
+          <span class="about-widget-avatar-glyph" aria-hidden="true">S</span>
         </span>
       </summary>
       <div class="about-widget-card">
         <div class="about-widget-card-inner">
           <div class="about-widget-cover">
-            <img src="images/portrait.JPG" alt="Steven Wilen portrait" />
+            <div class="about-widget-placeholder" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="72" height="72" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8.5" r="4"/>
+                <path d="M4 21c0-4.5 4-7.5 8-7.5s8 3 8 7.5"/>
+              </svg>
+              <span class="about-widget-placeholder-label">Portrait</span>
+            </div>
           </div>
           <div class="about-widget-card-body">
             <span class="about-widget-eyebrow">About</span>
