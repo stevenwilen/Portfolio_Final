@@ -954,6 +954,57 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// ─── Source-video synced autoplay ────────────────────────────
+// Plays both reference videos in lockstep: same start, same restart.
+// When the first video to finish hits `ended`, both reset to 0 and play again,
+// preventing drift over many loops. Pauses both when the row scrolls off-screen.
+document.addEventListener('DOMContentLoaded', function () {
+  var videos = Array.prototype.slice.call(document.querySelectorAll('.ws-video-el'));
+  if (!videos.length) return;
+
+  var prefersReduced =
+    window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (prefersReduced) {
+    videos.forEach(function (v) { v.pause(); });
+    return;
+  }
+
+  function playAll() {
+    videos.forEach(function (v) {
+      try { v.currentTime = 0; } catch (e) {}
+      var p = v.play();
+      if (p && typeof p.catch === 'function') p.catch(function () {});
+    });
+  }
+
+  function pauseAll() {
+    videos.forEach(function (v) { v.pause(); });
+  }
+
+  // Whichever video ends first triggers a synced reset for all of them
+  videos.forEach(function (v) {
+    v.addEventListener('ended', playAll);
+  });
+
+  var row = document.querySelector('.ws-video-row');
+
+  if (!('IntersectionObserver' in window) || !row) {
+    playAll();
+    return;
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) playAll();
+      else pauseAll();
+    });
+  }, { threshold: 0.25 });
+
+  io.observe(row);
+});
+
+
 // ─── Number counters (data-counter) ──────────────────────────
 document.addEventListener('DOMContentLoaded', function () {
   var prefersReduced =

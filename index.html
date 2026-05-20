@@ -15,6 +15,12 @@
       ============================================================ -->
       <section id="hero" aria-labelledby="hero-headline">
 
+        <div class="site-wordmark" aria-label="Steven Wilen, Content Developer">
+          <span class="site-wordmark-name">Steven Wilen</span>
+          <span class="site-wordmark-sep" aria-hidden="true">—</span>
+          <span class="site-wordmark-role">Content Developer</span>
+        </div>
+
         <!-- Hero atmospheric backdrop -->
         <div class="hero-sky" aria-hidden="true">
           <div class="hero-sky-gradient"></div>
@@ -121,7 +127,169 @@
           <span>Live work sample</span>
         </div>
 
-        <h2 id="morpheus-title" data-reveal data-reveal-delay="1">Here's what "presentable" looks like.</h2>
+        <h2 id="morpheus-title" data-reveal data-reveal-delay="1">From a raw video to a finished course.</h2>
+
+        <!-- ============ STAGE 1: Source video ============ -->
+        <div class="ws-stage" data-reveal style="--accent: #d8412a;">
+          <div class="ws-stage-head">
+            <div class="ws-stage-num">
+<span class="ws-stage-num-text">01</span>
+            </div>
+            <div class="ws-stage-title">
+              <span class="ws-stage-eyebrow">Stage one &middot; What I started with</span>
+              <h3>The reference material</h3>
+              <p>The client sent over two internal walkthroughs of the Morpheus Drive &mdash; useful, but raw. No structure, no on-screen labels, no checkpoints.</p>
+            </div>
+          </div>
+
+          <div class="ws-video-row">
+
+            <div class="ws-video">
+              <div class="ws-video-frame">
+                <video
+                  class="ws-video-el"
+                  src="videos/walkthrough-2.mp4"
+                  muted playsinline preload="auto"
+                  aria-label="Hardware walkthrough preview"></video>
+                <div class="ws-video-overlay" aria-hidden="true">
+<span class="ws-video-caption">Hardware walkthrough</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ws-video">
+              <div class="ws-video-frame">
+                <video
+                  class="ws-video-el"
+                  src="videos/walkthrough-1.mp4"
+                  muted playsinline preload="auto"
+                  aria-label="Software walkthrough preview"></video>
+                <div class="ws-video-overlay" aria-hidden="true">
+<span class="ws-video-caption">Software walkthrough</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ============ STAGE 2: Tools ============ -->
+        <div class="ws-stage" data-reveal style="--accent: #2f8f8a;">
+          <div class="ws-stage-head">
+            <div class="ws-stage-num">
+<span class="ws-stage-num-text">02</span>
+            </div>
+            <div class="ws-stage-title">
+              <span class="ws-stage-eyebrow">Stage two &middot; How I built it</span>
+              <h3>The tools I used</h3>
+              <p>Three tools doing three different jobs &mdash; pulling structure out of the video, generating supporting assets, and assembling everything into a publishable course.</p>
+            </div>
+          </div>
+
+          <div class="ws-tools-grid">
+
+            <!-- Claude -->
+            <article class="ws-tool" style="--accent: #c89764;">
+              <div class="ws-tool-mock">
+                <div class="ws-tool-chrome">
+                  <span class="ws-tool-chrome-mark ws-tool-chrome-mark--claude">✦</span>
+                  <span class="ws-tool-chrome-name">Claude</span>
+                </div>
+                <div class="ws-tool-chat">
+                  <div class="ws-tool-bubble ws-tool-bubble--user">Break this transcript into a 6-lesson course outline.</div>
+                  <div class="ws-tool-bubble ws-tool-bubble--ai">
+                    <span class="ws-tool-outline-row">1. Hardware Setup</span>
+                    <span class="ws-tool-outline-row">2. CoreOS App Setup</span>
+                    <span class="ws-tool-outline-row ws-tool-outline-row--active">3. Scanning &amp; Movement</span>
+                    <span class="ws-tool-typing"><span></span><span></span><span></span></span>
+                  </div>
+                </div>
+              </div>
+              <div class="ws-tool-info">
+                <h4>Claude</h4>
+                <p>Structured the transcript into modules and lessons. Drafted overviews, legends, and copy I could refine.</p>
+              </div>
+            </article>
+
+            <!-- ChatGPT -->
+            <article class="ws-tool" style="--accent: #4fa84a;">
+              <div class="ws-tool-mock">
+                <div class="ws-tool-chrome">
+                  <span class="ws-tool-chrome-mark ws-tool-chrome-mark--gpt">⌬</span>
+                  <span class="ws-tool-chrome-name">ChatGPT</span>
+                </div>
+                <div class="ws-tool-chat">
+                  <div class="ws-tool-bubble ws-tool-bubble--user">
+                    <span class="ws-tool-attach">
+                      <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+                      board-photo.jpg
+                    </span>
+                    Label each terminal on this board.
+                  </div>
+                  <div class="ws-tool-bubble ws-tool-bubble--ai">
+                    <div class="ws-tool-pills">
+                      <span class="ws-tool-pill">M1+ / M1&minus;</span>
+                      <span class="ws-tool-pill">M2+ / M2&minus;</span>
+                      <span class="ws-tool-pill">V+ / V&minus;</span>
+                      <span class="ws-tool-pill">RST</span>
+                      <span class="ws-tool-pill">STAT</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ws-tool-info">
+                <h4>ChatGPT</h4>
+                <p>Pulled terminal labels and wiring details from photos. Generated the clean diagram references used in the sample.</p>
+              </div>
+            </article>
+
+            <!-- Teachable -->
+            <article class="ws-tool" style="--accent: #5dadd8;">
+              <div class="ws-tool-mock">
+                <div class="ws-tool-chrome">
+                  <span class="ws-tool-chrome-mark ws-tool-chrome-mark--teachable">T</span>
+                  <span class="ws-tool-chrome-name">Teachable</span>
+                </div>
+                <div class="ws-tool-editor">
+                  <div class="ws-tool-editor-head">Curriculum</div>
+                  <div class="ws-tool-mod">
+                    <span class="ws-tool-mod-handle">⋮⋮</span>
+                    <span class="ws-tool-mod-name">1. Hardware Setup</span>
+                    <span class="ws-tool-mod-count">2</span>
+                  </div>
+                  <div class="ws-tool-mod">
+                    <span class="ws-tool-mod-handle">⋮⋮</span>
+                    <span class="ws-tool-mod-name">2. CoreOS App Setup</span>
+                    <span class="ws-tool-mod-count">2</span>
+                  </div>
+                  <div class="ws-tool-mod ws-tool-mod--active">
+                    <span class="ws-tool-mod-handle">⋮⋮</span>
+                    <span class="ws-tool-mod-name">3. Scanning &amp; Movement</span>
+                    <span class="ws-tool-mod-count">2</span>
+                  </div>
+                </div>
+              </div>
+              <div class="ws-tool-info">
+                <h4>Teachable</h4>
+                <p>Assembled everything into a publishable course &mdash; modules, lessons, downloadables, and quizzes ready for learners.</p>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- ============ STAGE 3: Finished course ============ -->
+        <div class="ws-stage" data-reveal style="--accent: #f4b53e;">
+          <div class="ws-stage-head">
+            <div class="ws-stage-num">
+<span class="ws-stage-num-text">03</span>
+            </div>
+            <div class="ws-stage-title">
+              <span class="ws-stage-eyebrow">Stage three &middot; What shipped</span>
+              <h3>The finished course</h3>
+              <p>Published in Teachable with structured modules, an interactive board diagram, embedded videos, downloadables, and progress tracking.</p>
+            </div>
+          </div>
 
         <div class="tb-player" role="img" aria-label="Teachable course player preview for Morpheus Drive Quick Start" data-reveal="tilt" data-reveal-delay="2">
 
@@ -308,7 +476,7 @@
           </div>
         </div>
 
-        <p id="morpheus-caption">A tutorial I built for a robotics company.</p>
+        </div>
 
       </section>
 

@@ -264,6 +264,34 @@ img, svg { display: block; max-width: 100%; }
   isolation: isolate;
 }
 
+/* Faded site wordmark, top-left of the hero */
+.site-wordmark {
+  position: absolute;
+  top: clamp(18px, 2.2vw, 28px);
+  left: clamp(18px, 2.6vw, 32px);
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--ff-display);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-ink-700);
+  opacity: 0.55;
+  user-select: none;
+}
+
+.site-wordmark-name { font-weight: 700; color: var(--c-ink-800); letter-spacing: 0.06em; }
+.site-wordmark-sep  { color: var(--c-ink-400); font-weight: 400; }
+.site-wordmark-role { font-weight: 500; }
+
+@media (max-width: 640px) {
+  .site-wordmark { font-size: 10.5px; gap: 7px; letter-spacing: 0.1em; }
+  .site-wordmark-name { letter-spacing: 0.05em; }
+}
+
 .hero-sky {
   position: absolute;
   inset: -60px 0 0 50%;
@@ -810,8 +838,19 @@ img, svg { display: block; max-width: 100%; }
   line-height: 1.06;
   color: var(--c-ink-900);
   text-align: center;
-  margin: 0 auto 56px;
+  margin: 0 auto 48px;
   text-shadow: 0 2px 0 rgba(34, 28, 20, 0.08), 0 6px 14px rgba(34, 28, 20, 0.12);
+}
+
+#morpheus-intro {
+  font-family: var(--ff-body);
+  font-size: clamp(15px, 1.4vw, 17px);
+  line-height: 1.55;
+  color: var(--c-ink-800);
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto 48px;
+  text-shadow: 0 1px 0 rgba(255, 250, 240, 0.4);
 }
 
 #morpheus-caption {
@@ -822,6 +861,493 @@ img, svg { display: block; max-width: 100%; }
   text-align: center;
   margin: 32px 0 0;
   text-shadow: 0 1px 0 rgba(255, 250, 240, 0.4);
+}
+
+
+/* -------------------------------------------------------------
+   Work-sample stages (Source → Tools → Output)
+   ------------------------------------------------------------- */
+.ws-stage {
+  margin: 0;
+}
+
+.ws-stage + .ws-stage {
+  margin-top: 56px;
+}
+
+.ws-stage-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  margin-bottom: 28px;
+  max-width: 760px;
+}
+
+/* Paper-tag style stage number — rotated, layered shadow, pulsing accent dot */
+.ws-stage-num {
+  position: relative;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: var(--r-md);
+  background: var(--c-surface);
+  background-image: var(--paper-grain-light);
+  background-repeat: repeat;
+  background-size: 280px 280px;
+  border: 1.5px solid rgba(34, 28, 20, 0.22);
+  box-shadow: var(--sh-paper);
+  transform: rotate(-3deg);
+  margin-top: 4px;
+}
+
+.ws-stage-num-text {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: 22px;
+  color: var(--c-ink-900);
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 0 rgba(255, 250, 240, 0.7);
+}
+
+.ws-stage-eyebrow {
+  display: inline-block;
+  font-family: var(--ff-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-ink-700);
+  background: var(--c-surface);
+  padding: 4px 10px;
+  border-radius: var(--r-sm);
+  border: 1px solid rgba(34, 28, 20, 0.18);
+  box-shadow: 0 1px 0 rgba(34, 28, 20, 0.10);
+  transform: rotate(-1.2deg);
+  margin-bottom: 12px;
+}
+
+.ws-stage-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent, var(--c-vermillion));
+  margin-right: 7px;
+  vertical-align: middle;
+  transform: translateY(-1px);
+}
+
+.ws-stage-title h3 {
+  font-family: var(--ff-display);
+  font-size: clamp(22px, 2.4vw, 28px);
+  font-weight: 800;
+  color: var(--c-ink-900);
+  margin: 0 0 8px;
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+  text-shadow: 0 1px 0 rgba(255, 250, 240, 0.5);
+}
+
+.ws-stage-title p {
+  font-family: var(--ff-body);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--c-ink-700);
+  margin: 0;
+  max-width: 620px;
+}
+
+/* ---------------- Stage 1: Source video ---------------- */
+.ws-video-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  padding: 8px 8px 12px;   /* breathing room for the tilt + shadows */
+}
+
+.ws-video {
+  position: relative;
+  background: var(--c-surface);
+  background-image: var(--paper-grain-light);
+  background-repeat: repeat;
+  background-size: 280px 280px;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  padding: 14px 14px 18px;       /* polaroid-style chunkier bottom */
+  box-shadow: var(--sh-paper-lifted);
+  transform: rotate(-0.7deg);
+}
+
+.ws-video-row > .ws-video:nth-child(2) {
+  transform: rotate(0.9deg);
+}
+
+/* Decorative tape strips pinning the polaroid */
+.ws-video::before,
+.ws-video::after {
+  content: "";
+  position: absolute;
+  top: -8px;
+  width: 46px;
+  height: 16px;
+  background: rgba(244, 181, 62, 0.55);
+  border: 1px solid rgba(217, 152, 42, 0.45);
+  box-shadow: 0 1px 0 rgba(34, 28, 20, 0.08);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.ws-video::before {
+  left: 16%;
+  transform: rotate(-8deg);
+}
+
+.ws-video::after {
+  right: 16%;
+  transform: rotate(7deg);
+}
+
+.ws-video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  background: #1a1308;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* When you swap the poster div for <iframe>, it inherits the frame size */
+.ws-video-frame iframe,
+.ws-video-frame video {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* The actual playing video fills the frame */
+.ws-video-el {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background:
+    radial-gradient(ellipse at center, color-mix(in srgb, var(--accent, #d8412a) 22%, transparent) 0%, transparent 62%),
+    linear-gradient(135deg, #2c2218 0%, #160f06 100%);
+}
+
+/* Caption overlaid at the bottom of the video, with a soft fade for legibility */
+.ws-video-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 14px;
+  background:
+    linear-gradient(180deg, transparent 70%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+.ws-video-caption {
+  align-self: center;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: rgba(247, 236, 211, 0.92);
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+
+/* ---------------- Stage 2: Tools grid ---------------- */
+.ws-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  padding: 8px 8px 14px;   /* breathing room for tilt + shadows */
+}
+
+.ws-tool {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--c-surface);
+  background-image: var(--paper-grain-light);
+  background-repeat: repeat;
+  background-size: 280px 280px;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-paper);
+  overflow: hidden;
+  transform: rotate(-0.6deg);
+}
+
+/* Alternating tilt across the row */
+.ws-tools-grid > .ws-tool:nth-child(2) { transform: rotate(0.8deg); }
+.ws-tools-grid > .ws-tool:nth-child(3) { transform: rotate(-0.4deg); }
+
+/* Accent rule along the top edge of every card */
+.ws-tool::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent, var(--c-vermillion));
+  z-index: 2;
+  opacity: 0.85;
+}
+
+.ws-tool-mock {
+  padding: 16px 14px 14px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--accent, #d8412a) 6%, transparent) 0%, transparent 100%),
+    rgba(34, 28, 20, 0.02);
+  border-bottom: 1px dashed rgba(34, 28, 20, 0.18);
+}
+
+.ws-tool-chrome {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0 0 13px;
+  border-bottom: 1px dashed rgba(34, 28, 20, 0.14);
+  margin-bottom: 13px;
+}
+
+.ws-tool-chrome-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+  background: var(--accent, var(--c-vermillion));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 0 rgba(34, 28, 20, 0.22), 0 3px 6px -2px rgba(34, 28, 20, 0.25);
+  transform: rotate(-4deg);
+}
+
+/* Brand-specific overrides preserved for character */
+.ws-tool-chrome-mark--claude    { background: #cc785c; }
+.ws-tool-chrome-mark--gpt       { background: #10a37f; }
+.ws-tool-chrome-mark--teachable { background: #467dd2; }
+
+.ws-tool-chrome-name {
+  font-family: var(--ff-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--c-ink-900);
+  letter-spacing: 0.01em;
+}
+
+/* Chat mock (Claude + ChatGPT) */
+.ws-tool-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 178px;
+}
+
+.ws-tool-bubble {
+  padding: 9px 12px;
+  border-radius: 10px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  max-width: 90%;
+}
+
+.ws-tool-bubble--user {
+  align-self: flex-end;
+  background: #fff;
+  color: var(--c-ink-800);
+  border: 1px solid var(--c-border);
+  border-bottom-right-radius: 3px;
+}
+
+.ws-tool-bubble--ai {
+  align-self: flex-start;
+  background: #fff;
+  color: var(--c-ink-800);
+  border: 1px solid var(--c-border);
+  border-bottom-left-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 94%;
+}
+
+.ws-tool-attach {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  margin-bottom: 6px;
+  border-radius: 6px;
+  background: rgba(34, 28, 20, 0.05);
+  border: 1px solid var(--c-border);
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--c-ink-700);
+  width: max-content;
+}
+
+.ws-tool-outline-row {
+  display: block;
+  font-size: 12.5px;
+  color: var(--c-ink-700);
+  padding: 2px 0;
+}
+
+.ws-tool-outline-row--active {
+  color: var(--c-vermillion);
+  font-weight: 600;
+}
+
+.ws-tool-typing {
+  display: inline-flex;
+  gap: 4px;
+  margin-top: 4px;
+  align-items: center;
+  height: 8px;
+}
+
+.ws-tool-typing span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--c-ink-400);
+  animation: ws-tool-typing 1.2s infinite ease-in-out;
+}
+
+.ws-tool-typing span:nth-child(2) { animation-delay: 0.15s; }
+.ws-tool-typing span:nth-child(3) { animation-delay: 0.30s; }
+
+@keyframes ws-tool-typing {
+  0%, 60%, 100% { transform: translateY(0);    opacity: 0.4; }
+  30%           { transform: translateY(-3px); opacity: 1;   }
+}
+
+.ws-tool-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.ws-tool-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 5px;
+  background: rgba(47, 143, 138, 0.10);
+  color: var(--c-teal-2);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid rgba(47, 143, 138, 0.25);
+}
+
+/* Teachable editor mock */
+.ws-tool-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 178px;
+}
+
+.ws-tool-editor-head {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--c-ink-600);
+  padding-bottom: 6px;
+  margin-bottom: 2px;
+}
+
+.ws-tool-mod {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: #fff;
+  border: 1px solid var(--c-border);
+  font-size: 12.5px;
+  color: var(--c-ink-800);
+}
+
+.ws-tool-mod--active {
+  background: rgba(70, 125, 210, 0.08);
+  border-color: rgba(70, 125, 210, 0.35);
+  box-shadow: 0 0 0 1px rgba(70, 125, 210, 0.15);
+}
+
+.ws-tool-mod-handle {
+  color: var(--c-ink-400);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  cursor: grab;
+}
+
+.ws-tool-mod-name {
+  flex: 1;
+  font-weight: 500;
+}
+
+.ws-tool-mod-count {
+  font-size: 11px;
+  color: var(--c-ink-600);
+  background: rgba(34, 28, 20, 0.06);
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.ws-tool-info {
+  padding: 16px 18px 18px;
+  position: relative;
+}
+
+.ws-tool-info h4 {
+  font-family: var(--ff-display);
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--c-ink-900);
+  margin: 0 0 6px;
+  letter-spacing: -0.005em;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ws-tool-info h4::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent, var(--c-vermillion));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent, #d8412a) 20%, transparent);
+}
+
+.ws-tool-info p {
+  font-family: var(--ff-body);
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--c-ink-700);
+  margin: 0;
 }
 
 
@@ -3866,6 +4392,9 @@ img, svg { display: block; max-width: 100%; }
 @media (max-width: 980px) {
   /* Course player: keep the sidebar+main layout, just shrink the whole thing */
   .tb-player { zoom: 0.78; }
+  /* Tool cards collapse to two columns at tablet width */
+  .ws-tools-grid { grid-template-columns: 1fr 1fr; }
+  .ws-tools-grid > .ws-tool:nth-child(3) { grid-column: 1 / -1; }
   .footer-inner { grid-template-columns: 1fr; }
   .footer-cols { grid-template-columns: repeat(2, 1fr); }
   /* Headline now wraps to 2 rows — dial back the hero background cards
@@ -3888,6 +4417,28 @@ img, svg { display: block; max-width: 100%; }
 
   /* Smaller work-sample heading on mobile */
   #morpheus-title { font-size: 28px; }
+  #morpheus-intro { font-size: 14px; margin-bottom: 32px; padding: 0 4px; }
+
+  /* Stage layout: tighter spacing + single-column tool stack */
+  .ws-stage-head { gap: 14px; margin-bottom: 22px; }
+  .ws-stage-num { width: 48px; height: 48px; }
+  .ws-stage-num-text { font-size: 18px; }
+  .ws-stage-eyebrow { font-size: 10px; padding: 3px 8px; }
+  .ws-stage-title h3 { font-size: 20px; }
+  .ws-stage-title p { font-size: 13.5px; }
+  .ws-tools-grid { grid-template-columns: 1fr; gap: 22px; padding: 4px; }
+  .ws-tools-grid > .ws-tool:nth-child(3) { grid-column: auto; }
+  /* Reduce tilt on mobile so single column feels intentional */
+  .ws-tool,
+  .ws-tools-grid > .ws-tool:nth-child(2),
+  .ws-tools-grid > .ws-tool:nth-child(3) { transform: rotate(-0.5deg); }
+  .ws-tools-grid > .ws-tool:nth-child(2n) { transform: rotate(0.6deg); }
+  .ws-stage + .ws-stage { margin-top: 40px; }
+  .ws-video-row { grid-template-columns: 1fr; gap: 18px; padding: 4px; }
+  .ws-video { padding: 10px 10px 14px; }
+  .ws-video::before, .ws-video::after { width: 38px; height: 14px; }
+  .ws-video-play { width: 52px; height: 52px; }
+  .ws-video-caption { font-size: 12.5px; padding: 0 12px; text-align: center; }
 
   .footer-cols { grid-template-columns: 1fr; gap: 24px; }
   .contact-checklist {
