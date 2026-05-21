@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
       title: 'Overview',
       layout: 'overview',
       body: [
-        'This course takes you from zero familiarity to confident use of the platform across all core workflows. It\'s structured so each lesson builds on the last — start to finish, no skipping required.'
+        'This course takes you from zero familiarity to confident use of the platform across all core workflows. It\'s structured so each lesson builds on the last, start to finish, no skipping required.'
       ],
       time: '~90 minutes',
       outcomes: [
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
       title: 'Introduction to the Platform',
       layout: 'written-hub',
       body: [
-        'Welcome to the Product Certification Program. This course takes you from zero familiarity to confident, certified use of the platform — at your own pace, with clear checkpoints along the way.',
+        'Welcome to the Product Certification Program. This course takes you from zero familiarity to confident, certified use of the platform, at your own pace, with clear checkpoints along the way.',
         'The platform is organized around four interconnected areas. Understanding how they relate to each other is the foundation for everything that follows.'
       ],
       diagramHeading: 'Platform at a glance',
@@ -49,13 +49,13 @@ document.addEventListener('DOMContentLoaded', function () {
       title: 'Key Concepts and Terminology',
       layout: 'written-glossary',
       body: [
-        'Before diving into features, it helps to understand the specific terms the platform uses. These aren\'t generic industry labels — they have precise meanings inside this system.'
+        'Before diving into features, it helps to understand the specific terms the platform uses. These aren\'t generic industry labels. They have precise meanings inside this system.'
       ],
       terms: [
         { term: 'Workspace',    def: 'Your organization\'s dedicated environment. All users, data, and settings live inside a single workspace.' },
         { term: 'Role',         def: 'A permission level assigned to a user. Roles control what a user can view, create, or modify.' },
         { term: 'Pipeline',     def: 'An automated sequence of actions triggered by a defined event or schedule.' },
-        { term: 'Record',       def: 'A single data entry — a customer, a task, a transaction. The core unit of information in the platform.' },
+        { term: 'Record',       def: 'A single data entry like a customer, a task, or a transaction. The core unit of information in the platform.' },
         { term: 'Integration',  def: 'A live connection to an external tool. Data flows both ways.' },
         { term: 'Report',       def: 'A saved view that filters and surfaces records according to criteria you define.' }
       ]
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
       title: 'Core Features Overview',
       layout: 'written-video-flow',
       body: [
-        'This lesson walks through the platform\'s core features — the tools your team will use every day. By the end, you\'ll be able to navigate confidently, understand the primary workflows, and know where to find what you need.'
+        'This lesson walks through the platform\'s core features, the tools your team will use every day. By the end, you\'ll be able to navigate confidently, understand the primary workflows, and know where to find what you need.'
       ],
       videoLabel: 'Watch: Core Features Overview',
       diagramHeading: 'How the workflow connects',
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
       title: 'Hands-On Walkthrough',
       layout: 'written-video',
       body: [
-        'This lesson is a guided walkthrough of the most common daily tasks. Follow along with the video — it covers creating a record, assigning ownership, attaching it to a pipeline, and pushing it to completion.',
+        'This lesson is a guided walkthrough of the most common daily tasks. Follow along with the video. It covers creating a record, assigning ownership, attaching it to a pipeline, and pushing it to completion.',
         'Use the steps below as a reference when you\'re working on your own. The full loop from intake to resolution takes under three minutes once you\'ve done it a few times.'
       ],
       videoLabel: 'Watch: Hands-On Walkthrough'
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
       title: 'Advanced Configuration',
       layout: 'written-decision',
       body: [
-        'Once you\'ve mastered the core workflow, the platform opens up a layer of configuration that lets you adapt it precisely to your team\'s process — without needing engineering support.',
+        'Once you\'ve mastered the core workflow, the platform opens up a layer of configuration that lets you adapt it precisely to your team\'s process, without needing engineering support.',
         'Every pipeline follows the same decision path. Define your trigger, determine whether a condition is needed, set the action, and activate.'
       ],
       diagramHeading: 'Pipeline configuration path',
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
       title: 'Integration Scenarios',
       layout: 'written-hub',
       body: [
-        'The platform connects to the tools your team already uses. Integrations are bidirectional — data flows in when something happens in an external system, and flows out when the platform takes an action.',
+        'The platform connects to the tools your team already uses. Integrations are bidirectional. Data flows in when something happens in an external system, and flows out when the platform takes an action.',
         'Each integration is configured once and runs automatically from that point forward. The most commonly connected systems are shown below.'
       ],
       diagramHeading: 'Connected systems',
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
       title: 'Practice Questions',
       layout: 'quiz',
       body: [
-        'These questions cover the core concepts from all three modules. Work through them to confirm what you\'ve learned — there\'s no score, no timer, and no pressure. Just a checkpoint to make sure everything landed.'
+        'These questions cover the core concepts from all three modules. Work through them to confirm what you\'ve learned. There\'s no score, no timer, and no pressure. Just a checkpoint to make sure everything landed.'
       ],
       questions: [
         {
@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', function () {
     renderLesson(index);
     var pct = Math.round((index / (navItems.length - 1)) * 100);
     progressFill.style.width = pct + '%';
-    progressLabel.textContent = 'Course Progress — ' + pct + '% Complete';
+    progressLabel.textContent = 'Course Progress · ' + pct + '% Complete';
     document.getElementById('mockup-content').scrollTop = 0;
   }
 
@@ -409,8 +409,8 @@ document.addEventListener('DOMContentLoaded', function () {
         { label: 'M1 +/−', desc: 'Motor 1 terminals (left side)' },
         { label: 'M2 +/−', desc: 'Motor 2 terminals (right side)' },
         { label: 'V+ / V−', desc: 'Battery power input' },
-        { label: 'RST',    desc: 'Reset button — press after wiring power' },
-        { label: 'STAT',   desc: 'Status LED — solid blue once the system is ready' }
+        { label: 'RST',    desc: 'Reset button. Press after wiring power' },
+        { label: 'STAT',   desc: 'Status LED. Solid blue once the system is ready' }
       ]
     },
     {
@@ -463,7 +463,7 @@ document.addEventListener('DOMContentLoaded', function () {
       module: 3,
       title: 'Controls quick reference',
       done: false,
-      fileName: 'Morpheus Drive — Controls Reference.pdf',
+      fileName: 'Morpheus Drive Controls Reference.pdf',
       fileSub: 'PDF · 4 pages · 312 KB',
       overview: 'Print or save this reference card for quick lookup of every gesture and control used during scanning and driving.',
       contains: [
