@@ -844,29 +844,17 @@ img, svg { display: block; max-width: 100%; }
   line-height: 1.06;
   color: var(--c-ink-900);
   text-align: center;
-  margin: 0 auto 88px;
+  margin: 0 auto 14px;
   text-shadow: 0 2px 0 rgba(34, 28, 20, 0.08), 0 6px 14px rgba(34, 28, 20, 0.12);
-}
-
-#morpheus-intro {
-  font-family: var(--ff-body);
-  font-size: clamp(15px, 1.4vw, 17px);
-  line-height: 1.6;
-  color: var(--c-ink-800);
-  text-align: center;
-  max-width: 620px;
-  margin: 0 auto 88px;
-  text-wrap: balance;
-  text-shadow: 0 1px 0 rgba(255, 250, 240, 0.4);
 }
 
 #morpheus-caption {
   font-family: var(--ff-body);
-  font-size: 15px;
+  font-size: clamp(14px, 1.2vw, 16px);
   font-weight: 500;
-  color: var(--c-ink-900);
+  color: var(--c-ink-700);
   text-align: center;
-  margin: 32px 0 0;
+  margin: 0 auto 88px;
   text-shadow: 0 1px 0 rgba(255, 250, 240, 0.4);
 }
 
@@ -1777,7 +1765,11 @@ img, svg { display: block; max-width: 100%; }
   aspect-ratio: 16 / 9;
   max-width: 540px;
   width: 100%;
-  background: #1f1f1f;
+  background-color: #1f1f1f;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 24px 24px;
   border-radius: 8px;
   overflow: hidden;
   display: flex;
@@ -4436,7 +4428,8 @@ img, svg { display: block; max-width: 100%; }
   .hero-subheadline-lead { display: none; }
 
   /* Smaller work-sample heading on mobile */
-  #morpheus-title { font-size: 28px; margin-bottom: 56px; }
+  #morpheus-title { font-size: 28px; margin-bottom: 10px; }
+  #morpheus-caption { font-size: 13px; margin-bottom: 56px; padding: 0 4px; }
 
   /* Stage layout: tighter spacing + single-column tool stack */
   .ws-stage-head { gap: 14px; margin-bottom: 22px; }
