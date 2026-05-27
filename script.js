@@ -1217,3 +1217,29 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// ─── Process pipeline reveal: assemble outputs when section enters viewport
+// Adds `.is-in` to .pipeline once it's visible, which lets the CSS run the
+// staggered output-tile assembly animation. Inputs/routes/nodes already animate
+// perpetually; this just triggers the one-time "papers settling" effect on the
+// right side as the user scrolls into view.
+document.addEventListener('DOMContentLoaded', function () {
+  var pipeline = document.querySelector('#process .pipeline');
+  if (!pipeline) return;
+
+  if (!('IntersectionObserver' in window)) {
+    pipeline.classList.add('is-in');
+    return;
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        pipeline.classList.add('is-in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  io.observe(pipeline);
+});
+
