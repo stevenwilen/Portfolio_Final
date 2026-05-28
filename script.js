@@ -375,7 +375,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// ─── Teachable course player (Morpheus Drive sample) ──────────
+// ─── Course player mockup ─────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function () {
 
   var player = document.querySelector('.tb-player');
@@ -402,92 +402,92 @@ document.addEventListener('DOMContentLoaded', function () {
     {
       type: 'diagram',
       module: 1,
-      title: 'Board layout & terminals',
+      title: '[Lesson 1 title]',
       done: false,
-      overview: 'Before wiring up the Morpheus Drive, get familiar with where each terminal lives on the board. The diagram below labels every connection point referenced in the next video.',
+      overview: '[Lesson 1 overview]',
       legend: [
-        { label: 'M1 +/−', desc: 'Motor 1 terminals (left side)' },
-        { label: 'M2 +/−', desc: 'Motor 2 terminals (right side)' },
-        { label: 'V+ / V−', desc: 'Battery power input' },
-        { label: 'RST',    desc: 'Reset button. Press after wiring power' },
-        { label: 'STAT',   desc: 'Status LED. Solid blue once the system is ready' }
+        { label: '[Legend label 1]', desc: '[Legend description 1]' },
+        { label: '[Legend label 2]', desc: '[Legend description 2]' },
+        { label: '[Legend label 3]', desc: '[Legend description 3]' },
+        { label: '[Legend label 4]', desc: '[Legend description 4]' },
+        { label: '[Legend label 5]', desc: '[Legend description 5]' }
       ]
     },
     {
       type: 'video',
       module: 1,
-      title: 'Connecting motors and the battery',
+      title: '[Lesson 2 title]',
       done: false,
-      duration: '3:08',
+      duration: '0:00',
       frame: 'images/video-1.jpg',
-      overview: 'This walkthrough shows how to connect two motors and a battery to the Morpheus Drive. Follow along with the video to complete the setup.',
+      overview: '[Lesson 2 overview]',
       notes: [
-        'Each motor connects to one pair of terminals labeled M+ and M−',
-        'Make sure all wires are secured tightly before powering the system',
-        'Press the reset button after connecting power',
-        'A blinking blue light indicates the system is ready',
-        'If a motor spins in the wrong direction, swap the wires',
-        'Optional: add a switch to the red power wire for easy on/off control'
+        '[Lesson 2 note 1]',
+        '[Lesson 2 note 2]',
+        '[Lesson 2 note 3]',
+        '[Lesson 2 note 4]',
+        '[Lesson 2 note 5]',
+        '[Lesson 2 note 6]'
       ]
     },
     {
       type: 'annotated',
       module: 2,
-      title: 'CoreOS app at a glance',
+      title: '[Lesson 3 title]',
       done: false,
       image: 'images/annotated-img.jpg',
-      overview: 'Before the next video walks through pairing, take a quick look at the CoreOS app. The labels on the screenshot point out the parts of the home screen you\'ll use in every session.',
+      overview: '[Lesson 3 overview]',
       notes: [
-        'You can return to this lesson any time you forget where a control lives.',
-        'The screen looks the same on phone and tablet, just larger on tablets.',
-        'Everything you see here is covered in detail in the videos that follow.'
+        '[Lesson 3 note 1]',
+        '[Lesson 3 note 2]',
+        '[Lesson 3 note 3]'
       ]
     },
     {
       type: 'video',
       module: 2,
-      title: 'Install & connect via Bluetooth',
+      title: '[Lesson 4 title]',
       done: false,
-      duration: '3:42',
+      duration: '0:00',
       frame: 'images/video-2.jpg',
-      overview: 'This walkthrough shows how to install the CoreOS app and connect it to the Morpheus Drive using Bluetooth. Follow along with the video to complete the setup.',
+      overview: '[Lesson 4 overview]',
       notes: [
-        'CoreOS is available on the Android Play Store',
-        'Make sure Bluetooth is enabled before connecting',
-        'Stay close to the Morpheus Drive during connection',
-        'If the device does not appear, confirm the board is powered on'
+        '[Lesson 4 note 1]',
+        '[Lesson 4 note 2]',
+        '[Lesson 4 note 3]',
+        '[Lesson 4 note 4]'
       ]
     },
     {
       type: 'pdf',
       module: 3,
-      title: 'Controls quick reference',
+      title: '[Lesson 5 title]',
       done: false,
-      fileName: 'Morpheus Drive Controls Reference.pdf',
-      fileSub: 'PDF · 4 pages · 312 KB',
-      overview: 'Print or save this reference card for quick lookup of every gesture and control used during scanning and driving.',
+      fileName: '[File name].pdf',
+      fileSub: 'PDF · [pages] · [size]',
+      overview: '[Lesson 5 overview]',
       contains: [
-        'Anchor placement gestures',
-        'Scan completion checks',
-        'Paint mode controls',
-        'Manual driving inputs',
-        'Saved route playback shortcuts'
+        '[Lesson 5 item 1]',
+        '[Lesson 5 item 2]',
+        '[Lesson 5 item 3]',
+        '[Lesson 5 item 4]',
+        '[Lesson 5 item 5]'
       ]
     },
     {
       type: 'video',
       module: 3,
-      title: 'Scanning and manual control',
+      title: '[Lesson 6 title]',
       done: false,
-      duration: '4:12',
+      duration: '0:00',
       frame: 'images/video-3.jpg',
-      overview: 'This walkthrough shows how to scan your environment and control movement using the CoreOS app. Follow along with the video to complete the setup.',
+      overview: '[Lesson 6 overview]',
       notes: [
-        'Place an anchor to begin scanning',
-        'Move your phone around until the scan completes',
-        'Paint the areas where the robot can move',
-        'Leave space near edges to avoid collisions',
-        'Use the controls to move the robot'
+        '[Lesson 6 note 1]',
+        '[Lesson 6 note 2]',
+        '[Lesson 6 note 3]',
+        '[Lesson 6 note 4]',
+        '[Lesson 6 note 5]'
       ]
     }
   ];
@@ -530,32 +530,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function diagramMedia() {
     return '<div class="tb-diagram">' +
-      '<svg class="tb-diagram-svg" viewBox="0 0 600 340" role="img" aria-label="Morpheus Drive board layout">' +
+      '<svg class="tb-diagram-svg" viewBox="0 0 600 340" role="img" aria-label="[Diagram label]">' +
         '<rect x="40" y="30" width="520" height="280" rx="14" fill="#2e2e2e" stroke="#4a4a4a" stroke-width="2"/>' +
-        '<text x="60" y="62" fill="#9a9a9a" font-family="ui-monospace,monospace" font-size="12" font-weight="600" letter-spacing="2">MORPHEUS DRIVE</text>' +
+        '<text x="60" y="62" fill="#9a9a9a" font-family="ui-monospace,monospace" font-size="12" font-weight="600" letter-spacing="2">[DIAGRAM TITLE]</text>' +
         '<circle cx="510" cy="55" r="7" fill="#3b82f6"/>' +
         '<circle cx="510" cy="55" r="11" fill="none" stroke="#3b82f6" stroke-opacity="0.35" stroke-width="2"/>' +
-        '<text x="494" y="80" fill="#9a9a9a" font-size="10" text-anchor="end">STAT</text>' +
+        '<text x="494" y="80" fill="#9a9a9a" font-size="10" text-anchor="end">[L1]</text>' +
         '<rect x="450" y="98" width="60" height="30" rx="6" fill="#4a4a4a" stroke="#5a5a5a" stroke-width="1"/>' +
-        '<text x="480" y="118" fill="#cccccc" font-size="10" font-weight="600" text-anchor="middle">RST</text>' +
+        '<text x="480" y="118" fill="#cccccc" font-size="10" font-weight="600" text-anchor="middle">[L2]</text>' +
         '<path d="M110 152 L110 178" stroke="#5a5a5a" stroke-width="1" opacity="0.5"/>' +
         '<path d="M230 152 L230 178" stroke="#5a5a5a" stroke-width="1" opacity="0.5"/>' +
         '<path d="M350 152 L350 178" stroke="#5a5a5a" stroke-width="1" opacity="0.5"/>' +
-        '<text x="110" y="180" fill="#9a9a9a" font-size="10" text-anchor="middle">Motor 1</text>' +
-        '<text x="230" y="180" fill="#9a9a9a" font-size="10" text-anchor="middle">Motor 2</text>' +
-        '<text x="350" y="180" fill="#9a9a9a" font-size="10" text-anchor="middle">Battery</text>' +
+        '<text x="110" y="180" fill="#9a9a9a" font-size="10" text-anchor="middle">[Group 1]</text>' +
+        '<text x="230" y="180" fill="#9a9a9a" font-size="10" text-anchor="middle">[Group 2]</text>' +
+        '<text x="350" y="180" fill="#9a9a9a" font-size="10" text-anchor="middle">[Group 3]</text>' +
         '<rect x="80"  y="200" width="60" height="30" rx="4" fill="#4a4a4a" stroke="#5a5a5a" stroke-width="1"/>' +
-        '<text x="110" y="220" fill="#34d399" font-size="11" font-weight="700" text-anchor="middle">M1+</text>' +
+        '<text x="110" y="220" fill="#34d399" font-size="11" font-weight="700" text-anchor="middle">[1A]</text>' +
         '<rect x="80"  y="240" width="60" height="30" rx="4" fill="#4a4a4a" stroke="#5a5a5a" stroke-width="1"/>' +
-        '<text x="110" y="260" fill="#f87171" font-size="11" font-weight="700" text-anchor="middle">M1−</text>' +
+        '<text x="110" y="260" fill="#f87171" font-size="11" font-weight="700" text-anchor="middle">[1B]</text>' +
         '<rect x="200" y="200" width="60" height="30" rx="4" fill="#4a4a4a" stroke="#5a5a5a" stroke-width="1"/>' +
-        '<text x="230" y="220" fill="#34d399" font-size="11" font-weight="700" text-anchor="middle">M2+</text>' +
+        '<text x="230" y="220" fill="#34d399" font-size="11" font-weight="700" text-anchor="middle">[2A]</text>' +
         '<rect x="200" y="240" width="60" height="30" rx="4" fill="#4a4a4a" stroke="#5a5a5a" stroke-width="1"/>' +
-        '<text x="230" y="260" fill="#f87171" font-size="11" font-weight="700" text-anchor="middle">M2−</text>' +
+        '<text x="230" y="260" fill="#f87171" font-size="11" font-weight="700" text-anchor="middle">[2B]</text>' +
         '<rect x="320" y="200" width="60" height="30" rx="4" fill="#4a4a4a" stroke="#5a5a5a" stroke-width="1"/>' +
-        '<text x="350" y="220" fill="#34d399" font-size="11" font-weight="700" text-anchor="middle">V+</text>' +
+        '<text x="350" y="220" fill="#34d399" font-size="11" font-weight="700" text-anchor="middle">[3A]</text>' +
         '<rect x="320" y="240" width="60" height="30" rx="4" fill="#4a4a4a" stroke="#5a5a5a" stroke-width="1"/>' +
-        '<text x="350" y="260" fill="#f87171" font-size="11" font-weight="700" text-anchor="middle">V−</text>' +
+        '<text x="350" y="260" fill="#f87171" font-size="11" font-weight="700" text-anchor="middle">[3B]</text>' +
       '</svg>' +
     '</div>';
   }
@@ -1090,11 +1090,11 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// ─── Hero floats: idle bob + scroll parallax + mouse parallax ─
+// ─── Hero floats: settle-in → multi-axis desk drift + scroll parallax ─
+// Cards are background/ambient — no hover or mouse-responsive behavior. Pure passive motion.
 document.addEventListener('DOMContentLoaded', function () {
   var prefersReduced =
     window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReduced) return;
 
   var hero = document.getElementById('hero');
   if (!hero) return;
@@ -1102,42 +1102,137 @@ document.addEventListener('DOMContentLoaded', function () {
   var parallaxEls = hero.querySelectorAll('[data-parallax]');
   if (!parallaxEls.length) return;
 
-  // Per-element config + state
-  var els = Array.prototype.map.call(parallaxEls, function (el) {
+  // Per-card config + state. Drift periods/amps and settle params are spread per index
+  // so no two cards share a rhythm — that's what makes the orbit feel calm, not synchronized.
+  var els = Array.prototype.map.call(parallaxEls, function (el, i) {
     var phaseStyle = getComputedStyle(el).getPropertyValue('--phase').trim();
     var phaseMs = parseFloat(phaseStyle) * (phaseStyle.indexOf('ms') !== -1 ? 1 : 1000);
     if (isNaN(phaseMs)) phaseMs = 0;
     var rotStyle = getComputedStyle(el).getPropertyValue('--rot').trim();
-    var rotDeg = parseFloat(rotStyle);
-    if (isNaN(rotDeg)) rotDeg = 0;
+    var restRot = parseFloat(rotStyle);
+    if (isNaN(restRot)) restRot = 0;
+
+    // Capture the per-card target opacity (set in CSS) so the settle fade-in lands on it
+    var targetOpacity = parseFloat(getComputedStyle(el).opacity) || 1;
+
+    // Stagger initial offset side based on which corner the card lives in (left vs right)
+    var rect = el.getBoundingClientRect();
+    var heroRect = hero.getBoundingClientRect();
+    var fromLeft = (rect.left + rect.width / 2) < (heroRect.left + heroRect.width / 2);
+    var offsetSign = fromLeft ? -1 : 1;
+
     return {
       el: el,
       pScroll: parseFloat(el.getAttribute('data-parallax')) || 0.2,
-      pMouse: parseFloat(el.getAttribute('data-mouse') || '0'),
       phase: phaseMs,
-      rot: rotDeg
+      restRot: restRot,
+      // Drift: x:4-10px, y:3-8px, rot:0.5-1.5deg, period 8-14s — spread per index
+      xPeriod: 9000 + (i * 1300),                // 9.0 - 15.5s
+      yPeriod: 11000 + (i * 950),                // 11.0 - 15.7s
+      rotPeriod: 13000 + (i * 1700),             // 13.0 - 21.5s
+      xAmp: 5 + (i % 3) * 1.6,                   // 5.0 - 8.2px
+      yAmp: 4 + (i % 3) * 1.3,                   // 4.0 - 6.6px
+      rotAmp: 0.6 + (i % 3) * 0.4,               // 0.6 - 1.4deg
+      // Settle: 900-1400ms with 80-140ms stagger
+      settleDelay: i * 110,                       // 0, 110, 220, 330, 440ms
+      settleDuration: 1100 + (i % 3) * 80,        // 1100 - 1260ms
+      initialOffsetX: offsetSign * (14 + i * 2),  // cards arrive from off-center
+      initialOffsetY: -14,
+      initialRotDelta: (restRot >= 0 ? 1 : -1) * 5,
+      targetOpacity: targetOpacity,
+      settled: false
     };
   });
 
-  var mx = 0, my = 0;
-  var cmx = 0, cmy = 0;
+  // Under reduced motion: set static final state and exit. No RAF, no drift, no parallax.
+  if (prefersReduced) {
+    els.forEach(function (item) {
+      item.el.style.setProperty('--tx', '0px');
+      item.el.style.setProperty('--ty', '0px');
+      item.el.style.setProperty('--total-rot', item.restRot + 'deg');
+    });
+    return;
+  }
+
+  // Pre-settle initial state — offset and faded out, ready for the settle-in
+  els.forEach(function (item) {
+    item.el.style.opacity = '0';
+    item.el.style.setProperty('--tx', item.initialOffsetX + 'px');
+    item.el.style.setProperty('--ty', item.initialOffsetY + 'px');
+    item.el.style.setProperty('--total-rot', (item.restRot + item.initialRotDelta) + 'deg');
+  });
+
+  // Eased deceleration with ~10% overshoot — the "tiny overshoot" on settle
+  function easeOutBack(t) {
+    var s = 1.10;
+    var t1 = t - 1;
+    return 1 + (s + 1) * t1 * t1 * t1 + s * t1 * t1;
+  }
+  function easeOutCubic(t) {
+    var t1 = 1 - t;
+    return 1 - t1 * t1 * t1;
+  }
+
   var scrollOffset = 0;
   var heroInView = true;
   var rafId = null;
+  var startTime = null;
 
   function tick(ts) {
-    cmx += (mx - cmx) * 0.08;
-    cmy += (my - cmy) * 0.08;
+    if (startTime === null) startTime = ts;
+    var elapsed = ts - startTime;
 
     for (var i = 0; i < els.length; i++) {
       var item = els[i];
-      // Idle sinusoidal bob (period 6500ms, amplitude 10px)
-      var bob = Math.sin((ts + item.phase) / 6500 * Math.PI * 2) * 10;
-      var ty = scrollOffset * item.pScroll + bob + (cmy * item.pMouse);
-      var tx = cmx * item.pMouse;
-      item.el.style.transform =
-        'translate3d(' + tx.toFixed(2) + 'px, ' + ty.toFixed(2) + 'px, 0)' +
-        (item.rot !== 0 ? ' rotate(' + item.rot + 'deg)' : '');
+
+      // ── Settle contribution (eases to 0 once the card has landed) ──
+      var localT = (elapsed - item.settleDelay) / item.settleDuration;
+      var settleTx = 0, settleTy = 0, settleRotDelta = 0;
+      var settleAlpha;
+
+      if (localT < 0) {
+        // Card hasn't started moving yet — hold the offset
+        settleTx = item.initialOffsetX;
+        settleTy = item.initialOffsetY;
+        settleRotDelta = item.initialRotDelta;
+        settleAlpha = 0;
+      } else if (localT < 1) {
+        // In flight: eased deceleration with overshoot
+        var posEase = easeOutBack(localT);
+        settleTx = item.initialOffsetX * (1 - posEase);
+        settleTy = item.initialOffsetY * (1 - posEase);
+        settleRotDelta = item.initialRotDelta * (1 - posEase);
+        // Opacity reaches 1 faster than position, so the fade-in finishes while the
+        // overshoot is still resolving — feels like the card lands "in place"
+        settleAlpha = easeOutCubic(Math.min(localT * 1.5, 1));
+      } else {
+        settleAlpha = 1;
+        if (!item.settled) {
+          item.settled = true;
+          // Hand opacity back to the CSS per-card rule (0.78 raw / 0.90 output)
+          item.el.style.opacity = '';
+        }
+      }
+
+      // ── Desk drift: independent x/y/rotation oscillators ──
+      var driftX = Math.sin((elapsed + item.phase) / item.xPeriod * Math.PI * 2) * item.xAmp;
+      var driftY = Math.cos((elapsed + item.phase) / item.yPeriod * Math.PI * 2) * item.yAmp;
+      var driftRotDelta = Math.sin((elapsed + item.phase) / item.rotPeriod * Math.PI * 2) * item.rotAmp;
+
+      // ── Scroll parallax ──
+      var scrollTy = scrollOffset * item.pScroll;
+
+      var totalTx = settleTx + driftX;
+      var totalTy = settleTy + driftY + scrollTy;
+      var totalRot = item.restRot + settleRotDelta + driftRotDelta;
+
+      item.el.style.setProperty('--tx', totalTx.toFixed(2) + 'px');
+      item.el.style.setProperty('--ty', totalTy.toFixed(2) + 'px');
+      item.el.style.setProperty('--total-rot', totalRot.toFixed(3) + 'deg');
+
+      if (!item.settled) {
+        item.el.style.opacity = (settleAlpha * item.targetOpacity).toFixed(3);
+      }
     }
 
     if (heroInView) {
@@ -1151,19 +1246,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (rafId === null) rafId = requestAnimationFrame(tick);
   }
 
-  hero.addEventListener('mousemove', function (e) {
-    var rect = hero.getBoundingClientRect();
-    mx = ((e.clientX - rect.left) / rect.width) - 0.5;
-    my = ((e.clientY - rect.top) / rect.height) - 0.5;
-    start();
-  }, { passive: true });
-
-  hero.addEventListener('mouseleave', function () {
-    mx = 0; my = 0;
-    start();
-  });
-
-  // Pause when hero leaves viewport
+  // Pause RAF when hero leaves viewport — saves cycles when user scrolls down
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -1174,7 +1257,6 @@ document.addEventListener('DOMContentLoaded', function () {
     io.observe(hero);
   }
 
-  // Scroll parallax
   var ticking = false;
   function onScroll() {
     if (ticking || !heroInView) return;
@@ -1193,28 +1275,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
-
-// ─── About widget: tap-to-close (anywhere but Email me) + Escape ──
-document.addEventListener('DOMContentLoaded', function () {
-  var widget = document.getElementById('about-widget');
-  if (!widget) return;
-
-  document.addEventListener('click', function (e) {
-    if (!widget.open) return;
-    // The summary toggles the details natively — don't interfere.
-    var trigger = widget.querySelector('summary');
-    if (trigger && trigger.contains(e.target)) return;
-    // Tapping the email button shouldn't close the widget mid-action.
-    var email = widget.querySelector('.about-widget-email');
-    if (email && email.contains(e.target)) return;
-    widget.open = false;
-  });
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && widget.open) widget.open = false;
-  });
-});
 
 
 // ─── Process pipeline reveal: assemble outputs when section enters viewport
@@ -1241,5 +1301,48 @@ document.addEventListener('DOMContentLoaded', function () {
   }, { threshold: 0.2 });
 
   io.observe(pipeline);
+});
+
+
+// ─── Find-the-guide: extraction reveal + mess-to-guide hover sync ──
+// On scroll-in, adds .is-extracting which lets CSS draw the red thread,
+// pop the annotation marks, and pulse the highlighted line fragments.
+// Hover/focus on a messy item highlights the matching guide section.
+document.addEventListener('DOMContentLoaded', function () {
+  var ftg = document.getElementById('find-the-guide');
+  if (!ftg) return;
+
+  // ── Extraction reveal trigger ────────────────────────────────
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          ftg.classList.add('is-extracting');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.25 });
+    io.observe(ftg);
+  } else {
+    ftg.classList.add('is-extracting');
+  }
+
+  // ── Hover / focus sync: messy item → guide section ───────────
+  var items = ftg.querySelectorAll('.ftg-item[data-target]');
+  items.forEach(function (item) {
+    var target = item.getAttribute('data-target');
+    var match = ftg.querySelector('.ftg-guide-section[data-section="' + target + '"]');
+    if (!match) return;
+
+    function setActive(on) {
+      match.classList.toggle('is-highlighted', on);
+      item.classList.toggle('is-active', on);
+    }
+
+    item.addEventListener('mouseenter', function () { setActive(true); });
+    item.addEventListener('mouseleave', function () { setActive(false); });
+    item.addEventListener('focusin',    function () { setActive(true); });
+    item.addEventListener('focusout',   function () { setActive(false); });
+  });
 });
 
