@@ -34,19 +34,23 @@
 
         <div id="hero-intro">
 
-          <h1 id="hero-headline" data-reveal><span class="hero-headline-desktop">Turn a repeated explanation<br>into a <span class="hero-headline-accent">reusable</span> guide.</span><span class="hero-headline-mobile">One repeated explanation.<br>One <span class="hero-headline-accent">reusable</span> guide.</span></h1>
-          <p id="hero-subheadline" data-reveal data-reveal-delay="1">Send me the call, video, notes, screenshots, or old docs. I'll turn them into a polished digital guide your team or customers can use.</p>
+          <h1 id="hero-headline" data-reveal><span class="hero-headline-desktop">Turn your process, product, or workflow<br>into a <span class="hero-headline-accent">guide</span> people can actually use.</span><span class="hero-headline-mobile">A clear <span class="hero-headline-accent">guide</span><br>for things that are hard to explain.</span></h1>
+          <p id="hero-subheadline" data-reveal data-reveal-delay="1">I make clear walkthroughs, reference guides, tutorials, and training materials for things that are easier to show than explain.</p>
 
           <div class="hero-cta-row" data-reveal data-reveal-delay="2">
             <a class="hero-cta" href="#contact">
-              <span>Start a custom guide</span>
+              <span>Show me what you need explained</span>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
-            <span class="hero-cta-meta">Built from material you already have</span>
+            <a class="hero-cta hero-cta--secondary" href="#project">
+              <span>See a real example</span>
+            </a>
           </div>
         </div>
 
-        <!-- Floating preview chips -->
+        <!-- Floating preview chips: source-side (left/lower) and output-side (right/upper) -->
+
+        <!-- Source: Call recording (left-lower) -->
         <div class="hero-float hero-float--card1" aria-hidden="true" data-parallax="0.18">
           <div class="hero-fc-row">
             <span class="hero-fc-dot"></span>
@@ -57,6 +61,7 @@
           </div>
         </div>
 
+        <!-- Output: Checklist + reference sheet (right-middle) -->
         <div class="hero-float hero-float--card2" aria-hidden="true" data-parallax="0.28">
           <div class="hero-fc-stack">
             <div class="hero-fc-mini">
@@ -72,7 +77,23 @@
           </div>
         </div>
 
-        <!-- Document preview -->
+        <!-- Output: Reference guide thumbnail (mid-right, new output-side card) -->
+        <div class="hero-float hero-float--card3" aria-hidden="true" data-parallax="0.20">
+          <div class="hero-fc-doc-head">
+            <span class="hero-fc-doc-title">Reference guide</span>
+            <span class="hero-fc-doc-badge" aria-hidden="true">
+              <svg viewBox="0 0 12 12" width="9" height="9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 6.5 5 9 9.5 3.5"/></svg>
+            </span>
+          </div>
+          <div class="hero-fc-doc-rows">
+            <span class="hero-fc-doc-bar" style="width: 96%;"></span>
+            <span class="hero-fc-doc-bar" style="width: 78%;"></span>
+            <span class="hero-fc-doc-bar" style="width: 88%;"></span>
+            <span class="hero-fc-doc-bar" style="width: 64%;"></span>
+          </div>
+        </div>
+
+        <!-- Output: Quick-start guide (top-right) -->
         <div class="hero-float hero-float--card4" aria-hidden="true" data-parallax="0.15">
           <div class="hero-fc-doc-head">
             <span class="hero-fc-doc-title">Quick-start guide</span>
@@ -89,7 +110,7 @@
           </div>
         </div>
 
-        <!-- Slack thread snippet -->
+        <!-- Source: Slack/notes thread (top-left) -->
         <div class="hero-float hero-float--card5" aria-hidden="true" data-parallax="0.25">
           <div class="hero-fc-chat">
             <div class="hero-fc-chat-row">
@@ -113,7 +134,7 @@
           <div class="hero-fc-chat-channel">Project thread</div>
         </div>
 
-        <!-- Mini video tile -->
+        <!-- Source: Raw walkthrough video (bottom-left) -->
         <div class="hero-float hero-float--card6" aria-hidden="true" data-parallax="0.18">
           <div class="hero-fc-row">
             <span class="hero-fc-dot"></span>
@@ -128,633 +149,65 @@
 
 
       <!-- ============================================================
-           SECTION: FIND THE GUIDE — desk composition (mess → thread → guide)
+           SECTION 2: SHORT EXPLANATION
       ============================================================ -->
-      <section id="find-the-guide" aria-labelledby="ftg-heading">
-
-        <div class="ftg-bg" aria-hidden="true"></div>
-
-        <div class="ftg-head">
-          <span class="ftg-eyebrow" data-reveal="left">
-            <span class="ftg-eyebrow-dot"></span>Find the guide
+      <section id="explanation" aria-labelledby="explanation-heading">
+        <div class="exp-inner">
+          <span class="section-eyebrow" data-reveal="left">
+            <span class="section-eyebrow-dot"></span><span>The need</span>
           </span>
-          <h2 id="ftg-heading" data-reveal data-reveal-delay="1">
-            The guide usually already exists.<br class="ftg-h-break">It's just buried in the explanation.
+          <h2 id="explanation-heading" data-reveal data-reveal-delay="1">
+            If people keep needing something explained, it probably needs a guide.
           </h2>
-          <p class="ftg-subtext" data-reveal data-reveal-delay="2">
-            Most businesses already have the raw material: calls, walkthroughs, notes, screenshots, old docs, and repeated questions. I pull out one explanation and turn it into something reusable.
+          <p class="exp-body" data-reveal data-reveal-delay="2">
+            Maybe it's a product, an app, a workflow, a role, or a process. Maybe you already have videos and notes. Maybe it only exists in someone's head. I help gather the information, organize it, and turn it into something people can follow without needing the same explanation repeated again.
           </p>
         </div>
-
-        <div class="ftg-desk" data-reveal>
-
-          <!-- LEFT: messy source material cluster -->
-          <div class="ftg-mess" aria-label="Raw source material">
-
-            <article class="ftg-item ftg-item--note" style="--top: 4%; --left: 4%; --rot: 4deg;">
-              <span class="ftg-note-tape" aria-hidden="true"></span>
-              <div class="ftg-note-body">
-                <span class="ftg-line ftg-line--hand w85"></span>
-                <span class="ftg-line ftg-line--hand w65 ftg-line--marked"></span>
-                <span class="ftg-line ftg-line--hand w75"></span>
-                <span class="ftg-line ftg-line--hand w55"></span>
-              </div>
-              <span class="ftg-item-tag-bottom">Owner notes</span>
-            </article>
-
-            <article class="ftg-item ftg-item--call" data-target="overview" tabindex="0" style="--top: 0%; --left: 38%; --rot: -3deg;">
-              <header class="ftg-item-head">
-                <span class="ftg-rec-dot" aria-hidden="true"></span>
-                <span class="ftg-item-name">Call recording</span>
-                <span class="ftg-item-time">24:18</span>
-              </header>
-              <div class="ftg-item-body">
-                <span class="ftg-wave">
-                  <span style="height:30%"></span><span style="height:70%"></span>
-                  <span style="height:45%"></span><span style="height:90%"></span>
-                  <span style="height:55%"></span><span style="height:80%"></span>
-                  <span style="height:40%"></span><span style="height:65%"></span>
-                  <span style="height:55%"></span><span style="height:75%"></span>
-                  <span style="height:35%"></span><span style="height:60%"></span>
-                </span>
-                <span class="ftg-mark ftg-mark--underline" aria-hidden="true"></span>
-              </div>
-            </article>
-
-            <article class="ftg-item ftg-item--walkthrough" data-target="steps" tabindex="0" style="--top: 26%; --left: 10%; --rot: 2deg;">
-              <div class="ftg-video">
-                <span class="ftg-play" aria-hidden="true">
-                  <svg viewBox="0 0 12 12" width="14" height="14" fill="currentColor"><path d="M4 3v6l5-3z"/></svg>
-                </span>
-                <span class="ftg-mark ftg-mark--box" aria-hidden="true"></span>
-              </div>
-              <div class="ftg-item-foot">
-                <span class="ftg-item-name">Raw walkthrough</span>
-                <span class="ftg-item-time">14:22</span>
-              </div>
-            </article>
-
-            <article class="ftg-item ftg-item--doc" data-target="checklist" tabindex="0" style="--top: 44%; --left: 40%; --rot: -2deg;">
-              <span class="ftg-doc-curl" aria-hidden="true"></span>
-              <header class="ftg-item-head">
-                <span class="ftg-item-tag">.pdf</span>
-                <span class="ftg-item-name">Old setup doc</span>
-              </header>
-              <div class="ftg-item-body">
-                <span class="ftg-line w90"></span>
-                <span class="ftg-line w70 ftg-line--marked"></span>
-                <span class="ftg-line w80"></span>
-                <span class="ftg-line w60"></span>
-              </div>
-            </article>
-
-            <article class="ftg-item ftg-item--screenshot" data-target="reference" tabindex="0" style="--top: 62%; --left: 6%; --rot: 5deg;">
-              <header class="ftg-item-head ftg-item-head--chrome">
-                <span class="ftg-chrome-dot"></span>
-                <span class="ftg-chrome-dot"></span>
-                <span class="ftg-chrome-dot"></span>
-              </header>
-              <div class="ftg-shot-body">
-                <span class="ftg-line w95"></span>
-                <span class="ftg-line w65"></span>
-                <span class="ftg-line w80"></span>
-                <span class="ftg-mark ftg-mark--circle" aria-hidden="true"></span>
-              </div>
-              <span class="ftg-item-tag-bottom">Screenshot</span>
-            </article>
-
-            <article class="ftg-item ftg-item--question" data-target="questions" tabindex="0" style="--top: 80%; --left: 38%; --rot: -3deg;">
-              <div class="ftg-chat">
-                <span class="ftg-chat-avatar">C</span>
-                <div class="ftg-chat-bubble">
-                  <span class="ftg-line w80 ftg-line--marked"></span>
-                  <span class="ftg-line w55"></span>
-                </div>
-              </div>
-              <span class="ftg-item-tag-bottom">Customer question</span>
-            </article>
-
-          </div>
-
-          <!-- CENTER: red extraction thread -->
-          <svg class="ftg-thread" viewBox="0 0 160 600" preserveAspectRatio="none" aria-hidden="true">
-            <path class="ftg-thread-line" pathLength="100"
-              d="M 20,40 C 60,120 90,140 80,220 S 50,340 90,400 S 130,520 140,560" />
-            <circle class="ftg-thread-pin ftg-thread-pin--start" cx="20" cy="40" r="4.5" />
-            <circle class="ftg-thread-pin" cx="80" cy="220" r="3.5" />
-            <circle class="ftg-thread-pin" cx="90" cy="400" r="3.5" />
-            <circle class="ftg-thread-pin ftg-thread-pin--end" cx="140" cy="560" r="5" />
-          </svg>
-
-          <!-- RIGHT: clean guide output -->
-          <article class="ftg-guide" data-reveal data-reveal-delay="3">
-            <span class="ftg-guide-stamp" aria-hidden="true">v1.0</span>
-
-            <header class="ftg-guide-head">
-              <span class="ftg-guide-eyebrow">Reusable</span>
-              <h3 class="ftg-guide-title">Reusable Guide</h3>
-              <span class="ftg-guide-meta">5 sections · ready to share</span>
-            </header>
-
-            <div class="ftg-guide-divider" aria-hidden="true"></div>
-
-            <div class="ftg-guide-sections">
-              <div class="ftg-guide-section" data-section="overview">
-                <h4 class="ftg-guide-section-title">Overview</h4>
-                <div class="ftg-guide-bars">
-                  <span class="ftg-line ftg-line--guide w95"></span>
-                  <span class="ftg-line ftg-line--guide w70"></span>
-                </div>
-              </div>
-
-              <div class="ftg-guide-section" data-section="steps">
-                <h4 class="ftg-guide-section-title">Step-by-step process</h4>
-                <div class="ftg-guide-bars">
-                  <span class="ftg-step"><span class="ftg-step-num">01</span><span class="ftg-line ftg-line--guide w75"></span></span>
-                  <span class="ftg-step"><span class="ftg-step-num">02</span><span class="ftg-line ftg-line--guide w65"></span></span>
-                  <span class="ftg-step"><span class="ftg-step-num">03</span><span class="ftg-line ftg-line--guide w70"></span></span>
-                </div>
-              </div>
-
-              <div class="ftg-guide-section" data-section="checklist">
-                <h4 class="ftg-guide-section-title">Checklist</h4>
-                <div class="ftg-guide-bars">
-                  <span class="ftg-check"><span class="ftg-check-mark">✓</span><span class="ftg-line ftg-line--guide w60"></span></span>
-                  <span class="ftg-check"><span class="ftg-check-mark">✓</span><span class="ftg-line ftg-line--guide w70"></span></span>
-                  <span class="ftg-check"><span class="ftg-check-mark ftg-check-mark--empty"></span><span class="ftg-line ftg-line--guide w55"></span></span>
-                </div>
-              </div>
-
-              <div class="ftg-guide-section" data-section="reference">
-                <h4 class="ftg-guide-section-title">Quick reference</h4>
-                <div class="ftg-guide-bars">
-                  <span class="ftg-line ftg-line--guide w80"></span>
-                  <span class="ftg-line ftg-line--guide w65"></span>
-                </div>
-              </div>
-
-              <div class="ftg-guide-section" data-section="questions">
-                <h4 class="ftg-guide-section-title">Common questions</h4>
-                <div class="ftg-guide-bars">
-                  <span class="ftg-q-row"><span class="ftg-q-label">Q</span><span class="ftg-line ftg-line--guide w70"></span></span>
-                  <span class="ftg-q-row"><span class="ftg-q-label">Q</span><span class="ftg-line ftg-line--guide w55"></span></span>
-                </div>
-              </div>
-            </div>
-          </article>
-
-        </div>
-
       </section>
 
 
       <!-- ============================================================
-           SECTION 2: WORK SAMPLE
-      ============================================================ -->
-      <section id="work-sample" aria-labelledby="morpheus-title">
-
-        <div class="ws-bg" aria-hidden="true"></div>
-
-        <div class="section-eyebrow" data-reveal="left">
-          <span class="section-eyebrow-dot"></span>
-          <span>[Section eyebrow]</span>
-        </div>
-
-        <h2 id="morpheus-title" data-reveal data-reveal-delay="1">[Section heading]</h2>
-        <p id="morpheus-caption" data-reveal data-reveal-delay="2">[Section caption]</p>
-
-        <!-- ============ STAGE 1: Source video ============ -->
-        <div class="ws-stage" data-reveal style="--accent: #d8412a;">
-          <div class="ws-stage-head">
-            <div class="ws-stage-num">
-<span class="ws-stage-num-text">01</span>
-            </div>
-            <div class="ws-stage-title">
-              <span class="ws-stage-eyebrow">[Stage 1 eyebrow]</span>
-              <h3>[Stage 1 title]</h3>
-              <p>[Stage 1 description]</p>
-            </div>
-          </div>
-
-          <div class="ws-video-row">
-
-            <div class="ws-video">
-              <div class="ws-video-frame">
-                <video
-                  class="ws-video-el"
-                  src="videos/walkthrough-2.mp4"
-                  muted playsinline preload="metadata"
-                  aria-label="[Video 1 label]"></video>
-                <div class="ws-video-overlay" aria-hidden="true">
-<span class="ws-video-caption">[Video 1 caption]</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="ws-video">
-              <div class="ws-video-frame">
-                <video
-                  class="ws-video-el"
-                  src="videos/walkthrough-1.mp4"
-                  muted playsinline preload="metadata"
-                  aria-label="[Video 2 label]"></video>
-                <div class="ws-video-overlay" aria-hidden="true">
-<span class="ws-video-caption">[Video 2 caption]</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- ============ STAGE 2: Tools ============ -->
-        <div class="ws-stage" data-reveal style="--accent: #2f8f8a;">
-          <div class="ws-stage-head">
-            <div class="ws-stage-num">
-<span class="ws-stage-num-text">02</span>
-            </div>
-            <div class="ws-stage-title">
-              <span class="ws-stage-eyebrow">[Stage 2 eyebrow]</span>
-              <h3>[Stage 2 title]</h3>
-              <p>[Stage 2 description]</p>
-            </div>
-          </div>
-
-          <div class="ws-tools-grid">
-
-            <!-- Tool 1 -->
-            <article class="ws-tool" style="--accent: #c89764;">
-              <div class="ws-tool-mock">
-                <div class="ws-tool-chrome">
-                  <span class="ws-tool-chrome-mark ws-tool-chrome-mark--claude">✦</span>
-                  <span class="ws-tool-chrome-name">[Tool 1 name]</span>
-                </div>
-                <div class="ws-tool-chat">
-                  <div class="ws-tool-bubble ws-tool-bubble--user">[Example prompt]</div>
-                  <div class="ws-tool-bubble ws-tool-bubble--ai">
-                    <span class="ws-tool-outline-row">[Outline row 1]</span>
-                    <span class="ws-tool-outline-row">[Outline row 2]</span>
-                    <span class="ws-tool-outline-row ws-tool-outline-row--active">[Outline row 3]</span>
-                    <span class="ws-tool-typing"><span></span><span></span><span></span></span>
-                  </div>
-                </div>
-              </div>
-              <div class="ws-tool-info">
-                <h4>[Tool 1 name]</h4>
-                <p>[Tool 1 description]</p>
-              </div>
-            </article>
-
-            <!-- Tool 2 -->
-            <article class="ws-tool" style="--accent: #4fa84a;">
-              <div class="ws-tool-mock">
-                <div class="ws-tool-chrome">
-                  <span class="ws-tool-chrome-mark ws-tool-chrome-mark--gpt">⌬</span>
-                  <span class="ws-tool-chrome-name">[Tool 2 name]</span>
-                </div>
-                <div class="ws-tool-chat">
-                  <div class="ws-tool-bubble ws-tool-bubble--user">
-                    <span class="ws-tool-attach">
-                      <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
-                      [Attachment]
-                    </span>
-                    [Example prompt]
-                  </div>
-                  <div class="ws-tool-bubble ws-tool-bubble--ai">
-                    <div class="ws-tool-pills">
-                      <span class="ws-tool-pill">[Tag 1]</span>
-                      <span class="ws-tool-pill">[Tag 2]</span>
-                      <span class="ws-tool-pill">[Tag 3]</span>
-                      <span class="ws-tool-pill">[Tag 4]</span>
-                      <span class="ws-tool-pill">[Tag 5]</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="ws-tool-info">
-                <h4>[Tool 2 name]</h4>
-                <p>[Tool 2 description]</p>
-              </div>
-            </article>
-
-            <!-- Tool 3 -->
-            <article class="ws-tool" style="--accent: #5dadd8;">
-              <div class="ws-tool-mock">
-                <div class="ws-tool-chrome">
-                  <span class="ws-tool-chrome-mark ws-tool-chrome-mark--teachable">T</span>
-                  <span class="ws-tool-chrome-name">[Tool 3 name]</span>
-                </div>
-                <div class="ws-tool-editor">
-                  <div class="ws-tool-editor-head">[Editor heading]</div>
-                  <div class="ws-tool-mod">
-                    <span class="ws-tool-mod-handle">⋮⋮</span>
-                    <span class="ws-tool-mod-name">[Editor row 1]</span>
-                    <span class="ws-tool-mod-count">2</span>
-                  </div>
-                  <div class="ws-tool-mod">
-                    <span class="ws-tool-mod-handle">⋮⋮</span>
-                    <span class="ws-tool-mod-name">[Editor row 2]</span>
-                    <span class="ws-tool-mod-count">2</span>
-                  </div>
-                  <div class="ws-tool-mod ws-tool-mod--active">
-                    <span class="ws-tool-mod-handle">⋮⋮</span>
-                    <span class="ws-tool-mod-name">[Editor row 3]</span>
-                    <span class="ws-tool-mod-count">2</span>
-                  </div>
-                </div>
-              </div>
-              <div class="ws-tool-info">
-                <h4>[Tool 3 name]</h4>
-                <p>[Tool 3 description]</p>
-              </div>
-            </article>
-
-          </div>
-        </div>
-
-        <!-- ============ STAGE 3: Finished course ============ -->
-        <div class="ws-stage" data-reveal style="--accent: #f4b53e;">
-          <div class="ws-stage-head">
-            <div class="ws-stage-num">
-<span class="ws-stage-num-text">03</span>
-            </div>
-            <div class="ws-stage-title">
-              <span class="ws-stage-eyebrow">[Stage 3 eyebrow]</span>
-              <h3>[Stage 3 title]</h3>
-              <p>[Stage 3 description]</p>
-            </div>
-          </div>
-
-        <div class="tb-player" role="img" aria-label="[Course player preview]" data-reveal="tilt" data-reveal-delay="2">
-
-          <!-- Top bar -->
-          <div class="tb-topbar">
-            <div class="tb-brand">
-              <span class="tb-logo">L</span>
-              <span class="tb-brand-name">[Brand name]</span>
-            </div>
-            <div class="tb-course-name">[Course name]</div>
-            <span class="tb-autoplay" aria-hidden="true">
-              <span class="tb-autoplay-dot"></span>
-              <span>[Autoplay label]</span>
-            </span>
-            <div class="tb-progress">
-              <span class="tb-progress-bar"><span class="tb-progress-fill"></span></span>
-              <span class="tb-progress-text">0% complete</span>
-            </div>
-          </div>
-
-          <!-- Body -->
-          <div class="tb-body">
-
-            <!-- Sidebar -->
-            <aside class="tb-sidebar" aria-label="Course curriculum">
-              <div class="tb-sidebar-header">[Sidebar header]</div>
-
-              <div class="tb-section" data-module="1">
-                <div class="tb-section-title">
-                  <span>[Module 1 title]</span>
-                  <span class="tb-section-meta">0 / 2</span>
-                </div>
-                <ul class="tb-lessons">
-                  <li class="tb-lesson tb-lesson--active" data-index="0" role="button" tabindex="0" aria-current="true">
-                    <span class="tb-lesson-icon" aria-hidden="true">
-                      <svg class="tb-icon-circle" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/></svg>
-                      <svg class="tb-icon-check" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      <svg class="tb-icon-play" viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.5v9l7-4.5-7-4.5z"/></svg>
-                    </span>
-                    <span class="tb-lesson-title">[Lesson 1 title]</span>
-                    <span class="tb-lesson-duration">[Type]</span>
-                  </li>
-                  <li class="tb-lesson" data-index="1" role="button" tabindex="0">
-                    <span class="tb-lesson-icon" aria-hidden="true">
-                      <svg class="tb-icon-circle" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/></svg>
-                      <svg class="tb-icon-check" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      <svg class="tb-icon-play" viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.5v9l7-4.5-7-4.5z"/></svg>
-                    </span>
-                    <span class="tb-lesson-title">[Lesson 2 title]</span>
-                    <span class="tb-lesson-duration">0:00</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div class="tb-section" data-module="2">
-                <div class="tb-section-title">
-                  <span>[Module 2 title]</span>
-                  <span class="tb-section-meta">0 / 2</span>
-                </div>
-                <ul class="tb-lessons">
-                  <li class="tb-lesson" data-index="2" role="button" tabindex="0">
-                    <span class="tb-lesson-icon" aria-hidden="true">
-                      <svg class="tb-icon-circle" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/></svg>
-                      <svg class="tb-icon-check" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      <svg class="tb-icon-play" viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.5v9l7-4.5-7-4.5z"/></svg>
-                    </span>
-                    <span class="tb-lesson-title">[Lesson 3 title]</span>
-                    <span class="tb-lesson-duration">[Type]</span>
-                  </li>
-                  <li class="tb-lesson" data-index="3" role="button" tabindex="0">
-                    <span class="tb-lesson-icon" aria-hidden="true">
-                      <svg class="tb-icon-circle" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/></svg>
-                      <svg class="tb-icon-check" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      <svg class="tb-icon-play" viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.5v9l7-4.5-7-4.5z"/></svg>
-                    </span>
-                    <span class="tb-lesson-title">[Lesson 4 title]</span>
-                    <span class="tb-lesson-duration">0:00</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div class="tb-section" data-module="3">
-                <div class="tb-section-title">
-                  <span>[Module 3 title]</span>
-                  <span class="tb-section-meta">0 / 2</span>
-                </div>
-                <ul class="tb-lessons">
-                  <li class="tb-lesson" data-index="4" role="button" tabindex="0">
-                    <span class="tb-lesson-icon" aria-hidden="true">
-                      <svg class="tb-icon-circle" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/></svg>
-                      <svg class="tb-icon-check" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      <svg class="tb-icon-play" viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.5v9l7-4.5-7-4.5z"/></svg>
-                    </span>
-                    <span class="tb-lesson-title">[Lesson 5 title]</span>
-                    <span class="tb-lesson-duration">[Type]</span>
-                  </li>
-                  <li class="tb-lesson" data-index="5" role="button" tabindex="0">
-                    <span class="tb-lesson-icon" aria-hidden="true">
-                      <svg class="tb-icon-circle" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/></svg>
-                      <svg class="tb-icon-check" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      <svg class="tb-icon-play" viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.5v9l7-4.5-7-4.5z"/></svg>
-                    </span>
-                    <span class="tb-lesson-title">[Lesson 6 title]</span>
-                    <span class="tb-lesson-duration">0:00</span>
-                  </li>
-                </ul>
-              </div>
-            </aside>
-
-            <!-- Main player -->
-            <main class="tb-main">
-              <div class="tb-diagram">
-                <svg class="tb-diagram-svg" viewBox="0 0 600 340" role="img" aria-label="[Diagram label]">
-                  <rect x="40" y="30" width="520" height="280" rx="14" fill="#2e2e2e" stroke="#4a4a4a" stroke-width="2"/>
-                  <text x="60" y="62" fill="#9a9a9a" font-family="ui-monospace,monospace" font-size="12" font-weight="600" letter-spacing="2">[DIAGRAM TITLE]</text>
-                  <circle cx="510" cy="55" r="7" fill="#3b82f6"/>
-                  <circle cx="510" cy="55" r="11" fill="none" stroke="#3b82f6" stroke-opacity="0.35" stroke-width="2"/>
-                  <text x="494" y="80" fill="#9a9a9a" font-size="10" text-anchor="end">[L1]</text>
-                  <rect x="450" y="98" width="60" height="30" rx="6" fill="#4a4a4a" stroke="#5a5a5a" stroke-width="1"/>
-                  <text x="480" y="118" fill="#cccccc" font-size="10" font-weight="600" text-anchor="middle">[L2]</text>
-                  <path d="M110 152 L110 178" stroke="#5a5a5a" stroke-width="1" opacity="0.5"/>
-                  <path d="M230 152 L230 178" stroke="#5a5a5a" stroke-width="1" opacity="0.5"/>
-                  <path d="M350 152 L350 178" stroke="#5a5a5a" stroke-width="1" opacity="0.5"/>
-                  <text x="110" y="180" fill="#9a9a9a" font-size="10" text-anchor="middle">[Group 1]</text>
-                  <text x="230" y="180" fill="#9a9a9a" font-size="10" text-anchor="middle">[Group 2]</text>
-                  <text x="350" y="180" fill="#9a9a9a" font-size="10" text-anchor="middle">[Group 3]</text>
-                  <rect x="80"  y="200" width="60" height="30" rx="4" fill="#4a4a4a" stroke="#5a5a5a" stroke-width="1"/>
-                  <text x="110" y="220" fill="#34d399" font-size="11" font-weight="700" text-anchor="middle">[1A]</text>
-                  <rect x="80"  y="240" width="60" height="30" rx="4" fill="#4a4a4a" stroke="#5a5a5a" stroke-width="1"/>
-                  <text x="110" y="260" fill="#f87171" font-size="11" font-weight="700" text-anchor="middle">[1B]</text>
-                  <rect x="200" y="200" width="60" height="30" rx="4" fill="#4a4a4a" stroke="#5a5a5a" stroke-width="1"/>
-                  <text x="230" y="220" fill="#34d399" font-size="11" font-weight="700" text-anchor="middle">[2A]</text>
-                  <rect x="200" y="240" width="60" height="30" rx="4" fill="#4a4a4a" stroke="#5a5a5a" stroke-width="1"/>
-                  <text x="230" y="260" fill="#f87171" font-size="11" font-weight="700" text-anchor="middle">[2B]</text>
-                  <rect x="320" y="200" width="60" height="30" rx="4" fill="#4a4a4a" stroke="#5a5a5a" stroke-width="1"/>
-                  <text x="350" y="220" fill="#34d399" font-size="11" font-weight="700" text-anchor="middle">[3A]</text>
-                  <rect x="320" y="240" width="60" height="30" rx="4" fill="#4a4a4a" stroke="#5a5a5a" stroke-width="1"/>
-                  <text x="350" y="260" fill="#f87171" font-size="11" font-weight="700" text-anchor="middle">[3B]</text>
-                </svg>
-              </div>
-
-              <div class="tb-lesson-info">
-                <div class="tb-lesson-eyebrow">Lesson 1 of 6</div>
-                <h3 class="tb-lesson-heading">[Lesson heading]</h3>
-
-                <div class="tb-lesson-section">
-                  <h4 class="tb-lesson-subhead">Overview</h4>
-                  <p class="tb-lesson-body">[Lesson overview]</p>
-                </div>
-
-                <div class="tb-lesson-section">
-                  <h4 class="tb-lesson-subhead">Legend</h4>
-                  <dl class="tb-legend">
-                    <div class="tb-legend-row">
-                      <dt class="tb-legend-label">[Legend label 1]</dt>
-                      <dd class="tb-legend-desc">[Legend description 1]</dd>
-                    </div>
-                    <div class="tb-legend-row">
-                      <dt class="tb-legend-label">[Legend label 2]</dt>
-                      <dd class="tb-legend-desc">[Legend description 2]</dd>
-                    </div>
-                    <div class="tb-legend-row">
-                      <dt class="tb-legend-label">[Legend label 3]</dt>
-                      <dd class="tb-legend-desc">[Legend description 3]</dd>
-                    </div>
-                    <div class="tb-legend-row">
-                      <dt class="tb-legend-label">[Legend label 4]</dt>
-                      <dd class="tb-legend-desc">[Legend description 4]</dd>
-                    </div>
-                    <div class="tb-legend-row">
-                      <dt class="tb-legend-label">[Legend label 5]</dt>
-                      <dd class="tb-legend-desc">[Legend description 5]</dd>
-                    </div>
-                  </dl>
-                </div>
-              </div>
-
-              <div class="tb-actions">
-                <button class="tb-btn tb-btn--ghost" type="button" data-nav="prev" disabled>← Previous</button>
-                <button class="tb-btn tb-btn--primary" type="button" data-nav="next">Complete and continue →</button>
-              </div>
-            </main>
-
-          </div>
-        </div>
-
-        </div>
-
-      </section>
-
-
-
-      <!-- ============================================================
-           SECTION 3: SERVICES (raw material to every format)
+           SECTION 3: WHAT CAN BECOME A GUIDE
       ============================================================ -->
       <section id="services" aria-labelledby="services-heading">
 
         <div class="services-bg" aria-hidden="true"></div>
 
         <div id="services-head">
-          <span id="services-eyebrow" data-reveal="left"><span class="services-eyebrow-dot"></span>[Services eyebrow]</span>
-          <h2 id="services-heading" data-reveal data-reveal-delay="1">[Services heading line 1] <br><span class="services-heading-accent">[Services heading line 2]</span></h2>
+          <span id="services-eyebrow" data-reveal="left"><span class="services-eyebrow-dot"></span>Examples</span>
+          <h2 id="services-heading" data-reveal data-reveal-delay="1">What can become a guide?</h2>
         </div>
 
-        <!-- Service categories -->
         <div id="service-categories">
 
           <article class="sc-card" data-reveal>
-            <h3 class="sc-title">[Service 1 title]</h3>
-            <p class="sc-for"><span class="sc-for-tag">For</span>[Service 1 audience]</p>
-            <p class="sc-desc">[Service 1 description]</p>
-            <ul class="sc-deliverables">
-              <li>[Deliverable 1]</li>
-              <li>[Deliverable 2]</li>
-              <li>[Deliverable 3]</li>
-            </ul>
+            <h3 class="sc-title">Product or component</h3>
+            <p class="sc-desc">A clear reference guide for what it is, how it works, and how people should use it.</p>
           </article>
 
           <article class="sc-card" data-reveal>
-            <h3 class="sc-title">[Service 2 title]</h3>
-            <p class="sc-for"><span class="sc-for-tag">For</span>[Service 2 audience]</p>
-            <p class="sc-desc">[Service 2 description]</p>
-            <ul class="sc-deliverables">
-              <li>[Deliverable 1]</li>
-              <li>[Deliverable 2]</li>
-              <li>[Deliverable 3]</li>
-            </ul>
+            <h3 class="sc-title">App or software walkthrough</h3>
+            <p class="sc-desc">A step-by-step tutorial showing users how to navigate the app or complete the important actions.</p>
           </article>
 
           <article class="sc-card" data-reveal>
-            <h3 class="sc-title">[Service 3 title]</h3>
-            <p class="sc-for"><span class="sc-for-tag">For</span>[Service 3 audience]</p>
-            <p class="sc-desc">[Service 3 description]</p>
-            <ul class="sc-deliverables">
-              <li>[Deliverable 1]</li>
-              <li>[Deliverable 2]</li>
-              <li>[Deliverable 3]</li>
-            </ul>
+            <h3 class="sc-title">Workflow or internal process</h3>
+            <p class="sc-desc">A practical guide, checklist, or SOP for how the work gets done.</p>
           </article>
 
           <article class="sc-card" data-reveal>
-            <h3 class="sc-title">[Service 4 title]</h3>
-            <p class="sc-for"><span class="sc-for-tag">For</span>[Service 4 audience]</p>
-            <p class="sc-desc">[Service 4 description]</p>
-            <ul class="sc-deliverables">
-              <li>[Deliverable 1]</li>
-              <li>[Deliverable 2]</li>
-              <li>[Deliverable 3]</li>
-            </ul>
+            <h3 class="sc-title">Event role or volunteer instructions</h3>
+            <p class="sc-desc">A simple reference people can use to understand where to go, what to do, and how the role works.</p>
           </article>
 
           <article class="sc-card" data-reveal>
-            <h3 class="sc-title">[Service 5 title]</h3>
-            <p class="sc-for"><span class="sc-for-tag">For</span>[Service 5 audience]</p>
-            <p class="sc-desc">[Service 5 description]</p>
-            <ul class="sc-deliverables">
-              <li>[Deliverable 1]</li>
-              <li>[Deliverable 2]</li>
-              <li>[Deliverable 3]</li>
-            </ul>
+            <h3 class="sc-title">Robot, tool, or equipment instructions</h3>
+            <p class="sc-desc">A guide for setup, charging, maintenance, operation, or basic troubleshooting.</p>
           </article>
 
           <article class="sc-card" data-reveal>
-            <h3 class="sc-title">[Service 6 title]</h3>
-            <p class="sc-for"><span class="sc-for-tag">For</span>[Service 6 audience]</p>
-            <p class="sc-desc">[Service 6 description]</p>
-            <ul class="sc-deliverables">
-              <li>[Deliverable 1]</li>
-              <li>[Deliverable 2]</li>
-              <li>[Deliverable 3]</li>
-            </ul>
+            <h3 class="sc-title">Customer setup process</h3>
+            <p class="sc-desc">A walkthrough customers can follow instead of needing the same explanation manually.</p>
           </article>
 
         </div>
@@ -762,298 +215,402 @@
 
 
       <!-- ============================================================
-           SECTION 4: PROCESS — transformation pipeline
+           SECTION 4: REAL PROJECT — Morpheus Drive
+      ============================================================ -->
+      <section id="project" aria-labelledby="project-title">
+
+        <div class="ws-bg" aria-hidden="true"></div>
+
+        <div class="section-eyebrow" data-reveal="left">
+          <span class="section-eyebrow-dot"></span>
+          <span>Real project</span>
+        </div>
+
+        <h2 id="project-title" data-reveal data-reveal-delay="1">Real project: turning a robotics component into a reference guide</h2>
+        <p id="project-subhead" data-reveal data-reveal-delay="2">The owner needed a clearer way to explain how the Morpheus Drive component worked and how interns could use it inside functional robots.</p>
+
+        <!-- ============ A. DIORAMA: raw material → reference guide ============ -->
+        <!-- Reuses the find-the-guide desk pattern; id preserved so existing JS handler wires up. -->
+        <div id="find-the-guide" class="ftg-root project-diorama" data-reveal>
+
+          <div class="ftg-desk">
+
+            <!-- LEFT: Morpheus source material -->
+            <div class="ftg-mess" aria-label="Morpheus Drive source material">
+
+              <article class="ftg-item ftg-item--note" style="--top: 4%; --left: 4%; --rot: 4deg;">
+                <span class="ftg-note-tape" aria-hidden="true"></span>
+                <div class="ftg-note-body">
+                  <span class="ftg-line ftg-line--hand w85"></span>
+                  <span class="ftg-line ftg-line--hand w65 ftg-line--marked"></span>
+                  <span class="ftg-line ftg-line--hand w75"></span>
+                  <span class="ftg-line ftg-line--hand w55"></span>
+                </div>
+                <span class="ftg-item-tag-bottom">Owner explanation</span>
+              </article>
+
+              <article class="ftg-item ftg-item--call" data-target="overview" tabindex="0" style="--top: 0%; --left: 38%; --rot: -3deg;">
+                <header class="ftg-item-head">
+                  <span class="ftg-rec-dot" aria-hidden="true"></span>
+                  <span class="ftg-item-name">Google Meet recording</span>
+                  <span class="ftg-item-time">1:14:02</span>
+                </header>
+                <div class="ftg-item-body">
+                  <span class="ftg-wave">
+                    <span style="height:30%"></span><span style="height:70%"></span>
+                    <span style="height:45%"></span><span style="height:90%"></span>
+                    <span style="height:55%"></span><span style="height:80%"></span>
+                    <span style="height:40%"></span><span style="height:65%"></span>
+                    <span style="height:55%"></span><span style="height:75%"></span>
+                    <span style="height:35%"></span><span style="height:60%"></span>
+                  </span>
+                  <span class="ftg-mark ftg-mark--underline" aria-hidden="true"></span>
+                </div>
+              </article>
+
+              <article class="ftg-item ftg-item--walkthrough" data-target="steps" tabindex="0" style="--top: 26%; --left: 10%; --rot: 2deg;">
+                <div class="ftg-video">
+                  <span class="ftg-play" aria-hidden="true">
+                    <svg viewBox="0 0 12 12" width="14" height="14" fill="currentColor"><path d="M4 3v6l5-3z"/></svg>
+                  </span>
+                  <span class="ftg-mark ftg-mark--box" aria-hidden="true"></span>
+                </div>
+                <div class="ftg-item-foot">
+                  <span class="ftg-item-name">Client video 1</span>
+                  <span class="ftg-item-time">14:22</span>
+                </div>
+              </article>
+
+              <article class="ftg-item ftg-item--doc" data-target="reference" tabindex="0" style="--top: 44%; --left: 40%; --rot: -2deg;">
+                <span class="ftg-doc-curl" aria-hidden="true"></span>
+                <header class="ftg-item-head">
+                  <span class="ftg-item-tag">eml</span>
+                  <span class="ftg-item-name">Email discussion</span>
+                </header>
+                <div class="ftg-item-body">
+                  <span class="ftg-line w90"></span>
+                  <span class="ftg-line w70 ftg-line--marked"></span>
+                  <span class="ftg-line w80"></span>
+                  <span class="ftg-line w60"></span>
+                </div>
+              </article>
+
+              <article class="ftg-item ftg-item--walkthrough" data-target="steps" tabindex="0" style="--top: 62%; --left: 6%; --rot: 5deg;">
+                <div class="ftg-video">
+                  <span class="ftg-play" aria-hidden="true">
+                    <svg viewBox="0 0 12 12" width="14" height="14" fill="currentColor"><path d="M4 3v6l5-3z"/></svg>
+                  </span>
+                  <span class="ftg-mark ftg-mark--box" aria-hidden="true"></span>
+                </div>
+                <div class="ftg-item-foot">
+                  <span class="ftg-item-name">Client video 2</span>
+                  <span class="ftg-item-time">9:48</span>
+                </div>
+              </article>
+
+              <article class="ftg-item ftg-item--question" data-target="questions" tabindex="0" style="--top: 80%; --left: 38%; --rot: -3deg;">
+                <div class="ftg-chat">
+                  <span class="ftg-chat-avatar">S</span>
+                  <div class="ftg-chat-bubble">
+                    <span class="ftg-line w80 ftg-line--marked"></span>
+                    <span class="ftg-line w55"></span>
+                  </div>
+                </div>
+                <span class="ftg-item-tag-bottom">Follow-up question</span>
+              </article>
+
+            </div>
+
+            <!-- CENTER: red extraction thread -->
+            <svg class="ftg-thread" viewBox="0 0 160 600" preserveAspectRatio="none" aria-hidden="true">
+              <path class="ftg-thread-line" pathLength="100"
+                d="M 20,40 C 60,120 90,140 80,220 S 50,340 90,400 S 130,520 140,560" />
+              <circle class="ftg-thread-pin ftg-thread-pin--start" cx="20" cy="40" r="4.5" />
+              <circle class="ftg-thread-pin" cx="80" cy="220" r="3.5" />
+              <circle class="ftg-thread-pin" cx="90" cy="400" r="3.5" />
+              <circle class="ftg-thread-pin ftg-thread-pin--end" cx="140" cy="560" r="5" />
+            </svg>
+
+            <!-- RIGHT: the 3-section Morpheus reference guide -->
+            <article class="ftg-guide" data-reveal data-reveal-delay="3">
+              <span class="ftg-guide-stamp" aria-hidden="true">v1.0</span>
+
+              <header class="ftg-guide-head">
+                <span class="ftg-guide-eyebrow">Reference guide</span>
+                <h3 class="ftg-guide-title">Morpheus Drive</h3>
+                <span class="ftg-guide-meta">3 sections · for interns</span>
+              </header>
+
+              <div class="ftg-guide-divider" aria-hidden="true"></div>
+
+              <div class="ftg-guide-sections">
+                <div class="ftg-guide-section" data-section="overview">
+                  <h4 class="ftg-guide-section-title">1. Component overview</h4>
+                  <div class="ftg-guide-bars">
+                    <span class="ftg-line ftg-line--guide w95"></span>
+                    <span class="ftg-line ftg-line--guide w70"></span>
+                  </div>
+                </div>
+
+                <div class="ftg-guide-section" data-section="steps">
+                  <h4 class="ftg-guide-section-title">2. How it works</h4>
+                  <div class="ftg-guide-bars">
+                    <span class="ftg-step"><span class="ftg-step-num">01</span><span class="ftg-line ftg-line--guide w75"></span></span>
+                    <span class="ftg-step"><span class="ftg-step-num">02</span><span class="ftg-line ftg-line--guide w65"></span></span>
+                    <span class="ftg-step"><span class="ftg-step-num">03</span><span class="ftg-line ftg-line--guide w70"></span></span>
+                  </div>
+                </div>
+
+                <div class="ftg-guide-section" data-section="reference">
+                  <h4 class="ftg-guide-section-title">3. Using it with the app</h4>
+                  <div class="ftg-guide-bars">
+                    <span class="ftg-line ftg-line--guide w80"></span>
+                    <span class="ftg-line ftg-line--guide w65"></span>
+                    <span class="ftg-line ftg-line--guide w72"></span>
+                  </div>
+                </div>
+
+                <div class="ftg-guide-section" data-section="questions">
+                  <h4 class="ftg-guide-section-title">Intern reference</h4>
+                  <div class="ftg-guide-bars">
+                    <span class="ftg-check"><span class="ftg-check-mark">✓</span><span class="ftg-line ftg-line--guide w60"></span></span>
+                    <span class="ftg-check"><span class="ftg-check-mark">✓</span><span class="ftg-line ftg-line--guide w70"></span></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- ============ B. STRUCTURED BREAKDOWN: what / what used / what delivered ============ -->
+        <div class="project-grid" data-reveal>
+
+          <article class="project-col">
+            <h3 class="project-col-title">What needed explaining</h3>
+            <ul class="project-list">
+              <li>A robotics component called Morpheus Drive</li>
+              <li>How the component worked</li>
+              <li>How it connected to the app</li>
+              <li>How the app controlled it over Bluetooth</li>
+              <li>How interns should reference it while working with the component</li>
+            </ul>
+          </article>
+
+          <article class="project-col">
+            <h3 class="project-col-title">What I used</h3>
+            <ul class="project-list">
+              <li>2 client-shot videos</li>
+              <li>Email discussion with the owner</li>
+              <li>Recorded Google Meet call</li>
+              <li>Follow-up questions to fill in missing details</li>
+            </ul>
+          </article>
+
+          <article class="project-col">
+            <h3 class="project-col-title">What I delivered</h3>
+            <ul class="project-list">
+              <li>3-section reference guide</li>
+              <li>Video snippets</li>
+              <li>Clear written explanations</li>
+              <li>Diagrams</li>
+              <li>Website-ready guide content</li>
+              <li>Material interns could refer back to while working with the component</li>
+            </ul>
+          </article>
+
+        </div>
+
+        <!-- ============ C. ASSET PLACEHOLDER GALLERY ============ -->
+        <div class="project-assets" data-reveal>
+
+          <!-- Row 1: media -->
+          <figure class="asset-frame asset-frame--video" style="--rot: 1.2deg;">
+            <div class="asset-frame-thumb" aria-hidden="true">
+              <span class="asset-frame-glyph">▶</span>
+            </div>
+            <figcaption class="asset-frame-label">Client video 1</figcaption>
+            <span class="asset-frame-meta">Video · placeholder</span>
+            <span class="asset-frame-sticker">Placeholder</span>
+          </figure>
+
+          <figure class="asset-frame asset-frame--video" style="--rot: -0.8deg;">
+            <div class="asset-frame-thumb" aria-hidden="true">
+              <span class="asset-frame-glyph">▶</span>
+            </div>
+            <figcaption class="asset-frame-label">Client video 2</figcaption>
+            <span class="asset-frame-meta">Video · placeholder</span>
+            <span class="asset-frame-sticker">Placeholder</span>
+          </figure>
+
+          <figure class="asset-frame asset-frame--meeting" style="--rot: 0.6deg;">
+            <div class="asset-frame-thumb" aria-hidden="true">
+              <span class="asset-frame-glyph asset-frame-glyph--rec"></span>
+              <span class="asset-frame-glyph-label">REC</span>
+            </div>
+            <figcaption class="asset-frame-label">Google Meet recording</figcaption>
+            <span class="asset-frame-meta">Recording · placeholder</span>
+            <span class="asset-frame-sticker">Placeholder</span>
+          </figure>
+
+          <figure class="asset-frame asset-frame--video" style="--rot: -1.4deg;">
+            <div class="asset-frame-thumb" aria-hidden="true">
+              <span class="asset-frame-glyph">▶</span>
+            </div>
+            <figcaption class="asset-frame-label">Video snippet from guide</figcaption>
+            <span class="asset-frame-meta">Clip · placeholder</span>
+            <span class="asset-frame-sticker">Placeholder</span>
+          </figure>
+
+          <!-- Row 2: documents -->
+          <figure class="asset-frame asset-frame--image" style="--rot: 0.9deg;">
+            <div class="asset-frame-thumb" aria-hidden="true">
+              <span class="asset-frame-chrome">
+                <span></span><span></span><span></span>
+              </span>
+              <span class="asset-frame-glyph asset-frame-glyph--text">@</span>
+            </div>
+            <figcaption class="asset-frame-label">Email discussion screenshot</figcaption>
+            <span class="asset-frame-meta">Screenshot · placeholder</span>
+            <span class="asset-frame-sticker">Placeholder</span>
+          </figure>
+
+          <figure class="asset-frame asset-frame--doc" style="--rot: -0.5deg;">
+            <div class="asset-frame-thumb" aria-hidden="true">
+              <span class="asset-frame-glyph asset-frame-glyph--page">▢</span>
+              <span class="asset-frame-page-lines">
+                <span></span><span></span><span></span><span></span>
+              </span>
+            </div>
+            <figcaption class="asset-frame-label">Final guide — page 1</figcaption>
+            <span class="asset-frame-meta">Guide page · placeholder</span>
+            <span class="asset-frame-sticker">Placeholder</span>
+          </figure>
+
+          <figure class="asset-frame asset-frame--doc" style="--rot: 1.1deg;">
+            <div class="asset-frame-thumb" aria-hidden="true">
+              <span class="asset-frame-glyph asset-frame-glyph--page">▢</span>
+              <span class="asset-frame-page-lines">
+                <span></span><span></span><span></span><span></span>
+              </span>
+            </div>
+            <figcaption class="asset-frame-label">Final guide — page 2</figcaption>
+            <span class="asset-frame-meta">Guide page · placeholder</span>
+            <span class="asset-frame-sticker">Placeholder</span>
+          </figure>
+
+          <figure class="asset-frame asset-frame--doc" style="--rot: -1deg;">
+            <div class="asset-frame-thumb" aria-hidden="true">
+              <span class="asset-frame-glyph asset-frame-glyph--page">▢</span>
+              <span class="asset-frame-page-lines">
+                <span></span><span></span><span></span><span></span>
+              </span>
+            </div>
+            <figcaption class="asset-frame-label">Final guide — page 3</figcaption>
+            <span class="asset-frame-meta">Guide page · placeholder</span>
+            <span class="asset-frame-sticker">Placeholder</span>
+          </figure>
+
+          <figure class="asset-frame asset-frame--doc" style="--rot: 0.7deg;">
+            <div class="asset-frame-thumb" aria-hidden="true">
+              <span class="asset-frame-glyph asset-frame-glyph--diagram">◇</span>
+            </div>
+            <figcaption class="asset-frame-label">Diagram from guide</figcaption>
+            <span class="asset-frame-meta">Diagram · placeholder</span>
+            <span class="asset-frame-sticker">Placeholder</span>
+          </figure>
+
+        </div>
+
+      </section>
+
+
+      <!-- ============================================================
+           SECTION 5: POSSIBLE FINAL FORMATS
+      ============================================================ -->
+      <section id="formats" aria-labelledby="formats-heading">
+        <div class="fm-inner">
+          <span class="section-eyebrow" data-reveal="left">
+            <span class="section-eyebrow-dot"></span><span>Formats</span>
+          </span>
+          <h2 id="formats-heading" data-reveal data-reveal-delay="1">
+            The final format depends on what people need to do.
+          </h2>
+          <p class="fm-body" data-reveal data-reveal-delay="2">
+            Some projects need a PDF-style guide. Some need website-ready content. Some need a short video walkthrough. Some need a checklist or SOP. The format depends on who will use it and what they need to understand.
+          </p>
+          <ul class="fm-chips" data-reveal data-reveal-delay="3">
+            <li class="fm-chip" style="--rot: 1deg;">Reference guide</li>
+            <li class="fm-chip" style="--rot: -1.5deg;">Step-by-step walkthrough</li>
+            <li class="fm-chip" style="--rot: 0.5deg;">SOP</li>
+            <li class="fm-chip" style="--rot: -0.8deg;">Checklist</li>
+            <li class="fm-chip" style="--rot: 1.2deg;">Training material</li>
+            <li class="fm-chip" style="--rot: -0.4deg;">Onboarding doc</li>
+            <li class="fm-chip" style="--rot: 0.9deg;">App tutorial</li>
+            <li class="fm-chip" style="--rot: -1.1deg;">Short video guide</li>
+            <li class="fm-chip" style="--rot: 0.6deg;">Presentation</li>
+          </ul>
+        </div>
+      </section>
+
+
+      <!-- ============================================================
+           SECTION 6: HOW IT WORKS
       ============================================================ -->
       <section id="process" aria-labelledby="process-heading">
 
-        <div id="process-head">
-          <div class="ph-frame" data-reveal>
-
-            <!-- Blueprint backdrop: dashed inner rule, grid, coordinate labels, corner crosshairs -->
-            <div class="ph-frame-bg" aria-hidden="true">
-              <span class="ph-coord ph-coord--tl">A · 01</span>
-              <span class="ph-coord ph-coord--tr">B · 02</span>
-              <span class="ph-coord ph-coord--bl">C · 03</span>
-              <span class="ph-coord ph-coord--br">D · 04</span>
-              <span class="ph-cross ph-cross--tl"></span>
-              <span class="ph-cross ph-cross--tr"></span>
-              <span class="ph-cross ph-cross--bl"></span>
-              <span class="ph-cross ph-cross--br"></span>
-              <span class="ph-scale">|·····|·····|·····|·····|·····|·····|·····|</span>
-            </div>
-
-            <!-- Breakout decorations sitting on the frame edges -->
-            <span class="ph-decor ph-decor--sticky" aria-hidden="true">
-              <span class="ph-sticky-tape"></span>
-              <span class="ph-sticky-lines">
-                <span></span><span></span><span></span>
-              </span>
-            </span>
-
-            <span class="ph-decor ph-decor--stamp" aria-hidden="true">
-              <span class="ph-stamp-text">Live</span>
-              <span class="ph-stamp-num">02</span>
-            </span>
-
-            <span class="ph-decor ph-decor--pin" aria-hidden="true">v1.0 · draft</span>
-
-            <span class="ph-decor ph-decor--corner" aria-hidden="true"></span>
-
-            <!-- Inner content -->
-            <div class="ph-inner">
-              <span class="section-eyebrow ph-eyebrow" data-reveal="left">
-                <span class="section-eyebrow-dot"></span>[Process eyebrow]
-              </span>
-              <h2 id="process-heading" data-reveal data-reveal-delay="1">[Process heading]</h2>
-              <p class="ph-caption" data-reveal data-reveal-delay="2">[Process caption]</p>
-            </div>
-
-            <!-- Descending connector lines feeding into the pipeline below -->
-            <svg class="ph-feed" preserveAspectRatio="none" viewBox="0 0 800 60" aria-hidden="true">
-              <path class="ph-feed-line" d="M180 0 Q 220 30 240 60" />
-              <path class="ph-feed-line" d="M400 0 Q 400 30 400 60" />
-              <path class="ph-feed-line" d="M620 0 Q 580 30 560 60" />
-            </svg>
-
-          </div>
+        <div class="hw-head">
+          <span class="section-eyebrow" data-reveal="left">
+            <span class="section-eyebrow-dot"></span><span>Process</span>
+          </span>
+          <h2 id="process-heading" data-reveal data-reveal-delay="1">How it works</h2>
         </div>
 
-        <div class="pipeline" data-reveal>
+        <ol class="hw-steps">
 
-          <!-- Atmospheric backdrop: blueprint grid + vignette + ambient glow -->
-          <div class="pipeline-bg" aria-hidden="true">
-            <span class="pipeline-vignette"></span>
-            <span class="pipeline-tick pipeline-tick--tl"></span>
-            <span class="pipeline-tick pipeline-tick--tr"></span>
-            <span class="pipeline-tick pipeline-tick--bl"></span>
-            <span class="pipeline-tick pipeline-tick--br"></span>
-            <!-- Faded blueprint markings drifting in background -->
-            <span class="pipeline-mark pipeline-mark--coord pipeline-mark--a">A · 01</span>
-            <span class="pipeline-mark pipeline-mark--coord pipeline-mark--b">B · 02</span>
-            <span class="pipeline-mark pipeline-mark--coord pipeline-mark--c">C · 03</span>
-            <span class="pipeline-mark pipeline-mark--scale">|·····|·····|·····|·····|</span>
-            <span class="pipeline-scrap pipeline-scrap--a" aria-hidden="true"></span>
-            <span class="pipeline-scrap pipeline-scrap--b" aria-hidden="true"></span>
-            <span class="pipeline-tape pipeline-tape--a" aria-hidden="true"></span>
-          </div>
+          <li class="hw-step" data-reveal data-reveal-delay="2">
+            <span class="hw-step-num">01</span>
+            <h3 class="hw-step-title">Show me what needs explaining</h3>
+            <p class="hw-step-body">You can send videos, notes, screenshots, old docs, or just explain the situation.</p>
+          </li>
 
-          <!-- Routing lines span the full canvas, behind the columns -->
-          <svg class="pipe-routes" preserveAspectRatio="none" viewBox="0 0 1000 400" aria-hidden="true">
-            <path id="pipe-route-1" class="pipe-route" d="M40 80   C 280 80,  280 130, 500 200" />
-            <path id="pipe-route-2" class="pipe-route" d="M40 160  C 280 160, 280 180, 500 200" />
-            <path id="pipe-route-3" class="pipe-route" d="M40 240  C 280 240, 280 220, 500 200" />
-            <path id="pipe-route-4" class="pipe-route" d="M40 320  C 280 320, 280 270, 500 200" />
-            <path id="pipe-route-5" class="pipe-route" d="M500 200 C 720 200, 720 100, 960 80"  />
-            <path id="pipe-route-6" class="pipe-route" d="M500 200 C 720 200, 720 160, 960 160" />
-            <path id="pipe-route-7" class="pipe-route" d="M500 200 C 720 200, 720 240, 960 240" />
-            <path id="pipe-route-8" class="pipe-route" d="M500 200 C 720 200, 720 320, 960 320" />
-            <!-- Particles travelling along the routes -->
-            <circle class="pipe-particle pipe-particle--1" r="2.5"><animateMotion dur="6s" repeatCount="indefinite" rotate="auto"><mpath href="#pipe-route-1"/></animateMotion></circle>
-            <circle class="pipe-particle pipe-particle--2" r="2.5"><animateMotion dur="7s" repeatCount="indefinite" rotate="auto" begin="-2s"><mpath href="#pipe-route-3"/></animateMotion></circle>
-            <circle class="pipe-particle pipe-particle--3" r="2.5"><animateMotion dur="6.5s" repeatCount="indefinite" rotate="auto" begin="-1s"><mpath href="#pipe-route-5"/></animateMotion></circle>
-            <circle class="pipe-particle pipe-particle--4" r="2.5"><animateMotion dur="7.5s" repeatCount="indefinite" rotate="auto" begin="-3s"><mpath href="#pipe-route-7"/></animateMotion></circle>
-          </svg>
+          <li class="hw-step" data-reveal data-reveal-delay="3">
+            <span class="hw-step-num">02</span>
+            <h3 class="hw-step-title">I gather context</h3>
+            <p class="hw-step-body">I ask questions, review the material, and figure out what people actually need to understand.</p>
+          </li>
 
-          <!-- LEFT: chaotic raw inputs (each with its own visual content) -->
-          <div class="pipe-col pipe-col--inputs" aria-labelledby="pipe-col-inputs">
-            <div class="pipe-col-head">
-              <span class="pipe-col-num">01</span>
-              <span class="pipe-col-label" id="pipe-col-inputs">[Column 1 label]</span>
-            </div>
-            <div class="pipe-items">
+          <li class="hw-step" data-reveal data-reveal-delay="4">
+            <span class="hw-step-num">03</span>
+            <h3 class="hw-step-title">I organize the explanation</h3>
+            <p class="hw-step-body">I turn the information into a clear structure that makes sense to the person using it.</p>
+          </li>
 
-              <!-- Input item 1 -->
-              <article class="pipe-item pipe-item--memo" style="--top: 2%;  --left: 4%;  --rot: -5deg;  --d: 0s;">
-                <header class="pipe-item-head">
-                  <span class="pipe-item-tag">[ext]</span>
-                  <span class="pipe-item-name">[Input 1 name]</span>
-                </header>
-                <div class="pipe-item-body">
-                  <span class="pipe-wave">
-                    <span style="height:30%"></span><span style="height:65%"></span><span style="height:45%"></span>
-                    <span style="height:80%"></span><span style="height:55%"></span><span style="height:90%"></span>
-                    <span style="height:40%"></span><span style="height:70%"></span><span style="height:35%"></span>
-                    <span style="height:60%"></span><span style="height:25%"></span>
-                  </span>
-                  <span class="pipe-item-meta">0:00</span>
-                </div>
-              </article>
+          <li class="hw-step" data-reveal data-reveal-delay="5">
+            <span class="hw-step-num">04</span>
+            <h3 class="hw-step-title">I make the guide</h3>
+            <p class="hw-step-body">I create the walkthrough, reference doc, checklist, SOP, tutorial, or training material.</p>
+          </li>
 
-              <!-- Input item 2 -->
-              <article class="pipe-item pipe-item--slack" style="--top: 16%; --left: 44%; --rot: 3deg;   --d: -2s;">
-                <header class="pipe-item-head">
-                  <span class="pipe-item-tag pipe-item-tag--slack">#</span>
-                  <span class="pipe-item-name">[Input 2 name]</span>
-                </header>
-                <div class="pipe-item-body">
-                  <span class="pipe-chat">
-                    <span class="pipe-chat-av">A</span>
-                    <span class="pipe-line w85"></span>
-                  </span>
-                  <span class="pipe-chat">
-                    <span class="pipe-chat-av pipe-chat-av--alt">B</span>
-                    <span class="pipe-line w60"></span>
-                  </span>
-                </div>
-              </article>
+          <li class="hw-step" data-reveal data-reveal-delay="6">
+            <span class="hw-step-num">05</span>
+            <h3 class="hw-step-title">You review it</h3>
+            <p class="hw-step-body">You check for accuracy and tell me what needs adjusting.</p>
+          </li>
 
-              <!-- Input item 3 -->
-              <article class="pipe-item pipe-item--pdf" style="--top: 36%; --left: 2%;  --rot: -2deg;  --d: -4s;">
-                <span class="pipe-item-curl" aria-hidden="true"></span>
-                <header class="pipe-item-head">
-                  <span class="pipe-item-tag pipe-item-tag--pdf">[ext]</span>
-                  <span class="pipe-item-name">[Input 3 name]</span>
-                </header>
-                <div class="pipe-item-body">
-                  <span class="pipe-line w90"></span>
-                  <span class="pipe-line w70"></span>
-                  <span class="pipe-line w80"></span>
-                </div>
-              </article>
+          <li class="hw-step" data-reveal data-reveal-delay="7">
+            <span class="hw-step-num">06</span>
+            <h3 class="hw-step-title">I polish the final version</h3>
+            <p class="hw-step-body">You get a clear guide people can actually use.</p>
+          </li>
 
-              <!-- Input item 4 -->
-              <article class="pipe-item pipe-item--shot" style="--top: 50%; --left: 38%; --rot: 4deg;   --d: -6s;">
-                <header class="pipe-item-head pipe-item-head--chrome">
-                  <span class="pipe-item-chrome-dot"></span>
-                  <span class="pipe-item-chrome-dot"></span>
-                  <span class="pipe-item-chrome-dot"></span>
-                </header>
-                <div class="pipe-item-body pipe-item-body--screen">
-                  <span class="pipe-line w95"></span>
-                  <span class="pipe-line w65"></span>
-                </div>
-              </article>
-
-              <!-- Input item 5 -->
-              <article class="pipe-item pipe-item--loom" style="--top: 64%; --left: 6%;  --rot: -3deg;  --d: -8s;">
-                <div class="pipe-item-body pipe-item-body--video">
-                  <span class="pipe-play" aria-hidden="true">
-                    <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor"><path d="M4 3v6l5-3z"/></svg>
-                  </span>
-                  <span class="pipe-item-meta pipe-item-meta--time">0:00</span>
-                </div>
-                <header class="pipe-item-head pipe-item-head--bottom">
-                  <span class="pipe-item-tag pipe-item-tag--loom">[ext]</span>
-                  <span class="pipe-item-name">[Input 5 name]</span>
-                </header>
-              </article>
-
-              <!-- Input item 6 -->
-              <article class="pipe-item pipe-item--note" style="--top: 82%; --left: 32%; --rot: 1.5deg; --d: -10s;">
-                <div class="pipe-item-body">
-                  <span class="pipe-line pipe-line--hand w80"></span>
-                  <span class="pipe-line pipe-line--hand w60"></span>
-                  <span class="pipe-line pipe-line--hand w70"></span>
-                </div>
-              </article>
-
-            </div>
-          </div>
-
-          <!-- CENTER: transformation engine -->
-          <div class="pipe-col pipe-col--engine" aria-labelledby="pipe-col-engine">
-            <div class="pipe-col-head pipe-col-head--center">
-              <span class="pipe-col-num">02</span>
-              <span class="pipe-col-label" id="pipe-col-engine">[Column 2 label]</span>
-            </div>
-            <div class="pipe-engine-stage" aria-hidden="true">
-              <span class="pipe-ring pipe-ring--a"></span>
-              <span class="pipe-ring pipe-ring--b"></span>
-              <span class="pipe-ring pipe-ring--c"></span>
-            </div>
-            <ol class="pipe-nodes">
-              <li class="pipe-node"><span class="pipe-node-dot"></span><span class="pipe-node-name">[Step 1]</span></li>
-              <li class="pipe-node pipe-node--active"><span class="pipe-node-dot"></span><span class="pipe-node-name">[Step 2]</span></li>
-              <li class="pipe-node"><span class="pipe-node-dot"></span><span class="pipe-node-name">[Step 3]</span></li>
-            </ol>
-          </div>
-
-          <!-- RIGHT: aligned structured outputs (each shows mini preview) -->
-          <div class="pipe-col pipe-col--outputs" aria-labelledby="pipe-col-outputs">
-            <div class="pipe-col-head pipe-col-head--right">
-              <span class="pipe-col-num">03</span>
-              <span class="pipe-col-label" id="pipe-col-outputs">[Column 3 label]</span>
-            </div>
-            <ol class="pipe-outputs">
-
-              <!-- Output 1: numbered step rows -->
-              <li class="pipe-output pipe-output--sop" style="--i: 0;">
-                <header class="pipe-output-head">[Output 1 head]</header>
-                <div class="pipe-output-body">
-                  <span class="pipe-step"><span class="pipe-step-num">01</span><span class="pipe-line w70"></span></span>
-                  <span class="pipe-step"><span class="pipe-step-num">02</span><span class="pipe-line w55"></span></span>
-                  <span class="pipe-step"><span class="pipe-step-num">03</span><span class="pipe-line w65"></span></span>
-                </div>
-                <span class="pipe-output-label">[Output 1 label]</span>
-              </li>
-
-              <!-- Output 2: header + checklist -->
-              <li class="pipe-output pipe-output--onboard" style="--i: 1;">
-                <header class="pipe-output-head">[Output 2 head]</header>
-                <div class="pipe-output-body">
-                  <span class="pipe-check"><span class="pipe-check-mark">✓</span><span class="pipe-line w65"></span></span>
-                  <span class="pipe-check"><span class="pipe-check-mark">✓</span><span class="pipe-line w70"></span></span>
-                  <span class="pipe-check"><span class="pipe-check-mark pipe-check-mark--empty"></span><span class="pipe-line w55"></span></span>
-                </div>
-                <span class="pipe-output-label">[Output 2 label]</span>
-              </li>
-
-              <!-- Output 3: video frame thumbnail -->
-              <li class="pipe-output pipe-output--walk" style="--i: 2;">
-                <header class="pipe-output-head">[Output 3 head]</header>
-                <div class="pipe-output-body pipe-output-body--video">
-                  <span class="pipe-play pipe-play--lg" aria-hidden="true">
-                    <svg viewBox="0 0 12 12" width="12" height="12" fill="currentColor"><path d="M4 3v6l5-3z"/></svg>
-                  </span>
-                  <span class="pipe-item-meta pipe-item-meta--time">0:00</span>
-                </div>
-                <span class="pipe-output-label">[Output 3 label]</span>
-              </li>
-
-              <!-- Output 4: breadcrumb + lines -->
-              <li class="pipe-output pipe-output--kb" style="--i: 3;">
-                <header class="pipe-output-head pipe-output-head--crumb">[Output 4 head]</header>
-                <div class="pipe-output-body">
-                  <span class="pipe-line w90"></span>
-                  <span class="pipe-line w75"></span>
-                  <span class="pipe-line w60"></span>
-                </div>
-                <span class="pipe-output-label">[Output 4 label]</span>
-              </li>
-
-              <!-- Output 5: stacked module cards -->
-              <li class="pipe-output pipe-output--train" style="--i: 4;">
-                <header class="pipe-output-head">[Output 5 head]</header>
-                <div class="pipe-output-body pipe-output-body--stack">
-                  <span class="pipe-stack-card"></span>
-                  <span class="pipe-stack-card"></span>
-                  <span class="pipe-stack-card pipe-stack-card--top"></span>
-                </div>
-                <span class="pipe-output-label">[Output 5 label]</span>
-              </li>
-
-              <!-- Output 6: doc icon + tags -->
-              <li class="pipe-output pipe-output--ref" style="--i: 5;">
-                <header class="pipe-output-head">[Output 6 head]</header>
-                <div class="pipe-output-body">
-                  <span class="pipe-tags">
-                    <span class="pipe-tag">[tag 1]</span>
-                    <span class="pipe-tag">[tag 2]</span>
-                    <span class="pipe-tag">[tag 3]</span>
-                  </span>
-                </div>
-                <span class="pipe-output-label">[Output 6 label]</span>
-              </li>
-
-            </ol>
-          </div>
-        </div>
+        </ol>
 
       </section>
 
 
       <!-- ============================================================
-           SECTION 5: CONTACT
+           SECTION 7: CONTACT
       ============================================================ -->
       <section id="contact" aria-labelledby="contact-heading">
 
@@ -1088,16 +645,17 @@
           </div>
 
           <div class="contact-card-inner">
-            <span class="contact-eyebrow" data-reveal="left"><span class="contact-eyebrow-dot"></span>[Contact eyebrow]</span>
-            <h2 id="contact-heading" data-reveal data-reveal-delay="1">[Contact headline]</h2>
-            <p id="contact-body" data-reveal data-reveal-delay="2">[Contact body]</p>
+            <span class="contact-eyebrow" data-reveal="left"><span class="contact-eyebrow-dot"></span>Get in touch</span>
+            <h2 id="contact-heading" data-reveal data-reveal-delay="1">Have something people need to understand?</h2>
+            <p id="contact-body" data-reveal data-reveal-delay="2">Show me the product, process, app, role, workflow, or explanation you need turned into a guide. I'll help figure out the clearest format and what information we need to make it useful.</p>
 
             <div class="contact-actions" data-reveal data-reveal-delay="3">
+              <!-- TODO: fill in real email address -->
               <a id="contact-email-link" href="mailto:[email]">
-                <span>[CTA text]</span>
+                <span>Show me what you need explained</span>
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </a>
-              <span class="contact-meta">[CTA meta]</span>
+              <span class="contact-meta">You don't need perfect materials to start. A call, video, notes, screenshots, or a rough explanation is enough.</span>
             </div>
           </div>
         </div>
@@ -1112,53 +670,51 @@
 
         <div class="footer-brand">
           <div class="footer-mark">
-            <span class="footer-mark-glyph">L</span>
+            <span class="footer-mark-glyph">S</span>
           </div>
-          <p id="footer-name">[Name]</p>
-          <p class="footer-tag">[Footer tagline]</p>
+          <p id="footer-name">Steven Wilen</p>
+          <p class="footer-tag">Custom guides for things that are hard to explain.</p>
         </div>
 
         <div class="footer-cols">
           <div class="footer-col">
-            <h4 class="footer-col-heading">[Footer col 1 heading]</h4>
+            <h4 class="footer-col-heading">Site</h4>
             <ul>
-              <li><a href="#work-sample">[Footer link 1]</a></li>
-              <li><a href="#services">[Footer link 2]</a></li>
-              <li><a href="#process">[Footer link 3]</a></li>
-              <li><a href="#contact">[Footer link 4]</a></li>
+              <li><a href="#explanation">What I do</a></li>
+              <li><a href="#services">Examples</a></li>
+              <li><a href="#project">Real project</a></li>
+              <li><a href="#process">How it works</a></li>
+              <li><a href="#contact">Contact</a></li>
             </ul>
           </div>
           <div class="footer-col">
-            <h4 class="footer-col-heading">[Footer col 2 heading]</h4>
+            <h4 class="footer-col-heading">Formats</h4>
             <ul>
-              <li>[Footer item 1]</li>
-              <li>[Footer item 2]</li>
-              <li>[Footer item 3]</li>
-              <li>[Footer item 4]</li>
-              <li>[Footer item 5]</li>
-              <li>[Footer item 6]</li>
+              <li>Reference guides</li>
+              <li>Walkthroughs &amp; tutorials</li>
+              <li>SOPs &amp; checklists</li>
+              <li>Training material</li>
+              <li>Onboarding docs</li>
+              <li>Short video guides</li>
             </ul>
           </div>
           <div class="footer-col">
-            <h4 class="footer-col-heading">[Footer col 3 heading]</h4>
+            <h4 class="footer-col-heading">Contact</h4>
             <ul>
+              <!-- TODO: fill in real email + phone -->
               <li><a href="mailto:[email]">[email]</a></li>
-              <li><a href="tel:[phone]">[phone]</a></li>
-              <li>[Footer note]</li>
+              <li>By appointment</li>
             </ul>
           </div>
         </div>
 
       </div>
       <div class="footer-bottom">
-        <span>© <span id="footer-year">2026</span> [Name]. All rights reserved.</span>
+        <span>© <span id="footer-year">2026</span> Steven Wilen. All rights reserved.</span>
       </div>
     </footer>
 
-    <!-- Course mockup interactivity -->
     <script src="script.js"></script>
-
-
 
   </body>
 </html>
