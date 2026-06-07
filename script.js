@@ -604,13 +604,13 @@ document.addEventListener('DOMContentLoaded', function () {
       pScroll: parseFloat(el.getAttribute('data-parallax')) || 0.2,
       phase: phaseMs,
       restRot: restRot,
-      // Drift: x:4-10px, y:3-8px, rot:0.5-1.5deg, period 8-14s — spread per index
-      xPeriod: 9000 + (i * 1300),                // 9.0 - 15.5s
-      yPeriod: 11000 + (i * 950),                // 11.0 - 15.7s
-      rotPeriod: 13000 + (i * 1700),             // 13.0 - 21.5s
-      xAmp: 5 + (i % 3) * 1.6,                   // 5.0 - 8.2px
-      yAmp: 4 + (i % 3) * 1.3,                   // 4.0 - 6.6px
-      rotAmp: 0.6 + (i % 3) * 0.4,               // 0.6 - 1.4deg
+      // Drift: amplitudes halved and periods extended ~1.5× for a calmer feel.
+      xPeriod: 14000 + (i * 1500),               // 14 - 20s
+      yPeriod: 17000 + (i * 1100),               // 17 - 22s
+      rotPeriod: 20000 + (i * 2200),             // 20 - 29s
+      xAmp: 3 + (i % 3) * 1.0,                   // 3.0 - 5.0px
+      yAmp: 2.5 + (i % 3) * 0.9,                 // 2.5 - 4.3px
+      rotAmp: 0.3 + (i % 3) * 0.2,               // 0.3 - 0.7deg
       // Settle: 900-1400ms with 80-140ms stagger
       settleDelay: i * 110,                       // 0, 110, 220, 330, 440ms
       settleDuration: 1100 + (i % 3) * 80,        // 1100 - 1260ms
@@ -675,8 +675,8 @@ document.addEventListener('DOMContentLoaded', function () {
         settleRotDelta = item.initialRotDelta;
         settleAlpha = 0;
       } else if (localT < 1) {
-        // In flight: eased deceleration with overshoot
-        var posEase = easeOutBack(localT);
+        // In flight: eased deceleration, no overshoot (calmer settle).
+        var posEase = easeOutCubic(localT);
         settleTx = item.initialOffsetX * (1 - posEase);
         settleTy = item.initialOffsetY * (1 - posEase);
         settleRotDelta = item.initialRotDelta * (1 - posEase);
