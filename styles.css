@@ -4726,13 +4726,13 @@ img, svg { display: block; max-width: 100%; }
 /* Below 1500px, push the clusters further toward the viewport edges so
    they clear the headline. Slight cutoff at the edges is intentional. */
 @media (max-width: 1500px) {
-  .hero-float--notes      { left: -9%; }
-  .hero-float--video      { left: -13%; }
-  .hero-float--reference  { left: -6%; }
-  .hero-float--guide      { right: -10%; }
-  .hero-float--call       { right: -13%; }
-  .hero-float--annotated  { right: -11%; }
-  .hero-float--checklist  { right: -4%; }
+  .hero-float--notes      { left: -5%; }
+  .hero-float--video      { left: -9%; }
+  .hero-float--reference  { left: -2%; }
+  .hero-float--guide      { right: -6%; }
+  .hero-float--call       { right: -9%; }
+  .hero-float--annotated  { right: -7%; }
+  .hero-float--checklist  { right: 0%; }
 }
 
 /* Below 1200px the cards start overlapping the headline, so wash them
