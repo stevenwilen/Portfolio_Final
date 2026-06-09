@@ -4723,11 +4723,25 @@ img, svg { display: block; max-width: 100%; }
   .hero-float--checklist  { width: 206px; }
 }
 
-/* Below 1400px the cards start overlapping the headline, so wash them
+/* Below 1500px, push the clusters further toward the viewport edges so
+   they clear the headline. Slight cutoff at the edges is intentional. */
+@media (max-width: 1500px) {
+  .hero-float--notes      { left: -9%; }
+  .hero-float--video      { left: -13%; }
+  .hero-float--reference  { left: -6%; }
+  .hero-float--guide      { right: -10%; }
+  .hero-float--call       { right: -13%; }
+  .hero-float--annotated  { right: -11%; }
+  .hero-float--checklist  { right: -4%; }
+}
+
+/* Below 1200px the cards start overlapping the headline, so wash them
    toward the page background. The cream veil keeps them opaque (no
    see-through look) while muting them enough to read the text over. */
-@media (max-width: 1400px) {
+@media (max-width: 1200px) {
   .hero-float::after { opacity: 0.72; }
+  /* Drop the shadows too so the washed cards sit flat in the background. */
+  .hero-float { box-shadow: none; }
 }
 
 /* Narrower laptops (<1200px): drop the two secondary cards so the
