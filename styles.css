@@ -123,6 +123,12 @@
   --space-section-y-sm: clamp(3rem,   5vw, 4.5rem);
   --space-block-md:     clamp(2rem,   4vw, 3rem);
 
+  /* Extra hero bottom padding that lets the floating artifacts hang low
+     without crossing the divider. The torn-paper mask + the #services
+     pull-up below both reference this so the visible divider sits back at
+     its pre-extension position while the cards keep their placement. */
+  --hero-extend:        clamp(7rem,   13vw, 13rem);
+
   --space-stack-eyebrow-h2: clamp(18px, 1.6vw, 26px);
   --space-stack-h2-body:    clamp(14px, 1.2vw, 22px);
   --space-stack-body-cta:   clamp(20px, 2.4vw, 32px);
@@ -312,9 +318,11 @@ img, svg { display: block; max-width: 100%; }
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   padding-block-start: var(--space-section-y-lg);
-  /* Extra bottom padding so the lowest floating artifacts (and their
-     shadows) finish well above the torn divider rather than crossing it. */
-  padding-block-end: calc(var(--space-section-y-lg) + clamp(7rem, 13vw, 13rem));
+  /* Extra bottom padding gives the lowest floating artifacts room to hang.
+     The torn-paper mask (.hero-bottom-mask) is laid over this region so the
+     visible divider returns to its pre-extension line and the lower cards
+     tuck behind it. */
+  padding-block-end: calc(var(--space-section-y-lg) + var(--hero-extend));
   padding-inline: clamp(1rem, 4vw, 2.5rem);
   text-align: center;
   isolation: isolate;
@@ -351,6 +359,32 @@ img, svg { display: block; max-width: 100%; }
     24% calc(100% - 10px), 20% calc(100% - 8px), 16% calc(100% - 12px),
     12% calc(100% - 4px), 8% calc(100% - 10px), 4% calc(100% - 6px),
     0 calc(100% - 4px)
+  );
+}
+
+/* Torn-paper mask over the hero's bottom padding. Painted in the body
+   surface colour with a jagged TOP edge, sitting ABOVE the cards (their
+   max --z is 5) so the lower artifacts tuck behind it. Its top edge is the
+   visible divider; sized to --hero-extend so it lands back where the divider
+   sat before the bottom padding was added. */
+.hero-bottom-mask {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--hero-extend);
+  z-index: 6;
+  background-color: var(--c-surface);
+  background-image: var(--paper-grain-light);
+  background-repeat: repeat;
+  background-size: 280px 280px;   /* match the body grain so it reads continuous */
+  pointer-events: none;
+  clip-path: polygon(
+    0 5px, 4% 11px, 8% 3px, 12% 12px, 16% 5px, 20% 10px, 24% 2px,
+    28% 11px, 32% 4px, 36% 12px, 40% 6px, 44% 10px, 48% 3px, 52% 12px,
+    56% 5px, 60% 11px, 64% 2px, 68% 10px, 72% 6px, 76% 12px, 80% 4px,
+    84% 11px, 88% 3px, 92% 12px, 96% 6px, 100% 5px,
+    100% 100%, 0 100%
   );
 }
 
@@ -611,6 +645,10 @@ img, svg { display: block; max-width: 100%; }
    ============================================================= */
 #services {
   position: relative;
+  /* The hero's extra bottom padding (--hero-extend) is masked as torn paper,
+     so pull this section up by the same amount to keep the divider-to-EXAMPLES
+     spacing at its original (pre-extension) value. */
+  margin-top: calc(-1 * var(--hero-extend));
   padding-block: var(--space-section-y);
   isolation: isolate;
 }
