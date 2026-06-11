@@ -176,206 +176,83 @@
 
 
       <!-- ============================================================
-           SECTION 2: WHAT CAN BECOME A GUIDE
+           SECTION 2: EXAMPLE GUIDE PROJECTS
+           Unified showcase that replaces the old Examples + Transformation
+           sections. Two-column premium layout: context + before/after
+           transformation (left), large deliverable screenshot (right),
+           selector rail beneath. The active example (04 Handoff Guide) is
+           rendered statically so the section works without JS; script.js
+           swaps content for the other selector items from a data map.
       ============================================================ -->
-      <section id="services" aria-labelledby="services-heading">
+      <section id="guide-projects" aria-labelledby="gp-heading">
 
-        <div class="services-bg" aria-hidden="true"></div>
+        <header class="gp-head" data-reveal>
+          <span class="section-eyebrow"><span class="section-eyebrow-dot"></span><span>Example projects</span></span>
+          <h2 id="gp-heading">Example guide projects</h2>
+          <p class="gp-subhead">See how repeated explanations, rough processes, and scattered instructions can become clear guide packages people can actually use.</p>
+        </header>
 
-        <div id="services-head">
-          <span id="services-eyebrow" data-reveal="left"><span class="services-eyebrow-dot"></span>Examples</span>
-          <h2 id="services-heading" data-reveal data-reveal-delay="1">What can become a guide?</h2>
-          <p class="services-lede" data-reveal data-reveal-delay="2">A few common shapes — what you already have can usually become one of these.</p>
-        </div>
+        <div class="gp-showcase" data-reveal data-reveal-delay="1">
 
-        <div id="service-categories">
-
-          <article class="sc-card sc-card--product" data-reveal>
-            <div class="sc-scene" aria-hidden="true">
-              <div class="sc-spec">
-                <span class="sc-spec-photo"></span>
-                <span class="sc-spec-row sc-spec-row--title"></span>
-                <span class="sc-spec-row"></span>
-                <span class="sc-spec-row sc-spec-row--short"></span>
-                <span class="sc-spec-barcode"></span>
+          <!-- LEFT: compact caption sidebar (active example 04) -->
+          <div class="gp-context" id="gp-context" aria-live="polite">
+            <span class="gp-category">Role or task instructions → Handoff guide</span>
+            <h3 class="gp-title">Front Desk Opening Handoff System</h3>
+            <p class="gp-lead">A sample Drive package for a small fitness studio's opening shift.</p>
+            <dl class="gp-facts">
+              <div class="gp-fact">
+                <dt>Problem</dt>
+                <dd>The owner was repeating the same opening instructions every time: when to arrive, what to check, what to turn on, and how to report issues.</dd>
               </div>
-            </div>
-            <h3 class="sc-title">Product or component</h3>
-            <p class="sc-desc">A clear reference guide for what it is, how it works, and how people should use it.</p>
-          </article>
-
-          <article class="sc-card sc-card--app" data-reveal data-reveal-delay="1">
-            <div class="sc-scene" aria-hidden="true">
-              <div class="sc-appframe">
-                <span class="sc-app-dots"><i></i><i></i><i></i></span>
-                <span class="sc-app-tabs">
-                  <i class="is-on">Overview</i><i>Setup</i><i>Use</i>
-                </span>
-                <span class="sc-app-body">
-                  <span class="sc-app-line"></span>
-                  <span class="sc-app-line sc-app-line--70"></span>
-                  <span class="sc-app-line sc-app-line--55"></span>
-                </span>
+              <div class="gp-fact">
+                <dt>Result</dt>
+                <dd>Staff get one organized folder with the guide, checklist, forms, tracker, cheat sheet, and mobile access.</dd>
               </div>
-            </div>
-            <h3 class="sc-title">App or software walkthrough</h3>
-            <p class="sc-desc">A step-by-step tutorial showing users how to navigate the app or complete the important actions.</p>
-          </article>
-
-          <article class="sc-card sc-card--workflow" data-reveal data-reveal-delay="2">
-            <div class="sc-scene" aria-hidden="true">
-              <div class="sc-checklist">
-                <span class="sc-check-row sc-check-row--done"><i class="sc-tick">✓</i><i class="sc-bar sc-bar--strike"></i></span>
-                <span class="sc-check-row sc-check-row--done"><i class="sc-tick">✓</i><i class="sc-bar sc-bar--strike sc-bar--w65"></i></span>
-                <span class="sc-check-row"><i class="sc-box"></i><i class="sc-bar sc-bar--w70"></i></span>
-                <span class="sc-check-row"><i class="sc-box"></i><i class="sc-bar sc-bar--w55"></i></span>
-                <span class="sc-check-row"><i class="sc-box"></i><i class="sc-bar sc-bar--w60"></i></span>
+              <div class="gp-fact">
+                <dt>Built</dt>
+                <dd class="gp-built-inline">Start Here Guide · Opening Checklist · Completion Form · Issue Report Form · Manager Tracker · Cheat Sheet · QR Access</dd>
               </div>
-            </div>
-            <h3 class="sc-title">Workflow or internal process</h3>
-            <p class="sc-desc">A practical guide, checklist, or SOP for how the work gets done.</p>
-          </article>
-
-          <article class="sc-card sc-card--event" data-reveal data-reveal-delay="3">
-            <div class="sc-scene" aria-hidden="true">
-              <div class="sc-lanyard">
-                <span class="sc-lanyard-string"></span>
-                <div class="sc-badge">
-                  <span class="sc-badge-hole"></span>
-                  <span class="sc-badge-role">Volunteer</span>
-                  <span class="sc-badge-name">Set-up team</span>
-                  <span class="sc-badge-loc">Gate B · 8:00 AM</span>
-                </div>
+              <div class="gp-fact">
+                <dt>Goal</dt>
+                <dd>Make the opening shift easy to follow and easy to review.</dd>
               </div>
-            </div>
-            <h3 class="sc-title">Event role or volunteer instructions</h3>
-            <p class="sc-desc">A simple reference people can use to understand where to go, what to do, and how the role works.</p>
-          </article>
-
-          <article class="sc-card sc-card--equipment" data-reveal data-reveal-delay="4">
-            <div class="sc-scene" aria-hidden="true">
-              <div class="sc-hangtag">
-                <span class="sc-tag-string"></span>
-                <span class="sc-tag-hole"></span>
-                <span class="sc-tag-title">Unit 04</span>
-                <span class="sc-tag-meta">Charge · Operate</span>
-                <span class="sc-tag-stamp">OK</span>
-              </div>
-            </div>
-            <h3 class="sc-title">Robot, tool, or equipment instructions</h3>
-            <p class="sc-desc">A guide for setup, charging, maintenance, operation, or basic troubleshooting.</p>
-          </article>
-
-          <article class="sc-card sc-card--customer" data-reveal data-reveal-delay="5">
-            <div class="sc-scene" aria-hidden="true">
-              <div class="sc-setup">
-                <div class="sc-step-rung"><span class="sc-step-n">1</span><span class="sc-step-bar sc-bar--w80"></span></div>
-                <div class="sc-step-rung"><span class="sc-step-n">2</span><span class="sc-step-bar sc-bar--w65"></span></div>
-                <div class="sc-step-rung"><span class="sc-step-n">3</span><span class="sc-step-bar sc-bar--w70"></span></div>
-                <span class="sc-setup-tick">✓</span>
-              </div>
-            </div>
-            <h3 class="sc-title">Customer setup process</h3>
-            <p class="sc-desc">A walkthrough customers can follow instead of needing the same explanation manually.</p>
-          </article>
-
-        </div>
-      </section>
-
-
-      <!-- ============================================================
-           SECTION 3.5: TRANSFORMATION STRIP — Raw → Organize → Finished
-      ============================================================ -->
-      <section id="transformation" aria-labelledby="transformation-heading">
-
-        <div class="tf-bg" aria-hidden="true"></div>
-
-        <div class="tf-head">
-          <span class="section-eyebrow" data-reveal="left">
-            <span class="section-eyebrow-dot"></span><span>The transformation</span>
-          </span>
-          <h2 id="transformation-heading" class="tf-cap" data-reveal data-reveal-delay="1">
-            Scattered project material becomes one guide people can actually use.
-          </h2>
-        </div>
-
-        <div class="tf-strip" data-reveal>
-
-          <!-- STAGE 1: RAW — chaotic chip pile -->
-          <figure class="tf-stage tf-stage--raw">
-            <span class="pp-tape tf-tape">Raw</span>
-            <div class="tf-pile" aria-hidden="true">
-              <span class="tf-art tf-art--video"   style="--top:6%;  --left:8%;  --rot:-6deg;">▶ Client video 1</span>
-              <span class="tf-art tf-art--video"   style="--top:18%; --left:48%; --rot: 4deg;">▶ Client video 2</span>
-              <span class="tf-art tf-art--email"   style="--top:38%; --left:4%;  --rot:-3deg;">@ Email discussion</span>
-              <span class="tf-art tf-art--meet"    style="--top:46%; --left:46%; --rot: 6deg;">● Meet recording</span>
-              <span class="tf-art tf-art--note"    style="--top:66%; --left:18%; --rot:-8deg;">Owner explanation</span>
-              <span class="tf-art tf-art--chat"    style="--top:74%; --left:52%; --rot: 2deg;">Follow-up Q</span>
-            </div>
-            <figcaption class="tf-stage-cap">Project material</figcaption>
-          </figure>
-
-          <!-- ARROW 1: organize -->
-          <div class="tf-arrow tf-arrow--1" aria-hidden="true">
-            <svg viewBox="0 0 80 24" preserveAspectRatio="none">
-              <path d="M2 12 C 24 4, 56 4, 76 12" />
-              <path d="M70 6 L 76 12 L 70 18" />
-            </svg>
-            <span class="pp-tape tf-arrow-tape">organize</span>
+            </dl>
           </div>
 
-          <!-- STAGE 2: ORGANIZED — numbered outline with chips -->
-          <figure class="tf-stage tf-stage--organize">
-            <span class="pp-tape tf-tape">Organized</span>
-            <ol class="tf-rows">
-              <li class="tf-row">
-                <span class="tf-row-num">01</span>
-                <span class="tf-row-label">Overview</span>
-                <span class="tf-row-chip">Owner notes</span>
-              </li>
-              <li class="tf-row">
-                <span class="tf-row-num">02</span>
-                <span class="tf-row-label">How it works</span>
-                <span class="tf-row-chip">Client video</span>
-              </li>
-              <li class="tf-row">
-                <span class="tf-row-num">03</span>
-                <span class="tf-row-label">Using it with the app</span>
-                <span class="tf-row-chip">Meet rec</span>
-              </li>
-            </ol>
-            <figcaption class="tf-stage-cap">Outline</figcaption>
-          </figure>
-
-          <!-- ARROW 2: shape -->
-          <div class="tf-arrow tf-arrow--2" aria-hidden="true">
-            <svg viewBox="0 0 80 24" preserveAspectRatio="none">
-              <path d="M2 12 C 24 4, 56 4, 76 12" />
-              <path d="M70 6 L 76 12 L 70 18" />
-            </svg>
-            <span class="pp-tape tf-arrow-tape">shape</span>
+          <!-- RIGHT: large deliverable preview -->
+          <div class="gp-preview" id="gp-preview">
+            <figure class="gp-frame">
+              <span class="gp-frame-tab">Finished deliverable preview</span>
+              <div class="gp-window">
+                <div class="gp-window-bar" aria-hidden="true">
+                  <span class="gp-window-dots"><i></i><i></i><i></i></span>
+                  <span class="gp-window-url">drive.google.com</span>
+                </div>
+                <img class="gp-shot" src="images/deliverable-role.png" width="1536" height="1024" loading="lazy" decoding="async"
+                  alt="Google Drive package for the Front Desk Opening Handoff System — folder containing a Start Here Guide, Opening Checklist, Completion Form, Issue Report Form, Manager Tracker, printable cheat sheet, and a QR / mobile access card." />
+              </div>
+              <figcaption class="gp-frame-cap">Front Desk Opening Handoff System · Google Drive package</figcaption>
+            </figure>
           </div>
 
-          <!-- STAGE 3: FINISHED — clean guide pages -->
-          <figure class="tf-stage tf-stage--finished">
-            <span class="pp-tape tf-tape">Finished</span>
-            <div class="tf-guide" aria-hidden="true">
-              <span class="tf-guide-tab">Morpheus Drive · Reference guide</span>
-              <div class="tf-guide-pages">
-                <div class="tf-page tf-page--3" style="--rot: 3deg;"></div>
-                <div class="tf-page tf-page--2" style="--rot: 1.5deg;"></div>
-                <div class="tf-page tf-page--1" style="--rot: 0deg;">
-                  <div class="tf-page-bars">
-                    <span style="width:90%"></span>
-                    <span style="width:70%"></span>
-                    <span style="width:78%"></span>
-                    <span style="width:60%"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <figcaption class="tf-stage-cap">Reference guide</figcaption>
-          </figure>
+          <!-- BOTTOM: selector rail -->
+          <div class="gp-rail" role="tablist" aria-label="Example guide projects">
+            <button type="button" class="gp-rail-item" role="tab" data-example="01" aria-selected="false" tabindex="-1">
+              <span class="gp-rail-num">01</span><span class="gp-rail-label">Reference Guide</span>
+            </button>
+            <button type="button" class="gp-rail-item" role="tab" data-example="02" aria-selected="false" tabindex="-1">
+              <span class="gp-rail-num">02</span><span class="gp-rail-label">App Tutorial</span>
+            </button>
+            <button type="button" class="gp-rail-item" role="tab" data-example="03" aria-selected="false" tabindex="-1">
+              <span class="gp-rail-num">03</span><span class="gp-rail-label">Process Guide</span>
+            </button>
+            <button type="button" class="gp-rail-item" role="tab" data-example="04" aria-selected="true" tabindex="0">
+              <span class="gp-rail-num">04</span><span class="gp-rail-label">Handoff Guide</span>
+            </button>
+            <button type="button" class="gp-rail-item" role="tab" data-example="05" aria-selected="false" tabindex="-1">
+              <span class="gp-rail-num">05</span><span class="gp-rail-label">Setup Walkthrough</span>
+            </button>
+          </div>
 
         </div>
       </section>
@@ -864,7 +741,7 @@
           <div class="footer-col">
             <h4 class="footer-col-heading">Site</h4>
             <ul>
-              <li><a href="#services">Examples</a></li>
+              <li><a href="#guide-projects">Examples</a></li>
               <li><a href="#project">Real project</a></li>
               <li><a href="#process">How it works</a></li>
               <li><a href="#contact">Contact</a></li>
