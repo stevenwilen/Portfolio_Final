@@ -271,21 +271,20 @@ document.addEventListener('DOMContentLoaded', function () {
       note: 'A sample process guide is on the way — a repeatable workflow turned into a clear, followable SOP.'
     },
     '04': {
-      category: 'Role or task instructions → Handoff guide',
+      category: 'Role or task instructions',
       title: 'Front Desk Opening Handoff System',
       lead: 'A sample Drive package for a small fitness studio\'s opening shift.',
-      problem: 'The owner was repeating the same opening instructions every time: when to arrive, what to check, what to turn on, and how to report issues.',
-      result: 'Staff get one organized folder with the guide, checklist, forms, tracker, cheat sheet, and mobile access.',
+      problem: 'The owner was explaining the same opening routine every time, but still had no simple way to confirm the shift was done correctly or see if anything went wrong.',
+      howItWorks: 'Staff follow the guide and checklist, submit the completion form, and report issues when needed. Form responses feed into the manager tracker automatically.',
       built: [
-        'Start Here Guide',
-        'Opening Checklist',
+        'Guide',
+        'Checklist',
         'Completion Form',
         'Issue Report Form',
         'Manager Tracker',
         'Cheat Sheet',
         'QR Access'
       ],
-      goal: 'Make the opening shift easy to follow and easy to review.',
       image: 'images/deliverable-role.png',
       imageAlt: 'Google Drive package for the Front Desk Opening Handoff System — folder containing a Start Here Guide, Opening Checklist, Completion Form, Issue Report Form, Manager Tracker, printable cheat sheet, and a QR / mobile access card.',
       caption: 'Front Desk Opening Handoff System · Google Drive package'
@@ -311,18 +310,19 @@ document.addEventListener('DOMContentLoaded', function () {
         '<p class="gp-placeholder-note">' + esc(ex.note) + '</p>';
     }
     var builtInline = ex.built.map(esc).join(' · ');
+    var leadArr = Array.isArray(ex.lead) ? ex.lead : [ex.lead];
+    var lead = leadArr.map(function (p) { return '<p class="gp-lead">' + esc(p) + '</p>'; }).join('');
     function fact(label, value, cls) {
       return '<div class="gp-fact"><dt>' + label + '</dt>' +
         '<dd' + (cls ? ' class="' + cls + '"' : '') + '>' + value + '</dd></div>';
     }
     return '<span class="gp-category">' + esc(ex.category) + '</span>' +
       '<h3 class="gp-title">' + esc(ex.title) + '</h3>' +
-      '<p class="gp-lead">' + esc(ex.lead) + '</p>' +
+      lead +
       '<dl class="gp-facts">' +
         fact('Problem', esc(ex.problem)) +
-        fact('Result', esc(ex.result)) +
+        fact('How it works', esc(ex.howItWorks)) +
         fact('Built', builtInline, 'gp-built-inline') +
-        fact('Goal', esc(ex.goal)) +
       '</dl>';
   }
 

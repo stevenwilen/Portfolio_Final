@@ -4315,31 +4315,55 @@ img, svg { display: block; max-width: 100%; }
 }
 .gp-lead {
   margin: 0;
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--c-ink-700);
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--c-ink-600);
 }
-/* Fact rows — small bold label over a tight line of copy */
+/* First line is a standfirst — larger and darker than the supporting line,
+   so the intro reads as two tiers instead of one flat block. */
+.gp-lead:first-of-type {
+  font-size: 15.5px;
+  line-height: 1.5;
+  font-weight: 500;
+  color: var(--c-ink-800);
+}
+/* Fact rows — each a labelled block divided by a hairline rule, so the panel
+   scans as a short spec sheet rather than a wall of paragraphs. */
 .gp-facts {
-  margin: 1px 0 0;
+  margin: 4px 0 0;
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 14px;
 }
-.gp-fact { margin: 0; }
+.gp-fact {
+  margin: 0;
+  padding-top: 14px;
+  border-top: 1px solid rgba(34, 28, 20, 0.12);
+}
 .gp-fact dt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--ff-display);
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: 800;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--c-ink-600);
-  margin-bottom: 2px;
+  color: var(--c-ink-700);
+  margin-bottom: 6px;
+}
+.gp-fact dt::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 6px; height: 6px;
+  border-radius: 1px;
+  background: var(--c-vermillion);
+  box-shadow: 0 0 0 2px var(--c-accent-dim);
 }
 .gp-fact dd {
   margin: 0;
-  font-size: 13px;
-  line-height: 1.45;
+  font-size: 13.5px;
+  line-height: 1.5;
   color: var(--c-ink-700);
 }
 .gp-built-inline {
@@ -4555,12 +4579,13 @@ img, svg { display: block; max-width: 100%; }
 @media (max-width: 900px) {
   .gp-showcase {
     grid-template-columns: 1fr;
+    /* Stacked: screenshot always on top (it's the main artifact), caption
+       below it, selector rail last. */
     grid-template-areas:
-      "context"
       "preview"
+      "context"
       "rail";
   }
-  /* Caption keeps its far-left accent rule, sitting full-width above the frame */
 }
 @media (max-width: 640px) {
   /* Rail becomes a horizontal snap strip so all five stay tappable */
