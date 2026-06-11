@@ -4388,25 +4388,6 @@ img, svg { display: block; max-width: 100%; }
   margin: 0;
   width: 100%;
 }
-/* Red accent tab — sits just above the top-left of the window bar */
-.gp-frame-tab {
-  position: absolute;
-  top: -16px;
-  left: 18px;
-  z-index: 4;
-  padding: 6px 13px;
-  background: var(--c-vermillion);
-  color: var(--c-cream);
-  font-family: var(--ff-display);
-  font-size: 10.5px;
-  font-weight: 800;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  line-height: 1;
-  border-radius: 3px;
-  box-shadow: 0 3px 8px -2px rgba(34, 28, 20, 0.35);
-  transform: rotate(-1.6deg);
-}
 /* Browser-window chrome — makes the white screenshot read as a screen,
    not a stray sheet on the cream paper stack. */
 .gp-window {
@@ -4475,10 +4456,6 @@ img, svg { display: block; max-width: 100%; }
   letter-spacing: 0.01em;
 }
 /* Placeholder preview — empty screen body waiting for a sample */
-.gp-frame--placeholder .gp-frame-tab {
-  background: var(--c-kraft);
-  color: var(--c-ink-900);
-}
 .gp-empty {
   display: flex;
   flex-direction: column;
@@ -4599,5 +4576,4 @@ img, svg { display: block; max-width: 100%; }
     -webkit-overflow-scrolling: touch;
   }
   .gp-rail-item { scroll-snap-align: start; }
-  .gp-frame-tab { left: 16px; }
 }

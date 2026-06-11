@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function () {
       category: 'Role or task instructions',
       title: 'Front Desk Opening Handoff System',
       lead: 'A sample Drive package for a small fitness studio\'s opening shift.',
-      problem: 'The owner was explaining the same opening routine every time, but still had no simple way to confirm the shift was done correctly or see if anything went wrong.',
+      problem: 'The shift relied on verbal instructions and memory instead of a clear handoff process staff could follow consistently.',
       howItWorks: 'Staff follow the guide and checklist, submit the completion form, and report issues when needed. Form responses feed into the manager tracker automatically.',
       built: [
         'Guide',
@@ -336,7 +336,6 @@ document.addEventListener('DOMContentLoaded', function () {
   function renderPreview(ex) {
     if (ex.placeholder) {
       return '<figure class="gp-frame gp-frame--placeholder">' +
-        '<span class="gp-frame-tab">Sample preview</span>' +
         '<div class="gp-window">' + windowBar() +
         '<div class="gp-empty">' +
         '<span class="gp-empty-label">Sample coming soon</span>' +
@@ -344,7 +343,6 @@ document.addEventListener('DOMContentLoaded', function () {
         '</div></div></figure>';
     }
     return '<figure class="gp-frame">' +
-      '<span class="gp-frame-tab">Finished deliverable preview</span>' +
       '<div class="gp-window">' + windowBar() +
       '<img class="gp-shot" src="' + esc(ex.image) + '" loading="lazy" decoding="async" alt="' + esc(ex.imageAlt) + '" />' +
       '</div>' +
