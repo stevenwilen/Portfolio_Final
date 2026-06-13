@@ -235,65 +235,75 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// ─── Example guide projects: selector rail switching ─────────
-// The active example (04 Role Guide) is rendered statically in the HTML.
-// This swaps the context panel + preview from a data map when another
-// selector is chosen. Placeholders render a "sample coming soon" state.
+// ─── Guide-example showcases: selector tab switching ─────────
+// Two sections (Role & Task Instructions, Customer Guides) each render
+// their first example statically so they work without JS. This wires up
+// every .gp-section's tabs to swap the context panel + preview from a
+// shared data map keyed by data-example. Examples without an image show a
+// "sample coming soon" frame.
 document.addEventListener('DOMContentLoaded', function () {
-  var section = document.getElementById('guide-projects');
-  if (!section) return;
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.gp-section'));
+  if (!sections.length) return;
 
-  var contextEl = document.getElementById('gp-context');
-  var previewEl = document.getElementById('gp-preview');
-  var rail = section.querySelector('.gp-rail');
-  if (!contextEl || !previewEl || !rail) return;
-
-  var items = Array.prototype.slice.call(rail.querySelectorAll('.gp-rail-item'));
-  if (!items.length) return;
+  var prefersReduced =
+    window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var EXAMPLES = {
-    '01': {
-      placeholder: true,
-      category: 'Product or component → Reference guide',
-      title: 'Reference Guide example',
-      note: 'A sample reference-guide package is on the way — a clear explanation of what something is, how it works, and how people should use it.'
-    },
-    '02': {
-      placeholder: true,
-      category: 'App or software → Step-by-step tutorial',
-      title: 'App Tutorial example',
-      note: 'A sample app walkthrough is on the way — the key screens and actions, shown step by step.'
-    },
-    '03': {
-      placeholder: true,
-      category: 'Workflow or process → Process guide / SOP',
-      title: 'Process Guide example',
-      note: 'A sample process guide is on the way — a repeatable workflow turned into a clear, followable SOP.'
-    },
-    '04': {
+    // ── Role & Task Instructions ──
+    'role-01': {
       category: 'Role or task instructions',
       title: 'Front Desk Opening Handoff System',
       lead: 'A sample Drive package for a small fitness studio\'s opening shift.',
       problem: 'The shift relied on verbal instructions and memory instead of a clear handoff process staff could follow consistently.',
       howItWorks: 'Staff follow the guide and checklist, submit the completion form, and report issues when needed. Form responses feed into the manager tracker automatically.',
-      built: [
-        'Guide',
-        'Checklist',
-        'Completion Form',
-        'Issue Report Form',
-        'Manager Tracker',
-        'Cheat Sheet',
-        'QR Access'
-      ],
+      built: ['Guide', 'Checklist', 'Completion Form', 'Issue Report Form', 'Manager Tracker', 'Cheat Sheet', 'QR Access'],
       image: 'images/deliverable-role.png',
       imageAlt: 'Google Drive package for the Front Desk Opening Handoff System — folder containing a Start Here Guide, Opening Checklist, Completion Form, Issue Report Form, Manager Tracker, printable cheat sheet, and a QR / mobile access card.',
       caption: 'Front Desk Opening Handoff System · Google Drive package'
     },
-    '05': {
-      placeholder: true,
-      category: 'Customer setup → Setup walkthrough',
-      title: 'Setup Walkthrough example',
-      note: 'A sample setup walkthrough is on the way — a guided path customers can follow on their own.'
+    'role-02': {
+      category: 'Role or task instructions',
+      title: 'Event Volunteer Role Guide',
+      lead: 'A mobile-friendly guide system for volunteers working a local event.',
+      problem: 'Volunteers were receiving scattered instructions through emails, texts, and day-of explanations, which made it hard to know where to go and what each role was responsible for.',
+      howItWorks: 'Volunteers scan a QR code or open the guide before the event, choose their assigned role, and follow clear role instructions, station details, timeline notes, and escalation steps.',
+      built: ['Volunteer Guide', 'Role Cards', 'Station Sheets', 'Event Timeline', 'Contact List', 'Day-Of Cheat Sheet', 'QR Access']
+    },
+    'role-03': {
+      category: 'Role or task instructions',
+      title: 'Intern Training Guide',
+      lead: 'A structured training guide for a recurring intern responsibility.',
+      problem: 'New interns needed repeated explanations before they could complete the same task confidently.',
+      howItWorks: 'The guide breaks the task into clear steps, shows examples, includes screenshots where needed, and gives interns a checklist to confirm completion before asking for review.',
+      built: ['Training Guide', 'Step-by-Step Instructions', 'Screenshots', 'Examples', 'Completion Checklist', 'Review Notes']
+    },
+    // ── Customer Guides ──
+    'cust-01': {
+      category: 'Customer guide',
+      title: 'QR Guest Guide for a Beachside Rental',
+      lead: 'A sample mobile guide guests open from a QR code inside a vacation rental.',
+      problem: 'Guests often text the host for the same basic details: Wi-Fi, parking, house instructions, local recommendations, and checkout steps.',
+      howItWorks: 'A QR card sits inside the rental. Guests scan it and open a polished guide with the most important stay information in one place.',
+      built: ['QR Welcome Card', 'Mobile Guest Guide', 'Wi-Fi Info', 'Check-In Details', 'House Basics', 'Local Picks', 'Checkout Checklist', 'Host Contact'],
+      image: 'images/deliverable-web-guide.png',
+      imageAlt: 'Mobile guest guide for a beachside vacation rental, opened from a QR code — one clean page with Wi-Fi info, check-in details, house basics, local recommendations, a checkout checklist, and host contact.',
+      caption: 'QR Guest Guide for a Beachside Rental · Mobile guest guide'
+    },
+    'cust-02': {
+      category: 'Customer guide',
+      title: 'Fitness Studio New Member Guide',
+      lead: 'A start guide for new members joining a boutique fitness studio.',
+      problem: 'New members often feel unsure before their first class and ask the same questions about what to bring, where to check in, how booking works, and what studio rules to follow.',
+      howItWorks: 'The studio sends one guide link after signup and can also display it with a QR code at the front desk. Members get clear first-visit instructions and answers before they need to ask.',
+      built: ['Welcome Guide', 'First Class Checklist', 'Booking Instructions', 'Studio Rules', 'What to Bring', 'FAQs', 'Contact Info']
+    },
+    'cust-03': {
+      category: 'Customer guide',
+      title: 'Equipment Rental Use Guide',
+      lead: 'A QR-accessible guide attached to a rented piece of equipment.',
+      problem: 'Customers rent equipment but often need help understanding setup, safe use, common mistakes, troubleshooting, and return steps.',
+      howItWorks: 'A QR code on the equipment opens a simple mobile guide with setup steps, safety notes, troubleshooting, and return instructions.',
+      built: ['QR Equipment Label', 'Setup Guide', 'Safety Notes', 'Common Mistakes', 'Troubleshooting', 'Return Checklist', 'Support Contact']
     }
   };
 
@@ -304,14 +314,11 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function renderContext(ex) {
-    if (ex.placeholder) {
-      return '<span class="gp-category">' + esc(ex.category) + '</span>' +
-        '<h3 class="gp-title">' + esc(ex.title) + '</h3>' +
-        '<p class="gp-placeholder-note">' + esc(ex.note) + '</p>';
-    }
-    var builtInline = ex.built.map(esc).join(' · ');
+    var builtInline = (ex.built || []).map(esc).join(' · ');
     var leadArr = Array.isArray(ex.lead) ? ex.lead : [ex.lead];
-    var lead = leadArr.map(function (p) { return '<p class="gp-lead">' + esc(p) + '</p>'; }).join('');
+    var lead = leadArr.filter(Boolean).map(function (p) {
+      return '<p class="gp-lead">' + esc(p) + '</p>';
+    }).join('');
     function fact(label, value, cls) {
       return '<div class="gp-fact"><dt>' + label + '</dt>' +
         '<dd' + (cls ? ' class="' + cls + '"' : '') + '>' + value + '</dd></div>';
@@ -323,61 +330,75 @@ document.addEventListener('DOMContentLoaded', function () {
         fact('Problem', esc(ex.problem)) +
         fact('How it works', esc(ex.howItWorks)) +
         fact('Built', builtInline, 'gp-built-inline') +
+        (ex.result ? fact('Result', esc(ex.result)) : '') +
       '</dl>';
   }
 
-  function windowBar() {
-    return '<div class="gp-window-bar" aria-hidden="true">' +
-      '<span class="gp-window-dots"><i></i><i></i><i></i></span>' +
-      '<span class="gp-window-url">drive.google.com</span>' +
-      '</div>';
-  }
-
   function renderPreview(ex) {
-    if (ex.placeholder) {
+    if (!ex.image) {
       return '<figure class="gp-frame gp-frame--placeholder">' +
-        '<div class="gp-window">' + windowBar() +
+        '<div class="gp-window">' +
         '<div class="gp-empty">' +
         '<span class="gp-empty-label">Sample coming soon</span>' +
         '<span class="gp-empty-sub">' + esc(ex.title) + '</span>' +
         '</div></div></figure>';
     }
     return '<figure class="gp-frame">' +
-      '<div class="gp-window">' + windowBar() +
+      '<div class="gp-window">' +
       '<img class="gp-shot" src="' + esc(ex.image) + '" loading="lazy" decoding="async" alt="' + esc(ex.imageAlt) + '" />' +
       '</div>' +
-      '<figcaption class="gp-frame-cap">' + esc(ex.caption) + '</figcaption>' +
+      (ex.caption ? '<figcaption class="gp-frame-cap">' + esc(ex.caption) + '</figcaption>' : '') +
       '</figure>';
   }
 
-  function select(id, focusBtn) {
-    var ex = EXAMPLES[id];
-    if (!ex) return;
-    contextEl.innerHTML = renderContext(ex);
-    previewEl.innerHTML = renderPreview(ex);
-    items.forEach(function (btn) {
-      var on = btn.getAttribute('data-example') === id;
-      btn.setAttribute('aria-selected', on ? 'true' : 'false');
-      btn.tabIndex = on ? 0 : -1;
-      if (on && focusBtn) btn.focus();
-    });
+  function animateIn(el) {
+    if (prefersReduced) return;
+    el.classList.remove('gp-swap-in');
+    void el.offsetWidth; // force reflow so the animation re-triggers
+    el.classList.add('gp-swap-in');
   }
 
-  items.forEach(function (btn, idx) {
-    btn.addEventListener('click', function () {
-      select(btn.getAttribute('data-example'));
-    });
-    // Roving-tabindex arrow navigation for the tablist
-    btn.addEventListener('keydown', function (e) {
-      var dir = 0;
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') dir = 1;
-      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') dir = -1;
-      else if (e.key === 'Home') dir = -idx;
-      else if (e.key === 'End') dir = items.length - 1 - idx;
-      else return;
-      e.preventDefault();
-      var next = (idx + dir + items.length) % items.length;
-      select(items[next].getAttribute('data-example'), true);
+  // Wire each section's tabs independently
+  sections.forEach(function (section) {
+    var contextEl = section.querySelector('.gp-context');
+    var previewEl = section.querySelector('.gp-preview');
+    var rail = section.querySelector('.gp-rail');
+    if (!contextEl || !previewEl || !rail) return;
+
+    var items = Array.prototype.slice.call(rail.querySelectorAll('.gp-rail-item'));
+    if (!items.length) return;
+
+    function select(id, focusBtn) {
+      var ex = EXAMPLES[id];
+      if (!ex) return;
+      contextEl.innerHTML = renderContext(ex);
+      previewEl.innerHTML = renderPreview(ex);
+      animateIn(contextEl);
+      animateIn(previewEl);
+      items.forEach(function (btn) {
+        var on = btn.getAttribute('data-example') === id;
+        btn.setAttribute('aria-selected', on ? 'true' : 'false');
+        btn.tabIndex = on ? 0 : -1;
+        if (on && focusBtn) btn.focus();
+      });
+    }
+
+    items.forEach(function (btn, idx) {
+      btn.addEventListener('click', function () {
+        select(btn.getAttribute('data-example'));
+      });
+      // Roving-tabindex arrow navigation for the tablist
+      btn.addEventListener('keydown', function (e) {
+        var dir = 0;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') dir = 1;
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') dir = -1;
+        else if (e.key === 'Home') dir = -idx;
+        else if (e.key === 'End') dir = items.length - 1 - idx;
+        else return;
+        e.preventDefault();
+        var next = (idx + dir + items.length) % items.length;
+        select(items[next].getAttribute('data-example'), true);
+      });
     });
   });
 });

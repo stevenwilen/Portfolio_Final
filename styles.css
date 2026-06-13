@@ -4205,19 +4205,15 @@ img, svg { display: block; max-width: 100%; }
 
 
 /* =============================================================
-   EXAMPLE GUIDE PROJECTS (#guide-projects)
-   Premium two-column artifact showcase: context panel (left) +
-   large deliverable screenshot (right), selector rail beneath.
-   Warm cream/paper surfaces, vermillion accents, no fake-SaaS
-   chrome and no tiny image previews.
+   EXAMPLE GUIDE PROJECTS (.gp-section)
+   Two premium showcases — Role & Task Instructions and Customer
+   Guides — each with intro + top selector tabs + a large expanded
+   view (context panel left, deliverable mockup right). Warm
+   cream/paper surfaces, vermillion accents, no fake-SaaS chrome
+   and no tiny image previews.
    ============================================================= */
-#guide-projects {
+.gp-section {
   position: relative;
-  /* First section after the hero — the hero's extra bottom padding
-     (--hero-extend) is masked as torn paper, so pull this section up by the
-     same amount to keep the divider-to-content spacing at its original value
-     (this rule previously lived on #services). */
-  margin-top: calc(-1 * var(--hero-extend));
   /* Full-bleed out of the 1200px page container (same technique as the hero)
      so the showcase can use the available horizontal margin. A modest inline
      gutter keeps it off the screen edges; .gp-showcase caps the max width. */
@@ -4227,6 +4223,25 @@ img, svg { display: block; max-width: 100%; }
   padding-block: var(--space-section-y);
   padding-inline: clamp(1rem, 3vw, 2.5rem);
   isolation: isolate;
+}
+/* First section after the hero — the hero's extra bottom padding
+   (--hero-extend) is masked as torn paper, so pull this section up by the
+   same amount to keep the divider-to-content spacing at its original value. */
+#guide-projects {
+  margin-top: calc(-1 * var(--hero-extend));
+}
+/* A faint hairline sets the second showcase apart as its own section
+   without adding visual clutter; the two sections' stacked vertical
+   padding already provides the breathing room between them. */
+#customer-guides::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1100px, calc(100% - 2 * clamp(1rem, 3vw, 2.5rem)));
+  height: 1px;
+  background: var(--c-border-2);
 }
 
 /* ---- Head ---- */
@@ -4239,7 +4254,7 @@ img, svg { display: block; max-width: 100%; }
   align-items: center;
   gap: var(--space-stack-eyebrow-h2);
 }
-#gp-heading {
+.gp-heading {
   font-family: var(--ff-display);
   font-size: var(--fs-h2);
   font-weight: 800;
@@ -4265,9 +4280,7 @@ img, svg { display: block; max-width: 100%; }
 .gp-showcase {
   display: grid;
   grid-template-columns: minmax(0, 29fr) minmax(0, 71fr);
-  grid-template-areas:
-    "context preview"
-    "rail    rail";
+  grid-template-areas: "context preview";
   gap: clamp(18px, 2vw, 36px);
   width: 100%;
   max-width: 1500px;
@@ -4276,7 +4289,16 @@ img, svg { display: block; max-width: 100%; }
 }
 .gp-context { grid-area: context; }
 .gp-preview { grid-area: preview; }
-.gp-rail    { grid-area: rail; }
+
+/* Smooth cross-fade when switching examples (re-triggered per swap by JS) */
+@keyframes gpSwapIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+.gp-swap-in { animation: gpSwapIn 0.3s var(--ease-out); }
+@media (prefers-reduced-motion: reduce) {
+  .gp-swap-in { animation: none; }
+}
 
 /* ---- Context: compact caption sidebar ---- */
 /* Lighter than the old card — sits on the cream body with just a red accent
@@ -4388,8 +4410,8 @@ img, svg { display: block; max-width: 100%; }
   margin: 0;
   width: 100%;
 }
-/* Browser-window chrome — makes the white screenshot read as a screen,
-   not a stray sheet on the cream paper stack. */
+/* Framed screenshot — border, rounded corners, and shadow lift the image off
+   the cream paper stack. No browser chrome, since not every deliverable is web. */
 .gp-window {
   position: relative;
   width: 100%;
@@ -4400,46 +4422,6 @@ img, svg { display: block; max-width: 100%; }
   box-shadow:
     0 18px 42px -16px rgba(34, 28, 20, 0.42),
     0 6px 16px -8px rgba(34, 28, 20, 0.22);
-}
-.gp-window-bar {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  height: 34px;
-  padding: 0 14px;
-  background: linear-gradient(180deg, #f3eee4 0%, #e9e0d0 100%);
-  border-bottom: 1px solid rgba(34, 28, 20, 0.16);
-}
-.gp-window-bar::after { content: ""; flex: 0 0 42px; } /* balances the dots so the url pill centers */
-.gp-window-dots {
-  display: inline-flex;
-  gap: 6px;
-  flex: 0 0 auto;
-}
-.gp-window-dots i {
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.10);
-}
-.gp-window-dots i:nth-child(1) { background: var(--c-vermillion); }
-.gp-window-dots i:nth-child(2) { background: var(--c-marigold); }
-.gp-window-dots i:nth-child(3) { background: var(--c-leaf); }
-.gp-window-url {
-  flex: 1 1 auto;
-  max-width: 280px;
-  margin-inline: auto;
-  padding: 4px 12px;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(34, 28, 20, 0.12);
-  border-radius: 100px;
-  font-family: var(--ff-body);
-  font-size: 11.5px;
-  color: var(--c-ink-500);
-  text-align: center;
-  letter-spacing: 0.01em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 .gp-shot {
   display: block;
@@ -4487,12 +4469,14 @@ img, svg { display: block; max-width: 100%; }
   color: var(--c-ink-500);
 }
 
-/* ---- Selector rail ---- */
+/* ---- Selector tabs (sit directly under the intro, above the showcase) ---- */
 .gp-rail {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: clamp(8px, 1vw, 14px);
-  margin-top: clamp(4px, 0.8vw, 12px);
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto clamp(22px, 2.6vw, 44px);
 }
 .gp-rail-item {
   position: relative;
@@ -4556,20 +4540,19 @@ img, svg { display: block; max-width: 100%; }
 @media (max-width: 900px) {
   .gp-showcase {
     grid-template-columns: 1fr;
-    /* Stacked: screenshot always on top (it's the main artifact), caption
-       below it, selector rail last. */
+    /* Stacked: context above the mockup. */
     grid-template-areas:
-      "preview"
       "context"
-      "rail";
+      "preview";
   }
 }
 @media (max-width: 640px) {
-  /* Rail becomes a horizontal snap strip so all five stay tappable */
+  /* Tabs become a horizontal scroll row above the expanded content */
   .gp-rail {
+    max-width: none;
     grid-template-columns: none;
     grid-auto-flow: column;
-    grid-auto-columns: minmax(150px, 70%);
+    grid-auto-columns: minmax(150px, 62%);
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     padding-bottom: 6px;

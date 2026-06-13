@@ -176,26 +176,39 @@
 
 
       <!-- ============================================================
-           SECTION 2: EXAMPLE GUIDE PROJECTS
-           Unified showcase that replaces the old Examples + Transformation
-           sections. Two-column premium layout: context + before/after
-           transformation (left), large deliverable screenshot (right),
-           selector rail beneath. The active example (04 Handoff Guide) is
-           rendered statically so the section works without JS; script.js
-           swaps content for the other selector items from a data map.
+           SECTION 2: ROLE & TASK INSTRUCTIONS
+           First of two guide-example showcases. Intro + top selector
+           tabs + a large expanded view (context left, mockup right).
+           The first tab (Front Desk Opening) is rendered statically so
+           the section works without JS; script.js swaps content for the
+           other tabs from a data map keyed by data-example.
       ============================================================ -->
-      <section id="guide-projects" aria-labelledby="gp-heading">
+      <section class="gp-section" id="guide-projects" aria-labelledby="gp-role-heading">
 
         <header class="gp-head" data-reveal>
-          <span class="section-eyebrow"><span class="section-eyebrow-dot"></span><span>Example projects</span></span>
-          <h2 id="gp-heading">Example guide projects</h2>
-          <p class="gp-subhead">See how repeated explanations, rough processes, and scattered instructions can become clear guide packages people can actually use.</p>
+          <span class="section-eyebrow"><span class="section-eyebrow-dot"></span><span>For your team</span></span>
+          <h2 id="gp-role-heading" class="gp-heading">Role &amp; Task Instructions</h2>
+          <p class="gp-subhead">For staff, volunteers, interns, or assistants who need to know exactly what to do.</p>
         </header>
 
-        <div class="gp-showcase" data-reveal data-reveal-delay="1">
+        <!-- TOP: example selector tabs -->
+        <div class="gp-rail" role="tablist" aria-label="Role &amp; Task Instructions examples" data-reveal data-reveal-delay="1">
+          <button type="button" class="gp-rail-item" role="tab" data-example="role-01" aria-selected="true" tabindex="0">
+            <span class="gp-rail-num">01</span><span class="gp-rail-label">Front Desk Opening</span>
+          </button>
+          <button type="button" class="gp-rail-item" role="tab" data-example="role-02" aria-selected="false" tabindex="-1">
+            <span class="gp-rail-num">02</span><span class="gp-rail-label">Event Volunteer Roles</span>
+          </button>
+          <button type="button" class="gp-rail-item" role="tab" data-example="role-03" aria-selected="false" tabindex="-1">
+            <span class="gp-rail-num">03</span><span class="gp-rail-label">Intern Training Guide</span>
+          </button>
+        </div>
 
-          <!-- LEFT: compact caption sidebar (active example 04) -->
-          <div class="gp-context" id="gp-context" aria-live="polite">
+        <!-- Expanded view -->
+        <div class="gp-showcase" data-reveal data-reveal-delay="2">
+
+          <!-- LEFT: project context (active example role-01) -->
+          <div class="gp-context" id="gp-role-context" aria-live="polite">
             <span class="gp-category">Role or task instructions</span>
             <h3 class="gp-title">Front Desk Opening Handoff System</h3>
             <p class="gp-lead">A sample Drive package for a small fitness studio's opening shift.</p>
@@ -216,13 +229,9 @@
           </div>
 
           <!-- RIGHT: large deliverable preview -->
-          <div class="gp-preview" id="gp-preview">
+          <div class="gp-preview" id="gp-role-preview">
             <figure class="gp-frame">
               <div class="gp-window">
-                <div class="gp-window-bar" aria-hidden="true">
-                  <span class="gp-window-dots"><i></i><i></i><i></i></span>
-                  <span class="gp-window-url">drive.google.com</span>
-                </div>
                 <img class="gp-shot" src="images/deliverable-role.png" width="1536" height="1024" loading="lazy" decoding="async"
                   alt="Google Drive package for the Front Desk Opening Handoff System — folder containing a Start Here Guide, Opening Checklist, Completion Form, Issue Report Form, Manager Tracker, printable cheat sheet, and a QR / mobile access card." />
               </div>
@@ -230,23 +239,69 @@
             </figure>
           </div>
 
-          <!-- BOTTOM: selector rail -->
-          <div class="gp-rail" role="tablist" aria-label="Example guide projects">
-            <button type="button" class="gp-rail-item" role="tab" data-example="01" aria-selected="false" tabindex="-1">
-              <span class="gp-rail-num">01</span><span class="gp-rail-label">Reference Guide</span>
-            </button>
-            <button type="button" class="gp-rail-item" role="tab" data-example="02" aria-selected="false" tabindex="-1">
-              <span class="gp-rail-num">02</span><span class="gp-rail-label">App Tutorial</span>
-            </button>
-            <button type="button" class="gp-rail-item" role="tab" data-example="03" aria-selected="false" tabindex="-1">
-              <span class="gp-rail-num">03</span><span class="gp-rail-label">Process Guide</span>
-            </button>
-            <button type="button" class="gp-rail-item" role="tab" data-example="04" aria-selected="true" tabindex="0">
-              <span class="gp-rail-num">04</span><span class="gp-rail-label">Handoff Guide</span>
-            </button>
-            <button type="button" class="gp-rail-item" role="tab" data-example="05" aria-selected="false" tabindex="-1">
-              <span class="gp-rail-num">05</span><span class="gp-rail-label">Setup Walkthrough</span>
-            </button>
+        </div>
+      </section>
+
+
+      <!-- ============================================================
+           SECTION 3: CUSTOMER GUIDES
+           Second guide-example showcase. Same layout; the first tab
+           (Beach Rental Guest Guide) is rendered statically.
+      ============================================================ -->
+      <section class="gp-section" id="customer-guides" aria-labelledby="gp-cust-heading">
+
+        <header class="gp-head" data-reveal>
+          <span class="section-eyebrow"><span class="section-eyebrow-dot"></span><span>For your customers</span></span>
+          <h2 id="gp-cust-heading" class="gp-heading">Customer Guides</h2>
+          <p class="gp-subhead">For guests, customers, or visitors who need quick answers without asking the owner or staff.</p>
+        </header>
+
+        <!-- TOP: example selector tabs -->
+        <div class="gp-rail" role="tablist" aria-label="Customer Guides examples" data-reveal data-reveal-delay="1">
+          <button type="button" class="gp-rail-item" role="tab" data-example="cust-01" aria-selected="true" tabindex="0">
+            <span class="gp-rail-num">01</span><span class="gp-rail-label">Beach Rental Guest Guide</span>
+          </button>
+          <button type="button" class="gp-rail-item" role="tab" data-example="cust-02" aria-selected="false" tabindex="-1">
+            <span class="gp-rail-num">02</span><span class="gp-rail-label">Fitness Studio Member Guide</span>
+          </button>
+          <button type="button" class="gp-rail-item" role="tab" data-example="cust-03" aria-selected="false" tabindex="-1">
+            <span class="gp-rail-num">03</span><span class="gp-rail-label">Equipment Rental Guide</span>
+          </button>
+        </div>
+
+        <!-- Expanded view -->
+        <div class="gp-showcase" data-reveal data-reveal-delay="2">
+
+          <!-- LEFT: project context (active example cust-01) -->
+          <div class="gp-context" id="gp-cust-context" aria-live="polite">
+            <span class="gp-category">Customer guide</span>
+            <h3 class="gp-title">QR Guest Guide for a Beachside Rental</h3>
+            <p class="gp-lead">A sample mobile guide guests open from a QR code inside a vacation rental.</p>
+            <dl class="gp-facts">
+              <div class="gp-fact">
+                <dt>Problem</dt>
+                <dd>Guests often text the host for the same basic details: Wi-Fi, parking, house instructions, local recommendations, and checkout steps.</dd>
+              </div>
+              <div class="gp-fact">
+                <dt>How it works</dt>
+                <dd>A QR card sits inside the rental. Guests scan it and open a polished guide with the most important stay information in one place.</dd>
+              </div>
+              <div class="gp-fact">
+                <dt>Built</dt>
+                <dd class="gp-built-inline">QR Welcome Card · Mobile Guest Guide · Wi-Fi Info · Check-In Details · House Basics · Local Picks · Checkout Checklist · Host Contact</dd>
+              </div>
+            </dl>
+          </div>
+
+          <!-- RIGHT: large deliverable preview -->
+          <div class="gp-preview" id="gp-cust-preview">
+            <figure class="gp-frame">
+              <div class="gp-window">
+                <img class="gp-shot" src="images/deliverable-web-guide.png" loading="lazy" decoding="async"
+                  alt="Mobile guest guide for a beachside vacation rental, opened from a QR code — one clean page with Wi-Fi info, check-in details, house basics, local recommendations, a checkout checklist, and host contact." />
+              </div>
+              <figcaption class="gp-frame-cap">QR Guest Guide for a Beachside Rental · Mobile guest guide</figcaption>
+            </figure>
           </div>
 
         </div>
@@ -736,7 +791,8 @@
           <div class="footer-col">
             <h4 class="footer-col-heading">Site</h4>
             <ul>
-              <li><a href="#guide-projects">Examples</a></li>
+              <li><a href="#guide-projects">Role &amp; task guides</a></li>
+              <li><a href="#customer-guides">Customer guides</a></li>
               <li><a href="#project">Real project</a></li>
               <li><a href="#process">How it works</a></li>
               <li><a href="#contact">Contact</a></li>
