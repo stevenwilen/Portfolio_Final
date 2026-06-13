@@ -4230,46 +4230,49 @@ img, svg { display: block; max-width: 100%; }
 #guide-projects {
   margin-top: calc(-1 * var(--hero-extend));
 }
-/* A faint hairline sets the second showcase apart as its own section
-   without adding visual clutter; the two sections' stacked vertical
-   padding already provides the breathing room between them. */
-#customer-guides::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(1100px, calc(100% - 2 * clamp(1rem, 3vw, 2.5rem)));
-  height: 1px;
-  background: var(--c-border-2);
+/* No divider rule between the two showcases — the red editorial eyebrow
+   label at the top of each section marks the transition, and the sections'
+   stacked vertical padding keeps them feeling connected but distinct.
+   Trim the second section's top padding slightly so it reads as a continued
+   showcase rather than a far-separated section. */
+#customer-guides {
+  padding-top: clamp(2rem, 4vw, 4rem);
 }
 
 /* ---- Head ---- */
 .gp-head {
-  max-width: 760px;
-  margin: 0 auto var(--space-block-md);
+  max-width: 620px;
+  margin: 0 auto clamp(18px, 2vw, 28px);
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-stack-eyebrow-h2);
+  gap: clamp(7px, 0.9vw, 11px);
+}
+.gp-eyebrow {
+  font-family: var(--ff-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-vermillion-2);
 }
 .gp-heading {
   font-family: var(--ff-display);
-  font-size: var(--fs-h2);
+  font-size: clamp(26px, 3.2vw, 40px);
   font-weight: 800;
-  font-variation-settings: "opsz" 60;
-  letter-spacing: -0.005em;
-  line-height: 1.08;
+  font-variation-settings: "opsz" 40;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
   color: var(--c-ink-900);
   margin: 0;
   text-wrap: balance;
 }
 .gp-subhead {
   font-family: var(--ff-body);
-  font-size: var(--fs-lede);
-  color: var(--c-ink-700);
-  max-width: var(--measure-lede);
+  font-size: clamp(14px, 1.05vw, 16px);
+  color: var(--c-ink-600);
+  max-width: 48ch;
   margin: 0;
   text-wrap: pretty;
 }
@@ -4470,52 +4473,65 @@ img, svg { display: block; max-width: 100%; }
 }
 
 /* ---- Selector tabs (sit directly under the intro, above the showcase) ---- */
+/* Slim paper tabs — cream fill, soft border and a light shadow so they feel
+   tactile, like picking between documents in a portfolio. No long underline
+   rule; the active tab is marked with a small red dot. */
 .gp-rail {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(8px, 1vw, 14px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(6px, 1vw, 12px);
   width: 100%;
-  max-width: 920px;
-  margin: 0 auto clamp(22px, 2.6vw, 44px);
+  max-width: 760px;
+  margin: 0 auto clamp(20px, 2.2vw, 34px);
 }
 .gp-rail-item {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 5px;
-  padding: 14px 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
   background-color: var(--c-surface);
   background-image: var(--paper-grain-light);
   background-repeat: repeat;
-  background-size: 240px 240px;
-  border: 1px solid var(--c-border-2);
+  background-size: 220px 220px;
+  border: 1px solid var(--c-border);
   border-radius: var(--r-sm);
   box-shadow: var(--sh-xs);
   cursor: pointer;
-  text-align: left;
-  color: var(--c-ink-700);
-  transition: transform 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out), background-color 0.2s var(--ease-out), border-color 0.2s var(--ease-out);
+  color: var(--c-ink-600);
+  transition: transform 0.18s var(--ease-out), box-shadow 0.18s var(--ease-out),
+    background-color 0.18s var(--ease-out), border-color 0.18s var(--ease-out), color 0.18s var(--ease-out);
+}
+/* Status dot — transparent until the tab is active (always present so the
+   tab width doesn't shift on selection). */
+.gp-rail-item::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background-color 0.18s var(--ease-out), box-shadow 0.18s var(--ease-out);
 }
 .gp-rail-num {
   font-family: var(--ff-display);
-  font-size: 11px;
-  font-weight: 800;
+  font-size: 10.5px;
+  font-weight: 700;
   letter-spacing: 0.1em;
   color: var(--c-ink-400);
 }
 .gp-rail-label {
   font-family: var(--ff-display);
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 13.5px;
+  font-weight: 600;
   letter-spacing: -0.005em;
-  color: var(--c-ink-800);
-  line-height: 1.15;
+  color: inherit;
+  line-height: 1.2;
 }
 .gp-rail-item:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   box-shadow: var(--sh-sm);
+  color: var(--c-ink-800);
 }
 .gp-rail-item:focus-visible {
   outline: 2px solid var(--c-accent);
@@ -4523,18 +4539,15 @@ img, svg { display: block; max-width: 100%; }
 }
 .gp-rail-item[aria-selected="true"] {
   background-color: var(--c-cream);
-  border-color: var(--c-vermillion);
-  box-shadow: 0 6px 16px -6px rgba(216, 65, 42, 0.30);
+  border-color: rgba(216, 65, 42, 0.45);
+  box-shadow: 0 4px 12px -6px rgba(216, 65, 42, 0.28);
+  color: var(--c-ink-900);
 }
 .gp-rail-item[aria-selected="true"]::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
   background: var(--c-vermillion);
+  box-shadow: 0 0 0 2px var(--c-accent-dim);
 }
 .gp-rail-item[aria-selected="true"] .gp-rail-num { color: var(--c-vermillion-2); }
-.gp-rail-item[aria-selected="true"] .gp-rail-label { color: var(--c-ink-900); }
 
 /* ---- Responsive ---- */
 @media (max-width: 900px) {
@@ -4550,13 +4563,15 @@ img, svg { display: block; max-width: 100%; }
   /* Tabs become a horizontal scroll row above the expanded content */
   .gp-rail {
     max-width: none;
-    grid-template-columns: none;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(150px, 62%);
+    flex-wrap: nowrap;
+    justify-content: flex-start;
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 6px;
+    scroll-snap-type: x proximity;
     -webkit-overflow-scrolling: touch;
   }
-  .gp-rail-item { scroll-snap-align: start; }
+  .gp-rail-item {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    white-space: nowrap;
+  }
 }
