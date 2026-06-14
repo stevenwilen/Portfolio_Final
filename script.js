@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var EXAMPLES = {
     // ── Role & Task Instructions ──
     'role-01': {
-      category: 'Role or task instructions',
+      category: 'For staff',
       title: 'Front Desk Opening Handoff System',
       lead: 'A sample Drive package for a small fitness studio\'s opening shift.',
       problem: 'The shift relied on verbal instructions and memory instead of a clear handoff process staff could follow consistently.',
@@ -262,24 +262,30 @@ document.addEventListener('DOMContentLoaded', function () {
       caption: 'Front Desk Opening Handoff System · Google Drive package'
     },
     'role-02': {
-      category: 'Role or task instructions',
-      title: 'Event Volunteer Role Guide',
-      lead: 'A mobile-friendly guide system for volunteers working a local event.',
-      problem: 'Volunteers were receiving scattered instructions through emails, texts, and day-of explanations, which made it hard to know where to go and what each role was responsible for.',
-      howItWorks: 'Volunteers scan a QR code or open the guide before the event, choose their assigned role, and follow clear role instructions, station details, timeline notes, and escalation steps.',
-      built: ['Volunteer Guide', 'Role Cards', 'Station Sheets', 'Event Timeline', 'Contact List', 'Day-Of Cheat Sheet', 'QR Access']
+      category: 'For new hires',
+      title: 'New Staff Training Guide',
+      lead: 'A sample starter package for a small business training a new part-time employee.',
+      problem: 'New staff kept asking the same basic questions because training lived in quick verbal explanations, scattered notes, and old messages.',
+      howItWorks: 'The new hire gets one clear place to start: what to learn first, what tools to use, what tasks to practice, and who to ask when something is unclear.',
+      built: ['Start Here Guide', 'First Week Checklist', 'Tool Walkthrough', 'Common Questions', 'Daily Task Reference', 'Manager Notes', 'Editable Training Doc'],
+      image: 'images/deliverable-role-2.png',
+      imageAlt: 'New Staff Training Guide package — a Start Here guide, first-week checklist, tool walkthrough, common questions, daily task reference, manager notes, and an editable training doc.',
+      caption: 'New Staff Training Guide · Sample starter package'
     },
     'role-03': {
-      category: 'Role or task instructions',
-      title: 'Intern Training Guide',
-      lead: 'A structured training guide for a recurring intern responsibility.',
-      problem: 'New interns needed repeated explanations before they could complete the same task confidently.',
-      howItWorks: 'The guide breaks the task into clear steps, shows examples, includes screenshots where needed, and gives interns a checklist to confirm completion before asking for review.',
-      built: ['Training Guide', 'Step-by-Step Instructions', 'Screenshots', 'Examples', 'Completion Checklist', 'Review Notes']
+      category: 'For volunteers',
+      title: 'Event Day Role Guide',
+      lead: 'A sample role package for volunteers helping run a local event.',
+      problem: 'Volunteers showed up unsure where to go, what role they had, who to ask, and what to do when something changed during the event.',
+      howItWorks: 'Each volunteer gets a clear role guide with arrival instructions, responsibilities, a simple event map, contact info, and a checklist for their specific station.',
+      built: ['Volunteer Guide', 'Role Checklists', 'Arrival Instructions', 'Event Map', 'Contact Sheet', 'Issue Form', 'QR Access'],
+      image: 'images/deliverable-role-3.png',
+      imageAlt: 'Event Day Role Guide package — a volunteer guide, role checklists, arrival instructions, an event map, a contact sheet, an issue form, and QR access.',
+      caption: 'Event Day Role Guide · Sample role package'
     },
     // ── Customer Guides ──
     'cust-01': {
-      category: 'Customer guide',
+      category: 'For guests',
       title: 'QR Guest Guide for a Beachside Rental',
       lead: 'A sample mobile guide guests open from a QR code inside a vacation rental.',
       problem: 'Guests often text the host for the same basic details: Wi-Fi, parking, house instructions, local recommendations, and checkout steps.',
@@ -290,15 +296,18 @@ document.addEventListener('DOMContentLoaded', function () {
       caption: 'QR Guest Guide for a Beachside Rental · Mobile guest guide'
     },
     'cust-02': {
-      category: 'Customer guide',
-      title: 'Fitness Studio New Member Guide',
-      lead: 'A start guide for new members joining a boutique fitness studio.',
-      problem: 'New members often feel unsure before their first class and ask the same questions about what to bring, where to check in, how booking works, and what studio rules to follow.',
-      howItWorks: 'The studio sends one guide link after signup and can also display it with a QR code at the front desk. Members get clear first-visit instructions and answers before they need to ask.',
-      built: ['Welcome Guide', 'First Class Checklist', 'Booking Instructions', 'Studio Rules', 'What to Bring', 'FAQs', 'Contact Info']
+      category: 'For attendees',
+      title: 'Business Workshop Guide',
+      lead: 'A sample web guide attendees open from a link after registering for an event.',
+      problem: 'Attendees often get event details through long emails, scattered messages, or basic PDFs that are easy to miss.',
+      howItWorks: 'After registering, attendees receive a link to a polished guide with the schedule, arrival details, parking, venue info, and what to bring.',
+      built: ['Registration Email', 'Attendee Guide Page', 'Event Schedule', 'Arrival Details', 'Parking Info', 'Venue Notes', 'What to Bring', 'Contact Info'],
+      image: 'images/deliverable-web-guide-2.png',
+      imageAlt: 'Business Workshop Guide — a link-based web guide attendees open after registering, with the event schedule, arrival details, parking info, venue notes, what to bring, and contact info.',
+      caption: 'Business Workshop Guide · Link-based web guide'
     },
     'cust-03': {
-      category: 'Customer guide',
+      category: 'For renters',
       title: 'Equipment Rental Use Guide',
       lead: 'A QR-accessible guide attached to a rented piece of equipment.',
       problem: 'Customers rent equipment but often need help understanding setup, safe use, common mistakes, troubleshooting, and return steps.',
