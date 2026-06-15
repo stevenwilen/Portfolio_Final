@@ -307,12 +307,15 @@ document.addEventListener('DOMContentLoaded', function () {
       caption: 'Business Workshop Guide · Link-based web guide'
     },
     'cust-03': {
-      category: 'For renters',
-      title: 'Equipment Rental Use Guide',
-      lead: 'A QR-accessible guide attached to a rented piece of equipment.',
-      problem: 'Customers rent equipment but often need help understanding setup, safe use, common mistakes, troubleshooting, and return steps.',
-      howItWorks: 'A QR code on the equipment opens a simple mobile guide with setup steps, safety notes, troubleshooting, and return instructions.',
-      built: ['QR Equipment Label', 'Setup Guide', 'Safety Notes', 'Common Mistakes', 'Troubleshooting', 'Return Checklist', 'Support Contact']
+      category: 'For students',
+      title: 'Robotics Workshop Guide',
+      lead: 'A sample online guide students open before and during a hands-on robotics workshop.',
+      problem: 'Students and parents often get workshop details through long emails or PDFs, making it hard to find the schedule, materials, and project steps when they need them.',
+      howItWorks: 'After registering, students receive a link to a polished guide with the schedule, what to bring, project overview, step-by-step instructions, and support details.',
+      built: ['Welcome Email', 'Workshop Guide Page', 'Schedule', 'Project Overview', 'Materials List', 'Step-by-Step Instructions', 'Safety Notes', 'Contact Info'],
+      image: 'images/deliverable-web-guide-3.png',
+      imageAlt: 'Robotics Workshop Guide — a sample online learning guide students open after registering, with the schedule, project overview, materials list, step-by-step instructions, safety notes, and contact info.',
+      caption: 'Robotics Workshop Guide · Sample student learning guide'
     }
   };
 
