@@ -2497,7 +2497,7 @@ img, svg { display: block; max-width: 100%; }
   display: flex;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 16 / 7;
+  aspect-ratio: 16 / 9;
   border: 1px dashed rgba(34, 28, 20, 0.30);
   border-radius: var(--r-sm);
   background-color: var(--c-surface);
@@ -2520,12 +2520,159 @@ img, svg { display: block; max-width: 100%; }
   border-radius: 100px;
   padding: 3px 9px;
 }
+/* Document-style placeholder — faint lines stand in for a future real asset.
+   Shares the dashed cream .rpp-thumb base; reads clearly as an empty slot. */
+.rpp-thumb--ph {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 17%;
+}
+.rpp-ph-line {
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(34, 28, 20, 0.11);
+}
+
 .rpp-slot-cap {
   margin-top: 5px;
   font-family: var(--ff-body);
   font-size: 11px;
   line-height: 1.3;
   color: var(--c-ink-600);
+}
+
+/* Video source cards — real looping clips fill the slot (no dashed
+   placeholder, no fake poster). Inherit the shared 16:7 slot size so the
+   containers stay uniform; object-fit: cover handles the 16:9 source. */
+.rpp-thumb--video {
+  padding: 0;
+  border: none;
+  background-color: #1c1814;   /* dark fill shown only until the first frame loads */
+  background-image: none;
+}
+.rpp-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Real proof images — full-resolution screenshots. These are clickable
+   buttons that open a full-size lightbox. object-fit: contain keeps the whole
+   document/UI sharp and uncropped (no squeezing detailed screenshots). */
+.rpp-thumb--img {
+  /* button reset (the element is a <button>) */
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  width: 100%;
+  padding: 0;
+  border: 1px solid rgba(34, 28, 20, 0.16);
+  background-image: none;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+.rpp-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;          /* full screenshot stays sharp, never cropped */
+  object-position: center;
+  display: block;
+  /* no filters, opacity, blur, or scale transforms that would soften it */
+}
+
+/* Hover/focus cue — "View full image" ribbon at the foot of the card. */
+.rpp-zoom-cue {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 5px 8px;
+  font-family: var(--ff-display);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fdf6e3;
+  background: rgba(28, 24, 20, 0.78);
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+  pointer-events: none;
+}
+.rpp-thumb--img:hover .rpp-zoom-cue,
+.rpp-thumb--img:focus-visible .rpp-zoom-cue {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- Full-image lightbox ---- */
+.rpp-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 48px);
+  background: rgba(20, 16, 12, 0.86);
+}
+.rpp-lightbox[hidden] { display: none; }
+.rpp-lightbox-fig {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  max-width: 100%;
+  max-height: 100%;
+}
+.rpp-lightbox-img {
+  display: block;
+  max-width: 100%;
+  max-height: 82vh;
+  width: auto;
+  height: auto;            /* never stretched beyond natural resolution */
+  object-fit: contain;
+  border-radius: var(--r-sm);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+  background: #fdf6e3;
+}
+.rpp-lightbox-cap {
+  font-family: var(--ff-body);
+  font-size: 13px;
+  color: #fdf6e3;
+  text-align: center;
+}
+.rpp-lightbox-close {
+  position: absolute;
+  top: clamp(12px, 3vw, 28px);
+  right: clamp(12px, 3vw, 28px);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 1;
+  color: #fdf6e3;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.rpp-lightbox-close:hover { background: rgba(255, 255, 255, 0.22); }
+
+@media (prefers-reduced-motion: reduce) {
+  .rpp-zoom-cue { transition: none; }
 }
 
 /* ---- Responsive ---- */
