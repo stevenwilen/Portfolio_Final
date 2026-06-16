@@ -300,10 +300,20 @@ document.addEventListener('DOMContentLoaded', function () {
       howItWorks: 'A QR card sits inside the rental. Guests scan it and open a polished guide with the most important stay information in one place.',
       built: ['Wi-Fi Info', 'Check-In Details', 'House Basics', 'Local Picks', 'Checkout Checklist', 'Host Contact'],
       image: 'images/beach-rental-guide-screen.png',
-      qrCard: 'images/beach-rental-qr-card.png',
-      qrCardAlt: 'Printed QR welcome card for The Dune House beachside rental — "Scan to open your guest guide" with a QR code and an overview of what the guide includes.',
-      guideScreen: 'images/beach-rental-guide-screen.png',
-      guideScreenAlt: 'The mobile guest guide opened on a phone — a Welcome screen with Start Here check-in and an expandable guide covering Wi-Fi, house basics, local recommendations, checkout steps, and host contact.',
+      deliverable: {
+        bg: 'images/beach-rental-background.jpg',
+        card: {
+          img: 'images/beach-rental-qr-card.png',
+          label: 'Printout Card',
+          alt: 'Printed QR welcome card for The Dune House beachside rental — "Scan to open your guest guide" with a QR code and an overview of what the guide includes.'
+        },
+        device: {
+          type: 'phone',
+          img: 'images/beach-rental-guide-screen.png',
+          label: 'Web Guide',
+          alt: 'The mobile guest guide opened on a phone — a Welcome screen with Start Here check-in and an expandable guide covering Wi-Fi, house basics, local recommendations, checkout steps, and host contact.'
+        }
+      },
       caption: 'QR Guest Guide for a Beachside Rental · Scan the card, open the mobile guide'
     },
     'cust-02': {
@@ -311,13 +321,26 @@ document.addEventListener('DOMContentLoaded', function () {
       category: 'For attendees',
       title: 'Business Workshop Guide',
       url: 'guides.site/workshop',
-      lead: 'A sample web guide attendees open from a link after registering for an event.',
+      lead: 'A sample web guide attendees open on a tablet after registering for a workshop.',
       problem: 'Attendees often get event details through long emails, scattered messages, or basic PDFs that are easy to miss.',
-      howItWorks: 'After registering, attendees receive a link to a polished guide with the schedule, arrival details, parking, venue info, and what to bring.',
-      built: ['Event Schedule', 'Arrival Details', 'Parking Info', 'Venue Notes', 'What to Bring', 'Contact Info'],
-      image: 'images/deliverable-web-guide-2.png',
-      imageAlt: 'Business Workshop Guide — a link-based web guide attendees open after registering, with the event schedule, arrival details, parking info, venue notes, what to bring, and contact info.',
-      caption: 'Business Workshop Guide · Link-based web guide'
+      howItWorks: 'A business owner submits a short intake form and is sent a polished guide — opened on any device — with the schedule, what to bring, preparation steps, and a checklist.',
+      built: ['Workshop Schedule', 'What to Bring', 'Preparation Steps', 'Business Checklist', 'Common Questions', 'Contact / Help'],
+      image: 'images/business-workshop-tablet-screen.png',
+      deliverable: {
+        bg: 'images/business-workshop-background.png',
+        card: {
+          img: 'images/business-workshop-form-card.png',
+          label: 'Confirmation',
+          alt: 'Registration confirmation for the Coastal Business Workshop — "Here\'s your guide" with an Open Attendee Guide button and a link to the workshop guide.'
+        },
+        device: {
+          type: 'tablet',
+          img: 'images/business-workshop-tablet-screen.png',
+          label: 'Web Guide',
+          alt: 'The finished Business Workshop Guide opened on a tablet — a sidebar with Start Here, Workshop Schedule, What to Bring, Preparation Steps, Business Checklist, Common Questions, and Contact / Help.'
+        }
+      },
+      caption: 'Business Workshop Guide · Register, then open the guide on a tablet'
     },
     'cust-03': {
       kind: 'cust',
@@ -394,6 +417,37 @@ document.addEventListener('DOMContentLoaded', function () {
     return ex.caption ? '<figcaption class="gp-frame-cap">' + esc(ex.caption) + '</figcaption>' : '';
   }
 
+  // Deliverable presentation: a flat delivery card (left) + the guide on a
+  // device frame (right, phone or tablet), over a faded in-context backdrop.
+  function renderDeliverable(ex) {
+    var d = ex.deliverable;
+    var dev = d.device || {};
+    var devType = dev.type === 'tablet' ? 'tablet' : 'phone';
+    function label(t) {
+      return t ? '<span class="gp-deliv-label">' + esc(t) + '</span>' : '';
+    }
+    var bgStyle = d.bg ? " style=\"--gp-deliv-bg:url('" + d.bg + "')\"" : '';
+    return '<figure class="gp-frame gp-frame--web gp-frame--deliv gp-frame--' + devType + '"' + bgStyle + '>' +
+      '<div class="gp-stage">' +
+        '<div class="gp-deliv gp-deliv--card">' +
+          label(d.card && d.card.label) +
+          '<figure class="gp-card">' +
+            '<img src="' + esc(d.card.img) + '" loading="lazy" decoding="async" alt="' + esc((d.card && d.card.alt) || '') + '" />' +
+          '</figure>' +
+        '</div>' +
+        '<div class="gp-deliv gp-deliv--' + devType + '">' +
+          label(dev.label) +
+          '<div class="gp-' + devType + '">' +
+            '<div class="gp-' + devType + '-screen">' +
+              '<img src="' + esc(dev.img) + '" loading="lazy" decoding="async" alt="' + esc(dev.alt || '') + '" />' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+      renderCap(ex) +
+      '</figure>';
+  }
+
   function renderPreview(ex) {
     if (!ex.image) {
       return '<figure class="gp-frame gp-frame--placeholder">' +
@@ -404,23 +458,11 @@ document.addEventListener('DOMContentLoaded', function () {
         '</div></div></div></figure>';
     }
     if (ex.kind === 'cust') {
-      // Two artifacts (printed QR card + live mobile guide) are presented as
-      // real deliverables on warm paper — no browser chrome. Guest sees the
-      // card, scans it, opens the guide on the phone.
-      if (ex.qrCard && ex.guideScreen) {
-        return '<figure class="gp-frame gp-frame--web gp-frame--deliv">' +
-          '<div class="gp-stage">' +
-            '<figure class="gp-stage-qr">' +
-              '<img src="' + esc(ex.qrCard) + '" loading="lazy" decoding="async" alt="' + esc(ex.qrCardAlt || '') + '" />' +
-            '</figure>' +
-            '<div class="gp-phone">' +
-              '<div class="gp-phone-screen">' +
-                '<img src="' + esc(ex.guideScreen) + '" loading="lazy" decoding="async" alt="' + esc(ex.guideScreenAlt || '') + '" />' +
-              '</div>' +
-            '</div>' +
-          '</div>' +
-          renderCap(ex) +
-          '</figure>';
+      // Two artifacts (a delivery card + the live guide on a device) are
+      // presented as real deliverables on a faded, in-context background —
+      // no browser chrome. The device is a phone or a landscape tablet.
+      if (ex.deliverable) {
+        return renderDeliverable(ex);
       }
       // Flat web-guide screenshot → shown in a simple browser window.
       return '<figure class="gp-frame gp-frame--web">' +

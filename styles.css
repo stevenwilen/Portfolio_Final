@@ -4305,24 +4305,57 @@ img, svg { display: block; max-width: 100%; }
   inset: 0;
   z-index: 0;
   background-image:
-    linear-gradient(rgba(247, 239, 223, 0.38), rgba(247, 239, 223, 0.38)),
-    url("images/beach-rental-background.jpg");
+    linear-gradient(rgba(247, 239, 223, 0.24), rgba(247, 239, 223, 0.24)),
+    var(--gp-deliv-bg, none);
   background-size: cover, cover;
   background-position: center, center;
   background-repeat: no-repeat, no-repeat;
-  filter: blur(2px) saturate(1.04);
-  opacity: 0.7;
+  filter: blur(2px) saturate(1.06);
+  opacity: 0.84;
   border-radius: var(--r-md);
-  -webkit-mask-image: radial-gradient(72% 78% at 50% 44%, #000 0%, #000 32%, rgba(0, 0, 0, 0.2) 64%, transparent 100%);
-          mask-image: radial-gradient(72% 78% at 50% 44%, #000 0%, #000 32%, rgba(0, 0, 0, 0.2) 64%, transparent 100%);
+  /* Soft fade on all four edges (corners included) with a large solid middle —
+     two linear masks intersected, so only the very outside dissolves */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 18%, #000 82%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 18%, #000 82%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
+  mask-composite: intersect;
 }
-/* Keep both deliverables above the faded background */
-.gp-frame--deliv .gp-stage-qr,
-.gp-frame--deliv .gp-phone { position: relative; z-index: 1; }
-/* Printed QR welcome card — floats on the left, lifted and tilted */
-.gp-frame--deliv .gp-stage-qr {
+/* Each deliverable is a labelled column, lifted above the faded background */
+.gp-frame--deliv .gp-deliv {
+  position: relative;
+  z-index: 1;
   flex: 0 1 auto;
-  width: clamp(172px, 46%, 300px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+/* Phone example (Beach Rental): portrait card + portrait phone */
+.gp-frame--phone .gp-deliv--card { width: clamp(172px, 46%, 300px); }
+.gp-frame--phone .gp-deliv--phone { width: clamp(206px, 52%, 322px); }
+/* Tablet example (Workshop): larger portrait card + landscape tablet */
+.gp-frame--tablet .gp-deliv--card { width: clamp(172px, 34%, 256px); }
+.gp-frame--tablet .gp-deliv--tablet { width: clamp(272px, 55%, 424px); }
+/* Subtle caption above each artifact */
+.gp-frame--deliv .gp-deliv-label {
+  font-family: var(--ff-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #3a3733;
+}
+/* Tilt each label to match the tilt of the artifact beneath it */
+.gp-frame--deliv .gp-deliv--card .gp-deliv-label { transform: translateX(-0.16em) rotate(-3deg); }
+.gp-frame--deliv .gp-deliv--phone .gp-deliv-label { transform: rotate(0.5deg); }
+.gp-frame--deliv .gp-deliv--tablet .gp-deliv-label { transform: rotate(-0.5deg); }
+/* Flat delivery card (printed QR card / confirmation) — tilted */
+.gp-frame--deliv .gp-card {
+  width: 100%;
   margin: 0;
   border-radius: 2px;
   overflow: hidden;
@@ -4331,15 +4364,14 @@ img, svg { display: block; max-width: 100%; }
   box-shadow:
     0 28px 48px -20px rgba(34, 28, 20, 0.52),
     0 8px 18px -10px rgba(34, 28, 20, 0.30);
-  transform: rotate(-3deg) translateY(-6px);
+  transform: rotate(-3deg);
 }
-.gp-frame--deliv .gp-stage-qr img { display: block; width: 100%; height: auto; }
+.gp-frame--deliv .gp-card img { display: block; width: 100%; height: auto; }
 
 /* Realistic iPhone-style frame — thin black bezel, screen inset, side buttons */
 .gp-frame--deliv .gp-phone {
   position: relative;
-  flex: 0 1 auto;
-  width: clamp(206px, 52%, 322px);
+  width: 100%;
   padding: 8px;
   border-radius: 44px;
   /* Brushed graphite rail — lighter at the edges where light catches the
@@ -4388,6 +4420,52 @@ img, svg { display: block; max-width: 100%; }
   pointer-events: none;
   box-shadow: inset 0 0 1px 1px rgba(0, 0, 0, 0.30);
   background: linear-gradient(125deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0) 20%);
+}
+
+/* Realistic iPad-style frame — even bezel, rounded corners, front camera dot */
+.gp-frame--deliv .gp-tablet {
+  position: relative;
+  width: 100%;
+  padding: 12px;
+  border-radius: 32px;
+  background:
+    linear-gradient(150deg, #1c1a17 0%, #0c0b09 24%, #050504 52%, #0c0b09 78%, #1c1a17 100%);
+  box-shadow:
+    0 40px 64px -24px rgba(34, 28, 20, 0.6),
+    0 16px 28px -14px rgba(34, 28, 20, 0.42),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.10),     /* polished aluminium edge */
+    inset 0 1.5px 1.5px rgba(255, 255, 255, 0.12), /* top rail catch-light */
+    inset 0 -2px 2px rgba(0, 0, 0, 0.6);           /* bottom rail shade */
+  transform: rotate(-0.5deg);
+}
+/* Front camera, centred on the top bezel (portrait) */
+.gp-frame--deliv .gp-tablet::before {
+  content: "";
+  position: absolute;
+  top: 4.5px; left: 50%;
+  transform: translateX(-50%);
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #2a3640 0%, #0a0d10 70%);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.5),
+    0 0 0 2px rgba(255, 255, 255, 0.05);
+}
+.gp-frame--deliv .gp-tablet-screen {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+}
+.gp-frame--deliv .gp-tablet-screen img { display: block; width: 100%; height: auto; }
+/* Glass: a faint diagonal sheen over the screen */
+.gp-frame--deliv .gp-tablet-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 22%);
 }
 
 /* ---- Connector / usage flow strip (full width) ---- */
@@ -4673,12 +4751,16 @@ img, svg { display: block; max-width: 100%; }
   }
 }
 @media (max-width: 560px) {
-  /* Stack the QR card above the phone guide */
+  /* Stack the delivery card above the device guide */
   .gp-frame--deliv .gp-stage {
     flex-direction: column;
     gap: clamp(20px, 6vw, 30px);
     padding: 26px 16px;
   }
-  .gp-frame--deliv .gp-stage-qr { width: min(76%, 260px); transform: rotate(-2deg) translateY(-2px); }
-  .gp-frame--deliv .gp-phone { width: min(84%, 290px); }
+  .gp-frame--phone .gp-deliv--card { width: min(76%, 260px); }
+  .gp-frame--phone .gp-deliv--phone { width: min(84%, 290px); }
+  .gp-frame--tablet .gp-deliv--card { width: min(64%, 230px); }
+  .gp-frame--tablet .gp-deliv--tablet { width: min(94%, 460px); }
+  .gp-frame--deliv .gp-card { transform: rotate(-2deg); }
+  .gp-frame--deliv .gp-deliv--card .gp-deliv-label { transform: rotate(-2deg); }
 }

@@ -304,16 +304,22 @@
 
           <!-- LEFT: browser-framed mobile/web guide with a QR sticker card -->
           <div class="gp-preview" id="gp-cust-preview">
-            <figure class="gp-frame gp-frame--web gp-frame--deliv">
+            <figure class="gp-frame gp-frame--web gp-frame--deliv gp-frame--phone" style="--gp-deliv-bg:url('images/beach-rental-background.jpg')">
               <div class="gp-stage">
-                <figure class="gp-stage-qr">
-                  <img src="images/beach-rental-qr-card.png" loading="lazy" decoding="async"
-                    alt="Printed QR welcome card for The Dune House beachside rental — &quot;Scan to open your guest guide&quot; with a QR code and an overview of what the guide includes." />
-                </figure>
-                <div class="gp-phone">
-                  <div class="gp-phone-screen">
-                    <img src="images/beach-rental-guide-screen.png" loading="lazy" decoding="async"
-                      alt="The mobile guest guide opened on a phone — a Welcome screen with Start Here check-in and an expandable guide covering Wi-Fi, house basics, local recommendations, checkout steps, and host contact." />
+                <div class="gp-deliv gp-deliv--card">
+                  <span class="gp-deliv-label">Printout Card</span>
+                  <figure class="gp-card">
+                    <img src="images/beach-rental-qr-card.png" loading="lazy" decoding="async"
+                      alt="Printed QR welcome card for The Dune House beachside rental — &quot;Scan to open your guest guide&quot; with a QR code and an overview of what the guide includes." />
+                  </figure>
+                </div>
+                <div class="gp-deliv gp-deliv--phone">
+                  <span class="gp-deliv-label">Web Guide</span>
+                  <div class="gp-phone">
+                    <div class="gp-phone-screen">
+                      <img src="images/beach-rental-guide-screen.png" loading="lazy" decoding="async"
+                        alt="The mobile guest guide opened on a phone — a Welcome screen with Start Here check-in and an expandable guide covering Wi-Fi, house basics, local recommendations, checkout steps, and host contact." />
+                    </div>
                   </div>
                 </div>
               </div>
