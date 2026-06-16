@@ -233,6 +233,10 @@
                 <dt>How it works</dt>
                 <dd>Staff follow the guide and checklist, submit the completion form, and report issues when needed. Form responses feed into the manager tracker automatically.</dd>
               </div>
+              <div class="gp-fact">
+                <dt>In the guide</dt>
+                <dd><ul class="gp-pills"><li>Checklist</li><li>Completion Form</li><li>Issue Report Form</li><li>Manager Tracker</li><li>Cheat Sheet</li><li>QR Access</li></ul></dd>
+              </div>
             </dl>
           </div>
 
@@ -241,8 +245,6 @@
             <figure class="gp-frame gp-frame--drive">
               <div class="gp-screen">
                 <div class="gp-chrome gp-chrome--drive" aria-hidden="true">
-                  <span class="gp-drive-ic"></span>
-                  <span class="gp-drive-path">My Drive <i>›</i> Front Desk Opening</span>
                   <span class="gp-chrome-dots"><i></i><i></i><i></i></span>
                 </div>
                 <div class="gp-window">
@@ -251,30 +253,7 @@
                 </div>
               </div>
               <figcaption class="gp-frame-cap">Front Desk Opening Handoff System · Google Drive package</figcaption>
-              <ul class="gp-tiles" aria-label="Files in this package">
-                <li class="gp-tile gp-tile--doc"><span class="gp-tile-ic" aria-hidden="true"></span><span class="gp-tile-l">Guide</span></li>
-                <li class="gp-tile gp-tile--checklist"><span class="gp-tile-ic" aria-hidden="true"></span><span class="gp-tile-l">Checklist</span></li>
-                <li class="gp-tile gp-tile--form"><span class="gp-tile-ic" aria-hidden="true"></span><span class="gp-tile-l">Completion Form</span></li>
-                <li class="gp-tile gp-tile--form"><span class="gp-tile-ic" aria-hidden="true"></span><span class="gp-tile-l">Issue Report Form</span></li>
-                <li class="gp-tile gp-tile--tracker"><span class="gp-tile-ic" aria-hidden="true"></span><span class="gp-tile-l">Manager Tracker</span></li>
-                <li class="gp-tile gp-tile--doc"><span class="gp-tile-ic" aria-hidden="true"></span><span class="gp-tile-l">Cheat Sheet</span></li>
-                <li class="gp-tile gp-tile--qr"><span class="gp-tile-ic" aria-hidden="true"></span><span class="gp-tile-l">QR Access</span></li>
-              </ul>
             </figure>
-          </div>
-
-          <!-- FULL WIDTH: how the package connects (static) -->
-          <div class="gp-flow-wrap">
-            <ol class="gp-flow gp-flow--role" aria-label="How the handoff package fits together">
-              <li class="gp-flow-node"><span class="gp-flow-ic"></span><span class="gp-flow-t">Guide</span></li>
-              <li class="gp-flow-arrow" aria-hidden="true">→</li>
-              <li class="gp-flow-node"><span class="gp-flow-ic"></span><span class="gp-flow-t">Checklist</span></li>
-              <li class="gp-flow-arrow" aria-hidden="true">→</li>
-              <li class="gp-flow-node"><span class="gp-flow-ic"></span><span class="gp-flow-t">Forms</span></li>
-              <li class="gp-flow-arrow" aria-hidden="true">→</li>
-              <li class="gp-flow-node"><span class="gp-flow-ic"></span><span class="gp-flow-t">Tracker</span></li>
-            </ol>
-            <p class="gp-flow-cap">Not separate documents — a connected handoff package. Staff follow each step, and the manager gets visibility through the tracker.</p>
           </div>
 
         </div>
@@ -325,19 +304,20 @@
 
           <!-- LEFT: browser-framed mobile/web guide with a QR sticker card -->
           <div class="gp-preview" id="gp-cust-preview">
-            <figure class="gp-frame gp-frame--web">
-              <div class="gp-screen">
-                <div class="gp-chrome gp-chrome--web" aria-hidden="true">
-                  <span class="gp-chrome-dots"><i></i><i></i><i></i></span>
-                  <span class="gp-url"><span class="gp-url-lock"></span>guides.site/beach-rental</span>
+            <figure class="gp-frame gp-frame--web gp-frame--deliv">
+              <div class="gp-stage">
+                <figure class="gp-stage-qr">
+                  <img src="images/beach-rental-qr-card.png" loading="lazy" decoding="async"
+                    alt="Printed QR welcome card for The Dune House beachside rental — &quot;Scan to open your guest guide&quot; with a QR code and an overview of what the guide includes." />
+                </figure>
+                <div class="gp-phone">
+                  <div class="gp-phone-screen">
+                    <img src="images/beach-rental-guide-screen.png" loading="lazy" decoding="async"
+                      alt="The mobile guest guide opened on a phone — a Welcome screen with Start Here check-in and an expandable guide covering Wi-Fi, house basics, local recommendations, checkout steps, and host contact." />
+                  </div>
                 </div>
-                <div class="gp-window">
-                  <img class="gp-shot" src="images/deliverable-web-guide.png" loading="lazy" decoding="async"
-                    alt="Mobile guest guide for a beachside vacation rental, opened from a QR code — one clean page with Wi-Fi info, check-in details, house basics, local recommendations, a checkout checklist, and host contact." />
-                </div>
-                <aside class="gp-qrcard" aria-hidden="true"><span class="gp-qr"></span><span class="gp-qrcard-l">Scan to open</span></aside>
               </div>
-              <figcaption class="gp-frame-cap">QR Guest Guide for a Beachside Rental · Mobile guest guide</figcaption>
+              <figcaption class="gp-frame-cap">QR Guest Guide for a Beachside Rental · Scan the card, open the mobile guide</figcaption>
             </figure>
           </div>
 
@@ -360,18 +340,6 @@
                 <dd><ul class="gp-pills"><li>Wi-Fi Info</li><li>Check-In Details</li><li>House Basics</li><li>Local Picks</li><li>Checkout Checklist</li><li>Host Contact</li></ul></dd>
               </div>
             </dl>
-          </div>
-
-          <!-- FULL WIDTH: how a customer uses it (static) -->
-          <div class="gp-flow-wrap">
-            <ol class="gp-flow gp-flow--web" aria-label="How a customer uses the guide">
-              <li class="gp-flow-node"><span class="gp-flow-ic"></span><span class="gp-flow-t">Scan QR</span></li>
-              <li class="gp-flow-arrow" aria-hidden="true">→</li>
-              <li class="gp-flow-node"><span class="gp-flow-ic"></span><span class="gp-flow-t">Open guide</span></li>
-              <li class="gp-flow-arrow" aria-hidden="true">→</li>
-              <li class="gp-flow-node"><span class="gp-flow-ic"></span><span class="gp-flow-t">Get answer</span></li>
-            </ol>
-            <p class="gp-flow-cap">No app and no login — the customer scans the code, opens the guide, and finds the answer on their own phone.</p>
           </div>
 
         </div>

@@ -258,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function () {
       lead: 'A sample Drive package for a small fitness studio\'s opening shift.',
       problem: 'The shift relied on verbal instructions and memory instead of a clear handoff process staff could follow consistently.',
       howItWorks: 'Staff follow the guide and checklist, submit the completion form, and report issues when needed. Form responses feed into the manager tracker automatically.',
-      built: ['Guide', 'Checklist', 'Completion Form', 'Issue Report Form', 'Manager Tracker', 'Cheat Sheet', 'QR Access'],
+      built: ['Checklist', 'Completion Form', 'Issue Report Form', 'Manager Tracker', 'Cheat Sheet', 'QR Access'],
       image: 'images/deliverable-role.png',
       imageAlt: 'Google Drive package for the Front Desk Opening Handoff System — folder containing a Start Here Guide, Opening Checklist, Completion Form, Issue Report Form, Manager Tracker, printable cheat sheet, and a QR / mobile access card.',
       caption: 'Front Desk Opening Handoff System · Google Drive package'
@@ -299,9 +299,12 @@ document.addEventListener('DOMContentLoaded', function () {
       problem: 'Guests often text the host for the same basic details: Wi-Fi, parking, house instructions, local recommendations, and checkout steps.',
       howItWorks: 'A QR card sits inside the rental. Guests scan it and open a polished guide with the most important stay information in one place.',
       built: ['Wi-Fi Info', 'Check-In Details', 'House Basics', 'Local Picks', 'Checkout Checklist', 'Host Contact'],
-      image: 'images/deliverable-web-guide.png',
-      imageAlt: 'Mobile guest guide for a beachside vacation rental, opened from a QR code — one clean page with Wi-Fi info, check-in details, house basics, local recommendations, a checkout checklist, and host contact.',
-      caption: 'QR Guest Guide for a Beachside Rental · Mobile guest guide'
+      image: 'images/beach-rental-guide-screen.png',
+      qrCard: 'images/beach-rental-qr-card.png',
+      qrCardAlt: 'Printed QR welcome card for The Dune House beachside rental — "Scan to open your guest guide" with a QR code and an overview of what the guide includes.',
+      guideScreen: 'images/beach-rental-guide-screen.png',
+      guideScreenAlt: 'The mobile guest guide opened on a phone — a Welcome screen with Start Here check-in and an expandable guide covering Wi-Fi, house basics, local recommendations, checkout steps, and host contact.',
+      caption: 'QR Guest Guide for a Beachside Rental · Scan the card, open the mobile guide'
     },
     'cust-02': {
       kind: 'cust',
@@ -359,7 +362,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Role lists its files as visual tiles in the preview; the customer panel
     // keeps a compact "in the guide" pill list here so the two read differently.
     var insideFact = '';
-    if (ex.kind === 'cust' && ex.built && ex.built.length) {
+    if (ex.built && ex.built.length) {
       insideFact = fact('In the guide',
         '<ul class="gp-pills">' + ex.built.map(function (b) {
           return '<li>' + esc(b) + '</li>';
@@ -401,15 +404,33 @@ document.addEventListener('DOMContentLoaded', function () {
         '</div></div></div></figure>';
     }
     if (ex.kind === 'cust') {
-      // Browser window + a physical QR sticker card on the corner.
+      // Two artifacts (printed QR card + live mobile guide) are presented as
+      // real deliverables on warm paper — no browser chrome. Guest sees the
+      // card, scans it, opens the guide on the phone.
+      if (ex.qrCard && ex.guideScreen) {
+        return '<figure class="gp-frame gp-frame--web gp-frame--deliv">' +
+          '<div class="gp-stage">' +
+            '<figure class="gp-stage-qr">' +
+              '<img src="' + esc(ex.qrCard) + '" loading="lazy" decoding="async" alt="' + esc(ex.qrCardAlt || '') + '" />' +
+            '</figure>' +
+            '<div class="gp-phone">' +
+              '<div class="gp-phone-screen">' +
+                '<img src="' + esc(ex.guideScreen) + '" loading="lazy" decoding="async" alt="' + esc(ex.guideScreenAlt || '') + '" />' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+          renderCap(ex) +
+          '</figure>';
+      }
+      // Flat web-guide screenshot → shown in a simple browser window.
       return '<figure class="gp-frame gp-frame--web">' +
         '<div class="gp-screen">' +
           '<div class="gp-chrome gp-chrome--web" aria-hidden="true">' +
             '<span class="gp-chrome-dots"><i></i><i></i><i></i></span>' +
             '<span class="gp-url"><span class="gp-url-lock"></span>' + esc(ex.url || 'guides.site') + '</span>' +
+            '<span class="gp-chrome-spacer"></span>' +
           '</div>' +
           '<div class="gp-window">' + renderShot(ex) + '</div>' +
-          '<aside class="gp-qrcard" aria-hidden="true"><span class="gp-qr"></span><span class="gp-qrcard-l">Scan to open</span></aside>' +
         '</div>' +
         renderCap(ex) +
         '</figure>';
@@ -418,14 +439,11 @@ document.addEventListener('DOMContentLoaded', function () {
     return '<figure class="gp-frame gp-frame--drive">' +
       '<div class="gp-screen">' +
         '<div class="gp-chrome gp-chrome--drive" aria-hidden="true">' +
-          '<span class="gp-drive-ic"></span>' +
-          '<span class="gp-drive-path">My Drive <i>›</i> ' + esc(ex.folder || ex.title) + '</span>' +
           '<span class="gp-chrome-dots"><i></i><i></i><i></i></span>' +
         '</div>' +
         '<div class="gp-window">' + renderShot(ex) + '</div>' +
       '</div>' +
       renderCap(ex) +
-      '<ul class="gp-tiles" aria-label="Files in this package">' + renderTiles(ex) + '</ul>' +
       '</figure>';
   }
 
