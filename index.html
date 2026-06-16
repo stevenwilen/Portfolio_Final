@@ -183,7 +183,7 @@
            the section works without JS; script.js swaps content for the
            other tabs from a data map keyed by data-example.
       ============================================================ -->
-      <section class="gp-section" id="guide-projects" aria-labelledby="gp-role-heading">
+      <section class="gp-section gp-section--role" id="guide-projects" data-kind="role" aria-labelledby="gp-role-heading">
 
         <header class="gp-head" data-reveal>
           <span class="gp-eyebrow">For your team</span>
@@ -191,26 +191,32 @@
           <p class="gp-subhead">Guides for staff, volunteers, interns, or assistants who need a clear way to do the job.</p>
         </header>
 
-        <!-- TOP: example selector tabs -->
-        <div class="gp-rail" role="tablist" aria-label="Role &amp; Task Instructions examples" data-reveal data-reveal-delay="1">
+        <!-- TOP: slim folder-style example tabs -->
+        <div class="gp-rail gp-rail--folder" role="tablist" aria-label="Role &amp; Task Instructions examples" data-reveal data-reveal-delay="1">
           <button type="button" class="gp-rail-item" role="tab" data-example="role-01" aria-selected="true" tabindex="0">
-            <span class="gp-rail-num">01</span>
-            <span class="gp-rail-label">Front Desk Opening</span>
-            <span class="gp-rail-desc">Staff handoff package</span>
+            <span class="gp-rail-ic" aria-hidden="true"></span>
+            <span class="gp-rail-tx">
+              <span class="gp-rail-label"><span class="gp-rail-num">01</span>Front Desk Opening</span>
+              <span class="gp-rail-desc">Staff handoff package</span>
+            </span>
           </button>
           <button type="button" class="gp-rail-item" role="tab" data-example="role-02" aria-selected="false" tabindex="-1">
-            <span class="gp-rail-num">02</span>
-            <span class="gp-rail-label">New Staff Training</span>
-            <span class="gp-rail-desc">New hire onboarding</span>
+            <span class="gp-rail-ic" aria-hidden="true"></span>
+            <span class="gp-rail-tx">
+              <span class="gp-rail-label"><span class="gp-rail-num">02</span>New Staff Training</span>
+              <span class="gp-rail-desc">New hire onboarding</span>
+            </span>
           </button>
           <button type="button" class="gp-rail-item" role="tab" data-example="role-03" aria-selected="false" tabindex="-1">
-            <span class="gp-rail-num">03</span>
-            <span class="gp-rail-label">Event Day Roles</span>
-            <span class="gp-rail-desc">Volunteer instructions</span>
+            <span class="gp-rail-ic" aria-hidden="true"></span>
+            <span class="gp-rail-tx">
+              <span class="gp-rail-label"><span class="gp-rail-num">03</span>Event Day Roles</span>
+              <span class="gp-rail-desc">Volunteer instructions</span>
+            </span>
           </button>
         </div>
 
-        <!-- Expanded view -->
+        <!-- Expanded view: compact context (left) + Drive package (right) -->
         <div class="gp-showcase" data-reveal data-reveal-delay="2">
 
           <!-- LEFT: project context (active example role-01) -->
@@ -227,22 +233,48 @@
                 <dt>How it works</dt>
                 <dd>Staff follow the guide and checklist, submit the completion form, and report issues when needed. Form responses feed into the manager tracker automatically.</dd>
               </div>
-              <div class="gp-fact">
-                <dt>Built</dt>
-                <dd class="gp-built-inline">Guide · Checklist · Completion Form · Issue Report Form · Manager Tracker · Cheat Sheet · QR Access</dd>
-              </div>
             </dl>
           </div>
 
-          <!-- RIGHT: large deliverable preview -->
+          <!-- RIGHT: Drive-folder window + the files in the package -->
           <div class="gp-preview" id="gp-role-preview">
-            <figure class="gp-frame">
-              <div class="gp-window">
-                <img class="gp-shot" src="images/deliverable-role.png" width="1536" height="1024" loading="lazy" decoding="async"
-                  alt="Google Drive package for the Front Desk Opening Handoff System — folder containing a Start Here Guide, Opening Checklist, Completion Form, Issue Report Form, Manager Tracker, printable cheat sheet, and a QR / mobile access card." />
+            <figure class="gp-frame gp-frame--drive">
+              <div class="gp-screen">
+                <div class="gp-chrome gp-chrome--drive" aria-hidden="true">
+                  <span class="gp-drive-ic"></span>
+                  <span class="gp-drive-path">My Drive <i>›</i> Front Desk Opening</span>
+                  <span class="gp-chrome-dots"><i></i><i></i><i></i></span>
+                </div>
+                <div class="gp-window">
+                  <img class="gp-shot" src="images/deliverable-role.png" width="1536" height="1024" loading="lazy" decoding="async"
+                    alt="Google Drive package for the Front Desk Opening Handoff System — folder containing a Start Here Guide, Opening Checklist, Completion Form, Issue Report Form, Manager Tracker, printable cheat sheet, and a QR / mobile access card." />
+                </div>
               </div>
               <figcaption class="gp-frame-cap">Front Desk Opening Handoff System · Google Drive package</figcaption>
+              <ul class="gp-tiles" aria-label="Files in this package">
+                <li class="gp-tile gp-tile--doc"><span class="gp-tile-ic" aria-hidden="true"></span><span class="gp-tile-l">Guide</span></li>
+                <li class="gp-tile gp-tile--checklist"><span class="gp-tile-ic" aria-hidden="true"></span><span class="gp-tile-l">Checklist</span></li>
+                <li class="gp-tile gp-tile--form"><span class="gp-tile-ic" aria-hidden="true"></span><span class="gp-tile-l">Completion Form</span></li>
+                <li class="gp-tile gp-tile--form"><span class="gp-tile-ic" aria-hidden="true"></span><span class="gp-tile-l">Issue Report Form</span></li>
+                <li class="gp-tile gp-tile--tracker"><span class="gp-tile-ic" aria-hidden="true"></span><span class="gp-tile-l">Manager Tracker</span></li>
+                <li class="gp-tile gp-tile--doc"><span class="gp-tile-ic" aria-hidden="true"></span><span class="gp-tile-l">Cheat Sheet</span></li>
+                <li class="gp-tile gp-tile--qr"><span class="gp-tile-ic" aria-hidden="true"></span><span class="gp-tile-l">QR Access</span></li>
+              </ul>
             </figure>
+          </div>
+
+          <!-- FULL WIDTH: how the package connects (static) -->
+          <div class="gp-flow-wrap">
+            <ol class="gp-flow gp-flow--role" aria-label="How the handoff package fits together">
+              <li class="gp-flow-node"><span class="gp-flow-ic"></span><span class="gp-flow-t">Guide</span></li>
+              <li class="gp-flow-arrow" aria-hidden="true">→</li>
+              <li class="gp-flow-node"><span class="gp-flow-ic"></span><span class="gp-flow-t">Checklist</span></li>
+              <li class="gp-flow-arrow" aria-hidden="true">→</li>
+              <li class="gp-flow-node"><span class="gp-flow-ic"></span><span class="gp-flow-t">Forms</span></li>
+              <li class="gp-flow-arrow" aria-hidden="true">→</li>
+              <li class="gp-flow-node"><span class="gp-flow-ic"></span><span class="gp-flow-t">Tracker</span></li>
+            </ol>
+            <p class="gp-flow-cap">Not separate documents — a connected handoff package. Staff follow each step, and the manager gets visibility through the tracker.</p>
           </div>
 
         </div>
@@ -251,10 +283,11 @@
 
       <!-- ============================================================
            SECTION 3: CUSTOMER GUIDES
-           Second guide-example showcase. Same layout; the first tab
-           (Beach Rental Guest Guide) is rendered statically.
+           Sibling of the Role section, mirrored (large web guide left,
+           context right) with a browser frame + QR card and a Scan → Open
+           → Get answer strip. First tab is rendered statically.
       ============================================================ -->
-      <section class="gp-section" id="customer-guides" aria-labelledby="gp-cust-heading">
+      <section class="gp-section gp-section--web" id="customer-guides" data-kind="cust" aria-labelledby="gp-cust-heading">
 
         <header class="gp-head" data-reveal>
           <span class="gp-eyebrow">For your customers</span>
@@ -262,29 +295,53 @@
           <p class="gp-subhead">Guides for guests, customers, or visitors who need quick answers on their own.</p>
         </header>
 
-        <!-- TOP: example selector tabs -->
-        <div class="gp-rail" role="tablist" aria-label="Customer Guides examples" data-reveal data-reveal-delay="1">
+        <!-- TOP: slim web/QR-style example tabs -->
+        <div class="gp-rail gp-rail--web" role="tablist" aria-label="Customer Guides examples" data-reveal data-reveal-delay="1">
           <button type="button" class="gp-rail-item" role="tab" data-example="cust-01" aria-selected="true" tabindex="0">
-            <span class="gp-rail-num">01</span>
-            <span class="gp-rail-label">Beach Rental Guest Guide</span>
-            <span class="gp-rail-desc">QR mobile guide</span>
+            <span class="gp-rail-ic" aria-hidden="true"></span>
+            <span class="gp-rail-tx">
+              <span class="gp-rail-label"><span class="gp-rail-num">01</span>Beach Rental Guest Guide</span>
+              <span class="gp-rail-desc">QR mobile guide</span>
+            </span>
           </button>
           <button type="button" class="gp-rail-item" role="tab" data-example="cust-02" aria-selected="false" tabindex="-1">
-            <span class="gp-rail-num">02</span>
-            <span class="gp-rail-label">Business Workshop Guide</span>
-            <span class="gp-rail-desc">Registration link guide</span>
+            <span class="gp-rail-ic" aria-hidden="true"></span>
+            <span class="gp-rail-tx">
+              <span class="gp-rail-label"><span class="gp-rail-num">02</span>Business Workshop Guide</span>
+              <span class="gp-rail-desc">Registration link guide</span>
+            </span>
           </button>
           <button type="button" class="gp-rail-item" role="tab" data-example="cust-03" aria-selected="false" tabindex="-1">
-            <span class="gp-rail-num">03</span>
-            <span class="gp-rail-label">Robotics Workshop Guide</span>
-            <span class="gp-rail-desc">Student learning guide</span>
+            <span class="gp-rail-ic" aria-hidden="true"></span>
+            <span class="gp-rail-tx">
+              <span class="gp-rail-label"><span class="gp-rail-num">03</span>Robotics Workshop Guide</span>
+              <span class="gp-rail-desc">Student learning guide</span>
+            </span>
           </button>
         </div>
 
-        <!-- Expanded view -->
+        <!-- Expanded view: large web guide + QR card (left) + context (right) -->
         <div class="gp-showcase" data-reveal data-reveal-delay="2">
 
-          <!-- LEFT: project context (active example cust-01) -->
+          <!-- LEFT: browser-framed mobile/web guide with a QR sticker card -->
+          <div class="gp-preview" id="gp-cust-preview">
+            <figure class="gp-frame gp-frame--web">
+              <div class="gp-screen">
+                <div class="gp-chrome gp-chrome--web" aria-hidden="true">
+                  <span class="gp-chrome-dots"><i></i><i></i><i></i></span>
+                  <span class="gp-url"><span class="gp-url-lock"></span>guides.site/beach-rental</span>
+                </div>
+                <div class="gp-window">
+                  <img class="gp-shot" src="images/deliverable-web-guide.png" loading="lazy" decoding="async"
+                    alt="Mobile guest guide for a beachside vacation rental, opened from a QR code — one clean page with Wi-Fi info, check-in details, house basics, local recommendations, a checkout checklist, and host contact." />
+                </div>
+                <aside class="gp-qrcard" aria-hidden="true"><span class="gp-qr"></span><span class="gp-qrcard-l">Scan to open</span></aside>
+              </div>
+              <figcaption class="gp-frame-cap">QR Guest Guide for a Beachside Rental · Mobile guest guide</figcaption>
+            </figure>
+          </div>
+
+          <!-- RIGHT: project context (active example cust-01) -->
           <div class="gp-context" id="gp-cust-context" aria-live="polite">
             <span class="gp-category">For guests</span>
             <h3 class="gp-title">QR Guest Guide for a Beachside Rental</h3>
@@ -299,21 +356,22 @@
                 <dd>A QR card sits inside the rental. Guests scan it and open a polished guide with the most important stay information in one place.</dd>
               </div>
               <div class="gp-fact">
-                <dt>Built</dt>
-                <dd class="gp-built-inline">QR Welcome Card · Mobile Guest Guide · Wi-Fi Info · Check-In Details · House Basics · Local Picks · Checkout Checklist · Host Contact</dd>
+                <dt>In the guide</dt>
+                <dd><ul class="gp-pills"><li>Wi-Fi Info</li><li>Check-In Details</li><li>House Basics</li><li>Local Picks</li><li>Checkout Checklist</li><li>Host Contact</li></ul></dd>
               </div>
             </dl>
           </div>
 
-          <!-- RIGHT: large deliverable preview -->
-          <div class="gp-preview" id="gp-cust-preview">
-            <figure class="gp-frame">
-              <div class="gp-window">
-                <img class="gp-shot" src="images/deliverable-web-guide.png" loading="lazy" decoding="async"
-                  alt="Mobile guest guide for a beachside vacation rental, opened from a QR code — one clean page with Wi-Fi info, check-in details, house basics, local recommendations, a checkout checklist, and host contact." />
-              </div>
-              <figcaption class="gp-frame-cap">QR Guest Guide for a Beachside Rental · Mobile guest guide</figcaption>
-            </figure>
+          <!-- FULL WIDTH: how a customer uses it (static) -->
+          <div class="gp-flow-wrap">
+            <ol class="gp-flow gp-flow--web" aria-label="How a customer uses the guide">
+              <li class="gp-flow-node"><span class="gp-flow-ic"></span><span class="gp-flow-t">Scan QR</span></li>
+              <li class="gp-flow-arrow" aria-hidden="true">→</li>
+              <li class="gp-flow-node"><span class="gp-flow-ic"></span><span class="gp-flow-t">Open guide</span></li>
+              <li class="gp-flow-arrow" aria-hidden="true">→</li>
+              <li class="gp-flow-node"><span class="gp-flow-ic"></span><span class="gp-flow-t">Get answer</span></li>
+            </ol>
+            <p class="gp-flow-cap">No app and no login — the customer scans the code, opens the guide, and finds the answer on their own phone.</p>
           </div>
 
         </div>

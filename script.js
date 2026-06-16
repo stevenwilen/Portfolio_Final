@@ -249,10 +249,12 @@ document.addEventListener('DOMContentLoaded', function () {
     window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var EXAMPLES = {
-    // ── Role & Task Instructions ──
+    // ── Role & Task Instructions (Drive / file packages) ──
     'role-01': {
+      kind: 'role',
       category: 'For staff',
       title: 'Front Desk Opening Handoff System',
+      folder: 'Front Desk Opening',
       lead: 'A sample Drive package for a small fitness studio\'s opening shift.',
       problem: 'The shift relied on verbal instructions and memory instead of a clear handoff process staff could follow consistently.',
       howItWorks: 'Staff follow the guide and checklist, submit the completion form, and report issues when needed. Form responses feed into the manager tracker automatically.',
@@ -262,8 +264,10 @@ document.addEventListener('DOMContentLoaded', function () {
       caption: 'Front Desk Opening Handoff System · Google Drive package'
     },
     'role-02': {
+      kind: 'role',
       category: 'For new hires',
       title: 'New Staff Training Guide',
+      folder: 'New Staff Training',
       lead: 'A sample starter package for a small business training a new part-time employee.',
       problem: 'New staff kept asking the same basic questions because training lived in quick verbal explanations, scattered notes, and old messages.',
       howItWorks: 'The new hire gets one clear place to start: what to learn first, what tools to use, what tasks to practice, and who to ask when something is unclear.',
@@ -273,8 +277,10 @@ document.addEventListener('DOMContentLoaded', function () {
       caption: 'New Staff Training Guide · Sample starter package'
     },
     'role-03': {
+      kind: 'role',
       category: 'For volunteers',
       title: 'Event Day Role Guide',
+      folder: 'Event Day Roles',
       lead: 'A sample role package for volunteers helping run a local event.',
       problem: 'Volunteers showed up unsure where to go, what role they had, who to ask, and what to do when something changed during the event.',
       howItWorks: 'Each volunteer gets a clear role guide with arrival instructions, responsibilities, a simple event map, contact info, and a checklist for their specific station.',
@@ -283,36 +289,42 @@ document.addEventListener('DOMContentLoaded', function () {
       imageAlt: 'Event Day Role Guide package — a volunteer guide, role checklists, arrival instructions, an event map, a contact sheet, an issue form, and QR access.',
       caption: 'Event Day Role Guide · Sample role package'
     },
-    // ── Customer Guides ──
+    // ── Customer Guides (QR / web guides) ──
     'cust-01': {
+      kind: 'cust',
       category: 'For guests',
       title: 'QR Guest Guide for a Beachside Rental',
+      url: 'guides.site/beach-rental',
       lead: 'A sample mobile guide guests open from a QR code inside a vacation rental.',
       problem: 'Guests often text the host for the same basic details: Wi-Fi, parking, house instructions, local recommendations, and checkout steps.',
       howItWorks: 'A QR card sits inside the rental. Guests scan it and open a polished guide with the most important stay information in one place.',
-      built: ['QR Welcome Card', 'Mobile Guest Guide', 'Wi-Fi Info', 'Check-In Details', 'House Basics', 'Local Picks', 'Checkout Checklist', 'Host Contact'],
+      built: ['Wi-Fi Info', 'Check-In Details', 'House Basics', 'Local Picks', 'Checkout Checklist', 'Host Contact'],
       image: 'images/deliverable-web-guide.png',
       imageAlt: 'Mobile guest guide for a beachside vacation rental, opened from a QR code — one clean page with Wi-Fi info, check-in details, house basics, local recommendations, a checkout checklist, and host contact.',
       caption: 'QR Guest Guide for a Beachside Rental · Mobile guest guide'
     },
     'cust-02': {
+      kind: 'cust',
       category: 'For attendees',
       title: 'Business Workshop Guide',
+      url: 'guides.site/workshop',
       lead: 'A sample web guide attendees open from a link after registering for an event.',
       problem: 'Attendees often get event details through long emails, scattered messages, or basic PDFs that are easy to miss.',
       howItWorks: 'After registering, attendees receive a link to a polished guide with the schedule, arrival details, parking, venue info, and what to bring.',
-      built: ['Registration Email', 'Attendee Guide Page', 'Event Schedule', 'Arrival Details', 'Parking Info', 'Venue Notes', 'What to Bring', 'Contact Info'],
+      built: ['Event Schedule', 'Arrival Details', 'Parking Info', 'Venue Notes', 'What to Bring', 'Contact Info'],
       image: 'images/deliverable-web-guide-2.png',
       imageAlt: 'Business Workshop Guide — a link-based web guide attendees open after registering, with the event schedule, arrival details, parking info, venue notes, what to bring, and contact info.',
       caption: 'Business Workshop Guide · Link-based web guide'
     },
     'cust-03': {
+      kind: 'cust',
       category: 'For students',
       title: 'Robotics Workshop Guide',
+      url: 'guides.site/robotics',
       lead: 'A sample online guide students open before and during a hands-on robotics workshop.',
       problem: 'Students and parents often get workshop details through long emails or PDFs, making it hard to find the schedule, materials, and project steps when they need them.',
       howItWorks: 'After registering, students receive a link to a polished guide with the schedule, what to bring, project overview, step-by-step instructions, and support details.',
-      built: ['Welcome Email', 'Workshop Guide Page', 'Schedule', 'Project Overview', 'Materials List', 'Step-by-Step Instructions', 'Safety Notes', 'Contact Info'],
+      built: ['Schedule', 'Project Overview', 'Materials List', 'Step-by-Step', 'Safety Notes', 'Contact Info'],
       image: 'images/deliverable-web-guide-3.png',
       imageAlt: 'Robotics Workshop Guide — a sample online learning guide students open after registering, with the schedule, project overview, materials list, step-by-step instructions, safety notes, and contact info.',
       caption: 'Robotics Workshop Guide · Sample student learning guide'
@@ -325,8 +337,17 @@ document.addEventListener('DOMContentLoaded', function () {
     return d.innerHTML;
   }
 
+  // Classify a package file by its label so its tile gets the right glyph.
+  function tileType(label) {
+    var s = String(label).toLowerCase();
+    if (/qr/.test(s)) return 'qr';
+    if (/checklist/.test(s)) return 'checklist';
+    if (/tracker/.test(s)) return 'tracker';
+    if (/\bform\b/.test(s)) return 'form';
+    return 'doc';
+  }
+
   function renderContext(ex) {
-    var builtInline = (ex.built || []).map(esc).join(' · ');
     var leadArr = Array.isArray(ex.lead) ? ex.lead : [ex.lead];
     var lead = leadArr.filter(Boolean).map(function (p) {
       return '<p class="gp-lead">' + esc(p) + '</p>';
@@ -335,31 +356,76 @@ document.addEventListener('DOMContentLoaded', function () {
       return '<div class="gp-fact"><dt>' + label + '</dt>' +
         '<dd' + (cls ? ' class="' + cls + '"' : '') + '>' + value + '</dd></div>';
     }
+    // Role lists its files as visual tiles in the preview; the customer panel
+    // keeps a compact "in the guide" pill list here so the two read differently.
+    var insideFact = '';
+    if (ex.kind === 'cust' && ex.built && ex.built.length) {
+      insideFact = fact('In the guide',
+        '<ul class="gp-pills">' + ex.built.map(function (b) {
+          return '<li>' + esc(b) + '</li>';
+        }).join('') + '</ul>');
+    }
     return '<span class="gp-category">' + esc(ex.category) + '</span>' +
       '<h3 class="gp-title">' + esc(ex.title) + '</h3>' +
       lead +
       '<dl class="gp-facts">' +
         fact('Problem', esc(ex.problem)) +
         fact('How it works', esc(ex.howItWorks)) +
-        fact('Built', builtInline, 'gp-built-inline') +
+        insideFact +
         (ex.result ? fact('Result', esc(ex.result)) : '') +
       '</dl>';
+  }
+
+  function renderTiles(ex) {
+    return (ex.built || []).map(function (b) {
+      return '<li class="gp-tile gp-tile--' + tileType(b) + '">' +
+        '<span class="gp-tile-ic" aria-hidden="true"></span>' +
+        '<span class="gp-tile-l">' + esc(b) + '</span></li>';
+    }).join('');
+  }
+
+  function renderShot(ex) {
+    return '<img class="gp-shot" src="' + esc(ex.image) + '" loading="lazy" decoding="async" alt="' + esc(ex.imageAlt) + '" />';
+  }
+  function renderCap(ex) {
+    return ex.caption ? '<figcaption class="gp-frame-cap">' + esc(ex.caption) + '</figcaption>' : '';
   }
 
   function renderPreview(ex) {
     if (!ex.image) {
       return '<figure class="gp-frame gp-frame--placeholder">' +
-        '<div class="gp-window">' +
+        '<div class="gp-screen"><div class="gp-window">' +
         '<div class="gp-empty">' +
         '<span class="gp-empty-label">Sample coming soon</span>' +
         '<span class="gp-empty-sub">' + esc(ex.title) + '</span>' +
-        '</div></div></figure>';
+        '</div></div></div></figure>';
     }
-    return '<figure class="gp-frame">' +
-      '<div class="gp-window">' +
-      '<img class="gp-shot" src="' + esc(ex.image) + '" loading="lazy" decoding="async" alt="' + esc(ex.imageAlt) + '" />' +
+    if (ex.kind === 'cust') {
+      // Browser window + a physical QR sticker card on the corner.
+      return '<figure class="gp-frame gp-frame--web">' +
+        '<div class="gp-screen">' +
+          '<div class="gp-chrome gp-chrome--web" aria-hidden="true">' +
+            '<span class="gp-chrome-dots"><i></i><i></i><i></i></span>' +
+            '<span class="gp-url"><span class="gp-url-lock"></span>' + esc(ex.url || 'guides.site') + '</span>' +
+          '</div>' +
+          '<div class="gp-window">' + renderShot(ex) + '</div>' +
+          '<aside class="gp-qrcard" aria-hidden="true"><span class="gp-qr"></span><span class="gp-qrcard-l">Scan to open</span></aside>' +
+        '</div>' +
+        renderCap(ex) +
+        '</figure>';
+    }
+    // Role: Drive-folder window + a strip of file tiles below.
+    return '<figure class="gp-frame gp-frame--drive">' +
+      '<div class="gp-screen">' +
+        '<div class="gp-chrome gp-chrome--drive" aria-hidden="true">' +
+          '<span class="gp-drive-ic"></span>' +
+          '<span class="gp-drive-path">My Drive <i>›</i> ' + esc(ex.folder || ex.title) + '</span>' +
+          '<span class="gp-chrome-dots"><i></i><i></i><i></i></span>' +
+        '</div>' +
+        '<div class="gp-window">' + renderShot(ex) + '</div>' +
       '</div>' +
-      (ex.caption ? '<figcaption class="gp-frame-cap">' + esc(ex.caption) + '</figcaption>' : '') +
+      renderCap(ex) +
+      '<ul class="gp-tiles" aria-label="Files in this package">' + renderTiles(ex) + '</ul>' +
       '</figure>';
   }
 

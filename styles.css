@@ -2551,6 +2551,7 @@ img, svg { display: block; max-width: 100%; }
   border: none;
   background-color: #1c1814;   /* dark fill shown only until the first frame loads */
   background-image: none;
+  overflow: hidden;            /* clip the video to the card's rounded corners */
 }
 .rpp-video {
   position: absolute;
@@ -3958,15 +3959,26 @@ img, svg { display: block; max-width: 100%; }
 .gp-showcase {
   display: grid;
   grid-template-columns: minmax(0, 29fr) minmax(0, 71fr);
-  grid-template-areas: "context preview";
+  grid-template-areas:
+    "context preview"
+    "flow    flow";
   gap: clamp(18px, 2vw, 36px);
   width: 100%;
   max-width: 1500px;
   margin-inline: auto;
   align-items: start; /* top-align the caption with the screenshot frame */
 }
+/* Customer Guides is mirrored — the large web guide leads on the left, the
+   compact context sits on the right — so the two sections read as siblings. */
+#customer-guides .gp-showcase {
+  grid-template-columns: minmax(0, 71fr) minmax(0, 29fr);
+  grid-template-areas:
+    "preview context"
+    "flow    flow";
+}
 .gp-context { grid-area: context; }
 .gp-preview { grid-area: preview; }
+.gp-flow-wrap { grid-area: flow; }
 
 /* Smooth cross-fade when switching examples (re-triggered per swap by JS) */
 @keyframes gpSwapIn {
@@ -4088,9 +4100,9 @@ img, svg { display: block; max-width: 100%; }
   margin: 0;
   width: 100%;
 }
-/* Framed screenshot — border, rounded corners, and shadow lift the image off
-   the cream paper stack. No browser chrome, since not every deliverable is web. */
-.gp-window {
+/* The "screen" — chrome bar + screenshot unified into one window with the
+   border, rounded corners, and shadow that lift it off the cream paper. */
+.gp-screen {
   position: relative;
   width: 100%;
   border-radius: var(--r-md);
@@ -4101,10 +4113,283 @@ img, svg { display: block; max-width: 100%; }
     0 18px 42px -16px rgba(34, 28, 20, 0.42),
     0 6px 16px -8px rgba(34, 28, 20, 0.22);
 }
+.gp-window {
+  position: relative;
+  width: 100%;
+}
 .gp-shot {
   display: block;
   width: 100%;
   height: auto;
+}
+
+/* ---- Window chrome (Drive folder bar / browser bar) ---- */
+.gp-chrome {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 12px;
+  background: linear-gradient(180deg, #fbf4e5, #f2e7d3);
+  border-bottom: 1px solid rgba(34, 28, 20, 0.14);
+}
+.gp-chrome-dots { display: flex; gap: 5px; }
+.gp-chrome-dots i {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(34, 28, 20, 0.16);
+}
+/* Drive bar: folder glyph + breadcrumb path, window dots pushed to the right */
+.gp-chrome--drive .gp-chrome-dots { margin-left: auto; }
+.gp-drive-ic {
+  position: relative;
+  flex: none;
+  width: 18px; height: 13px;
+  border-radius: 0 2px 2px 2px;
+  background: var(--c-vermillion);
+  opacity: 0.9;
+}
+.gp-drive-ic::before {
+  content: "";
+  position: absolute;
+  top: -3px; left: 0;
+  width: 8px; height: 4px;
+  border-radius: 2px 2px 0 0;
+  background: var(--c-vermillion);
+}
+.gp-drive-path {
+  font-family: var(--ff-display);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--c-ink-700);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.gp-drive-path i { font-style: normal; color: var(--c-ink-400); margin: 0 5px; }
+/* Browser bar: traffic dots left, an address pill centred */
+.gp-url {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 auto;
+  padding: 3px 13px;
+  background: var(--c-surface);
+  border: 1px solid rgba(34, 28, 20, 0.12);
+  border-radius: 100px;
+  font-family: var(--ff-body);
+  font-size: 12px;
+  color: var(--c-ink-600);
+  max-width: 70%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.gp-url-lock {
+  flex: none;
+  width: 8px; height: 7px;
+  border-radius: 1px;
+  background: var(--c-ink-400);
+  position: relative;
+}
+.gp-url-lock::before {
+  content: "";
+  position: absolute;
+  left: 1.5px; top: -3px;
+  width: 5px; height: 5px;
+  border: 1.5px solid var(--c-ink-400);
+  border-bottom: none;
+  border-radius: 3px 3px 0 0;
+}
+
+/* ---- File tiles (Role package) ---- */
+.gp-tiles {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.gp-tile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 11px;
+  background: var(--c-surface);
+  border: 1px solid rgba(34, 28, 20, 0.14);
+  border-radius: 9px;
+  box-shadow: 0 1px 2px rgba(34, 28, 20, 0.05);
+  font-family: var(--ff-display);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--c-ink-700);
+}
+/* Small paper-document glyph with a folded corner + faint text lines */
+.gp-tile-ic {
+  position: relative;
+  flex: none;
+  width: 14px; height: 17px;
+  border-radius: 2px;
+  background: #fff;
+  border: 1px solid rgba(34, 28, 20, 0.30);
+}
+.gp-tile-ic::before {
+  content: "";
+  position: absolute;
+  top: -1px; right: -1px;
+  border-top: 5px solid var(--c-cream);
+  border-left: 5px solid rgba(34, 28, 20, 0.30);
+}
+.gp-tile-ic::after {
+  content: "";
+  position: absolute;
+  left: 2px; right: 3px; top: 7px;
+  height: 1px;
+  background: rgba(34, 28, 20, 0.22);
+  box-shadow: 0 3px 0 rgba(34, 28, 20, 0.22), 0 6px 0 rgba(34, 28, 20, 0.22);
+}
+/* Checklist — a small check instead of lines */
+.gp-tile--checklist .gp-tile-ic::after {
+  left: 3px; top: 5px;
+  width: 4px; height: 7px;
+  background: none;
+  border: solid var(--c-vermillion);
+  border-width: 0 1.6px 1.6px 0;
+  box-shadow: none;
+  transform: rotate(40deg);
+}
+/* Tracker — a 2-column grid hint */
+.gp-tile--tracker .gp-tile-ic::after {
+  left: 2px; right: 2px; top: 4px; bottom: 3px;
+  height: auto;
+  background:
+    linear-gradient(rgba(34, 28, 20, 0.22), rgba(34, 28, 20, 0.22)) center / 100% 1px no-repeat,
+    linear-gradient(rgba(34, 28, 20, 0.22), rgba(34, 28, 20, 0.22)) center / 1px 100% no-repeat;
+  box-shadow: none;
+}
+/* QR access — a checkered code, tinted vermillion to tie into the web section */
+.gp-tile--qr .gp-tile-ic {
+  width: 16px; height: 16px;
+  border-color: rgba(216, 65, 42, 0.45);
+  background:
+    repeating-conic-gradient(var(--c-vermillion) 0% 25%, #fff 0% 50%) 0 0 / 5px 5px;
+}
+.gp-tile--qr .gp-tile-ic::before,
+.gp-tile--qr .gp-tile-ic::after { content: none; }
+
+/* ---- QR sticker card (Customer guide) ---- */
+.gp-frame--web .gp-screen { overflow: visible; }
+.gp-frame--web .gp-window { border-radius: 0 0 var(--r-md) var(--r-md); overflow: hidden; }
+.gp-qrcard {
+  position: absolute;
+  right: -16px;
+  bottom: -18px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 104px;
+  padding: 11px 11px 9px;
+  background: var(--c-surface);
+  border: 1px solid rgba(34, 28, 20, 0.18);
+  border-radius: 12px;
+  box-shadow: 0 16px 32px -14px rgba(34, 28, 20, 0.45);
+  transform: rotate(3deg);
+}
+.gp-qr {
+  width: 72px; height: 72px;
+  border-radius: 5px;
+  border: 1px solid rgba(34, 28, 20, 0.16);
+  background:
+    repeating-conic-gradient(var(--c-ink-900) 0% 25%, #fff 0% 50%) 0 0 / 9px 9px;
+}
+.gp-qrcard-l {
+  font-family: var(--ff-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-vermillion-2);
+}
+
+/* ---- Connector / usage flow strip (full width) ---- */
+.gp-flow-wrap {
+  margin-top: clamp(16px, 1.8vw, 26px);
+  padding-top: clamp(15px, 1.7vw, 22px);
+  border-top: 1px dashed rgba(34, 28, 20, 0.20);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 11px;
+}
+.gp-flow {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.gp-flow-node {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 16px;
+  background: var(--c-surface);
+  border: 1px solid rgba(34, 28, 20, 0.14);
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(34, 28, 20, 0.05);
+  font-family: var(--ff-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--c-ink-800);
+}
+.gp-flow-ic {
+  flex: none;
+  width: 9px; height: 9px;
+  border-radius: 2px;
+  background: var(--c-vermillion);
+  box-shadow: 0 0 0 3px var(--c-accent-dim);
+}
+/* Web flow uses round nodes (scan dots) vs the role flow's square file marks */
+.gp-flow--web .gp-flow-ic { border-radius: 50%; }
+.gp-flow-arrow {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: var(--c-ink-400);
+}
+.gp-flow-cap {
+  margin: 0;
+  max-width: 64ch;
+  text-align: center;
+  font-family: var(--ff-body);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--c-ink-600);
+}
+
+/* Pills — the "in the guide" list inside the customer context panel */
+.gp-pills {
+  list-style: none;
+  margin: 2px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.gp-pills li {
+  font-family: var(--ff-display);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--c-ink-700);
+  background: var(--c-surface);
+  border: 1px solid rgba(34, 28, 20, 0.14);
+  border-radius: 100px;
+  padding: 3px 10px;
 }
 .gp-frame-cap {
   margin-top: 12px;
@@ -4147,77 +4432,103 @@ img, svg { display: block; max-width: 100%; }
   color: var(--c-ink-500);
 }
 
-/* ---- Selector cards (sit directly under the intro, above the showcase) ---- */
-/* Compact project-selector cards — number, title and a short descriptor so
-   visitors can read the examples before clicking. Soft cream fill, thin
-   border, gently rounded; the active card warms up and shows a red left
-   accent rule (echoing the .gp-context accent). No heavy shadows. */
+/* ---- Slim example tabs ----
+   Role uses folder tabs (manila tab shape + folder glyph); Customer uses web
+   tabs (rounded pill + globe glyph). Kept slim — icon + a two-line label — so
+   they read as a quiet selector, not a row of big cards. Active tab warms to
+   cream with a red top rule. */
 .gp-rail {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: clamp(8px, 1vw, 14px);
+  gap: 8px;
   width: 100%;
-  max-width: 880px;
-  margin: 0 auto clamp(22px, 2.4vw, 38px);
+  max-width: 920px;
+  margin: 0 auto clamp(20px, 2.2vw, 34px);
 }
 .gp-rail-item {
   position: relative;
-  overflow: hidden;
   flex: 1 1 0;
-  min-width: 180px;
+  min-width: 190px;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
-  padding: 10px 15px;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 15px;
   background-color: var(--c-surface);
-  border: 1px solid rgba(34, 28, 20, 0.12);
-  border-radius: var(--r-md);
+  border: 1px solid rgba(34, 28, 20, 0.14);
   box-shadow: 0 1px 2px rgba(34, 28, 20, 0.06);
   cursor: pointer;
   text-align: left;
   color: var(--c-ink-700);
   transition: transform 0.18s var(--ease-out), box-shadow 0.18s var(--ease-out),
-    background-color 0.18s var(--ease-out), border-color 0.18s var(--ease-out), color 0.18s var(--ease-out);
+    background-color 0.18s var(--ease-out), border-color 0.18s var(--ease-out);
 }
-/* Red left accent rule — transparent until the card is active */
-.gp-rail-item::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: transparent;
-  z-index: 1;
-  transition: background-color 0.18s var(--ease-out);
-}
-/* Folded-paper corner (dog-ear) — a small document detail, clipped neatly
-   to the rounded corner by the item's overflow: hidden. */
+.gp-rail--folder .gp-rail-item { border-radius: 10px 10px 5px 5px; }
+.gp-rail--web .gp-rail-item { border-radius: 12px; }
+/* Red top accent rule — transparent until the tab is active */
 .gp-rail-item::after {
   content: "";
   position: absolute;
-  top: 0;
-  right: 0;
-  border-top: 12px solid rgba(34, 28, 20, 0.09);
-  border-left: 12px solid transparent;
-  transition: border-top-color 0.18s var(--ease-out);
+  left: 12px; right: 12px; top: 0;
+  height: 2px;
+  border-radius: 0 0 2px 2px;
+  background: transparent;
+  transition: background-color 0.18s var(--ease-out);
 }
-.gp-rail-num {
-  font-family: var(--ff-display);
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: var(--c-ink-400);
+
+/* Tab glyphs */
+.gp-rail-ic { position: relative; flex: none; }
+.gp-rail--folder .gp-rail-ic {
+  width: 18px; height: 13px;
+  border-radius: 0 2px 2px 2px;
+  background: var(--c-ink-400);
 }
+.gp-rail--folder .gp-rail-ic::before {
+  content: "";
+  position: absolute;
+  top: -3px; left: 0;
+  width: 8px; height: 4px;
+  border-radius: 2px 2px 0 0;
+  background: var(--c-ink-400);
+}
+.gp-rail--web .gp-rail-ic {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid var(--c-ink-400);
+}
+.gp-rail--web .gp-rail-ic::before {
+  content: "";
+  position: absolute;
+  inset: 1px 4.5px;
+  border: 1.5px solid var(--c-ink-400);
+  border-radius: 50%;
+}
+.gp-rail--web .gp-rail-ic::after {
+  content: "";
+  position: absolute;
+  left: 50%; top: 0.5px; bottom: 0.5px;
+  width: 1.5px;
+  background: var(--c-ink-400);
+  transform: translateX(-50%);
+}
+
+.gp-rail-tx { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
 .gp-rail-label {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
   font-family: var(--ff-display);
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.15;
-  color: var(--c-ink-700);
+  color: var(--c-ink-800);
+}
+.gp-rail-num {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--c-ink-400);
 }
 .gp-rail-desc {
   font-family: var(--ff-body);
@@ -4235,42 +4546,56 @@ img, svg { display: block; max-width: 100%; }
   outline-offset: 2px;
 }
 .gp-rail-item[aria-selected="true"] {
-  transform: translateY(-2px);
   background-color: var(--c-cream);
-  border-color: rgba(216, 65, 42, 0.28);
-  box-shadow: 0 9px 20px -11px rgba(34, 28, 20, 0.30);
+  border-color: rgba(216, 65, 42, 0.30);
+  box-shadow: 0 8px 18px -11px rgba(34, 28, 20, 0.30);
 }
-.gp-rail-item[aria-selected="true"]::before { background: var(--c-vermillion); }
-.gp-rail-item[aria-selected="true"]::after { border-top-color: rgba(216, 65, 42, 0.22); }
-.gp-rail-item[aria-selected="true"] .gp-rail-num { color: var(--c-vermillion-2); }
+.gp-rail-item[aria-selected="true"]::after { background: var(--c-vermillion); }
 .gp-rail-item[aria-selected="true"] .gp-rail-label { color: var(--c-ink-900); }
+.gp-rail-item[aria-selected="true"] .gp-rail-num { color: var(--c-vermillion-2); }
 .gp-rail-item[aria-selected="true"] .gp-rail-desc { color: var(--c-ink-700); }
+/* Active glyph picks up the accent */
+.gp-rail--folder .gp-rail-item[aria-selected="true"] .gp-rail-ic,
+.gp-rail--folder .gp-rail-item[aria-selected="true"] .gp-rail-ic::before { background: var(--c-vermillion); }
+.gp-rail--web .gp-rail-item[aria-selected="true"] .gp-rail-ic,
+.gp-rail--web .gp-rail-item[aria-selected="true"] .gp-rail-ic::before { border-color: var(--c-vermillion); }
+.gp-rail--web .gp-rail-item[aria-selected="true"] .gp-rail-ic::after { background: var(--c-vermillion); }
+
+/* Web chrome top corners round so the QR sticker can hang off an
+   unclipped screen without the chrome poking past the rounded border. */
+.gp-frame--web .gp-chrome { border-radius: var(--r-md) var(--r-md) 0 0; }
 
 /* ---- Responsive ---- */
 @media (max-width: 900px) {
-  .gp-showcase {
+  .gp-showcase,
+  #customer-guides .gp-showcase {
     grid-template-columns: 1fr;
-    /* Stacked: context above the mockup. */
+    /* Stacked: context, then the artifact, then the flow strip. */
     grid-template-areas:
       "context"
-      "preview";
+      "preview"
+      "flow";
   }
 }
 @media (max-width: 640px) {
-  /* Cards become a clean horizontal scroll row above the expanded content */
+  /* Tabs become a clean horizontal scroll row above the expanded content */
   .gp-rail {
     max-width: none;
     flex-wrap: nowrap;
     justify-content: flex-start;
-    gap: 10px;
+    gap: 9px;
     overflow-x: auto;
     scroll-snap-type: x proximity;
-    padding: 4px 0 8px;            /* room for the active card's lift */
+    padding: 3px 0 6px;
     -webkit-overflow-scrolling: touch;
   }
   .gp-rail-item {
     flex: 0 0 auto;
-    width: min(220px, 72vw);
+    width: min(230px, 74vw);
     scroll-snap-align: start;
   }
+}
+@media (max-width: 560px) {
+  .gp-qrcard { right: -6px; bottom: -12px; width: 88px; padding: 9px; }
+  .gp-qr { width: 60px; height: 60px; }
 }
