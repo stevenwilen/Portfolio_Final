@@ -2693,6 +2693,8 @@ img, svg { display: block; max-width: 100%; }
     transform: rotate(90deg);
     margin: 2px 0;
   }
+  /* Hide the empty placeholder drafts (Guide structure outline / Lesson draft) */
+  .rpp-slot:has(.rpp-thumb--ph) { display: none; }
 }
 
 
@@ -3393,9 +3395,27 @@ img, svg { display: block; max-width: 100%; }
   .hero-float--guide  { width: 300px; top: 6%; right: 1%; }
   .hero-float--call   { width: 280px; top: 40%; right: -4%; }
 }
-/* Small viewports (<640px): hide all artifacts; hero text stays clean. */
+/* Small viewports (<640px): hide most artifacts, but keep two small cards as
+   quiet accents tucked into the corners, sitting behind the headline (z-index 10). */
 @media (max-width: 640px) {
   .hero-float { display: none; }
+  .hero-float--notes,
+  .hero-float--checklist {
+    display: block;
+    opacity: 0.72;
+    translate: none;                       /* hold still — no scroll parallax drift */
+    rotate: calc(var(--rot) * 1deg);
+  }
+  .hero-float--notes {
+    top: 1%; left: -9%; right: auto;
+    width: 140px;
+    --rot: -8;
+  }
+  .hero-float--checklist {
+    top: auto; bottom: 13%; left: auto; right: -8%;
+    width: 124px;
+    --rot: 6;
+  }
 }
 
 /* Reduced motion: cancel JS-driven transform */
@@ -3433,10 +3453,22 @@ img, svg { display: block; max-width: 100%; }
   background-color: #1c1814;   /* dark variant for video + call */
   inset: 0 0 30% 0;
 }
+/* Filled slot — a real asset image covers the whole card (no caption band) */
+.hero-float-slot--filled::before { content: none; }
+.hero-float-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Zoom in slightly so the player's black chrome is cropped by the frame */
+  transform: scale(1.1);
+  z-index: 0;
+}
 
 /* Per-card aspect ratios — each slot reads as its asset type */
 .hero-float--notes      .hero-float-slot { aspect-ratio: 4 / 3; }
-.hero-float--video      .hero-float-slot { aspect-ratio: 16 / 9; }
+.hero-float--video      .hero-float-slot { aspect-ratio: 600 / 360; }
 .hero-float--reference  .hero-float-slot { aspect-ratio: 3 / 4; }
 .hero-float--guide      .hero-float-slot { aspect-ratio: 16 / 9; }
 .hero-float--annotated  .hero-float-slot { aspect-ratio: 4 / 3; }
@@ -3903,7 +3935,7 @@ img, svg { display: block; max-width: 100%; }
 /* First section after the hero — the hero's extra bottom padding
    (--hero-extend) is masked as torn paper, so pull this section up by the
    same amount to keep the divider-to-content spacing at its original value. */
-#guide-projects {
+#customer-guides {
   margin-top: calc(-1 * var(--hero-extend));
 }
 /* No divider rule between the two showcases — the red editorial eyebrow
@@ -3911,7 +3943,7 @@ img, svg { display: block; max-width: 100%; }
    stacked vertical padding keeps them feeling connected but distinct.
    Trim the second section's top padding slightly so it reads as a continued
    showcase rather than a far-separated section. */
-#customer-guides {
+#guide-projects {
   padding-top: clamp(2rem, 4vw, 4rem);
 }
 
@@ -4814,10 +4846,10 @@ img, svg { display: block; max-width: 100%; }
   .gp-showcase,
   #customer-guides .gp-showcase {
     grid-template-columns: 1fr;
-    /* Stacked: context, then the artifact, then the flow strip. */
+    /* Stacked: the mockup leads, then the context text, then the flow strip. */
     grid-template-areas:
-      "context"
       "preview"
+      "context"
       "flow";
   }
 }
@@ -4838,6 +4870,10 @@ img, svg { display: block; max-width: 100%; }
     width: min(230px, 74vw);
     scroll-snap-align: start;
   }
+  /* Show a single deliverable (the device mockup) — hide the delivery card */
+  .gp-frame--deliv .gp-deliv--card { display: none; }
+  /* Hide the faded in-context background photo on mobile */
+  .gp-frame--deliv .gp-stage::before { display: none; }
 }
 @media (max-width: 560px) {
   /* Stack the delivery card above the device guide */
