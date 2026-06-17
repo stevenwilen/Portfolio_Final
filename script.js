@@ -344,16 +344,25 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     'cust-03': {
       kind: 'cust',
-      category: 'For students',
-      title: 'Robotics Workshop Guide',
-      url: 'guides.site/robotics',
-      lead: 'A sample online guide students open before and during a hands-on robotics workshop.',
-      problem: 'Students and parents often get workshop details through long emails or PDFs, making it hard to find the schedule, materials, and project steps when they need them.',
-      howItWorks: 'After registering, students receive a link to a polished guide with the schedule, what to bring, project overview, step-by-step instructions, and support details.',
-      built: ['Schedule', 'Project Overview', 'Materials List', 'Step-by-Step', 'Safety Notes', 'Contact Info'],
-      image: 'images/deliverable-web-guide-3.png',
-      imageAlt: 'Robotics Workshop Guide — a sample online learning guide students open after registering, with the schedule, project overview, materials list, step-by-step instructions, safety notes, and contact info.',
-      caption: 'Robotics Workshop Guide · Sample student learning guide'
+      category: 'Student / Class Guide',
+      title: 'Student Robot Build Guide',
+      url: 'guides.site/robot-build',
+      lead: 'A sample build guide for a student robotics class or club.',
+      problem: 'Students need to build the robot step by step, but the instructions can easily become scattered across verbal explanations, slides, videos, and teacher notes.',
+      howItWorks: 'The student sees the assignment, opens the guide, and follows the build process from parts to wiring, code setup, testing, and troubleshooting.',
+      built: ['Classroom Assignment Card', 'Laptop Web Guide', 'Parts Overview', 'Build Steps', 'Wiring Guide', 'Code Setup', 'Testing Checklist', 'Troubleshooting Tips'],
+      result: 'Students get one clear place to follow the project instead of relying on scattered instructions.',
+      image: 'images/student-course-laptop-screen.png',
+      deliverable: {
+        bg: 'images/student-course-background.png',
+        device: {
+          type: 'laptop',
+          img: 'images/student-course-laptop-screen.png',
+          label: 'Laptop Web Guide',
+          alt: 'The Student Robot Build Guide opened on a laptop — a sidebar with Start Here, Parts, Build Steps, Wiring, Code, Testing, Troubleshooting, and Help, plus parts and simple wiring diagrams.'
+        }
+      },
+      caption: 'Student Robot Build Guide · Open the assignment, follow the build on a laptop'
     }
   };
 
@@ -422,26 +431,36 @@ document.addEventListener('DOMContentLoaded', function () {
   function renderDeliverable(ex) {
     var d = ex.deliverable;
     var dev = d.device || {};
-    var devType = dev.type === 'tablet' ? 'tablet' : 'phone';
+    var devType = ['phone', 'tablet', 'laptop'].indexOf(dev.type) >= 0 ? dev.type : 'phone';
     function label(t) {
       return t ? '<span class="gp-deliv-label">' + esc(t) + '</span>' : '';
     }
-    var bgStyle = d.bg ? " style=\"--gp-deliv-bg:url('" + d.bg + "')\"" : '';
-    return '<figure class="gp-frame gp-frame--web gp-frame--deliv gp-frame--' + devType + '"' + bgStyle + '>' +
-      '<div class="gp-stage">' +
-        '<div class="gp-deliv gp-deliv--card">' +
-          label(d.card && d.card.label) +
+    var screenImg = '<img src="' + esc(dev.img) + '" loading="lazy" decoding="async" alt="' + esc(dev.alt || '') + '" />';
+    // The laptop has a screen lid sitting on an aluminium base deck; the phone
+    // and tablet are a single framed screen.
+    var device = devType === 'laptop'
+      ? '<div class="gp-laptop">' +
+          '<div class="gp-laptop-lid"><div class="gp-laptop-screen">' + screenImg + '</div></div>' +
+          '<div class="gp-laptop-base"></div>' +
+        '</div>'
+      : '<div class="gp-' + devType + '"><div class="gp-' + devType + '-screen">' + screenImg + '</div></div>';
+    // The delivery card is optional — some examples show just the device.
+    var cardCol = d.card
+      ? '<div class="gp-deliv gp-deliv--card">' +
+          label(d.card.label) +
           '<figure class="gp-card">' +
-            '<img src="' + esc(d.card.img) + '" loading="lazy" decoding="async" alt="' + esc((d.card && d.card.alt) || '') + '" />' +
+            '<img src="' + esc(d.card.img) + '" loading="lazy" decoding="async" alt="' + esc(d.card.alt || '') + '" />' +
           '</figure>' +
-        '</div>' +
+        '</div>'
+      : '';
+    var soloClass = d.card ? '' : ' gp-frame--solo';
+    var bgStyle = d.bg ? " style=\"--gp-deliv-bg:url('" + d.bg + "')\"" : '';
+    return '<figure class="gp-frame gp-frame--web gp-frame--deliv gp-frame--' + devType + soloClass + '"' + bgStyle + '>' +
+      '<div class="gp-stage">' +
+        cardCol +
         '<div class="gp-deliv gp-deliv--' + devType + '">' +
           label(dev.label) +
-          '<div class="gp-' + devType + '">' +
-            '<div class="gp-' + devType + '-screen">' +
-              '<img src="' + esc(dev.img) + '" loading="lazy" decoding="async" alt="' + esc(dev.alt || '') + '" />' +
-            '</div>' +
-          '</div>' +
+          device +
         '</div>' +
       '</div>' +
       renderCap(ex) +

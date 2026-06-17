@@ -4311,17 +4311,17 @@ img, svg { display: block; max-width: 100%; }
   background-position: center, center;
   background-repeat: no-repeat, no-repeat;
   filter: blur(2px) saturate(1.06);
-  opacity: 0.84;
+  opacity: 0.54;
   border-radius: var(--r-md);
   /* Soft fade on all four edges (corners included) with a large solid middle —
      two linear masks intersected, so only the very outside dissolves */
   -webkit-mask-image:
-    linear-gradient(to right, transparent 0%, #000 18%, #000 82%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
+    linear-gradient(to right, transparent 0%, #000 28%, #000 72%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 26%, #000 74%, transparent 100%);
   -webkit-mask-composite: source-in;
   mask-image:
-    linear-gradient(to right, transparent 0%, #000 18%, #000 82%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
+    linear-gradient(to right, transparent 0%, #000 28%, #000 72%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 26%, #000 74%, transparent 100%);
   mask-composite: intersect;
 }
 /* Each deliverable is a labelled column, lifted above the faded background */
@@ -4340,6 +4340,13 @@ img, svg { display: block; max-width: 100%; }
 /* Tablet example (Workshop): larger portrait card + landscape tablet */
 .gp-frame--tablet .gp-deliv--card { width: clamp(172px, 34%, 256px); }
 .gp-frame--tablet .gp-deliv--tablet { width: clamp(272px, 55%, 424px); }
+/* Laptop example (Robot Build): landscape card + dominant landscape laptop */
+.gp-frame--laptop .gp-deliv--card { width: clamp(160px, 31%, 240px); }
+.gp-frame--laptop .gp-deliv--laptop { width: clamp(318px, 60%, 484px); }
+/* Card-less: a single large laptop, centred and sized like the other previews */
+.gp-frame--solo.gp-frame--laptop .gp-deliv--laptop { width: clamp(400px, 82%, 720px); }
+/* More breathing room above/below so the faded background reads larger */
+.gp-frame--solo .gp-stage { padding-block: clamp(44px, 6vw, 104px); }
 /* Subtle caption above each artifact */
 .gp-frame--deliv .gp-deliv-label {
   font-family: var(--ff-display);
@@ -4353,6 +4360,7 @@ img, svg { display: block; max-width: 100%; }
 .gp-frame--deliv .gp-deliv--card .gp-deliv-label { transform: translateX(-0.16em) rotate(-3deg); }
 .gp-frame--deliv .gp-deliv--phone .gp-deliv-label { transform: rotate(0.5deg); }
 .gp-frame--deliv .gp-deliv--tablet .gp-deliv-label { transform: rotate(-0.5deg); }
+.gp-frame--deliv .gp-deliv--laptop .gp-deliv-label { transform: rotate(-0.4deg); }
 /* Flat delivery card (printed QR card / confirmation) — tilted */
 .gp-frame--deliv .gp-card {
   width: 100%;
@@ -4466,6 +4474,87 @@ img, svg { display: block; max-width: 100%; }
   border-radius: inherit;
   pointer-events: none;
   background: linear-gradient(120deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 22%);
+}
+
+/* Realistic open-laptop frame — a screen lid resting on an aluminium base deck */
+.gp-frame--deliv .gp-laptop {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: rotate(-0.4deg);
+  filter: drop-shadow(0 34px 46px rgba(34, 28, 20, 0.4));
+}
+/* The lid (screen housing) — thin dark bezel around the guide screen */
+.gp-frame--deliv .gp-laptop-lid {
+  position: relative;
+  width: 100%;
+  padding: 9px 10px 10px;
+  border-radius: 15px 15px 5px 5px;
+  background:
+    linear-gradient(150deg, #1c1a17 0%, #0c0b09 26%, #050504 54%, #0c0b09 80%, #1c1a17 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.09),
+    inset 0 1.5px 1.5px rgba(255, 255, 255, 0.10);
+}
+/* Webcam centred on the top bezel */
+.gp-frame--deliv .gp-laptop-lid::before {
+  content: "";
+  position: absolute;
+  top: 3.5px; left: 50%;
+  transform: translateX(-50%);
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #2a3640 0%, #0a0d10 70%);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+.gp-frame--deliv .gp-laptop-screen {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+}
+.gp-frame--deliv .gp-laptop-screen img { display: block; width: 100%; height: auto; }
+.gp-frame--deliv .gp-laptop-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0) 22%);
+}
+/* The base deck — a wider, shallow aluminium slab seen at a slight angle */
+.gp-frame--deliv .gp-laptop-base {
+  position: relative;
+  width: 112%;
+  height: 13px;
+  border-radius: 0 0 9px 9px / 0 0 70px 70px;
+  background: linear-gradient(180deg, #cbc6bd 0%, #b0a9a0 42%, #8f897f 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 12px 18px -9px rgba(34, 28, 20, 0.42);
+}
+/* Hinge shadow where the lid meets the deck */
+.gp-frame--deliv .gp-laptop-base::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 74%; height: 3px;
+  border-radius: 0 0 4px 4px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0));
+}
+/* Front opening notch (the lip you lift the lid from) */
+.gp-frame--deliv .gp-laptop-base::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 15%; height: 5px;
+  border-radius: 0 0 5px 5px;
+  background: #8d877d;
+  box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.22);
 }
 
 /* ---- Connector / usage flow strip (full width) ---- */
@@ -4761,6 +4850,9 @@ img, svg { display: block; max-width: 100%; }
   .gp-frame--phone .gp-deliv--phone { width: min(84%, 290px); }
   .gp-frame--tablet .gp-deliv--card { width: min(64%, 230px); }
   .gp-frame--tablet .gp-deliv--tablet { width: min(94%, 460px); }
+  .gp-frame--laptop .gp-deliv--card { width: min(72%, 260px); }
+  .gp-frame--laptop .gp-deliv--laptop { width: min(96%, 470px); }
+  .gp-frame--solo.gp-frame--laptop .gp-deliv--laptop { width: min(100%, 560px); }
   .gp-frame--deliv .gp-card { transform: rotate(-2deg); }
   .gp-frame--deliv .gp-deliv--card .gp-deliv-label { transform: rotate(-2deg); }
 }
