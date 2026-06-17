@@ -3266,7 +3266,7 @@ img, svg { display: block; max-width: 100%; }
   will-change: translate, rotate;
   color: var(--c-ink-800);
   isolation: isolate;
-  opacity: 0.96;
+  opacity: 1;            /* cards are fully opaque; muting comes from the cream veil */
   pointer-events: none;
   /* JS drives --tx/--ty/--total-rot every frame via RAF — no CSS transitions needed.
      Falls back to per-card resting rotation if JS never runs. */
@@ -3320,7 +3320,7 @@ img, svg { display: block; max-width: 100%; }
 .hero-float--guide {
   top: 6%;     right: 2%;
   width: 430px;
-  --rot: 4;
+  --rot: 4;          /* slightly angled, like the rest of the floating stack */
   --z: 2;
   --phase: -1.4s;
 }
@@ -3402,7 +3402,7 @@ img, svg { display: block; max-width: 100%; }
   .hero-float--notes,
   .hero-float--checklist {
     display: block;
-    opacity: 0.72;
+    opacity: 1;
     translate: none;                       /* hold still — no scroll parallax drift */
     rotate: calc(var(--rot) * 1deg);
   }
@@ -3465,15 +3465,27 @@ img, svg { display: block; max-width: 100%; }
   transform: scale(1.1);
   z-index: 0;
 }
+/* Guide screenshots are documents — show them whole (no zoom crop) so the Drive
+   interface stays readable. Each slot's aspect-ratio matches its image, so cover
+   fills the frame edge-to-edge without losing any content. */
+.hero-float--guide .hero-float-img,
+.hero-float--video .hero-float-img,
+.hero-float--call .hero-float-img,
+.hero-float--reference .hero-float-img,
+.hero-float--checklist .hero-float-img,
+.hero-float--annotated .hero-float-img,
+.hero-float--notes .hero-float-img {
+  transform: none;
+}
 
 /* Per-card aspect ratios — each slot reads as its asset type */
-.hero-float--notes      .hero-float-slot { aspect-ratio: 4 / 3; }
-.hero-float--video      .hero-float-slot { aspect-ratio: 600 / 360; }
-.hero-float--reference  .hero-float-slot { aspect-ratio: 3 / 4; }
+.hero-float--notes      .hero-float-slot { aspect-ratio: 1402 / 1122; }
+.hero-float--video      .hero-float-slot { aspect-ratio: 1686 / 933; }
+.hero-float--reference  .hero-float-slot { aspect-ratio: 1090 / 1443; }
 .hero-float--guide      .hero-float-slot { aspect-ratio: 16 / 9; }
-.hero-float--annotated  .hero-float-slot { aspect-ratio: 4 / 3; }
-.hero-float--checklist  .hero-float-slot { aspect-ratio: 4 / 5; }
-.hero-float--call       .hero-float-slot { aspect-ratio: 394 / 80; }
+.hero-float--annotated  .hero-float-slot { aspect-ratio: 1411 / 1114; }
+.hero-float--checklist  .hero-float-slot { aspect-ratio: 1054 / 1492; }
+.hero-float--call       .hero-float-slot { aspect-ratio: 1405 / 466; }
 
 /* Call recording is a full-dark strip — no caption band */
 .hero-float--call .hero-float-slot::before { inset: 0; }
@@ -4000,9 +4012,10 @@ img, svg { display: block; max-width: 100%; }
   margin-inline: auto;
   align-items: start; /* top-align the caption with the screenshot frame */
 }
-/* Customer Guides is mirrored — the large web guide leads on the left, the
-   compact context sits on the right — so the two sections read as siblings. */
-#customer-guides .gp-showcase {
+/* Role & Task is mirrored — the large Drive package leads on the left, the
+   compact context sits on the right — so the two sections read as siblings.
+   (Customer Guides, the first section, keeps the base context-left layout.) */
+#guide-projects .gp-showcase {
   grid-template-columns: minmax(0, 71fr) minmax(0, 29fr);
   grid-template-areas:
     "preview context"
@@ -4329,8 +4342,9 @@ img, svg { display: block; max-width: 100%; }
   background: transparent;
   overflow: visible;
 }
-/* Quiet rental-setting context: the property photo, heavily faded and blurred
-   under a warm cream wash, feathered at the edges so it has no photo border */
+/* Quiet in-context backdrop: the setting photo, desaturated to colorless and
+   heavily faded/blurred under a cream wash, feathered at the edges so it has
+   no photo border */
 .gp-frame--deliv .gp-stage::before {
   content: "";
   position: absolute;
@@ -4342,7 +4356,7 @@ img, svg { display: block; max-width: 100%; }
   background-size: cover, cover;
   background-position: center, center;
   background-repeat: no-repeat, no-repeat;
-  filter: blur(2px) saturate(1.06);
+  filter: grayscale(1) blur(2px);
   opacity: 0.54;
   border-radius: var(--r-md);
   /* Soft fade on all four edges (corners included) with a large solid middle —
@@ -4844,7 +4858,8 @@ img, svg { display: block; max-width: 100%; }
 /* ---- Responsive ---- */
 @media (max-width: 900px) {
   .gp-showcase,
-  #customer-guides .gp-showcase {
+  #customer-guides .gp-showcase,
+  #guide-projects .gp-showcase {
     grid-template-columns: 1fr;
     /* Stacked: the mockup leads, then the context text, then the flow strip. */
     grid-template-areas:

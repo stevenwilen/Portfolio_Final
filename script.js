@@ -358,7 +358,7 @@ document.addEventListener('DOMContentLoaded', function () {
         device: {
           type: 'laptop',
           img: 'images/student-course-laptop-screen.png',
-          label: 'Laptop Web Guide',
+          label: 'Web Guide',
           alt: 'The Student Robot Build Guide opened on a laptop — a sidebar with Start Here, Parts, Build Steps, Wiring, Code, Testing, Troubleshooting, and Help, plus parts and simple wiring diagrams.'
         }
       },
