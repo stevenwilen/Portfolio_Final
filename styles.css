@@ -3395,8 +3395,9 @@ img, svg { display: block; max-width: 100%; }
   .hero-float--guide  { width: 300px; top: 6%; right: 1%; }
   .hero-float--call   { width: 280px; top: 40%; right: -4%; }
 }
-/* Small viewports (<640px): hide most artifacts, but keep two small cards as
-   quiet accents tucked into the corners, sitting behind the headline (z-index 10). */
+/* Small viewports (<640px): hide most artifacts, but keep two cards tucked
+   under the torn-paper divider at the bottom of the hero — peeking above the
+   divider, full opacity (no cream wash), one in each bottom corner. */
 @media (max-width: 640px) {
   .hero-float { display: none; }
   .hero-float--notes,
@@ -3405,16 +3406,23 @@ img, svg { display: block; max-width: 100%; }
     opacity: 1;
     translate: none;                       /* hold still — no scroll parallax drift */
     rotate: calc(var(--rot) * 1deg);
+    top: auto;
+    bottom: calc(var(--hero-extend) - 44px);   /* straddle the divider: ~44px tucked under */
+    --z: 5;                                 /* below the mask (z-index 6) so they tuck behind it */
+    box-shadow: 0 8px 20px -10px rgba(74, 56, 40, 0.30);   /* lift above the divider */
   }
+  /* Full opacity — drop the cream veil on these two */
+  .hero-float--notes::after,
+  .hero-float--checklist::after { opacity: 0; }
   .hero-float--notes {
-    top: 1%; left: -9%; right: auto;
-    width: 140px;
-    --rot: -8;
+    left: -3%; right: auto;
+    width: 150px;
+    --rot: -5;
   }
   .hero-float--checklist {
-    top: auto; bottom: 13%; left: auto; right: -8%;
-    width: 124px;
-    --rot: 6;
+    left: auto; right: -3%;
+    width: 132px;
+    --rot: 5;
   }
 }
 
@@ -4357,7 +4365,7 @@ img, svg { display: block; max-width: 100%; }
   background-position: center, center;
   background-repeat: no-repeat, no-repeat;
   filter: grayscale(1) blur(2px);
-  opacity: 0.54;
+  opacity: 0.27;
   border-radius: var(--r-md);
   /* Soft fade on all four edges (corners included) with a large solid middle —
      two linear masks intersected, so only the very outside dissolves */
