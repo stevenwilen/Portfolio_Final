@@ -3423,6 +3423,7 @@ img, svg { display: block; max-width: 100%; }
     left: auto; right: -3%;
     width: 132px;
     --rot: 5;
+    bottom: calc(var(--hero-extend) - 84px);   /* slid further down, deeper under the divider */
   }
 }
 
