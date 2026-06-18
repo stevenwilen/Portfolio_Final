@@ -557,6 +557,24 @@ document.addEventListener('DOMContentLoaded', function () {
         select(items[next].getAttribute('data-example'), true);
       });
     });
+
+    // On phones each example section collapses to a single example (the tab
+    // selector is hidden via CSS). Above the breakpoint it returns to the
+    // desktop default. Keyed by section id: { mobile, desktop } example ids.
+    var MOBILE_ONLY = {
+      'customer-guides': { mobile: 'cust-01', desktop: 'cust-03' },
+      'guide-projects':  { mobile: 'role-01', desktop: 'role-01' }
+    };
+    var collapseCfg = MOBILE_ONLY[section.id];
+    if (collapseCfg && window.matchMedia) {
+      var mq = window.matchMedia('(max-width: 640px)');
+      if (mq.matches) select(collapseCfg.mobile);
+      var onMobileChange = function () {
+        select(mq.matches ? collapseCfg.mobile : collapseCfg.desktop);
+      };
+      if (mq.addEventListener) mq.addEventListener('change', onMobileChange);
+      else if (mq.addListener) mq.addListener(onMobileChange);
+    }
   });
 });
 

@@ -4894,6 +4894,11 @@ img, svg { display: block; max-width: 100%; }
     width: min(230px, 74vw);
     scroll-snap-align: start;
   }
+  /* Both example sections collapse to a single example on phones — hide the
+     tab selectors; JS forces the right example to render (Beach Rental for
+     Customer Guides, Front Desk Opening for Role & Task). */
+  #customer-guides .gp-rail,
+  #guide-projects .gp-rail { display: none; }
   /* Show a single deliverable (the device mockup) — hide the delivery card */
   .gp-frame--deliv .gp-deliv--card { display: none; }
   /* Hide the faded in-context background photo on mobile */
