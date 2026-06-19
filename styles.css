@@ -336,12 +336,13 @@ img, svg { display: block; max-width: 100%; }
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-color: var(--c-cream);
+  background-color: var(--c-cream-2);
   background-image:
     /* Warm radial halo behind the headline */
     radial-gradient(ellipse 70% 55% at 50% 42%, rgba(255, 248, 230, 0.55), rgba(255, 248, 230, 0) 75%),
-    /* Flat cream layer that dampens the grain underneath */
-    linear-gradient(rgba(247, 236, 211, 0.55), rgba(247, 236, 211, 0.55)),
+    /* Flat deeper-cream layer that dampens the grain and darkens the field
+       so the lighter torn divider + body below stand out against it */
+    linear-gradient(rgba(237, 224, 192, 0.6), rgba(237, 224, 192, 0.6)),
     /* Subtle paper grain — large tile + dampened */
     var(--paper-grain-light);
   background-repeat: no-repeat, no-repeat, repeat;
@@ -3239,6 +3240,255 @@ img, svg { display: block; max-width: 100%; }
 }
 
 
+/* =============================================================
+   PROCESS — "project table" (.pt-*)
+   One wide case-file panel laid out like a working desk: conversation
+   artifacts (left) -> source planning (use existing / research) ->
+   outline + guide draft -> review + final guide (right). Image slots
+   are placeholder blocks; swap each .pt-ph for an <img class="pt-img"
+   src="images/process-*.png"> later. Not a grid, not a tall timeline.
+   (Supersedes the dead .hw-* / .pf-* process rules above.)
+   ============================================================= */
+/* Full-bleed so the picture-led panel can use the whole viewport width */
+#process {
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding-inline: clamp(1rem, 4vw, 3rem);
+}
+#process-heading { max-width: 18ch; text-align: left; }
+
+/* Header lives inside the panel (top-left), asymmetric: title left, intro right */
+.pt-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  align-items: end;
+  gap: clamp(14px, 3vw, 56px);
+  text-align: left;
+  margin-bottom: clamp(26px, 3.4vw, 50px);
+}
+.pt-head-l {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-stack-eyebrow-h2);
+}
+.pt-intro {
+  align-self: end;
+  font-family: var(--ff-body);
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  color: var(--c-ink-800);
+  max-width: 54ch;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* Layout-only container — the clipboard background has been removed; the
+   content sits directly on the page. */
+.pt-table {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+/* Zones laid left -> right with red thread connectors between them */
+.pt-zones {
+  display: grid;
+  grid-template-columns: 1fr auto 1.5fr auto 1.2fr auto 1.35fr;
+  align-items: start;
+  gap: clamp(6px, 1vw, 14px);
+}
+.pt-zone {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+.pt-stage { display: flex; align-items: flex-start; gap: 9px; }
+.pt-num {
+  flex: none;
+  font-family: var(--ff-display);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  color: var(--c-surface);
+  background: var(--c-vermillion);
+  border-radius: 6px;
+  padding: 5px 8px;
+}
+.pt-title {
+  font-family: var(--ff-display);
+  font-size: clamp(15px, 1.3vw, 18px);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.12;
+  color: var(--c-ink-900);
+  margin: 0 0 3px;
+}
+.pt-copy {
+  font-family: var(--ff-body);
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--c-ink-800);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* Artifact clusters — overlapping paper on the desk */
+.pt-cluster {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4px;
+}
+.pt-shot {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  rotate: var(--rot, 0deg);
+}
+.pt-shot--over   { margin-top: -44px; align-self: flex-end; margin-right: 10px; z-index: 2; }
+.pt-shot--behind { z-index: 0; }
+.pt-shot--front  { margin-top: -54px; z-index: 2; }
+
+.pt-ph,
+.pt-img {
+  width: var(--w, 130px);
+  aspect-ratio: var(--ar, 4 / 5);
+  border: 1px solid rgba(34, 28, 20, 0.20);
+  border-radius: var(--r-sm);
+  background-color: var(--c-surface);
+  /* no drop shadow — the cards read as attached/printed onto the board */
+}
+.pt-img { display: block; object-fit: cover; }
+.pt-ph {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  overflow: hidden;
+  background-image: repeating-linear-gradient(135deg,
+    rgba(34, 28, 20, 0.035) 0, rgba(34, 28, 20, 0.035) 1px,
+    transparent 1px, transparent 10px);
+}
+.pt-shot--sm { --w: clamp(140px, 14vw, 182px); }
+.pt-shot--md { --w: clamp(185px, 19vw, 250px); }
+.pt-shot--lg { --w: clamp(235px, 25vw, 330px); --ar: 3 / 4; }
+.pt-shot--xl { --w: clamp(265px, 28vw, 378px); --ar: 3 / 4; }
+
+.pt-ph-ic {
+  position: relative;
+  width: 28px; height: 22px;
+  border: 2px solid var(--c-ink-400);
+  border-radius: 3px;
+}
+.pt-ph-ic::before {
+  content: "";
+  position: absolute; top: 3px; left: 3px;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--c-ink-400);
+}
+.pt-ph-ic::after {
+  content: "";
+  position: absolute; left: 2px; right: 2px; bottom: 2px;
+  height: 9px;
+  background: var(--c-ink-400);
+  clip-path: polygon(0 100%, 32% 38%, 56% 72%, 78% 44%, 100% 100%);
+}
+.pt-ph-cap {
+  font-family: var(--ff-display);
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--c-ink-400);
+  text-align: center;
+  padding: 0 4px;
+}
+.pt-shot-cap {
+  font-family: var(--ff-body);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--c-ink-800);
+  text-align: center;
+}
+
+/* Branch in zone 02 — use existing OR research, side by side */
+.pt-or {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+.pt-or-label {
+  flex: none;
+  font-family: var(--ff-display);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-vermillion-2);
+  background: var(--c-surface);
+  border: 1px solid rgba(216, 65, 42, 0.3);
+  border-radius: 100px;
+  padding: 3px 7px;
+}
+
+/* Subtle red annotation circled on the review artifact */
+.pt-mark {
+  position: absolute;
+  width: 66%; height: 42%;
+  top: 26%; left: 17%;
+  fill: none;
+  stroke: var(--c-vermillion);
+  stroke-width: 2.4;
+  opacity: 0.8;
+  z-index: 3;
+}
+
+/* Thread connector — a red dashed arrow between zones */
+.pt-conn {
+  align-self: center;
+  position: relative;
+  width: clamp(14px, 2vw, 32px);
+  height: 0;
+  border-top: 2px dashed var(--c-vermillion);
+  opacity: 0.5;
+}
+.pt-conn::after {
+  content: "";
+  position: absolute;
+  right: -1px; top: 50%;
+  width: 7px; height: 7px;
+  border-top: 2px solid var(--c-vermillion);
+  border-right: 2px solid var(--c-vermillion);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* Responsive — stack the header, two zones per row on tablet, one on phones */
+@media (max-width: 1000px) {
+  .pt-head { grid-template-columns: 1fr; align-items: start; gap: 12px; }
+  .pt-zones {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(22px, 4vw, 38px) clamp(18px, 3vw, 30px);
+  }
+  .pt-conn { display: none; }
+}
+@media (max-width: 560px) {
+  .pt-zones { grid-template-columns: 1fr; }
+  .pt-clip { display: none; }
+  .pt-table { padding: clamp(28px, 7vw, 40px) clamp(16px, 5vw, 26px); }
+}
+
 
 /* =============================================================
    HERO FLOATING ARTIFACTS — paper-framed asset slots pushed to
@@ -4351,21 +4601,23 @@ img, svg { display: block; max-width: 100%; }
   background: transparent;
   overflow: visible;
 }
-/* Quiet in-context backdrop: the setting photo, desaturated to colorless and
-   heavily faded/blurred under a cream wash, feathered at the edges so it has
-   no photo border */
+/* Quiet in-context backdrop: the setting photo, desaturated and warm-tinted to
+   match the cream page (not gray/black), heavily faded/blurred under a cream
+   wash, feathered at the edges so it has no photo border */
 .gp-frame--deliv .gp-stage::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 0;
   background-image:
-    linear-gradient(rgba(247, 239, 223, 0.24), rgba(247, 239, 223, 0.24)),
+    linear-gradient(rgba(247, 239, 223, 0.42), rgba(247, 239, 223, 0.42)),
     var(--gp-deliv-bg, none);
   background-size: cover, cover;
   background-position: center, center;
   background-repeat: no-repeat, no-repeat;
-  filter: grayscale(1) blur(2px);
+  /* grayscale removes the photo's colors, sepia re-tints it warm toward the
+     cream page, brightness lifts it so it never reads as dark/black */
+  filter: grayscale(1) sepia(0.45) brightness(1.1) blur(2px);
   opacity: 0.27;
   border-radius: var(--r-md);
   /* Soft fade on all four edges (corners included) with a large solid middle —
