@@ -382,149 +382,91 @@
       ============================================================ -->
       <section id="process" aria-labelledby="process-heading">
 
-        <!-- One wide "project table" laid out like a working desk. The header
-             lives inside the panel (top-left, left-aligned) so the section reads
-             as one picture-led unit. Swap each .pt-ph for an
-             <img class="pt-img" src="images/process-*.png" alt="..."> later. -->
-        <div class="pt-table" data-reveal>
-          <header class="pt-head">
-            <div class="pt-head-l">
-              <h2 id="process-heading">How a guide project works</h2>
+        <!-- Editorial process board. Swap each .pz-ph placeholder for an
+             <img class="pz-art-img" src="images/process-*.png" alt="..."> later. -->
+        <div class="pz-board" data-reveal>
+
+          <header class="pz-head">
+            <div class="pz-head-l">
+              <h2 id="process-heading" class="pz-title">How a guide<br>project works</h2>
             </div>
-            <p class="pt-intro">We start by talking through what needs to be explained, who the guide is for, and how people will use it. From there, I figure out what material we need, build the guide, and revise it with you.</p>
+            <p class="pz-intro">We start by talking through what needs to be explained, who the guide is for, and how people will use it. From there, I figure out what material we need, build the guide, and revise it with you.</p>
           </header>
 
-          <div class="pt-zones">
+          <div class="pz-grid">
 
-            <!-- 01 — conversation artifacts -->
-            <section class="pt-zone">
-              <div class="pt-stage">
-                <span class="pt-num">01</span>
-                <div>
-                  <h3 class="pt-title">Talk it through</h3>
-                  <p class="pt-copy">We start over email or a call so I can understand the situation, the audience, and what the guide needs to help people do.</p>
+            <!-- 01 -->
+            <article class="pz-stage pz-stage--01">
+              <div class="pz-stage-text">
+                <span class="pz-badge">01</span>
+                <h3 class="pz-stage-title">Talk it through</h3>
+                <p class="pz-stage-copy">We start over email or a call so I can understand the situation, audience, and what the guide needs to help people do.</p>
+              </div>
+              <figure class="pz-art pz-art--conv" style="--rot: -1.2deg;">
+                <div class="pz-ph" role="img" aria-label="A conversation artifact — an email thread or call notes">
+                  <span class="pz-ph-bar" aria-hidden="true"></span>
+                  <span class="pz-ph-ic" aria-hidden="true"></span>
+                  <span class="pz-ph-name">process-conversation.png</span>
                 </div>
-              </div>
-              <div class="pt-cluster">
-                <figure class="pt-shot pt-shot--md" style="--rot: -2deg;">
-                  <div class="pt-ph" role="img" aria-label="Email thread starting the project">
-                    <span class="pt-ph-ic" aria-hidden="true"></span>
-                    <span class="pt-ph-cap">process-email-thread.png</span>
-                  </div>
-                  <figcaption class="pt-shot-cap">Email thread</figcaption>
-                </figure>
-                <figure class="pt-shot pt-shot--sm pt-shot--over" style="--rot: 3deg;">
-                  <div class="pt-ph" role="img" aria-label="Notes from a call">
-                    <span class="pt-ph-ic" aria-hidden="true"></span>
-                    <span class="pt-ph-cap">process-call-notes.png</span>
-                  </div>
-                  <figcaption class="pt-shot-cap">Call notes</figcaption>
-                </figure>
-              </div>
-            </section>
+              </figure>
+            </article>
 
-            <span class="pt-conn" aria-hidden="true"></span>
-
-            <!-- 02 — figure out the source (use existing OR research) -->
-            <section class="pt-zone">
-              <div class="pt-stage">
-                <span class="pt-num">02</span>
-                <div>
-                  <h3 class="pt-title">Figure out the source</h3>
-                  <p class="pt-copy">If you already have notes, videos, screenshots, or old docs, I use them. If not, I ask questions, research, and help shape the material from scratch.</p>
+            <!-- 02 -->
+            <article class="pz-stage pz-stage--02">
+              <div class="pz-stage-text">
+                <span class="pz-badge">02</span>
+                <h3 class="pz-stage-title">Find the source</h3>
+                <p class="pz-stage-copy">I figure out whether we use existing notes, videos, screenshots, old docs, research, or questions to shape the material.</p>
+              </div>
+              <figure class="pz-art pz-art--source" style="--rot: 1deg;">
+                <div class="pz-ph" role="img" aria-label="A source plan worksheet">
+                  <span class="pz-ph-bar" aria-hidden="true"></span>
+                  <span class="pz-ph-ic" aria-hidden="true"></span>
+                  <span class="pz-ph-name">process-source-plan.png</span>
                 </div>
+              </figure>
+            </article>
+
+            <!-- 03 -->
+            <article class="pz-stage pz-stage--03">
+              <div class="pz-stage-text">
+                <span class="pz-badge">03</span>
+                <h3 class="pz-stage-title">Build the guide</h3>
+                <p class="pz-stage-copy">I organize the explanation into clear sections, steps, visuals, and supporting details.</p>
+                <span class="pz-note" aria-hidden="true">Clear steps.<br>Great results.</span>
               </div>
-              <div class="pt-cluster">
-                <figure class="pt-shot pt-shot--sm" style="--rot: -1.5deg;">
-                  <div class="pt-ph" role="img" aria-label="A short plan for what source material we need">
-                    <span class="pt-ph-ic" aria-hidden="true"></span>
-                    <span class="pt-ph-cap">process-source-plan.png</span>
-                  </div>
-                  <figcaption class="pt-shot-cap">Source plan</figcaption>
-                </figure>
-                <div class="pt-or">
-                  <figure class="pt-shot pt-shot--sm" style="--rot: -3deg;">
-                    <div class="pt-ph" role="img" aria-label="Existing notes, videos, screenshots and old docs">
-                      <span class="pt-ph-ic" aria-hidden="true"></span>
-                      <span class="pt-ph-cap">process-existing-materials.png</span>
-                    </div>
-                    <figcaption class="pt-shot-cap">Use what exists</figcaption>
-                  </figure>
-                  <span class="pt-or-label">or</span>
-                  <figure class="pt-shot pt-shot--sm" style="--rot: 3deg;">
-                    <div class="pt-ph" role="img" aria-label="Research notes shaped from questions and conversation">
-                      <span class="pt-ph-ic" aria-hidden="true"></span>
-                      <span class="pt-ph-cap">process-research-notes.png</span>
-                    </div>
-                    <figcaption class="pt-shot-cap">Research / from scratch</figcaption>
-                  </figure>
+              <figure class="pz-art pz-art--draft" style="--rot: -1deg;">
+                <div class="pz-ph" role="img" aria-label="A draft guide page">
+                  <span class="pz-ph-bar" aria-hidden="true"></span>
+                  <span class="pz-ph-ic" aria-hidden="true"></span>
+                  <span class="pz-ph-name">process-guide-draft.png</span>
                 </div>
+              </figure>
+            </article>
+
+            <!-- 04 -->
+            <article class="pz-stage pz-stage--04">
+              <div class="pz-stage-text">
+                <span class="pz-badge">04</span>
+                <h3 class="pz-stage-title">Review and finish</h3>
+                <p class="pz-stage-copy">You review the draft, I make revisions, and the final guide is ready to send, share, scan, or hand off.</p>
               </div>
-            </section>
-
-            <span class="pt-conn" aria-hidden="true"></span>
-
-            <!-- 03 — build the guide (outline + large draft) -->
-            <section class="pt-zone">
-              <div class="pt-stage">
-                <span class="pt-num">03</span>
-                <div>
-                  <h3 class="pt-title">Build the guide</h3>
-                  <p class="pt-copy">I organize the explanation into a clear guide with the right sections, steps, visuals, and supporting details.</p>
+              <figure class="pz-art pz-art--final" style="--rot: 1.2deg;">
+                <div class="pz-ph" role="img" aria-label="The final, polished guide">
+                  <span class="pz-ph-bar" aria-hidden="true"></span>
+                  <span class="pz-ph-ic" aria-hidden="true"></span>
+                  <span class="pz-ph-name">process-final-guide.png</span>
                 </div>
-              </div>
-              <div class="pt-cluster">
-                <figure class="pt-shot pt-shot--sm pt-shot--behind" style="--rot: -4deg;">
-                  <div class="pt-ph" role="img" aria-label="Outline and structure draft">
-                    <span class="pt-ph-ic" aria-hidden="true"></span>
-                    <span class="pt-ph-cap">process-outline-draft.png</span>
-                  </div>
-                  <figcaption class="pt-shot-cap">Outline</figcaption>
-                </figure>
-                <figure class="pt-shot pt-shot--lg pt-shot--front" style="--rot: 1.5deg;">
-                  <div class="pt-ph" role="img" aria-label="The guide draft taking shape">
-                    <span class="pt-ph-ic" aria-hidden="true"></span>
-                    <span class="pt-ph-cap">process-guide-draft.png</span>
-                  </div>
-                  <figcaption class="pt-shot-cap">Guide draft</figcaption>
-                </figure>
-              </div>
-            </section>
-
-            <span class="pt-conn" aria-hidden="true"></span>
-
-            <!-- 04 — review and finish (comments + largest final guide) -->
-            <section class="pt-zone">
-              <div class="pt-stage">
-                <span class="pt-num">04</span>
-                <div>
-                  <h3 class="pt-title">Review and finish</h3>
-                  <p class="pt-copy">You review the draft, I make revisions, and the final guide is ready to send, share, scan, or hand off.</p>
-                </div>
-              </div>
-              <div class="pt-cluster">
-                <figure class="pt-shot pt-shot--md pt-shot--behind" style="--rot: -3deg;">
-                  <div class="pt-ph" role="img" aria-label="Your review comments marked on the draft">
-                    <span class="pt-ph-ic" aria-hidden="true"></span>
-                    <span class="pt-ph-cap">process-review-comments.png</span>
-                    <svg class="pt-mark" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="50" cy="30" rx="45" ry="23" /></svg>
-                  </div>
-                  <figcaption class="pt-shot-cap">Your comments</figcaption>
-                </figure>
-                <figure class="pt-shot pt-shot--xl pt-shot--front" style="--rot: 1.5deg;">
-                  <div class="pt-ph" role="img" aria-label="The final guide, ready to share">
-                    <span class="pt-ph-ic" aria-hidden="true"></span>
-                    <span class="pt-ph-cap">process-final-guide.png</span>
-                  </div>
-                  <figcaption class="pt-shot-cap">Final guide</figcaption>
-                </figure>
-              </div>
-            </section>
+              </figure>
+              <span class="pz-dots" aria-hidden="true"></span>
+            </article>
 
           </div>
         </div>
 
       </section>
+
+
 
 
       <!-- ============================================================

@@ -3241,15 +3241,15 @@ img, svg { display: block; max-width: 100%; }
 
 
 /* =============================================================
-   PROCESS — "project table" (.pt-*)
-   One wide case-file panel laid out like a working desk: conversation
-   artifacts (left) -> source planning (use existing / research) ->
-   outline + guide draft -> review + final guide (right). Image slots
-   are placeholder blocks; swap each .pt-ph for an <img class="pt-img"
-   src="images/process-*.png"> later. Not a grid, not a tall timeline.
-   (Supersedes the dead .hw-* / .pf-* process rules above.)
+   PROCESS — editorial process board (.pz-*)
+   One large rounded cream paper panel: label + big title (left) and
+   intro (right) up top, then a 2x2 editorial spread of four numbered
+   stages, each with a large artifact, a thin red connector weaving
+   through them, and a peach destination behind the final guide.
+   Artifacts are clean placeholders — swap each .pz-ph for an
+   <img class="pz-art-img" src="images/process-*.png"> later.
+   (Supersedes the dead .hw-* / .pt-* process rules above.)
    ============================================================= */
-/* Full-bleed so the picture-led panel can use the whole viewport width */
 #process {
   width: 100vw;
   max-width: none;
@@ -3257,236 +3257,277 @@ img, svg { display: block; max-width: 100%; }
   margin-right: calc(50% - 50vw);
   padding-inline: clamp(1rem, 4vw, 3rem);
 }
-#process-heading { max-width: 18ch; text-align: left; }
 
-/* Header lives inside the panel (top-left), asymmetric: title left, intro right */
-.pt-head {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-  align-items: end;
-  gap: clamp(14px, 3vw, 56px);
-  text-align: left;
-  margin-bottom: clamp(26px, 3.4vw, 50px);
-}
-.pt-head-l {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-stack-eyebrow-h2);
-}
-.pt-intro {
-  align-self: end;
-  font-family: var(--ff-body);
-  font-size: clamp(15px, 1.1vw, 17px);
-  line-height: 1.6;
-  color: var(--c-ink-800);
-  max-width: 54ch;
-  margin: 0;
-  text-wrap: pretty;
-}
-
-/* Layout-only container — the clipboard background has been removed; the
-   content sits directly on the page. */
-.pt-table {
+.pz-board {
+  position: relative;
   width: 100%;
   max-width: 1500px;
   margin: 0 auto;
+  padding: clamp(28px, 3.4vw, 58px) clamp(26px, 3.6vw, 66px) clamp(34px, 4vw, 64px);
+  background-color: #f9f2e1;
+  background-image: var(--paper-grain-light);
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  border: 1px solid rgba(34, 28, 20, 0.10);
+  border-radius: clamp(20px, 2vw, 32px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 30px 64px -38px rgba(40, 26, 12, 0.38);
 }
 
-/* Zones laid left -> right with red thread connectors between them */
-.pt-zones {
+/* ---- Header: label + title (left) | intro (right) ---- */
+.pz-head {
   display: grid;
-  grid-template-columns: 1fr auto 1.5fr auto 1.2fr auto 1.35fr;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
   align-items: start;
-  gap: clamp(6px, 1vw, 14px);
+  gap: clamp(20px, 4vw, 70px);
+  margin-bottom: clamp(28px, 4vw, 58px);
 }
-.pt-zone {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  min-width: 0;
-}
-.pt-stage { display: flex; align-items: flex-start; gap: 9px; }
-.pt-num {
-  flex: none;
+.pz-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 15px;
+  background: var(--c-surface);
+  border: 1px solid rgba(216, 65, 42, 0.5);
+  border-radius: 100px;
   font-family: var(--ff-display);
   font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  line-height: 1;
-  color: var(--c-surface);
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--c-vermillion-2);
+  box-shadow: 0 1px 2px rgba(34, 28, 20, 0.10);
+}
+.pz-label::before {
+  content: "";
+  width: 7px; height: 7px;
+  border-radius: 50%;
   background: var(--c-vermillion);
-  border-radius: 6px;
-  padding: 5px 8px;
 }
-.pt-title {
-  font-family: var(--ff-display);
-  font-size: clamp(15px, 1.3vw, 18px);
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  line-height: 1.12;
-  color: var(--c-ink-900);
-  margin: 0 0 3px;
-}
-.pt-copy {
-  font-family: var(--ff-body);
-  font-size: 12.5px;
-  line-height: 1.45;
-  color: var(--c-ink-800);
+.pz-title {
   margin: 0;
+  font-family: var(--ff-display);
+  font-size: clamp(40px, 5.4vw, 74px);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.022em;
+  color: var(--c-ink-900);
+}
+.pz-intro {
+  align-self: start;
+  margin: clamp(6px, 0.6vw, 12px) 0 0;   /* top-align with the title */
+  max-width: 560px;
+  font-family: var(--ff-body);
+  font-size: clamp(15px, 1.15vw, 18px);
+  line-height: 1.62;
+  color: var(--c-ink-800);
   text-wrap: pretty;
 }
 
-/* Artifact clusters — overlapping paper on the desk */
-.pt-cluster {
+/* ---- Stage spread (2x2) ---- */
+.pz-grid {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 4px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(30px, 4vw, 60px) clamp(28px, 4vw, 66px);
 }
-.pt-shot {
+.pz-stage {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(150px, 196px) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(14px, 1.6vw, 28px);
+}
+.pz-stage-text { display: flex; flex-direction: column; align-items: flex-start; }
+.pz-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--c-vermillion);
+  color: #fff;
+  font-family: var(--ff-display);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 10px -4px rgba(216, 65, 42, 0.6);
+}
+.pz-stage-title {
+  margin: 0 0 8px;
+  font-family: var(--ff-display);
+  font-size: clamp(19px, 1.7vw, 25px);
+  font-weight: 800;
+  letter-spacing: -0.012em;
+  line-height: 1.1;
+  color: var(--c-ink-900);
+}
+.pz-stage-copy {
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  rotate: var(--rot, 0deg);
+  font-family: var(--ff-body);
+  font-size: clamp(13px, 0.95vw, 14.5px);
+  line-height: 1.5;
+  color: var(--c-ink-700);
+  max-width: 30ch;
 }
-.pt-shot--over   { margin-top: -44px; align-self: flex-end; margin-right: 10px; z-index: 2; }
-.pt-shot--behind { z-index: 0; }
-.pt-shot--front  { margin-top: -54px; z-index: 2; }
 
-.pt-ph,
-.pt-img {
-  width: var(--w, 130px);
-  aspect-ratio: var(--ar, 4 / 5);
-  border: 1px solid rgba(34, 28, 20, 0.20);
-  border-radius: var(--r-sm);
-  background-color: var(--c-surface);
-  /* no drop shadow — the cards read as attached/printed onto the board */
+/* ---- Artifacts (placeholder cards; swap .pz-ph for <img class="pz-art-img">) ---- */
+.pz-art {
+  margin: 0;
+  rotate: var(--rot, 0deg);
+  align-self: start;
+  width: 100%;
+  max-width: var(--w, 360px);
 }
-.pt-img { display: block; object-fit: cover; }
-.pt-ph {
+.pz-ph,
+.pz-art-img {
+  display: block;
+  width: 100%;
+  border-radius: 12px;
+  background: #fffdf6;
+  border: 1px solid rgba(34, 28, 20, 0.12);
+  box-shadow: 0 16px 32px -18px rgba(40, 26, 12, 0.42);
+}
+.pz-art-img { aspect-ratio: var(--ar, 4 / 3); object-fit: cover; max-width: none; }
+.pz-ph {
   position: relative;
+  aspect-ratio: var(--ar, 4 / 3);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 7px;
+  gap: 10px;
   overflow: hidden;
-  background-image: repeating-linear-gradient(135deg,
-    rgba(34, 28, 20, 0.035) 0, rgba(34, 28, 20, 0.035) 1px,
-    transparent 1px, transparent 10px);
 }
-.pt-shot--sm { --w: clamp(140px, 14vw, 182px); }
-.pt-shot--md { --w: clamp(185px, 19vw, 250px); }
-.pt-shot--lg { --w: clamp(235px, 25vw, 330px); --ar: 3 / 4; }
-.pt-shot--xl { --w: clamp(265px, 28vw, 378px); --ar: 3 / 4; }
-
-.pt-ph-ic {
+.pz-ph-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 28px;
+  background: linear-gradient(#f4ebd9, #ebdfc7);
+  border-bottom: 1px solid rgba(34, 28, 20, 0.08);
+}
+.pz-ph-bar::before {
+  content: "";
+  position: absolute; top: 11px; left: 12px;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(34, 28, 20, 0.18);
+  box-shadow: 11px 0 0 rgba(34, 28, 20, 0.18), 22px 0 0 rgba(34, 28, 20, 0.18);
+}
+.pz-ph-ic {
   position: relative;
-  width: 28px; height: 22px;
-  border: 2px solid var(--c-ink-400);
-  border-radius: 3px;
+  width: 42px; height: 32px;
+  border: 2px solid rgba(34, 28, 20, 0.28);
+  border-radius: 5px;
 }
-.pt-ph-ic::before {
+.pz-ph-ic::before {
   content: "";
-  position: absolute; top: 3px; left: 3px;
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: var(--c-ink-400);
+  position: absolute; top: 6px; left: 7px;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(34, 28, 20, 0.28);
 }
-.pt-ph-ic::after {
+.pz-ph-ic::after {
   content: "";
-  position: absolute; left: 2px; right: 2px; bottom: 2px;
-  height: 9px;
-  background: var(--c-ink-400);
-  clip-path: polygon(0 100%, 32% 38%, 56% 72%, 78% 44%, 100% 100%);
+  position: absolute; left: 3px; right: 3px; bottom: 3px;
+  height: 13px;
+  background: rgba(34, 28, 20, 0.28);
+  clip-path: polygon(0 100%, 30% 42%, 52% 72%, 76% 32%, 100% 100%);
 }
-.pt-ph-cap {
+.pz-ph-name {
   font-family: var(--ff-display);
-  font-size: 8.5px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.01em;
-  color: var(--c-ink-400);
-  text-align: center;
-  padding: 0 4px;
-}
-.pt-shot-cap {
-  font-family: var(--ff-body);
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--c-ink-800);
-  text-align: center;
+  color: var(--c-ink-500);
 }
 
-/* Branch in zone 02 — use existing OR research, side by side */
-.pt-or {
-  display: flex;
+/* per-artifact size + aspect + placement */
+.pz-art--conv   { --w: 360px; --ar: 5 / 4; }
+.pz-art--source { --w: 400px; --ar: 8 / 5; margin-left: auto; }
+.pz-art--draft  { --w: 470px; --ar: 8 / 5; }
+.pz-art--final  { --w: 340px; --ar: 5 / 4; margin-left: auto; }
+
+/* ---- Stage 04: peach destination ---- */
+.pz-stage--04 {
   align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin-top: 10px;
+  padding: clamp(18px, 2vw, 30px) clamp(18px, 2vw, 32px);
+  margin: clamp(-6px, -0.4vw, -2px) calc(-1 * clamp(8px, 1vw, 18px)) 0 0;
+  background: #f7e0cf;
+  border-radius: clamp(18px, 1.6vw, 26px);
 }
-.pt-or-label {
-  flex: none;
-  font-family: var(--ff-display);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--c-vermillion-2);
-  background: var(--c-surface);
-  border: 1px solid rgba(216, 65, 42, 0.3);
-  border-radius: 100px;
-  padding: 3px 7px;
+.pz-stage--04 .pz-stage-copy { color: var(--c-ink-800); }
+.pz-art--final .pz-ph,
+.pz-art--final .pz-art-img {
+  box-shadow: 0 20px 40px -18px rgba(40, 26, 12, 0.5);
+}
+/* light red dotted accent in the peach corner */
+.pz-dots {
+  position: absolute;
+  right: clamp(14px, 1.4vw, 22px);
+  bottom: clamp(14px, 1.4vw, 22px);
+  width: 64px; height: 40px;
+  background-image: radial-gradient(rgba(216, 65, 42, 0.5) 1.4px, transparent 1.6px);
+  background-size: 11px 11px;
+  opacity: 0.8;
 }
 
-/* Subtle red annotation circled on the review artifact */
-.pt-mark {
+/* ---- Handwritten paper note near stage 03 ---- */
+.pz-note {
+  margin-top: 16px;
+  align-self: flex-start;
+  padding: 8px 12px 9px;
+  background: var(--c-surface);
+  border: 1px solid rgba(34, 28, 20, 0.12);
+  box-shadow: 0 6px 14px -8px rgba(40, 26, 12, 0.3);
+  rotate: -3deg;
+  font-family: var(--ff-body);
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--c-ink-700);
+}
+
+/* ---- Connector (thin red weaving line) ---- */
+.pz-connector {
   position: absolute;
-  width: 66%; height: 42%;
-  top: 26%; left: 17%;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: visible;
+}
+.pz-line {
   fill: none;
   stroke: var(--c-vermillion);
-  stroke-width: 2.4;
-  opacity: 0.8;
-  z-index: 3;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+  opacity: 0.85;
+}
+.pz-dot { fill: var(--c-vermillion); }
+.pz-arrow {
+  fill: none;
+  stroke: var(--c-vermillion);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
 }
 
-/* Thread connector — a red dashed arrow between zones */
-.pt-conn {
-  align-self: center;
-  position: relative;
-  width: clamp(14px, 2vw, 32px);
-  height: 0;
-  border-top: 2px dashed var(--c-vermillion);
-  opacity: 0.5;
+/* ---- Responsive ---- */
+@media (max-width: 1040px) {
+  .pz-head { grid-template-columns: 1fr; gap: 16px; }
+  .pz-intro { margin-top: 6px; }
+  .pz-grid { grid-template-columns: 1fr; gap: clamp(26px, 5vw, 40px); }
+  .pz-connector { display: none; }
+  .pz-stage--04 { margin: 0; }
+  .pz-art--source, .pz-art--final { margin-left: 0; }
 }
-.pt-conn::after {
-  content: "";
-  position: absolute;
-  right: -1px; top: 50%;
-  width: 7px; height: 7px;
-  border-top: 2px solid var(--c-vermillion);
-  border-right: 2px solid var(--c-vermillion);
-  transform: translateY(-50%) rotate(45deg);
-}
-
-/* Responsive — stack the header, two zones per row on tablet, one on phones */
-@media (max-width: 1000px) {
-  .pt-head { grid-template-columns: 1fr; align-items: start; gap: 12px; }
-  .pt-zones {
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(22px, 4vw, 38px) clamp(18px, 3vw, 30px);
-  }
-  .pt-conn { display: none; }
-}
-@media (max-width: 560px) {
-  .pt-zones { grid-template-columns: 1fr; }
-  .pt-clip { display: none; }
-  .pt-table { padding: clamp(28px, 7vw, 40px) clamp(16px, 5vw, 26px); }
+@media (max-width: 600px) {
+  .pz-stage { grid-template-columns: 1fr; gap: 14px; }
+  .pz-art { --w: 100%; max-width: 100%; rotate: 0deg; }
+  .pz-stage-copy { max-width: none; }
 }
 
 
