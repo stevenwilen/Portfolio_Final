@@ -579,6 +579,159 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// ─── Customer Guides: editorial showcase selector ───────────
+// The Customer Guides section (#customer-guides) is its own poster layout:
+// a vertical example rail on the left and a large laptop deliverable with
+// floating note cards on the right. The Student Robot example is rendered
+// statically so it works without JS; this swaps the preview device + the
+// note-card content (problem / how it works / in the guide / result) when
+// another example is selected. The shared .gp-section switcher above skips
+// this section because it has no .gp-context / .gp-preview / .gp-rail.
+document.addEventListener('DOMContentLoaded', function () {
+  var section = document.getElementById('customer-guides');
+  if (!section) return;
+
+  var rail = section.querySelector('.cg-rail');
+  var deviceEl = document.getElementById('cg-device');
+  var bgEl = document.getElementById('cg-bg');
+  var problemEl = document.getElementById('cg-problem');
+  var howEl = document.getElementById('cg-how');
+  var resultEl = document.getElementById('cg-result');
+  if (!rail || !deviceEl || !bgEl) return;
+
+  var prefersReduced =
+    window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var CG = {
+    'cust-03': {
+      bg: 'images/student-course-background.png',
+      device: 'laptop',
+      img: 'images/student-course-laptop-screen.png',
+      alt: 'The Student Robot Build Guide opened on a laptop — a sidebar with Start Here, Parts, Build Steps, Wiring, Code, Testing, Troubleshooting, and Help, plus parts and simple wiring diagrams.',
+      problem: 'Students need to build the robot step by step, but the instructions can easily become scattered across verbal explanations, slides, videos, and teacher notes.',
+      how: 'The student sees the assignment, opens the guide, and follows the build process from parts to wiring, code setup, testing, and troubleshooting.',
+      chips: ['Classroom Assignment Card', 'Laptop Web Guide', 'Parts Overview', 'Build Steps', 'Wiring Guide', 'Code Setup', 'Testing Checklist', 'Troubleshooting Tips'],
+      result: 'Students get one clear place to follow the project instead of relying on scattered instructions.'
+    },
+    'cust-02': {
+      bg: 'images/business-workshop-background.png',
+      device: 'tablet',
+      img: 'images/business-workshop-tablet-screen.png',
+      alt: 'The finished Business Workshop Guide opened on a tablet — a sidebar with Start Here, Workshop Schedule, What to Bring, Preparation Steps, Business Checklist, Common Questions, and Contact / Help.',
+      card: {
+        img: 'images/business-workshop-form-card.png',
+        label: 'Confirmation',
+        alt: 'Registration confirmation for the Coastal Business Workshop — "Here\'s your guide" with an Open Attendee Guide button and a link to the workshop guide.'
+      },
+      problem: 'Attendees often get event details through long emails, scattered messages, or basic PDFs that are easy to miss.',
+      how: 'A business owner submits a short intake form and is sent a polished guide — opened on any device — with the schedule, what to bring, preparation steps, and a checklist.',
+      result: 'Attendees get one clear guide for the workshop instead of digging through emails and scattered messages.'
+    },
+    'cust-01': {
+      bg: 'images/beach-rental-background.jpg',
+      device: 'phone',
+      img: 'images/beach-rental-guide-screen.png',
+      alt: 'The mobile guest guide opened on a phone — a Welcome screen with Start Here check-in and an expandable guide covering Wi-Fi, house basics, local recommendations, checkout steps, and host contact.',
+      card: {
+        img: 'images/beach-rental-qr-card.png',
+        label: 'Printout Card',
+        alt: 'Printed QR welcome card for The Dune House beachside rental — "Scan to open your guest guide" with a QR code and an overview of what the guide includes.'
+      },
+      problem: 'Guests often text the host for the same basic details: Wi-Fi, parking, house instructions, local recommendations, and checkout steps.',
+      how: 'A QR card sits inside the rental. Guests scan it and open a polished guide with the most important stay information in one place.',
+      result: 'Guests get one clear place to answer their own questions instead of texting the host.'
+    }
+  };
+
+  function esc(s) {
+    var d = document.createElement('div');
+    d.textContent = s == null ? '' : String(s);
+    return d.innerHTML;
+  }
+
+  function deviceFrame(ex) {
+    var img = '<img id="cg-device-img" src="' + esc(ex.img) + '" loading="lazy" decoding="async" alt="' + esc(ex.alt) + '" />';
+    if (ex.device === 'laptop') {
+      return '<div class="gp-laptop">' +
+        '<div class="gp-laptop-lid"><div class="gp-laptop-screen">' + img + '</div></div>' +
+        '<div class="gp-laptop-base"></div>' +
+        '</div>';
+    }
+    return '<div class="gp-' + ex.device + '"><div class="gp-' + ex.device + '-screen">' + img + '</div></div>';
+  }
+
+  // The deliverable stage: an optional flat delivery card (confirmation /
+  // printout) beside the guide on its device frame, each with a small label.
+  function buildDevice(ex) {
+    var solo = ex.card ? '' : ' gp-frame--solo';
+    var cardCol = ex.card
+      ? '<div class="gp-deliv gp-deliv--card">' +
+          '<span class="gp-deliv-label">' + esc(ex.card.label) + '</span>' +
+          '<figure class="gp-card"><img src="' + esc(ex.card.img) + '" loading="lazy" decoding="async" alt="' + esc(ex.card.alt) + '" /></figure>' +
+        '</div>'
+      : '';
+    return '<figure class="gp-frame gp-frame--deliv gp-frame--' + ex.device + solo + '">' +
+      '<div class="gp-stage">' +
+        cardCol +
+        '<div class="gp-deliv gp-deliv--' + ex.device + '">' +
+          '<span class="gp-deliv-label">Web Guide</span>' +
+          deviceFrame(ex) +
+        '</div>' +
+      '</div>' +
+    '</figure>';
+  }
+
+  function animateIn(el) {
+    if (prefersReduced || !el) return;
+    el.classList.remove('cg-swap-in');
+    void el.offsetWidth;
+    el.classList.add('cg-swap-in');
+  }
+
+  var items = Array.prototype.slice.call(rail.querySelectorAll('.cg-card'));
+  if (!items.length) return;
+
+  function select(id, focusBtn) {
+    var ex = CG[id];
+    if (!ex) return;
+
+    deviceEl.innerHTML = buildDevice(ex);
+    bgEl.style.backgroundImage = "url('" + ex.bg + "')";
+    if (problemEl) problemEl.textContent = ex.problem;
+    if (howEl) howEl.textContent = ex.how;
+    if (resultEl) resultEl.textContent = ex.result;
+
+    animateIn(deviceEl);
+    var notes = document.getElementById('cg-notes');
+    animateIn(notes);
+
+    items.forEach(function (btn) {
+      var on = btn.getAttribute('data-example') === id;
+      btn.setAttribute('aria-selected', on ? 'true' : 'false');
+      btn.tabIndex = on ? 0 : -1;
+      if (on && focusBtn) btn.focus();
+    });
+  }
+
+  items.forEach(function (btn, idx) {
+    btn.addEventListener('click', function () {
+      select(btn.getAttribute('data-example'));
+    });
+    btn.addEventListener('keydown', function (e) {
+      var dir = 0;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') dir = 1;
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') dir = -1;
+      else if (e.key === 'Home') dir = -idx;
+      else if (e.key === 'End') dir = items.length - 1 - idx;
+      else return;
+      e.preventDefault();
+      var next = (idx + dir + items.length) % items.length;
+      select(items[next].getAttribute('data-example'), true);
+    });
+  });
+});
+
+
 // ─── Morpheus proof: loop the source videos only while the section is on screen ─
 // Muted + playsinline so they can autoplay without a user gesture; an
 // IntersectionObserver starts them when #project scrolls into view and pauses

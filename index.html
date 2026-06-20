@@ -112,89 +112,134 @@
 
       <!-- ============================================================
            SECTION 2: CUSTOMER GUIDES
-           First of two guide-example showcases — mirrored (large web
-           guide / deliverables left, context right) with a device frame
-           and an in-context background. First tab is rendered statically
-           so the section works without JS; script.js swaps the rest.
+           Editorial showcase: a left vertical example selector rail, a
+           center-left heading, and a large laptop deliverable on the right
+           with paper "note" cards (Problem / How it works / In the guide /
+           Result) and red dotted connectors floating around it over a
+           faded in-context backdrop. The Student Robot Build Guide is
+           rendered statically so it works without JS; script.js swaps the
+           preview + note cards when another example is selected.
       ============================================================ -->
-      <section class="gp-section gp-section--web" id="customer-guides" data-kind="cust" aria-labelledby="gp-cust-heading">
+      <section class="gp-section cg" id="customer-guides" data-kind="cust" aria-labelledby="gp-cust-heading">
+        <div class="cg-grid">
 
-        <header class="gp-head" data-reveal>
-          <span class="gp-eyebrow">For your customers</span>
-          <h2 id="gp-cust-heading" class="gp-heading">Customer Guides</h2>
-          <p class="gp-subhead">Guides for guests, customers, or visitors who need quick answers on their own.</p>
-        </header>
+          <!-- LEFT: vertical example selector rail -->
+          <aside class="cg-rail" role="tablist" aria-label="Customer Guides examples" data-reveal>
+            <div class="cg-rail-head">
+              <span class="cg-rail-eyebrow">Example Guides</span>
+              <span class="cg-rail-rule" aria-hidden="true"></span>
+            </div>
 
-        <!-- TOP: slim web/QR-style example tabs -->
-        <div class="gp-rail gp-rail--web" role="tablist" aria-label="Customer Guides examples" data-reveal data-reveal-delay="1">
-          <button type="button" class="gp-rail-item" role="tab" data-example="cust-03" aria-selected="true" tabindex="0">
-            <span class="gp-rail-ic" aria-hidden="true"></span>
-            <span class="gp-rail-tx">
-              <span class="gp-rail-label"><span class="gp-rail-num">01</span>Student Robot Build Guide</span>
-              <span class="gp-rail-desc">Class robotics build</span>
-            </span>
-          </button>
-          <button type="button" class="gp-rail-item" role="tab" data-example="cust-02" aria-selected="false" tabindex="-1">
-            <span class="gp-rail-ic" aria-hidden="true"></span>
-            <span class="gp-rail-tx">
-              <span class="gp-rail-label"><span class="gp-rail-num">02</span>Business Workshop Guide</span>
-              <span class="gp-rail-desc">Registration link guide</span>
-            </span>
-          </button>
-          <button type="button" class="gp-rail-item" role="tab" data-example="cust-01" aria-selected="false" tabindex="-1">
-            <span class="gp-rail-ic" aria-hidden="true"></span>
-            <span class="gp-rail-tx">
-              <span class="gp-rail-label"><span class="gp-rail-num">03</span>Beach Rental Guest Guide</span>
-              <span class="gp-rail-desc">QR mobile guide</span>
-            </span>
-          </button>
-        </div>
+            <button type="button" class="cg-card" role="tab" data-example="cust-03" aria-selected="true" tabindex="0">
+              <span class="cg-card-ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="8" width="15" height="11" rx="2.5"/><path d="M12 8V5"/><circle cx="12" cy="4" r="1"/><circle cx="9.3" cy="13" r="1.1"/><circle cx="14.7" cy="13" r="1.1"/><path d="M9.5 16.2h5"/></svg>
+              </span>
+              <span class="cg-card-tx">
+                <span class="cg-card-title">Student Robot Build Guide</span>
+                <span class="cg-card-desc">Class robotics build</span>
+              </span>
+              <span class="cg-card-chev" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+              </span>
+            </button>
 
-        <!-- Expanded view: large web guide + QR card (left) + context (right) -->
-        <div class="gp-showcase" data-reveal data-reveal-delay="2">
+            <button type="button" class="cg-card" role="tab" data-example="cust-02" aria-selected="false" tabindex="-1">
+              <span class="cg-card-ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><rect x="6" y="4" width="12" height="16" rx="1.5"/><path d="M9.5 8h2M14.5 8h2M9.5 12h2M14.5 12h2M10.5 20v-3h3v3"/></svg>
+              </span>
+              <span class="cg-card-tx">
+                <span class="cg-card-title">Business Workshop Guide</span>
+                <span class="cg-card-desc">Registration link guide</span>
+              </span>
+              <span class="cg-card-chev" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+              </span>
+            </button>
 
-          <!-- LEFT: the guide on a laptop frame over a faded in-context backdrop -->
-          <div class="gp-preview" id="gp-cust-preview">
-            <figure class="gp-frame gp-frame--web gp-frame--deliv gp-frame--laptop gp-frame--solo" style="--gp-deliv-bg:url('images/student-course-background.png')">
-              <div class="gp-stage">
-                <div class="gp-deliv gp-deliv--laptop">
-                  <span class="gp-deliv-label">Web Guide</span>
-                  <div class="gp-laptop">
-                    <div class="gp-laptop-lid"><div class="gp-laptop-screen">
-                      <img src="images/student-course-laptop-screen.png" loading="lazy" decoding="async"
-                        alt="The Student Robot Build Guide opened on a laptop — a sidebar with Start Here, Parts, Build Steps, Wiring, Code, Testing, Troubleshooting, and Help, plus parts and simple wiring diagrams." />
-                    </div></div>
-                    <div class="gp-laptop-base"></div>
+            <button type="button" class="cg-card" role="tab" data-example="cust-01" aria-selected="false" tabindex="-1">
+              <span class="cg-card-ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9"/><path d="M12 12c-1-3-4.5-4-7.5-2.7 2.4.2 3.9 1.4 4.6 3.1"/><path d="M12 12c1-3 4.5-4 7.5-2.7-2.4.2-3.9 1.4-4.6 3.1"/><path d="M12 12c-.6-3 .4-6.3 2.4-7.8-.4 2.6-.6 4.6-.9 6.6"/><path d="M9 21h6"/></svg>
+              </span>
+              <span class="cg-card-tx">
+                <span class="cg-card-title">Beach Rental Guest Guide</span>
+                <span class="cg-card-desc">QR mobile guide</span>
+              </span>
+              <span class="cg-card-chev" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+              </span>
+            </button>
+
+          </aside>
+
+          <!-- RIGHT: heading + large laptop deliverable with floating note cards -->
+          <div class="cg-main">
+            <header class="cg-head" data-reveal>
+              <span class="cg-eyebrow">For your customers</span>
+              <h2 id="gp-cust-heading" class="cg-heading">Customer Guides</h2>
+              <p class="cg-subhead">Guides for guests, customers, or visitors who need quick answers on their own.</p>
+            </header>
+
+            <div class="cg-canvas" data-reveal data-reveal-delay="1">
+
+              <!-- Faded in-context backdrop behind the deliverable -->
+              <div class="cg-bg" id="cg-bg" aria-hidden="true" style="background-image:url('images/student-course-background.png')"></div>
+
+              <!-- Red dotted connector lines (decorative, desktop only) -->
+              <svg class="cg-connectors" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                <path class="cg-line" d="M30,17 H36 L39,21" />
+                <path class="cg-line" d="M30,55 H37" />
+                <path class="cg-line" d="M57,86 V90 H53" />
+              </svg>
+
+              <!-- The deliverable(s): the guide on a device frame, plus a
+                   delivery card (confirmation / printout) for examples that
+                   have one. The first example (laptop) is rendered statically;
+                   script.js rebuilds this when another example is selected. -->
+              <div class="cg-device" id="cg-device">
+                <figure class="gp-frame gp-frame--deliv gp-frame--laptop gp-frame--solo">
+                  <div class="gp-stage">
+                    <div class="gp-deliv gp-deliv--laptop">
+                      <span class="gp-deliv-label">Web Guide</span>
+                      <div class="gp-laptop">
+                        <div class="gp-laptop-lid"><div class="gp-laptop-screen">
+                          <img id="cg-device-img" src="images/student-course-laptop-screen.png" loading="lazy" decoding="async"
+                            alt="The Student Robot Build Guide opened on a laptop — a sidebar with Start Here, Parts, Build Steps, Wiring, Code, Testing, Troubleshooting, and Help, plus parts and simple wiring diagrams." />
+                        </div></div>
+                        <div class="gp-laptop-base"></div>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </figure>
               </div>
-              <figcaption class="gp-frame-cap">Student Robot Build Guide · Open the assignment, follow the build on a laptop</figcaption>
-            </figure>
-          </div>
 
-          <!-- RIGHT: project context (active example cust-03) -->
-          <div class="gp-context" id="gp-cust-context" aria-live="polite">
-            <span class="gp-category">Student / Class Guide</span>
-            <h3 class="gp-title">Student Robot Build Guide</h3>
-            <p class="gp-lead">A sample build guide for a student robotics class or club.</p>
-            <dl class="gp-facts">
-              <div class="gp-fact">
-                <dt>Problem</dt>
-                <dd>Students need to build the robot step by step, but the instructions can easily become scattered across verbal explanations, slides, videos, and teacher notes.</dd>
+              <!-- Floating paper note cards -->
+              <div class="cg-notes" id="cg-notes" aria-live="polite">
+                <article class="cg-note-card cg-note-card--problem">
+                  <h3 class="cg-note-head">
+                    <span class="cg-note-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5"/><path d="M12 16.4h.01"/></svg></span>
+                    <span class="cg-note-label">Problem</span>
+                  </h3>
+                  <p class="cg-note-body" id="cg-problem">Students need to build the robot step by step, but the instructions can easily become scattered across verbal explanations, slides, videos, and teacher notes.</p>
+                </article>
+
+                <article class="cg-note-card cg-note-card--how">
+                  <h3 class="cg-note-head">
+                    <span class="cg-note-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v2.6M12 18.4V21M3 12h2.6M18.4 12H21M5.6 5.6l1.9 1.9M16.5 16.5l1.9 1.9M18.4 5.6l-1.9 1.9M7.5 16.5l-1.9 1.9"/></svg></span>
+                    <span class="cg-note-label">How it works</span>
+                  </h3>
+                  <p class="cg-note-body" id="cg-how">The student sees the assignment, opens the guide, and follows the build process from parts to wiring, code setup, testing, and troubleshooting.</p>
+                </article>
+
+                <article class="cg-note-card cg-note-card--result">
+                  <h3 class="cg-note-head">
+                    <span class="cg-note-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.3 12.3l2.6 2.6 4.8-5.3"/></svg></span>
+                    <span class="cg-note-label">Result</span>
+                  </h3>
+                  <p class="cg-note-body" id="cg-result">Students get one clear place to follow the project instead of relying on scattered instructions.</p>
+                </article>
               </div>
-              <div class="gp-fact">
-                <dt>How it works</dt>
-                <dd>The student sees the assignment, opens the guide, and follows the build process from parts to wiring, code setup, testing, and troubleshooting.</dd>
-              </div>
-              <div class="gp-fact">
-                <dt>In the guide</dt>
-                <dd><ul class="gp-pills"><li>Classroom Assignment Card</li><li>Laptop Web Guide</li><li>Parts Overview</li><li>Build Steps</li><li>Wiring Guide</li><li>Code Setup</li><li>Testing Checklist</li><li>Troubleshooting Tips</li></ul></dd>
-              </div>
-              <div class="gp-fact">
-                <dt>Result</dt>
-                <dd>Students get one clear place to follow the project instead of relying on scattered instructions.</dd>
-              </div>
-            </dl>
+
+            </div>
           </div>
 
         </div>
