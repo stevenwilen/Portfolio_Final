@@ -181,14 +181,13 @@
 
             <div class="cg-canvas" data-reveal data-reveal-delay="1">
 
-              <!-- Faded in-context backdrop behind the deliverable -->
-              <div class="cg-bg" id="cg-bg" aria-hidden="true" style="background-image:url('images/student-course-background.png')"></div>
-
-              <!-- Red dotted connector lines (decorative, desktop only) -->
+              <!-- Subtle dotted red connectors, one short tick per card toward
+                   the laptop (desktop only) -->
               <svg class="cg-connectors" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-                <path class="cg-line" d="M30,17 H36 L39,21" />
-                <path class="cg-line" d="M30,55 H37" />
-                <path class="cg-line" d="M57,86 V90 H53" />
+                <path class="cg-line" d="M21,15 L25,19" />
+                <path class="cg-line" d="M21,85 L25,81" />
+                <path class="cg-line" d="M79,15 L75,19" />
+                <path class="cg-line" d="M79,85 L75,81" />
               </svg>
 
               <!-- The deliverable(s): the guide on a device frame, plus a
@@ -199,7 +198,6 @@
                 <figure class="gp-frame gp-frame--deliv gp-frame--laptop gp-frame--solo">
                   <div class="gp-stage">
                     <div class="gp-deliv gp-deliv--laptop">
-                      <span class="gp-deliv-label">Web Guide</span>
                       <div class="gp-laptop">
                         <div class="gp-laptop-lid"><div class="gp-laptop-screen">
                           <img id="cg-device-img" src="images/student-course-laptop-screen.png" loading="lazy" decoding="async"
@@ -214,7 +212,7 @@
 
               <!-- Floating paper note cards -->
               <div class="cg-notes" id="cg-notes" aria-live="polite">
-                <article class="cg-note-card cg-note-card--problem">
+                <article class="cg-note-card cg-note-card--problem context-card">
                   <h3 class="cg-note-head">
                     <span class="cg-note-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5"/><path d="M12 16.4h.01"/></svg></span>
                     <span class="cg-note-label">Problem</span>
@@ -222,15 +220,62 @@
                   <p class="cg-note-body" id="cg-problem">Students need to build the robot step by step, but the instructions can easily become scattered across verbal explanations, slides, videos, and teacher notes.</p>
                 </article>
 
-                <article class="cg-note-card cg-note-card--how">
+                <article class="cg-note-card cg-note-card--how context-card">
                   <h3 class="cg-note-head">
                     <span class="cg-note-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v2.6M12 18.4V21M3 12h2.6M18.4 12H21M5.6 5.6l1.9 1.9M16.5 16.5l1.9 1.9M18.4 5.6l-1.9 1.9M7.5 16.5l-1.9 1.9"/></svg></span>
                     <span class="cg-note-label">How it works</span>
                   </h3>
-                  <p class="cg-note-body" id="cg-how">The student sees the assignment, opens the guide, and follows the build process from parts to wiring, code setup, testing, and troubleshooting.</p>
+                  <ol class="cg-steps" id="cg-how">
+                    <li class="cg-step">
+                      <span class="cg-step-num">1</span>
+                      <span class="cg-step-tx">
+                        <span class="cg-step-title">Assignment</span>
+                        <span class="cg-step-desc">Student opens the assigned guide.</span>
+                      </span>
+                    </li>
+                    <li class="cg-step">
+                      <span class="cg-step-num">2</span>
+                      <span class="cg-step-tx">
+                        <span class="cg-step-title">Follow steps</span>
+                        <span class="cg-step-desc">Build, wire, code, and test in order.</span>
+                      </span>
+                    </li>
+                    <li class="cg-step">
+                      <span class="cg-step-num">3</span>
+                      <span class="cg-step-tx">
+                        <span class="cg-step-title">Get help</span>
+                        <span class="cg-step-desc">Troubleshooting and support stay in the same place.</span>
+                      </span>
+                    </li>
+                  </ol>
                 </article>
 
-                <article class="cg-note-card cg-note-card--result">
+                <article class="cg-note-card cg-note-card--guide context-card">
+                  <h3 class="cg-note-head">
+                    <span class="cg-note-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5v13"/><path d="M12 6.5C10 5 7 5 4 5.6v12.5c3-.6 6-.6 8 .9 2-1.5 5-1.5 8-.9V5.6C17 5 14 5 12 6.5z"/></svg></span>
+                    <span class="cg-note-label">In the guide</span>
+                  </h3>
+                  <ul class="cg-guide-list" id="cg-guide">
+                    <li class="cg-guide-row">
+                      <span class="cg-guide-row-title">Start here</span>
+                      <span class="cg-guide-row-desc">What students are building and how to use the guide.</span>
+                    </li>
+                    <li class="cg-guide-row">
+                      <span class="cg-guide-row-title">Build steps</span>
+                      <span class="cg-guide-row-desc">A clear sequence from checking parts to testing movement.</span>
+                    </li>
+                    <li class="cg-guide-row">
+                      <span class="cg-guide-row-title">Parts + wiring</span>
+                      <span class="cg-guide-row-desc">Simple visuals for the main components and connections.</span>
+                    </li>
+                    <li class="cg-guide-row">
+                      <span class="cg-guide-row-title">Code + testing</span>
+                      <span class="cg-guide-row-desc">Starter setup, test steps, and troubleshooting help.</span>
+                    </li>
+                  </ul>
+                </article>
+
+                <article class="cg-note-card cg-note-card--result context-card">
                   <h3 class="cg-note-head">
                     <span class="cg-note-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.3 12.3l2.6 2.6 4.8-5.3"/></svg></span>
                     <span class="cg-note-label">Result</span>
@@ -295,15 +340,15 @@
             <h3 class="gp-title">Front Desk Opening Handoff System</h3>
             <p class="gp-lead">A sample Drive package for a small fitness studio's opening shift.</p>
             <dl class="gp-facts">
-              <div class="gp-fact">
+              <div class="gp-fact context-card">
                 <dt>Problem</dt>
                 <dd>The shift relied on verbal instructions and memory instead of a clear handoff process staff could follow consistently.</dd>
               </div>
-              <div class="gp-fact">
+              <div class="gp-fact context-card">
                 <dt>How it works</dt>
                 <dd>Staff follow the guide and checklist, submit the completion form, and report issues when needed. Form responses feed into the manager tracker automatically.</dd>
               </div>
-              <div class="gp-fact">
+              <div class="gp-fact context-card">
                 <dt>In the guide</dt>
                 <dd><ul class="gp-pills"><li>Checklist</li><li>Completion Form</li><li>Issue Report Form</li><li>Manager Tracker</li><li>Cheat Sheet</li><li>QR Access</li></ul></dd>
               </div>
@@ -345,11 +390,11 @@
             <p class="rpp-lead rpp-lead--sub">I worked from walkthrough videos, email notes, phone calls, and client explanations, then organized the material into website-ready guide content formatted for their LMS.</p>
 
             <dl class="rpp-meta">
-              <div class="rpp-meta-row">
+              <div class="rpp-meta-row context-card">
                 <dt>Used</dt>
                 <dd>Walkthrough videos · Email notes · Phone calls · Client explanations</dd>
               </div>
-              <div class="rpp-meta-row">
+              <div class="rpp-meta-row context-card">
                 <dt>Created</dt>
                 <dd>LMS-ready guide content · Diagrams · Video-supported sections · Intern reference material</dd>
               </div>

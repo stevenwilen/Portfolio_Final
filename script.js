@@ -388,7 +388,7 @@ document.addEventListener('DOMContentLoaded', function () {
       return '<p class="gp-lead">' + esc(p) + '</p>';
     }).join('');
     function fact(label, value, cls) {
-      return '<div class="gp-fact"><dt>' + label + '</dt>' +
+      return '<div class="gp-fact context-card"><dt>' + label + '</dt>' +
         '<dd' + (cls ? ' class="' + cls + '"' : '') + '>' + value + '</dd></div>';
     }
     // Role lists its files as visual tiles in the preview; the customer panel
@@ -593,11 +593,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var rail = section.querySelector('.cg-rail');
   var deviceEl = document.getElementById('cg-device');
-  var bgEl = document.getElementById('cg-bg');
   var problemEl = document.getElementById('cg-problem');
   var howEl = document.getElementById('cg-how');
+  var guideEl = document.getElementById('cg-guide');
   var resultEl = document.getElementById('cg-result');
-  if (!rail || !deviceEl || !bgEl) return;
+  if (!rail || !deviceEl) return;
 
   var prefersReduced =
     window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -609,8 +609,17 @@ document.addEventListener('DOMContentLoaded', function () {
       img: 'images/student-course-laptop-screen.png',
       alt: 'The Student Robot Build Guide opened on a laptop — a sidebar with Start Here, Parts, Build Steps, Wiring, Code, Testing, Troubleshooting, and Help, plus parts and simple wiring diagrams.',
       problem: 'Students need to build the robot step by step, but the instructions can easily become scattered across verbal explanations, slides, videos, and teacher notes.',
-      how: 'The student sees the assignment, opens the guide, and follows the build process from parts to wiring, code setup, testing, and troubleshooting.',
-      chips: ['Classroom Assignment Card', 'Laptop Web Guide', 'Parts Overview', 'Build Steps', 'Wiring Guide', 'Code Setup', 'Testing Checklist', 'Troubleshooting Tips'],
+      steps: [
+        { title: 'Assignment', desc: 'Student opens the assigned guide.' },
+        { title: 'Follow steps', desc: 'Build, wire, code, and test in order.' },
+        { title: 'Get help', desc: 'Troubleshooting and support stay in the same place.' }
+      ],
+      rows: [
+        { title: 'Start here', desc: 'What students are building and how to use the guide.' },
+        { title: 'Build steps', desc: 'A clear sequence from checking parts to testing movement.' },
+        { title: 'Parts + wiring', desc: 'Simple visuals for the main components and connections.' },
+        { title: 'Code + testing', desc: 'Starter setup, test steps, and troubleshooting help.' }
+      ],
       result: 'Students get one clear place to follow the project instead of relying on scattered instructions.'
     },
     'cust-02': {
@@ -624,7 +633,17 @@ document.addEventListener('DOMContentLoaded', function () {
         alt: 'Registration confirmation for the Coastal Business Workshop — "Here\'s your guide" with an Open Attendee Guide button and a link to the workshop guide.'
       },
       problem: 'Attendees often get event details through long emails, scattered messages, or basic PDFs that are easy to miss.',
-      how: 'A business owner submits a short intake form and is sent a polished guide — opened on any device — with the schedule, what to bring, preparation steps, and a checklist.',
+      steps: [
+        { title: 'Register', desc: 'Submit a short intake form.' },
+        { title: 'Get your guide', desc: 'A polished guide arrives, ready on any device.' },
+        { title: 'Prepare', desc: 'Schedule, what to bring, and steps in one place.' }
+      ],
+      rows: [
+        { title: 'Start here', desc: 'What the workshop covers and how to prepare.' },
+        { title: 'Schedule + what to bring', desc: 'The day\'s agenda and what to have ready.' },
+        { title: 'Preparation steps', desc: 'Simple steps to get set up before you arrive.' },
+        { title: 'Checklist + help', desc: 'A quick checklist, common questions, and contact.' }
+      ],
       result: 'Attendees get one clear guide for the workshop instead of digging through emails and scattered messages.'
     },
     'cust-01': {
@@ -638,7 +657,17 @@ document.addEventListener('DOMContentLoaded', function () {
         alt: 'Printed QR welcome card for The Dune House beachside rental — "Scan to open your guest guide" with a QR code and an overview of what the guide includes.'
       },
       problem: 'Guests often text the host for the same basic details: Wi-Fi, parking, house instructions, local recommendations, and checkout steps.',
-      how: 'A QR card sits inside the rental. Guests scan it and open a polished guide with the most important stay information in one place.',
+      steps: [
+        { title: 'Scan the card', desc: 'A QR card in the rental opens the guide.' },
+        { title: 'Open the guide', desc: 'Stay info in one polished place.' },
+        { title: 'Get help', desc: 'Host contact stays a tap away.' }
+      ],
+      rows: [
+        { title: 'Start here', desc: 'Check-in details and how to get settled.' },
+        { title: 'House basics', desc: 'Wi-Fi, parking, and how things work.' },
+        { title: 'Local picks', desc: 'Favorite nearby spots and recommendations.' },
+        { title: 'Checkout + help', desc: 'Checkout steps and how to reach the host.' }
+      ],
       result: 'Guests get one clear place to answer their own questions instead of texting the host.'
     }
   };
@@ -674,7 +703,6 @@ document.addEventListener('DOMContentLoaded', function () {
       '<div class="gp-stage">' +
         cardCol +
         '<div class="gp-deliv gp-deliv--' + ex.device + '">' +
-          '<span class="gp-deliv-label">Web Guide</span>' +
           deviceFrame(ex) +
         '</div>' +
       '</div>' +
@@ -696,10 +724,23 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!ex) return;
 
     deviceEl.innerHTML = buildDevice(ex);
-    bgEl.style.backgroundImage = "url('" + ex.bg + "')";
     if (problemEl) problemEl.textContent = ex.problem;
-    if (howEl) howEl.textContent = ex.how;
+    if (howEl && ex.steps) {
+      howEl.innerHTML = ex.steps.map(function (s, i) {
+        return '<li class="cg-step"><span class="cg-step-num">' + (i + 1) + '</span>' +
+          '<span class="cg-step-tx">' +
+          '<span class="cg-step-title">' + esc(s.title) + '</span>' +
+          '<span class="cg-step-desc">' + esc(s.desc) + '</span></span></li>';
+      }).join('');
+    }
     if (resultEl) resultEl.textContent = ex.result;
+    if (guideEl && ex.rows) {
+      guideEl.innerHTML = ex.rows.map(function (r) {
+        return '<li class="cg-guide-row">' +
+          '<span class="cg-guide-row-title">' + esc(r.title) + '</span>' +
+          '<span class="cg-guide-row-desc">' + esc(r.desc) + '</span></li>';
+      }).join('');
+    }
 
     animateIn(deviceEl);
     var notes = document.getElementById('cg-notes');

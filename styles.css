@@ -2437,25 +2437,21 @@ img, svg { display: block; max-width: 100%; }
   flex-direction: column;
   gap: 12px;
 }
-.rpp-meta-row {
-  border-left: 3px solid var(--c-vermillion);
-  padding-left: 12px;
-}
 .rpp-meta-row dt {
   font-family: var(--ff-display);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--c-vermillion-2);
-  margin-bottom: 3px;
+  color: var(--c-vermillion);
+  margin-bottom: 6px;
 }
 .rpp-meta-row dd {
   margin: 0;
   font-family: var(--ff-body);
   font-size: 12.5px;
-  line-height: 1.5;
-  color: var(--c-ink-700);
+  line-height: 1.55;
+  color: #342c21;
 }
 
 /* ---- Right: evidence board ---- */
@@ -4312,13 +4308,13 @@ img, svg { display: block; max-width: 100%; }
   margin-inline: auto;
   align-items: start; /* top-align the caption with the screenshot frame */
 }
-/* Role & Task is mirrored — the large Drive package leads on the left, the
-   compact context sits on the right — so the two sections read as siblings.
-   (Customer Guides, the first section, keeps the base context-left layout.) */
+/* Role & Task uses the base context-left / Drive-package-right layout, so the
+   compact context leads on the left and the large Drive package sits on the
+   right. */
 #guide-projects .gp-showcase {
-  grid-template-columns: minmax(0, 71fr) minmax(0, 29fr);
+  grid-template-columns: minmax(0, 29fr) minmax(0, 71fr);
   grid-template-areas:
-    "preview context"
+    "context preview"
     "flow    flow";
 }
 /* Center the context block against the taller preview composition */
@@ -4397,20 +4393,18 @@ img, svg { display: block; max-width: 100%; }
 }
 .gp-fact {
   margin: 0;
-  padding-top: 14px;
-  border-top: 1px solid rgba(34, 28, 20, 0.12);
 }
 .gp-fact dt {
   display: flex;
   align-items: center;
   gap: 8px;
   font-family: var(--ff-display);
-  font-size: 10.5px;
+  font-size: 12px;
   font-weight: 800;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--c-ink-700);
-  margin-bottom: 6px;
+  color: var(--c-vermillion);
+  margin-bottom: 9px;
 }
 .gp-fact dt::before {
   content: "";
@@ -4423,8 +4417,8 @@ img, svg { display: block; max-width: 100%; }
 .gp-fact dd {
   margin: 0;
   font-size: 13.5px;
-  line-height: 1.5;
-  color: var(--c-ink-700);
+  line-height: 1.55;
+  color: #342c21;
 }
 .gp-built-inline {
   color: var(--c-ink-800);
@@ -5225,13 +5219,26 @@ img, svg { display: block; max-width: 100%; }
    the floating poster composition kicks in at >=1040px.
    ============================================================= */
 .cg .cg-grid {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(24px, 3vw, 40px);
+  display: grid;
+  grid-template-columns: 1fr;
+  /* Mobile-first: header, then selector, then the showcase canvas. The
+     selector rail and the header/canvas (inside .cg-main) are placed via
+     grid areas so the order can be rearranged per breakpoint. */
+  grid-template-areas:
+    "head"
+    "rail"
+    "canvas";
+  gap: clamp(22px, 3vw, 34px);
   width: 100%;
   max-width: 1560px;
   margin-inline: auto;
 }
+/* .cg-main is transparent to the grid so its children (header + canvas)
+   participate directly and can be repositioned at each breakpoint. */
+.cg-main { display: contents; }
+.cg-head { grid-area: head; }
+.cg-rail { grid-area: rail; }
+.cg-canvas { grid-area: canvas; }
 
 /* ---- Left selector rail ---- */
 .cg-rail {
@@ -5272,10 +5279,13 @@ img, svg { display: block; max-width: 100%; }
   padding: 22px 22px 24px 26px;
   text-align: left;
   cursor: pointer;
-  background-color: var(--c-surface);
-  border: 1px solid rgba(34, 28, 20, 0.13);
+  background-color: #fffaf0;
+  border: 1px solid rgba(90, 65, 35, 0.14);
   border-radius: 16px;
-  box-shadow: 0 1px 2px rgba(34, 28, 20, 0.05);
+  box-shadow:
+    0 18px 40px rgba(45, 35, 20, 0.08),
+    0 2px 6px rgba(45, 35, 20, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
   color: var(--c-ink-800);
   overflow: hidden;
   transition: transform 0.18s var(--ease-out), box-shadow 0.18s var(--ease-out),
@@ -5335,17 +5345,23 @@ img, svg { display: block; max-width: 100%; }
 .cg-card-chev svg { width: 18px; height: 18px; }
 
 .cg-card:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 18px -10px rgba(34, 28, 20, 0.26);
-  border-color: rgba(34, 28, 20, 0.2);
+  transform: translateY(-2px);
+  box-shadow:
+    0 26px 50px rgba(45, 35, 20, 0.12),
+    0 4px 10px rgba(45, 35, 20, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  border-color: rgba(90, 65, 35, 0.22);
 }
 .cg-card:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 2px; }
 
 /* Active selector card */
 .cg-card[aria-selected="true"] {
-  background-color: var(--c-surface);
+  background-color: #fffaf0;
   border-color: rgba(216, 65, 42, 0.55);
-  box-shadow: 0 12px 26px -14px rgba(34, 28, 20, 0.34),
+  box-shadow:
+    0 22px 46px rgba(45, 35, 20, 0.12),
+    0 3px 8px rgba(45, 35, 20, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
     0 0 0 1px rgba(216, 65, 42, 0.18);
 }
 .cg-card[aria-selected="true"]::before { background: var(--c-vermillion); }
@@ -5355,27 +5371,6 @@ img, svg { display: block; max-width: 100%; }
   color: var(--c-vermillion);
 }
 .cg-card[aria-selected="true"] .cg-card-chev { color: var(--c-vermillion); }
-
-/* Editorial quote note at the bottom of the rail */
-.cg-note {
-  margin-top: 6px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid rgba(34, 28, 20, 0.16);
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-  max-width: 230px;
-}
-.cg-note-spark { color: var(--c-vermillion); }
-.cg-note-spark svg { width: 16px; height: 16px; display: block; }
-.cg-note-tx {
-  margin: 0;
-  font-family: var(--ff-body);
-  font-style: italic;
-  font-size: 13.5px;
-  line-height: 1.5;
-  color: var(--c-ink-600);
-}
 
 /* ---- Main: heading + canvas ---- */
 .cg-head { display: flex; flex-direction: column; gap: 10px; }
@@ -5408,31 +5403,11 @@ img, svg { display: block; max-width: 100%; }
   text-wrap: pretty;
 }
 
-/* Canvas holds the laptop + backdrop + connectors + note cards */
+/* Canvas holds the centered laptop with note cards floating at its corners */
 .cg-canvas { position: relative; }
 
-/* Faded in-context backdrop */
-.cg-bg {
-  display: none;
-  position: absolute;
-  z-index: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  filter: grayscale(1) sepia(0.45) brightness(1.12) blur(2px);
-  opacity: 0.24;
-  border-radius: var(--r-md);
-  -webkit-mask-image:
-    linear-gradient(to right, transparent 0%, #000 24%, #000 80%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, #000 18%, #000 84%, transparent 100%);
-  -webkit-mask-composite: source-in;
-  mask-image:
-    linear-gradient(to right, transparent 0%, #000 24%, #000 80%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, #000 18%, #000 84%, transparent 100%);
-  mask-composite: intersect;
-}
-
-/* Connector lines */
+/* Subtle dotted red connectors — one short tick per card toward the laptop
+   (desktop only) */
 .cg-connectors {
   display: none;
   position: absolute;
@@ -5447,7 +5422,6 @@ img, svg { display: block; max-width: 100%; }
   stroke: var(--c-vermillion);
   stroke-width: 1.4;
   stroke-linecap: round;
-  stroke-linejoin: round;
   stroke-dasharray: 1.5 3.5;
   vector-effect: non-scaling-stroke;
   opacity: 0.5;
@@ -5462,8 +5436,7 @@ img, svg { display: block; max-width: 100%; }
   margin-inline: auto;
 }
 .cg-device .gp-frame { width: 100%; }
-/* This section supplies its own faded backdrop (.cg-bg), so suppress the
-   stage's built-in one, and keep the stage padding tight in the poster. */
+/* Suppress the stage's built-in backdrop and keep its padding tight. */
 .cg-device .gp-stage::before { display: none; }
 .cg-device .gp-stage {
   padding: 0;
@@ -5477,44 +5450,155 @@ img, svg { display: block; max-width: 100%; }
   gap: 14px;
   margin-top: clamp(18px, 3vw, 26px);
 }
+/* Visual treatment (ivory paper, border, shadow, red rail) comes from the
+   shared .context-card class below; .cg-note-card only handles placement. */
 .cg-note-card {
   position: relative;
   z-index: 3;
-  background: var(--c-surface);
-  border: 1px solid rgba(34, 28, 20, 0.12);
-  border-radius: 14px;
-  box-shadow: 0 10px 26px -16px rgba(34, 28, 20, 0.30),
-    0 2px 6px -3px rgba(34, 28, 20, 0.12);
-  padding: 15px 17px;
 }
 .cg-note-head {
   display: flex;
   align-items: center;
   gap: 9px;
-  margin: 0 0 9px;
+  margin: 0 0 11px;
 }
 .cg-note-ic { flex: none; display: grid; place-items: center; color: var(--c-vermillion); }
 .cg-note-ic svg { width: 17px; height: 17px; display: block; }
 .cg-note-label {
   font-family: var(--ff-display);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--c-vermillion-2);
+  color: var(--c-vermillion);
 }
 .cg-note-body {
   margin: 0;
   font-family: var(--ff-body);
   font-size: 13.5px;
-  line-height: 1.5;
-  color: var(--c-ink-700);
+  line-height: 1.55;
+  color: #342c21;
 }
+/* "How it works" — numbered step list with red number badges */
+.cg-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.cg-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 10px 0;
+  border-top: 1px solid rgba(34, 28, 20, 0.10);
+}
+.cg-step:first-child { padding-top: 0; border-top: 0; }
+.cg-step:last-child { padding-bottom: 0; }
+.cg-step-num {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--c-accent-dim);
+  color: var(--c-vermillion);
+  font-family: var(--ff-display);
+  font-size: 11px;
+  font-weight: 800;
+}
+.cg-step-tx {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.cg-step-title {
+  font-family: var(--ff-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  color: var(--c-ink-900);
+}
+.cg-step-desc {
+  font-family: var(--ff-body);
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--c-ink-500);
+}
+
+/* "In the guide" — compact preview list of guide sections */
+.cg-guide-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.cg-guide-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 9px 0;
+  border-top: 1px solid rgba(34, 28, 20, 0.10);
+}
+.cg-guide-row:first-child { padding-top: 0; border-top: 0; }
+.cg-guide-row:last-child { padding-bottom: 0; }
+.cg-guide-row-title {
+  font-family: var(--ff-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  color: var(--c-ink-900);
+}
+.cg-guide-row-desc {
+  font-family: var(--ff-body);
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--c-ink-500);
+}
+
+/* ============================================================
+   Shared context / info cards (Problem · How it works · In the
+   guide · Result · Used · Created). Refined ivory notes that sit
+   clearly above the warmer cream page, with a subtle red rail.
+   Applied via .context-card alongside each card's own class.
+   ============================================================ */
+.context-card {
+  position: relative;
+  background: #fffaf0;
+  border: 1px solid rgba(90, 65, 35, 0.14);
+  border-radius: 18px;
+  box-shadow:
+    0 18px 40px rgba(45, 35, 20, 0.08),
+    0 2px 6px rgba(45, 35, 20, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  padding: 15px 18px 15px 22px;
+  transition: transform 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out);
+}
+/* Subtle red rail on the left inside edge */
+.context-card::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 15px;
+  bottom: 15px;
+  width: 3px;
+  border-radius: 999px;
+  background: var(--c-vermillion);
+  opacity: 0.9;
+}
+.context-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 26px 50px rgba(45, 35, 20, 0.12),
+    0 4px 10px rgba(45, 35, 20, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
 /* Cross-fade when switching examples */
 .cg-swap-in { animation: gpSwapIn 0.3s var(--ease-out); }
 
-/* ---- Tablet: rail becomes a horizontal row, notes a 2-col grid ---- */
-@media (min-width: 640px) {
+/* ---- Tablet (768–1023): header, horizontal selector tabs, then the image,
+   with note cards as a 2-column grid below ---- */
+@media (min-width: 768px) {
   .cg-rail {
     flex-direction: row;
     flex-wrap: wrap;
@@ -5524,75 +5608,111 @@ img, svg { display: block; max-width: 100%; }
     flex: 1 1 100%;
     margin-bottom: 4px;
   }
-  .cg-card { flex: 1 1 220px; }
-  .cg-note { flex: 1 1 100%; max-width: none; margin-top: 2px; }
+  .cg-card { flex: 1 1 200px; }
   .cg-notes {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
   }
+  .cg-note-card--guide,
   .cg-note-card--result { grid-column: 1 / -1; }
 }
 
-/* ---- Desktop: floating poster composition ---- */
-@media (min-width: 1040px) {
-  .cg .cg-grid {
-    display: grid;
-    grid-template-columns: minmax(248px, 300px) minmax(0, 1fr);
-    gap: clamp(36px, 4vw, 72px);
-    align-items: start;
-  }
-  /* Rail returns to a vertical column on the far left (not sticky — it just
-     sits at the top of its column and takes the column's width) */
-  .cg-rail {
-    flex-direction: column;
-    flex-wrap: nowrap;
-  }
-  .cg-rail-head { flex: none; margin-bottom: 4px; }
-  .cg-card { flex: none; }
-  .cg-note { max-width: 230px; }
+/* ---- Poster composition (laptop + large desktop, >=1024px): a large,
+   centered laptop as the anchor with the four note cards floating at its
+   corners on the plain cream page. The grid *arrangement* of header/selector/
+   canvas is set per breakpoint below; this block governs the canvas itself. ---- */
+@media (min-width: 1024px) {
+  .cg .cg-grid { align-items: start; }
 
-  .cg-head { max-width: 40ch; }
-
-  /* Canvas becomes the positioned poster */
   .cg-canvas {
-    margin-top: clamp(26px, 3vw, 44px);
-    padding-bottom: clamp(40px, 5vw, 76px);
-  }
-  .cg-bg {
-    display: block;
-    inset: -5% -3% 4% 24%;
+    position: relative;
+    padding-bottom: clamp(20px, 2.5vw, 44px);
   }
   .cg-connectors { display: block; }
 
-  /* Deliverable sits in flow on the right and drives the canvas height */
+  /* The laptop is centered and dominant; it drives the canvas height */
   .cg-device {
-    width: 66%;
+    width: 56%;
     max-width: none;
-    margin: 0 0 0 auto;
+    margin: 0 auto;
   }
-  /* Artifact sizing tuned to the poster's right zone so the card + device sit
-     comfortably side by side without overflowing. */
-  .cg-device .gp-frame--solo.gp-frame--laptop .gp-deliv--laptop { width: clamp(360px, 88%, 660px); }
-  .cg-device .gp-frame--tablet .gp-deliv--card  { width: clamp(150px, 33%, 240px); }
-  .cg-device .gp-frame--tablet .gp-deliv--tablet { width: clamp(220px, 50%, 360px); }
-  .cg-device .gp-frame--phone .gp-deliv--card   { width: clamp(150px, 38%, 250px); }
-  .cg-device .gp-frame--phone .gp-deliv--phone  { width: clamp(150px, 42%, 272px); }
+  .cg-device .gp-frame--solo.gp-frame--laptop .gp-deliv--laptop { width: clamp(420px, 96%, 860px); }
+  .cg-device .gp-frame--tablet .gp-deliv--card  { width: clamp(150px, 33%, 250px); }
+  .cg-device .gp-frame--tablet .gp-deliv--tablet { width: clamp(220px, 52%, 380px); }
+  .cg-device .gp-frame--phone .gp-deliv--card   { width: clamp(150px, 40%, 260px); }
+  .cg-device .gp-frame--phone .gp-deliv--phone  { width: clamp(150px, 44%, 280px); }
 
-  /* Note cards float absolutely around the deliverable */
+  /* Note cards float absolutely at the four corners of the laptop */
   .cg-notes { display: contents; }
-  .cg-note-card { position: absolute; margin: 0; }
-  .cg-note-card--problem { top: 1%;  left: 1%;  width: 31%; }
-  .cg-note-card--how     { top: 45%; left: 1%;  width: 31%; }
-  .cg-note-card--result  { bottom: 0; left: 35%; width: 31%; }
+  .cg-note-card { position: absolute; margin: 0; width: 21%; }
+  .cg-note-card--problem { top: 2%;    left: 0; }
+  .cg-note-card--how     { bottom: 2%; left: 0; }
+  .cg-note-card--guide   { top: 2%;    right: 0; width: 22%; }
+  .cg-note-card--result  { bottom: 2%; right: 0; width: 22%; }
 }
 
-/* Larger desktop — keep the deliverable from sprawling too wide */
-@media (min-width: 1500px) {
-  .cg-device { width: 62%; }
+/* ---- Laptop / medium desktop (1024–1349): header left + compact selector
+   right on a top row, then the showcase canvas full-width below so the device
+   image stays the focal point instead of competing with a tall left rail. ---- */
+@media (min-width: 1024px) and (max-width: 1349px) {
+  /* Header + selector sit as a centred cluster (flexible spacers on the
+     outer edges) rather than pinned to the far left/right, while the canvas
+     still spans the full width below. */
+  .cg .cg-grid {
+    grid-template-columns: minmax(0, 1fr) auto minmax(280px, 400px) minmax(0, 1fr);
+    grid-template-areas:
+      ".      head   rail   .     "
+      "canvas canvas canvas canvas";
+    gap: clamp(18px, 2.4vw, 30px) clamp(28px, 3.4vw, 56px);
+  }
+  .cg-head { max-width: 520px; }
+  .cg-subhead { max-width: 40ch; }
+  /* Compact selector: the label on its own line, then three small tabs */
+  .cg-rail { flex-direction: row; flex-wrap: wrap; align-items: stretch; gap: 10px; }
+  .cg-rail-head { flex: 1 1 100%; margin-bottom: 0; }
+  .cg-card {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 12px 12px 14px;
+    row-gap: 9px;
+    border-radius: 12px;
+  }
+  .cg-card::before { width: 4px; }
+  .cg-card-ic { width: 30px; height: 30px; border-radius: 9px; }
+  .cg-card-ic svg { width: 17px; height: 17px; }
+  .cg-card-title { font-size: 12.5px; line-height: 1.15; }
+  .cg-card-desc,
+  .cg-card-chev { display: none; }
+
+  /* Canvas spans the full width below the top row → large image */
+  .cg-canvas { margin-top: clamp(6px, 1.4vw, 16px); }
+}
+
+/* ---- Large desktop (>=1350): original mockup — vertical rail on the far
+   left, header top-right, the showcase canvas below it. ---- */
+@media (min-width: 1350px) {
+  .cg .cg-grid {
+    grid-template-columns: minmax(248px, 300px) minmax(0, 1fr);
+    grid-template-areas:
+      "rail head"
+      "rail canvas";
+    gap: clamp(24px, 3vw, 44px) clamp(36px, 4vw, 72px);
+  }
+  .cg-rail { flex-direction: column; flex-wrap: nowrap; }
+  .cg-rail-head { flex: none; margin-bottom: 4px; }
+  .cg-card { flex: none; }
+  .cg-head { max-width: 40ch; }
+  .cg-canvas { margin-top: clamp(18px, 2.4vw, 36px); }
+}
+
+/* Extra-wide — keep the deliverable from sprawling too far */
+@media (min-width: 1600px) {
+  .cg-device { width: 66%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .cg-swap-in { animation: none; }
-  .cg-card { transition: none; }
+  .cg-card,
+  .context-card { transition: none; }
 }
