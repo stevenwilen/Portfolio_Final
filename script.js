@@ -255,39 +255,39 @@ document.addEventListener('DOMContentLoaded', function () {
       category: 'For staff',
       title: 'Front Desk Opening Handoff System',
       folder: 'Front Desk Opening',
-      lead: 'A sample Drive package for a small fitness studio\'s opening shift.',
-      problem: 'The shift relied on verbal instructions and memory instead of a clear handoff process staff could follow consistently.',
-      howItWorks: 'Staff follow the guide and checklist, submit the completion form, and report issues when needed. Form responses feed into the manager tracker automatically.',
-      built: ['Checklist', 'Completion Form', 'Issue Report Form', 'Manager Tracker', 'Cheat Sheet', 'QR Access'],
+      lead: 'A sample handoff package for a small fitness studio\'s opening shift.',
+      problem: 'Opening relied on memory and repeated explanations, so steps got missed and managers couldn\'t easily confirm the shift was done.',
+      howItWorks: 'Staff follow the guide, complete the checklist, and submit forms. Responses feed into the manager tracker automatically.',
+      built: ['Start Here Guide', 'Opening Checklist', 'Completion Form', 'Issue Report Form', 'Manager Tracker', 'QR / Mobile Access'],
       image: 'images/deliverable-role.png',
       imageAlt: 'Google Drive package for the Front Desk Opening Handoff System — folder containing a Start Here Guide, Opening Checklist, Completion Form, Issue Report Form, Manager Tracker, printable cheat sheet, and a QR / mobile access card.',
-      caption: 'Front Desk Opening Handoff System · Google Drive package'
+      caption: 'Front Desk Opening · Staff handoff package in Google Drive'
     },
     'role-02': {
       kind: 'role',
       category: 'For new hires',
-      title: 'New Staff Training Guide',
+      title: 'New Staff Training Package',
       folder: 'New Staff Training',
-      lead: 'A sample starter package for a small business training a new part-time employee.',
-      problem: 'New staff kept asking the same basic questions because training lived in quick verbal explanations, scattered notes, and old messages.',
-      howItWorks: 'The new hire gets one clear place to start: what to learn first, what tools to use, what tasks to practice, and who to ask when something is unclear.',
-      built: ['Start Here Guide', 'First Week Checklist', 'Tool Walkthrough', 'Common Questions', 'Daily Task Reference', 'Manager Notes', 'Editable Training Doc'],
+      lead: 'A sample onboarding package for a small business training a new part-time hire.',
+      problem: 'New hires kept asking the same questions, with no easy way to see what they had actually covered.',
+      howItWorks: 'The hire follows a start-here guide and checklist and marks each step done, so managers can track progress at a glance.',
+      built: ['Start Here Guide', 'First Week Checklist', 'Tool Walkthrough', 'Daily Task Reference', 'Progress Tracker', 'QR / Mobile Access'],
       image: 'images/deliverable-role-2.png',
       imageAlt: 'New Staff Training Guide package — a Start Here guide, first-week checklist, tool walkthrough, common questions, daily task reference, manager notes, and an editable training doc.',
-      caption: 'New Staff Training Guide · Sample starter package'
+      caption: 'New Staff Training · Staff handoff package in Google Drive'
     },
     'role-03': {
       kind: 'role',
       category: 'For volunteers',
-      title: 'Event Day Role Guide',
+      title: 'Event Day Role Package',
       folder: 'Event Day Roles',
       lead: 'A sample role package for volunteers helping run a local event.',
-      problem: 'Volunteers showed up unsure where to go, what role they had, who to ask, and what to do when something changed during the event.',
-      howItWorks: 'Each volunteer gets a clear role guide with arrival instructions, responsibilities, a simple event map, contact info, and a checklist for their specific station.',
-      built: ['Volunteer Guide', 'Role Checklists', 'Arrival Instructions', 'Event Map', 'Contact Sheet', 'Issue Form', 'QR Access'],
+      problem: 'Volunteers arrived unsure of their role or who to ask, with no quick way to confirm each station was covered.',
+      howItWorks: 'Each volunteer scans a QR code, follows their station checklist, and reports issues, so the lead sees coverage in one place.',
+      built: ['Role Guide', 'Station Checklists', 'Arrival Instructions', 'Event Map', 'Issue Form', 'QR / Mobile Access'],
       image: 'images/deliverable-role-3.png',
       imageAlt: 'Event Day Role Guide package — a volunteer guide, role checklists, arrival instructions, an event map, a contact sheet, an issue form, and QR access.',
-      caption: 'Event Day Role Guide · Sample role package'
+      caption: 'Event Day Roles · Staff handoff package in Google Drive'
     },
     // ── Customer Guides (QR / web guides) ──
     'cust-01': {
@@ -388,14 +388,19 @@ document.addEventListener('DOMContentLoaded', function () {
       return '<p class="gp-lead">' + esc(p) + '</p>';
     }).join('');
     function fact(label, value, cls) {
-      return '<div class="gp-fact context-card"><dt>' + label + '</dt>' +
+      // Each card type gets its own paper-craft accent via a modifier class.
+      var mod = '';
+      if (/problem/i.test(label)) mod = ' gp-fact--problem';
+      else if (/how/i.test(label)) mod = ' gp-fact--how';
+      else if (/included|guide/i.test(label)) mod = ' gp-fact--included';
+      return '<div class="gp-fact context-card' + mod + '"><dt>' + label + '</dt>' +
         '<dd' + (cls ? ' class="' + cls + '"' : '') + '>' + value + '</dd></div>';
     }
     // Role lists its files as visual tiles in the preview; the customer panel
     // keeps a compact "in the guide" pill list here so the two read differently.
     var insideFact = '';
     if (ex.built && ex.built.length) {
-      insideFact = fact('In the guide',
+      insideFact = fact('What\'s included',
         '<ul class="gp-pills">' + ex.built.map(function (b) {
           return '<li>' + esc(b) + '</li>';
         }).join('') + '</ul>');
@@ -594,7 +599,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var rail = section.querySelector('.cg-rail');
   var deviceEl = document.getElementById('cg-device');
   var problemEl = document.getElementById('cg-problem');
-  var howEl = document.getElementById('cg-how');
   var guideEl = document.getElementById('cg-guide');
   var resultEl = document.getElementById('cg-result');
   if (!rail || !deviceEl) return;
@@ -604,26 +608,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var CG = {
     'cust-03': {
-      bg: 'images/student-course-background.png',
       device: 'laptop',
       img: 'images/student-course-laptop-screen.png',
       alt: 'The Student Robot Build Guide opened on a laptop — a sidebar with Start Here, Parts, Build Steps, Wiring, Code, Testing, Troubleshooting, and Help, plus parts and simple wiring diagrams.',
-      problem: 'Students need to build the robot step by step, but the instructions can easily become scattered across verbal explanations, slides, videos, and teacher notes.',
-      steps: [
-        { title: 'Assignment', desc: 'Student opens the assigned guide.' },
-        { title: 'Follow steps', desc: 'Build, wire, code, and test in order.' },
-        { title: 'Get help', desc: 'Troubleshooting and support stay in the same place.' }
-      ],
-      rows: [
-        { title: 'Start here', desc: 'What students are building and how to use the guide.' },
-        { title: 'Build steps', desc: 'A clear sequence from checking parts to testing movement.' },
-        { title: 'Parts + wiring', desc: 'Simple visuals for the main components and connections.' },
-        { title: 'Code + testing', desc: 'Starter setup, test steps, and troubleshooting help.' }
-      ],
-      result: 'Students get one clear place to follow the project instead of relying on scattered instructions.'
+      problem: 'Students need one place to follow the build instead of piecing together instructions from slides, videos, verbal explanations, and notes.',
+      guide: ['Start here', 'Build steps', 'Parts + wiring', 'Code + testing', 'Troubleshooting help'],
+      result: 'Students can build, wire, code, and test the robot from one clear guide.'
     },
     'cust-02': {
-      bg: 'images/business-workshop-background.png',
       device: 'tablet',
       img: 'images/business-workshop-tablet-screen.png',
       alt: 'The finished Business Workshop Guide opened on a tablet — a sidebar with Start Here, Workshop Schedule, What to Bring, Preparation Steps, Business Checklist, Common Questions, and Contact / Help.',
@@ -632,22 +624,11 @@ document.addEventListener('DOMContentLoaded', function () {
         label: 'Confirmation',
         alt: 'Registration confirmation for the Coastal Business Workshop — "Here\'s your guide" with an Open Attendee Guide button and a link to the workshop guide.'
       },
-      problem: 'Attendees often get event details through long emails, scattered messages, or basic PDFs that are easy to miss.',
-      steps: [
-        { title: 'Register', desc: 'Submit a short intake form.' },
-        { title: 'Get your guide', desc: 'A polished guide arrives, ready on any device.' },
-        { title: 'Prepare', desc: 'Schedule, what to bring, and steps in one place.' }
-      ],
-      rows: [
-        { title: 'Start here', desc: 'What the workshop covers and how to prepare.' },
-        { title: 'Schedule + what to bring', desc: 'The day\'s agenda and what to have ready.' },
-        { title: 'Preparation steps', desc: 'Simple steps to get set up before you arrive.' },
-        { title: 'Checklist + help', desc: 'A quick checklist, common questions, and contact.' }
-      ],
-      result: 'Attendees get one clear guide for the workshop instead of digging through emails and scattered messages.'
+      problem: 'Attendees often miss important details when event information is scattered across emails, messages, and PDFs.',
+      guide: ['Start here', 'Schedule + what to bring', 'Preparation steps', 'Checklist + help'],
+      result: 'Attendees arrive prepared with one guide for the workshop instead of digging through scattered messages.'
     },
     'cust-01': {
-      bg: 'images/beach-rental-background.jpg',
       device: 'phone',
       img: 'images/beach-rental-guide-screen.png',
       alt: 'The mobile guest guide opened on a phone — a Welcome screen with Start Here check-in and an expandable guide covering Wi-Fi, house basics, local recommendations, checkout steps, and host contact.',
@@ -656,19 +637,9 @@ document.addEventListener('DOMContentLoaded', function () {
         label: 'Printout Card',
         alt: 'Printed QR welcome card for The Dune House beachside rental — "Scan to open your guest guide" with a QR code and an overview of what the guide includes.'
       },
-      problem: 'Guests often text the host for the same basic details: Wi-Fi, parking, house instructions, local recommendations, and checkout steps.',
-      steps: [
-        { title: 'Scan the card', desc: 'A QR card in the rental opens the guide.' },
-        { title: 'Open the guide', desc: 'Stay info in one polished place.' },
-        { title: 'Get help', desc: 'Host contact stays a tap away.' }
-      ],
-      rows: [
-        { title: 'Start here', desc: 'Check-in details and how to get settled.' },
-        { title: 'House basics', desc: 'Wi-Fi, parking, and how things work.' },
-        { title: 'Local picks', desc: 'Favorite nearby spots and recommendations.' },
-        { title: 'Checkout + help', desc: 'Checkout steps and how to reach the host.' }
-      ],
-      result: 'Guests get one clear place to answer their own questions instead of texting the host.'
+      problem: 'Guests often text the host for the same details: Wi-Fi, parking, house instructions, local recommendations, and checkout steps.',
+      guide: ['Check-in details', 'House basics', 'Wi-Fi info', 'Local picks', 'Checkout + help'],
+      result: 'Guests get quick answers from one polished guide, and the host answers fewer repeat questions.'
     }
   };
 
@@ -695,7 +666,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var solo = ex.card ? '' : ' gp-frame--solo';
     var cardCol = ex.card
       ? '<div class="gp-deliv gp-deliv--card">' +
-          '<span class="gp-deliv-label">' + esc(ex.card.label) + '</span>' +
           '<figure class="gp-card"><img src="' + esc(ex.card.img) + '" loading="lazy" decoding="async" alt="' + esc(ex.card.alt) + '" /></figure>' +
         '</div>'
       : '';
@@ -716,7 +686,7 @@ document.addEventListener('DOMContentLoaded', function () {
     el.classList.add('cg-swap-in');
   }
 
-  var items = Array.prototype.slice.call(rail.querySelectorAll('.cg-card'));
+  var items = Array.prototype.slice.call(rail.querySelectorAll('.cg-tab'));
   if (!items.length) return;
 
   function select(id, focusBtn) {
@@ -725,26 +695,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     deviceEl.innerHTML = buildDevice(ex);
     if (problemEl) problemEl.textContent = ex.problem;
-    if (howEl && ex.steps) {
-      howEl.innerHTML = ex.steps.map(function (s, i) {
-        return '<li class="cg-step"><span class="cg-step-num">' + (i + 1) + '</span>' +
-          '<span class="cg-step-tx">' +
-          '<span class="cg-step-title">' + esc(s.title) + '</span>' +
-          '<span class="cg-step-desc">' + esc(s.desc) + '</span></span></li>';
-      }).join('');
-    }
     if (resultEl) resultEl.textContent = ex.result;
-    if (guideEl && ex.rows) {
-      guideEl.innerHTML = ex.rows.map(function (r) {
-        return '<li class="cg-guide-row">' +
-          '<span class="cg-guide-row-title">' + esc(r.title) + '</span>' +
-          '<span class="cg-guide-row-desc">' + esc(r.desc) + '</span></li>';
+    if (guideEl && ex.guide) {
+      guideEl.innerHTML = ex.guide.map(function (g) {
+        return '<li class="cg-guide-item">' + esc(g) + '</li>';
       }).join('');
     }
 
     animateIn(deviceEl);
-    var notes = document.getElementById('cg-notes');
-    animateIn(notes);
+    animateIn(document.getElementById('cg-aside'));
 
     items.forEach(function (btn) {
       var on = btn.getAttribute('data-example') === id;

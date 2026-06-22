@@ -112,88 +112,43 @@
 
       <!-- ============================================================
            SECTION 2: CUSTOMER GUIDES
-           Editorial showcase: a left vertical example selector rail, a
-           center-left heading, and a large laptop deliverable on the right
-           with paper "note" cards (Problem / How it works / In the guide /
-           Result) and red dotted connectors floating around it over a
-           faded in-context backdrop. The Student Robot Build Guide is
-           rendered statically so it works without JS; script.js swaps the
-           preview + note cards when another example is selected.
+           Case-study showcase: heading + a compact segmented example
+           selector, then a two-column showcase — a dominant access-card +
+           device deliverable on the left, three supporting note panels
+           (Problem / In the guide / Result) on the right — and a one-line
+           process strip below. The Student Build Guide is rendered
+           statically; script.js swaps the deliverable + panels on select.
       ============================================================ -->
       <section class="gp-section cg" id="customer-guides" data-kind="cust" aria-labelledby="gp-cust-heading">
-        <div class="cg-grid">
+        <div class="cg-wrap">
 
-          <!-- LEFT: vertical example selector rail -->
-          <aside class="cg-rail" role="tablist" aria-label="Customer Guides examples" data-reveal>
-            <div class="cg-rail-head">
-              <span class="cg-rail-eyebrow">Example Guides</span>
-              <span class="cg-rail-rule" aria-hidden="true"></span>
-            </div>
+          <header class="cg-head" data-reveal>
+            <span class="cg-eyebrow">For your customers</span>
+            <h2 id="gp-cust-heading" class="cg-heading">Customer Guides</h2>
+            <p class="cg-subhead">Polished QR or link-based guides for guests, students, attendees, or customers who need clear instructions without asking you every time.</p>
+          </header>
 
-            <button type="button" class="cg-card" role="tab" data-example="cust-03" aria-selected="true" tabindex="0">
-              <span class="cg-card-ic" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="8" width="15" height="11" rx="2.5"/><path d="M12 8V5"/><circle cx="12" cy="4" r="1"/><circle cx="9.3" cy="13" r="1.1"/><circle cx="14.7" cy="13" r="1.1"/><path d="M9.5 16.2h5"/></svg>
-              </span>
-              <span class="cg-card-tx">
-                <span class="cg-card-title">Student Robot Build Guide</span>
-                <span class="cg-card-desc">Class robotics build</span>
-              </span>
-              <span class="cg-card-chev" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-              </span>
+          <!-- Compact segmented example selector -->
+          <div class="cg-rail" role="tablist" aria-label="Customer Guides examples" data-reveal data-reveal-delay="1">
+            <button type="button" class="cg-tab" role="tab" data-example="cust-03" aria-selected="true" tabindex="0">
+              <span class="cg-tab-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="8" width="15" height="11" rx="2.5"/><path d="M12 8V5"/><circle cx="12" cy="4" r="1"/><circle cx="9.3" cy="13" r="1.1"/><circle cx="14.7" cy="13" r="1.1"/><path d="M9.5 16.2h5"/></svg></span>
+              <span class="cg-tab-label">Student Build Guide</span>
             </button>
-
-            <button type="button" class="cg-card" role="tab" data-example="cust-02" aria-selected="false" tabindex="-1">
-              <span class="cg-card-ic" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><rect x="6" y="4" width="12" height="16" rx="1.5"/><path d="M9.5 8h2M14.5 8h2M9.5 12h2M14.5 12h2M10.5 20v-3h3v3"/></svg>
-              </span>
-              <span class="cg-card-tx">
-                <span class="cg-card-title">Business Workshop Guide</span>
-                <span class="cg-card-desc">Registration link guide</span>
-              </span>
-              <span class="cg-card-chev" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-              </span>
+            <button type="button" class="cg-tab" role="tab" data-example="cust-02" aria-selected="false" tabindex="-1">
+              <span class="cg-tab-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><rect x="6" y="4" width="12" height="16" rx="1.5"/><path d="M9.5 8h2M14.5 8h2M9.5 12h2M14.5 12h2M10.5 20v-3h3v3"/></svg></span>
+              <span class="cg-tab-label">Workshop Guide</span>
             </button>
-
-            <button type="button" class="cg-card" role="tab" data-example="cust-01" aria-selected="false" tabindex="-1">
-              <span class="cg-card-ic" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9"/><path d="M12 12c-1-3-4.5-4-7.5-2.7 2.4.2 3.9 1.4 4.6 3.1"/><path d="M12 12c1-3 4.5-4 7.5-2.7-2.4.2-3.9 1.4-4.6 3.1"/><path d="M12 12c-.6-3 .4-6.3 2.4-7.8-.4 2.6-.6 4.6-.9 6.6"/><path d="M9 21h6"/></svg>
-              </span>
-              <span class="cg-card-tx">
-                <span class="cg-card-title">Beach Rental Guest Guide</span>
-                <span class="cg-card-desc">QR mobile guide</span>
-              </span>
-              <span class="cg-card-chev" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-              </span>
+            <button type="button" class="cg-tab" role="tab" data-example="cust-01" aria-selected="false" tabindex="-1">
+              <span class="cg-tab-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9"/><path d="M12 12c-1-3-4.5-4-7.5-2.7 2.4.2 3.9 1.4 4.6 3.1"/><path d="M12 12c1-3 4.5-4 7.5-2.7-2.4.2-3.9 1.4-4.6 3.1"/><path d="M12 12c-.6-3 .4-6.3 2.4-7.8-.4 2.6-.6 4.6-.9 6.6"/><path d="M9 21h6"/></svg></span>
+              <span class="cg-tab-label">Rental Guest Guide</span>
             </button>
+          </div>
 
-          </aside>
+          <!-- Showcase: dominant access + guide deliverable, supporting panels -->
+          <div class="cg-showcase" data-reveal data-reveal-delay="2">
 
-          <!-- RIGHT: heading + large laptop deliverable with floating note cards -->
-          <div class="cg-main">
-            <header class="cg-head" data-reveal>
-              <span class="cg-eyebrow">For your customers</span>
-              <h2 id="gp-cust-heading" class="cg-heading">Customer Guides</h2>
-              <p class="cg-subhead">Guides for guests, customers, or visitors who need quick answers on their own.</p>
-            </header>
-
-            <div class="cg-canvas" data-reveal data-reveal-delay="1">
-
-              <!-- Subtle dotted red connectors, one short tick per card toward
-                   the laptop (desktop only) -->
-              <svg class="cg-connectors" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-                <path class="cg-line" d="M21,15 L25,19" />
-                <path class="cg-line" d="M21,85 L25,81" />
-                <path class="cg-line" d="M79,15 L75,19" />
-                <path class="cg-line" d="M79,85 L75,81" />
-              </svg>
-
-              <!-- The deliverable(s): the guide on a device frame, plus a
-                   delivery card (confirmation / printout) for examples that
-                   have one. The first example (laptop) is rendered statically;
-                   script.js rebuilds this when another example is selected. -->
+            <!-- LEFT: the access card + the live guide on its device -->
+            <div class="cg-stage-wrap">
               <div class="cg-device" id="cg-device">
                 <figure class="gp-frame gp-frame--deliv gp-frame--laptop gp-frame--solo">
                   <div class="gp-stage">
@@ -209,82 +164,50 @@
                   </div>
                 </figure>
               </div>
-
-              <!-- Floating paper note cards -->
-              <div class="cg-notes" id="cg-notes" aria-live="polite">
-                <article class="cg-note-card cg-note-card--problem context-card">
-                  <h3 class="cg-note-head">
-                    <span class="cg-note-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5"/><path d="M12 16.4h.01"/></svg></span>
-                    <span class="cg-note-label">Problem</span>
-                  </h3>
-                  <p class="cg-note-body" id="cg-problem">Students need to build the robot step by step, but the instructions can easily become scattered across verbal explanations, slides, videos, and teacher notes.</p>
-                </article>
-
-                <article class="cg-note-card cg-note-card--how context-card">
-                  <h3 class="cg-note-head">
-                    <span class="cg-note-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v2.6M12 18.4V21M3 12h2.6M18.4 12H21M5.6 5.6l1.9 1.9M16.5 16.5l1.9 1.9M18.4 5.6l-1.9 1.9M7.5 16.5l-1.9 1.9"/></svg></span>
-                    <span class="cg-note-label">How it works</span>
-                  </h3>
-                  <ol class="cg-steps" id="cg-how">
-                    <li class="cg-step">
-                      <span class="cg-step-num">1</span>
-                      <span class="cg-step-tx">
-                        <span class="cg-step-title">Assignment</span>
-                        <span class="cg-step-desc">Student opens the assigned guide.</span>
-                      </span>
-                    </li>
-                    <li class="cg-step">
-                      <span class="cg-step-num">2</span>
-                      <span class="cg-step-tx">
-                        <span class="cg-step-title">Follow steps</span>
-                        <span class="cg-step-desc">Build, wire, code, and test in order.</span>
-                      </span>
-                    </li>
-                    <li class="cg-step">
-                      <span class="cg-step-num">3</span>
-                      <span class="cg-step-tx">
-                        <span class="cg-step-title">Get help</span>
-                        <span class="cg-step-desc">Troubleshooting and support stay in the same place.</span>
-                      </span>
-                    </li>
-                  </ol>
-                </article>
-
-                <article class="cg-note-card cg-note-card--guide context-card">
-                  <h3 class="cg-note-head">
-                    <span class="cg-note-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5v13"/><path d="M12 6.5C10 5 7 5 4 5.6v12.5c3-.6 6-.6 8 .9 2-1.5 5-1.5 8-.9V5.6C17 5 14 5 12 6.5z"/></svg></span>
-                    <span class="cg-note-label">In the guide</span>
-                  </h3>
-                  <ul class="cg-guide-list" id="cg-guide">
-                    <li class="cg-guide-row">
-                      <span class="cg-guide-row-title">Start here</span>
-                      <span class="cg-guide-row-desc">What students are building and how to use the guide.</span>
-                    </li>
-                    <li class="cg-guide-row">
-                      <span class="cg-guide-row-title">Build steps</span>
-                      <span class="cg-guide-row-desc">A clear sequence from checking parts to testing movement.</span>
-                    </li>
-                    <li class="cg-guide-row">
-                      <span class="cg-guide-row-title">Parts + wiring</span>
-                      <span class="cg-guide-row-desc">Simple visuals for the main components and connections.</span>
-                    </li>
-                    <li class="cg-guide-row">
-                      <span class="cg-guide-row-title">Code + testing</span>
-                      <span class="cg-guide-row-desc">Starter setup, test steps, and troubleshooting help.</span>
-                    </li>
-                  </ul>
-                </article>
-
-                <article class="cg-note-card cg-note-card--result context-card">
-                  <h3 class="cg-note-head">
-                    <span class="cg-note-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.3 12.3l2.6 2.6 4.8-5.3"/></svg></span>
-                    <span class="cg-note-label">Result</span>
-                  </h3>
-                  <p class="cg-note-body" id="cg-result">Students get one clear place to follow the project instead of relying on scattered instructions.</p>
-                </article>
-              </div>
-
             </div>
+
+            <!-- RIGHT: supporting context — Problem / In the guide / Result -->
+            <aside class="cg-aside" id="cg-aside" aria-live="polite">
+              <article class="cg-note-card cg-note-card--problem context-card">
+                <h3 class="cg-note-head">
+                  <span class="cg-note-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5"/><path d="M12 16.4h.01"/></svg></span>
+                  <span class="cg-note-label">Problem</span>
+                </h3>
+                <p class="cg-note-body" id="cg-problem">Students need one place to follow the build instead of piecing together instructions from slides, videos, verbal explanations, and notes.</p>
+              </article>
+
+              <article class="cg-note-card cg-note-card--guide context-card">
+                <h3 class="cg-note-head">
+                  <span class="cg-note-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5v13"/><path d="M12 6.5C10 5 7 5 4 5.6v12.5c3-.6 6-.6 8 .9 2-1.5 5-1.5 8-.9V5.6C17 5 14 5 12 6.5z"/></svg></span>
+                  <span class="cg-note-label">In the guide</span>
+                </h3>
+                <ul class="cg-guide-list" id="cg-guide">
+                  <li class="cg-guide-item">Start here</li>
+                  <li class="cg-guide-item">Build steps</li>
+                  <li class="cg-guide-item">Parts + wiring</li>
+                  <li class="cg-guide-item">Code + testing</li>
+                  <li class="cg-guide-item">Troubleshooting help</li>
+                </ul>
+              </article>
+
+              <article class="cg-note-card cg-note-card--result context-card">
+                <h3 class="cg-note-head">
+                  <span class="cg-note-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.3 12.3l2.6 2.6 4.8-5.3"/></svg></span>
+                  <span class="cg-note-label">Result</span>
+                </h3>
+                <p class="cg-note-body" id="cg-result">Students can build, wire, code, and test the robot from one clear guide.</p>
+              </article>
+            </aside>
+
+          </div>
+
+          <!-- One-line process strip -->
+          <div class="cg-flow" data-reveal data-reveal-delay="3" aria-hidden="true">
+            <span class="cg-flow-step">Send material</span>
+            <span class="cg-flow-arrow">&rarr;</span>
+            <span class="cg-flow-step">I build the guide</span>
+            <span class="cg-flow-arrow">&rarr;</span>
+            <span class="cg-flow-step">Customer opens by link or QR</span>
           </div>
 
         </div>
@@ -302,8 +225,8 @@
 
         <header class="gp-head" data-reveal>
           <span class="gp-eyebrow">For your team</span>
-          <h2 id="gp-role-heading" class="gp-heading">Role &amp; Task Guides</h2>
-          <p class="gp-subhead">Guides for staff, volunteers, interns, or assistants who need a clear way to do the job.</p>
+          <h2 id="gp-role-heading" class="gp-heading">Role &amp; Task Handoff Systems</h2>
+          <p class="gp-subhead">Simple handoff packages for repeated shifts, roles, and tasks — with guides, checklists, forms, and tracking so staff know what to do and managers can see what happened.</p>
         </header>
 
         <!-- TOP: slim folder-style example tabs -->
@@ -338,19 +261,19 @@
           <div class="gp-context" id="gp-role-context" aria-live="polite">
             <span class="gp-category">For staff</span>
             <h3 class="gp-title">Front Desk Opening Handoff System</h3>
-            <p class="gp-lead">A sample Drive package for a small fitness studio's opening shift.</p>
+            <p class="gp-lead">A sample handoff package for a small fitness studio's opening shift.</p>
             <dl class="gp-facts">
-              <div class="gp-fact context-card">
+              <div class="gp-fact context-card gp-fact--problem">
                 <dt>Problem</dt>
-                <dd>The shift relied on verbal instructions and memory instead of a clear handoff process staff could follow consistently.</dd>
+                <dd>Opening relied on memory and repeated explanations, so steps got missed and managers couldn't easily confirm the shift was done.</dd>
               </div>
-              <div class="gp-fact context-card">
+              <div class="gp-fact context-card gp-fact--how">
                 <dt>How it works</dt>
-                <dd>Staff follow the guide and checklist, submit the completion form, and report issues when needed. Form responses feed into the manager tracker automatically.</dd>
+                <dd>Staff follow the guide, complete the checklist, and submit forms. Responses feed into the manager tracker automatically.</dd>
               </div>
-              <div class="gp-fact context-card">
-                <dt>In the guide</dt>
-                <dd><ul class="gp-pills"><li>Checklist</li><li>Completion Form</li><li>Issue Report Form</li><li>Manager Tracker</li><li>Cheat Sheet</li><li>QR Access</li></ul></dd>
+              <div class="gp-fact context-card gp-fact--included">
+                <dt>What's included</dt>
+                <dd><ul class="gp-pills"><li>Start Here Guide</li><li>Opening Checklist</li><li>Completion Form</li><li>Issue Report Form</li><li>Manager Tracker</li><li>QR / Mobile Access</li></ul></dd>
               </div>
             </dl>
           </div>
@@ -367,8 +290,9 @@
                     alt="Google Drive package for the Front Desk Opening Handoff System — folder containing a Start Here Guide, Opening Checklist, Completion Form, Issue Report Form, Manager Tracker, printable cheat sheet, and a QR / mobile access card." />
                 </div>
               </div>
-              <figcaption class="gp-frame-cap">Front Desk Opening Handoff System · Google Drive package</figcaption>
+              <figcaption class="gp-frame-cap">Front Desk Opening · Staff handoff package in Google Drive</figcaption>
             </figure>
+
           </div>
 
         </div>
@@ -378,80 +302,118 @@
       <!-- ============================================================
            SECTION 4: REAL PROJECT — Morpheus Drive
       ============================================================ -->
-      <section id="project" aria-labelledby="project-title">
+      <section id="project" class="rpp" aria-labelledby="project-title">
 
         <div class="rpp-wrap" data-reveal>
 
-          <!-- LEFT: project context -->
+          <!-- COL 1: narrative -->
           <div class="rpp-intro">
-            <span class="gp-eyebrow">Real project proof</span>
-            <h2 id="project-title" class="rpp-title">Morpheus Drive Guide</h2>
+            <span class="rpp-eyebrow">Real project proof</span>
+            <h2 id="project-title" class="rpp-title">Morpheus<br>Drive Guide</h2>
             <p class="rpp-lead">A robotics company needed a clearer way to explain a technical component to interns using it inside functional robots.</p>
             <p class="rpp-lead rpp-lead--sub">I worked from walkthrough videos, email notes, phone calls, and client explanations, then organized the material into website-ready guide content formatted for their LMS.</p>
 
+            <hr class="rpp-divider" />
+
             <dl class="rpp-meta">
-              <div class="rpp-meta-row context-card">
-                <dt>Used</dt>
+              <div class="rpp-meta-row">
+                <dt><span class="rpp-meta-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 3.5 7v10L12 21.5 20.5 17V7z"/><path d="M3.5 7 12 11.5 20.5 7"/><path d="M12 11.5v10"/></svg></span>Used</dt>
                 <dd>Walkthrough videos · Email notes · Phone calls · Client explanations</dd>
               </div>
-              <div class="rpp-meta-row context-card">
-                <dt>Created</dt>
+              <div class="rpp-meta-row">
+                <dt><span class="rpp-meta-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>Created</dt>
                 <dd>LMS-ready guide content · Diagrams · Video-supported sections · Intern reference material</dd>
               </div>
             </dl>
           </div>
 
-          <!-- RIGHT: evidence board — source → organized → final -->
-          <div class="rpp-board" role="group" aria-label="Project evidence, from source materials to final output">
+          <!-- COL 2: source materials -->
+          <div class="rpp-col rpp-col--source">
+            <h3 class="rpp-col-head"><span class="rpp-col-num">01</span><span>Source Materials</span><span class="rpp-col-rule"></span></h3>
+            <div class="rpp-col-body">
+              <figure class="rpp-card rpp-card--video">
+                <div class="rpp-card-media">
+                  <video class="rpp-video" muted loop playsinline preload="metadata" aria-label="Demo walkthrough video 01">
+                    <source src="videos/walkthrough-1.mp4" type="video/mp4" />
+                  </video>
+                  <span class="rpp-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+                </div>
+                <figcaption class="rpp-card-cap">Demo walkthrough video 01</figcaption>
+              </figure>
+              <figure class="rpp-card rpp-card--video">
+                <div class="rpp-card-media">
+                  <video class="rpp-video" muted loop playsinline preload="metadata" aria-label="Demo walkthrough video 02">
+                    <source src="videos/walkthrough-2.mp4" type="video/mp4" />
+                  </video>
+                  <span class="rpp-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+                </div>
+                <figcaption class="rpp-card-cap">Demo walkthrough video 02</figcaption>
+              </figure>
+              <figure class="rpp-card">
+                <button type="button" class="rpp-card-media" data-rpp-zoom data-full="images/morpheus-source-email-notes.png" aria-label="View full image: Client email notes"><img class="rpp-img" src="images/morpheus-source-email-notes.png" alt="Client email notes" loading="lazy" decoding="async" /><span class="rpp-zoom-cue" aria-hidden="true">View full image</span></button>
+                <figcaption class="rpp-card-cap">Client email notes</figcaption>
+              </figure>
+              <figure class="rpp-card">
+                <button type="button" class="rpp-card-media" data-rpp-zoom data-full="images/morpheus-source-call-notes.png" aria-label="View full image: Call notes / project notes"><img class="rpp-img" src="images/morpheus-source-call-notes.png" alt="Call notes / project notes" loading="lazy" decoding="async" /><span class="rpp-zoom-cue" aria-hidden="true">View full image</span></button>
+                <figcaption class="rpp-card-cap">Call notes / project notes</figcaption>
+              </figure>
+            </div>
+          </div>
 
-            <section class="rpp-group">
-              <h3 class="rpp-group-head"><span class="rpp-group-num">01</span> Source materials</h3>
-              <div class="rpp-slots">
-                <figure class="rpp-slot">
-                  <div class="rpp-thumb rpp-thumb--video">
-                    <video class="rpp-video" muted loop playsinline preload="metadata" aria-label="Demo walkthrough video 01">
-                      <source src="videos/walkthrough-1.mp4" type="video/mp4" />
-                    </video>
+          <!-- COL 3: organized work -->
+          <div class="rpp-col rpp-col--org">
+            <h3 class="rpp-col-head"><span class="rpp-col-num">02</span><span>Organized Work</span><span class="rpp-col-rule"></span></h3>
+            <div class="rpp-col-body">
+              <figure class="rpp-card">
+                <button type="button" class="rpp-card-media" data-rpp-zoom data-full="images/morpheus-work-extracted-notes.png" aria-label="View full image: Extracted notes"><img class="rpp-img" src="images/morpheus-work-extracted-notes.png" alt="Extracted notes" loading="lazy" decoding="async" /><span class="rpp-zoom-cue" aria-hidden="true">View full image</span></button>
+                <figcaption class="rpp-card-cap">Extracted notes</figcaption>
+              </figure>
+              <div class="rpp-row rpp-row--stack">
+                <figure class="rpp-card">
+                  <div class="rpp-card-media rpp-outline">
+                    <strong class="rpp-outline-h">Guide structure outline</strong>
+                    <ol class="rpp-outline-list">
+                      <li><span>1</span>Introduction</li>
+                      <li><span>2</span>System Overview</li>
+                      <li><span>3</span>Installation</li>
+                      <li><span>4</span>Operation</li>
+                      <li><span>5</span>Diagnostics &amp; Troubleshooting</li>
+                      <li><span>6</span>Maintenance</li>
+                      <li><span>7</span>Reference</li>
+                    </ol>
                   </div>
-                  <figcaption class="rpp-slot-cap">Demo walkthrough video 01</figcaption>
+                  <figcaption class="rpp-card-cap">Guide structure outline</figcaption>
                 </figure>
-                <figure class="rpp-slot">
-                  <div class="rpp-thumb rpp-thumb--video">
-                    <video class="rpp-video" muted loop playsinline preload="metadata" aria-label="Demo walkthrough video 02">
-                      <source src="videos/walkthrough-2.mp4" type="video/mp4" />
-                    </video>
-                  </div>
-                  <figcaption class="rpp-slot-cap">Demo walkthrough video 02</figcaption>
+                <figure class="rpp-card">
+                  <button type="button" class="rpp-card-media" data-rpp-zoom data-full="images/morpheus-work-diagram-draft.png" aria-label="View full image: Diagram draft"><img class="rpp-img" src="images/morpheus-work-diagram-draft.png" alt="Diagram draft" loading="lazy" decoding="async" /><span class="rpp-zoom-cue" aria-hidden="true">View full image</span></button>
+                  <figcaption class="rpp-card-cap">Diagram draft</figcaption>
                 </figure>
-                <figure class="rpp-slot"><button type="button" class="rpp-thumb rpp-thumb--img" data-rpp-zoom data-full="images/morpheus-source-email-notes.png" aria-label="View full image: Client email notes"><img class="rpp-img" src="images/morpheus-source-email-notes.png" alt="Client email notes" loading="lazy" decoding="async" /><span class="rpp-zoom-cue" aria-hidden="true">View full image</span></button><figcaption class="rpp-slot-cap">Client email notes</figcaption></figure>
-                <figure class="rpp-slot"><button type="button" class="rpp-thumb rpp-thumb--img" data-rpp-zoom data-full="images/morpheus-source-call-notes.png" aria-label="View full image: Call notes / project notes"><img class="rpp-img" src="images/morpheus-source-call-notes.png" alt="Call notes / project notes" loading="lazy" decoding="async" /><span class="rpp-zoom-cue" aria-hidden="true">View full image</span></button><figcaption class="rpp-slot-cap">Call notes / project notes</figcaption></figure>
               </div>
-            </section>
+            </div>
+          </div>
 
-            <span class="rpp-arrow" aria-hidden="true">→</span>
-
-            <section class="rpp-group">
-              <h3 class="rpp-group-head"><span class="rpp-group-num">02</span> Organized work</h3>
-              <div class="rpp-slots">
-                <figure class="rpp-slot"><button type="button" class="rpp-thumb rpp-thumb--img" data-rpp-zoom data-full="images/morpheus-work-extracted-notes.png" aria-label="View full image: Extracted notes"><img class="rpp-img" src="images/morpheus-work-extracted-notes.png" alt="Extracted notes" loading="lazy" decoding="async" /><span class="rpp-zoom-cue" aria-hidden="true">View full image</span></button><figcaption class="rpp-slot-cap">Extracted notes</figcaption></figure>
-                <figure class="rpp-slot"><button type="button" class="rpp-thumb rpp-thumb--img" data-rpp-zoom data-full="images/morpheus-work-diagram-draft.png" aria-label="View full image: Diagram draft"><img class="rpp-img" src="images/morpheus-work-diagram-draft.png" alt="Diagram draft" loading="lazy" decoding="async" /><span class="rpp-zoom-cue" aria-hidden="true">View full image</span></button><figcaption class="rpp-slot-cap">Diagram draft</figcaption></figure>
-                <figure class="rpp-slot"><div class="rpp-thumb rpp-thumb--ph" aria-hidden="true"><span class="rpp-ph-line"></span><span class="rpp-ph-line" style="width:62%"></span><span class="rpp-ph-line"></span></div><figcaption class="rpp-slot-cap">Guide structure outline</figcaption></figure>
-                <figure class="rpp-slot"><div class="rpp-thumb rpp-thumb--ph" aria-hidden="true"><span class="rpp-ph-line"></span><span class="rpp-ph-line"></span><span class="rpp-ph-line" style="width:78%"></span><span class="rpp-ph-line" style="width:90%"></span></div><figcaption class="rpp-slot-cap">Lesson draft</figcaption></figure>
+          <!-- COL 4: final output -->
+          <div class="rpp-col rpp-col--final">
+            <h3 class="rpp-col-head"><span class="rpp-col-num">03</span><span>Final Output</span><span class="rpp-col-rule"></span></h3>
+            <div class="rpp-col-body">
+              <figure class="rpp-card rpp-card--hero">
+                <button type="button" class="rpp-card-media" data-rpp-zoom data-full="images/morpheus-final-lms-guide.png" aria-label="View full image: Finished LMS course"><img class="rpp-img" src="images/morpheus-final-lms-guide.png" alt="Finished LMS course for the Morpheus Drive" loading="lazy" decoding="async" /><span class="rpp-zoom-cue" aria-hidden="true">View full image</span></button>
+              </figure>
+              <div class="rpp-row">
+                <figure class="rpp-card">
+                  <button type="button" class="rpp-card-media" data-rpp-zoom data-full="images/morpheus-final-section-1.png" aria-label="View full image: Finished lesson section"><img class="rpp-img" src="images/morpheus-final-section-1.png" alt="Finished lesson section" loading="lazy" decoding="async" /><span class="rpp-zoom-cue" aria-hidden="true">View full image</span></button>
+                  <figcaption class="rpp-card-cap">Finished lesson section</figcaption>
+                </figure>
+                <figure class="rpp-card">
+                  <button type="button" class="rpp-card-media" data-rpp-zoom data-full="images/morpheus-final-section-2.png" aria-label="View full image: Diagram-based lesson section"><img class="rpp-img" src="images/morpheus-final-section-2.png" alt="Diagram-based lesson section" loading="lazy" decoding="async" /><span class="rpp-zoom-cue" aria-hidden="true">View full image</span></button>
+                  <figcaption class="rpp-card-cap">Diagram-based lesson section</figcaption>
+                </figure>
               </div>
-            </section>
-
-            <span class="rpp-arrow" aria-hidden="true">→</span>
-
-            <section class="rpp-group">
-              <h3 class="rpp-group-head"><span class="rpp-group-num">03</span> Final output</h3>
-              <div class="rpp-slots">
-                <figure class="rpp-slot"><button type="button" class="rpp-thumb rpp-thumb--img" data-rpp-zoom data-full="images/morpheus-final-lms-guide.png" aria-label="View full image: LMS course overview"><img class="rpp-img" src="images/morpheus-final-lms-guide.png" alt="LMS course overview" loading="lazy" decoding="async" /><span class="rpp-zoom-cue" aria-hidden="true">View full image</span></button><figcaption class="rpp-slot-cap">LMS course overview</figcaption></figure>
-                <figure class="rpp-slot"><button type="button" class="rpp-thumb rpp-thumb--img" data-rpp-zoom data-full="images/morpheus-final-section-1.png" aria-label="View full image: Finished lesson section"><img class="rpp-img" src="images/morpheus-final-section-1.png" alt="Finished lesson section" loading="lazy" decoding="async" /><span class="rpp-zoom-cue" aria-hidden="true">View full image</span></button><figcaption class="rpp-slot-cap">Finished lesson section</figcaption></figure>
-                <figure class="rpp-slot"><button type="button" class="rpp-thumb rpp-thumb--img" data-rpp-zoom data-full="images/morpheus-final-section-2.png" aria-label="View full image: Diagram-based lesson section"><img class="rpp-img" src="images/morpheus-final-section-2.png" alt="Diagram-based lesson section" loading="lazy" decoding="async" /><span class="rpp-zoom-cue" aria-hidden="true">View full image</span></button><figcaption class="rpp-slot-cap">Diagram-based lesson section</figcaption></figure>
-                <figure class="rpp-slot"><button type="button" class="rpp-thumb rpp-thumb--img" data-rpp-zoom data-full="images/morpheus-final-diagram.png" aria-label="View full image: Final diagram"><img class="rpp-img" src="images/morpheus-final-diagram.png" alt="Final diagram" loading="lazy" decoding="async" /><span class="rpp-zoom-cue" aria-hidden="true">View full image</span></button><figcaption class="rpp-slot-cap">Final diagram</figcaption></figure>
-              </div>
-            </section>
-
+              <figure class="rpp-card">
+                <button type="button" class="rpp-card-media" data-rpp-zoom data-full="images/morpheus-final-diagram.png" aria-label="View full image: Final diagram"><img class="rpp-img" src="images/morpheus-final-diagram.png" alt="Final diagram" loading="lazy" decoding="async" /><span class="rpp-zoom-cue" aria-hidden="true">View full image</span></button>
+                <figcaption class="rpp-card-cap">Final diagram</figcaption>
+              </figure>
+            </div>
           </div>
         </div>
 
@@ -472,83 +434,108 @@
       ============================================================ -->
       <section id="process" aria-labelledby="process-heading">
 
-        <!-- Editorial process board. Swap each .pz-ph placeholder for an
-             <img class="pz-art-img" src="images/process-*.png" alt="..."> later. -->
-        <div class="pz-board" data-reveal>
+        <!-- Editorial process: small steps (left) → one finished guide (right).
+             Each preview is a CSS window mock with a swappable <img class="pz-shot">
+             placeholder; drop a real images/process-*.png in to replace it. -->
+        <div class="pz-wrap" data-reveal>
 
           <header class="pz-head">
-            <div class="pz-head-l">
-              <h2 id="process-heading" class="pz-title">How a guide<br>project works</h2>
-            </div>
-            <p class="pz-intro">We start by talking through what needs to be explained, who the guide is for, and how people will use it. From there, I figure out what material we need, build the guide, and revise it with you.</p>
+            <span class="pz-eyebrow">Process</span>
+            <h2 id="process-heading" class="pz-title">How a guide project works</h2>
           </header>
 
-          <div class="pz-grid">
+          <div class="pz-main">
 
-            <!-- 01 -->
-            <article class="pz-stage pz-stage--01">
-              <div class="pz-stage-text">
+            <!-- LEFT: steps 01–03 -->
+            <div class="pz-steps">
+
+              <article class="pz-step">
                 <span class="pz-badge">01</span>
-                <h3 class="pz-stage-title">Talk it through</h3>
-                <p class="pz-stage-copy">We start over email or a call so I can understand the situation, audience, and what the guide needs to help people do.</p>
-              </div>
-              <figure class="pz-art pz-art--conv" style="--rot: -1.2deg;">
-                <div class="pz-ph" role="img" aria-label="A conversation artifact — an email thread or call notes">
-                  <span class="pz-ph-bar" aria-hidden="true"></span>
-                  <span class="pz-ph-ic" aria-hidden="true"></span>
-                  <span class="pz-ph-name">process-conversation.png</span>
+                <div class="pz-step-tx">
+                  <h3 class="pz-step-title">Talk it through</h3>
+                  <p class="pz-step-copy">We start over email or a call so I can understand the situation, audience, and what the guide needs to help people do.</p>
                 </div>
-              </figure>
-            </article>
+                <figure class="pz-prev">
+                  <div class="pz-win">
+                    <div class="pz-win-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                    <div class="pz-win-body">
+                      <div class="pz-mock pz-mock--chat" aria-hidden="true">
+                        <div class="pz-chat-row"><span class="pz-av"></span><span class="pz-bub"></span></div>
+                        <div class="pz-chat-row"><span class="pz-av"></span><span class="pz-bub pz-bub--lg"></span></div>
+                      </div>
+                      <img class="pz-shot" src="images/process-conversation.png" alt="" loading="lazy" onerror="this.remove()" />
+                      <span class="pz-win-cap">conversation</span>
+                    </div>
+                  </div>
+                </figure>
+              </article>
 
-            <!-- 02 -->
-            <article class="pz-stage pz-stage--02">
-              <div class="pz-stage-text">
+              <article class="pz-step">
                 <span class="pz-badge">02</span>
-                <h3 class="pz-stage-title">Find the source</h3>
-                <p class="pz-stage-copy">I figure out whether we use existing notes, videos, screenshots, old docs, research, or questions to shape the material.</p>
-              </div>
-              <figure class="pz-art pz-art--source" style="--rot: 1deg;">
-                <div class="pz-ph" role="img" aria-label="A source plan worksheet">
-                  <span class="pz-ph-bar" aria-hidden="true"></span>
-                  <span class="pz-ph-ic" aria-hidden="true"></span>
-                  <span class="pz-ph-name">process-source-plan.png</span>
+                <div class="pz-step-tx">
+                  <h3 class="pz-step-title">Find the source</h3>
+                  <p class="pz-step-copy">I figure out whether we use existing notes, videos, screenshots, old docs, research, or questions to shape the material.</p>
                 </div>
-              </figure>
-            </article>
+                <figure class="pz-prev">
+                  <div class="pz-win">
+                    <div class="pz-win-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                    <div class="pz-win-body">
+                      <div class="pz-mock pz-mock--icons" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+                      <img class="pz-shot" src="images/process-source-plan.png" alt="" loading="lazy" onerror="this.remove()" />
+                      <span class="pz-win-cap">source plan</span>
+                    </div>
+                  </div>
+                </figure>
+              </article>
 
-            <!-- 03 -->
-            <article class="pz-stage pz-stage--03">
-              <div class="pz-stage-text">
+              <article class="pz-step">
                 <span class="pz-badge">03</span>
-                <h3 class="pz-stage-title">Build the guide</h3>
-                <p class="pz-stage-copy">I organize the explanation into clear sections, steps, visuals, and supporting details.</p>
-                <span class="pz-note" aria-hidden="true">Clear steps.<br>Great results.</span>
-              </div>
-              <figure class="pz-art pz-art--draft" style="--rot: -1deg;">
-                <div class="pz-ph" role="img" aria-label="A draft guide page">
-                  <span class="pz-ph-bar" aria-hidden="true"></span>
-                  <span class="pz-ph-ic" aria-hidden="true"></span>
-                  <span class="pz-ph-name">process-guide-draft.png</span>
+                <div class="pz-step-tx">
+                  <h3 class="pz-step-title">Build the guide</h3>
+                  <p class="pz-step-copy">I organize the explanation into clear sections, steps, visuals, and supporting details.</p>
                 </div>
-              </figure>
-            </article>
+                <figure class="pz-prev">
+                  <div class="pz-win">
+                    <div class="pz-win-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                    <div class="pz-win-body">
+                      <div class="pz-mock pz-mock--draft" aria-hidden="true">
+                        <div class="pz-draft-l"><span></span><span></span><span></span></div>
+                        <div class="pz-draft-r"><span class="pz-draft-img"></span><span class="pz-draft-line"></span><span class="pz-draft-line"></span></div>
+                      </div>
+                      <img class="pz-shot" src="images/process-guide-draft.png" alt="" loading="lazy" onerror="this.remove()" />
+                      <span class="pz-win-cap">guide draft</span>
+                    </div>
+                  </div>
+                </figure>
+              </article>
+            </div>
 
-            <!-- 04 -->
-            <article class="pz-stage pz-stage--04">
-              <div class="pz-stage-text">
+            <!-- RIGHT: step 04 — the finished guide -->
+            <article class="pz-final">
+              <div class="pz-final-head">
                 <span class="pz-badge">04</span>
-                <h3 class="pz-stage-title">Review and finish</h3>
-                <p class="pz-stage-copy">You review the draft, I make revisions, and the final guide is ready to send, share, scan, or hand off.</p>
+                <div class="pz-final-tx">
+                  <h3 class="pz-step-title">Review and finish</h3>
+                  <p class="pz-step-copy">You review the draft, I make revisions, and the final guide is ready to send, share, scan, or hand off.</p>
+                </div>
               </div>
-              <figure class="pz-art pz-art--final" style="--rot: 1.2deg;">
-                <div class="pz-ph" role="img" aria-label="The final, polished guide">
-                  <span class="pz-ph-bar" aria-hidden="true"></span>
-                  <span class="pz-ph-ic" aria-hidden="true"></span>
-                  <span class="pz-ph-name">process-final-guide.png</span>
+              <figure class="pz-final-art">
+                <div class="pz-win pz-win--lg">
+                  <div class="pz-win-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                  <div class="pz-win-body">
+                    <div class="pz-mock pz-mock--final" aria-hidden="true">
+                      <div class="pz-final-side"><span></span><span></span><span></span><span></span><span></span></div>
+                      <div class="pz-final-doc">
+                        <span class="pz-final-hero"></span>
+                        <span class="pz-final-line"></span>
+                        <span class="pz-final-line pz-final-line--sm"></span>
+                        <span class="pz-final-thumb"></span>
+                      </div>
+                    </div>
+                    <img class="pz-shot" src="images/process-final-guide.png" alt="" loading="lazy" onerror="this.remove()" />
+                  </div>
                 </div>
               </figure>
-              <span class="pz-dots" aria-hidden="true"></span>
             </article>
 
           </div>
@@ -630,7 +617,7 @@
           <div class="footer-col">
             <h4 class="footer-col-heading">Site</h4>
             <ul>
-              <li><a href="#guide-projects">Role &amp; task guides</a></li>
+              <li><a href="#guide-projects">Role &amp; task handoff systems</a></li>
               <li><a href="#customer-guides">Customer guides</a></li>
               <li><a href="#project">Real project</a></li>
               <li><a href="#process">How it works</a></li>
