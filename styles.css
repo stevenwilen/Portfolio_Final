@@ -3316,9 +3316,9 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
 .pz-title {
   margin: 12px 0 0;
   font-family: var(--ff-display);
-  /* Sized so the whole title fits on one line across desktop/laptop widths;
-     it wraps only when the viewport gets too narrow for one line. */
-  font-size: clamp(22px, 3.3vw, 48px);
+  /* Sized with comfortable margin so the whole title reliably stays on one
+     line across desktop/laptop widths (wraps only on small phones). */
+  font-size: clamp(20px, 2.8vw, 42px);
   font-weight: 800;
   line-height: 1.04;
   letter-spacing: -0.022em;
