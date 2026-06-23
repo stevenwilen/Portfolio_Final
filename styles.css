@@ -3343,7 +3343,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
 .pz-main {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1fr);
   gap: clamp(26px, 3vw, 60px);
   align-items: start;
 }
@@ -3354,7 +3354,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 38px minmax(0, 1fr) clamp(180px, 40%, 300px);
+  grid-template-columns: 38px minmax(0, 1fr) clamp(210px, 46%, 360px);
   column-gap: clamp(12px, 1.4vw, 22px);
   align-items: center;
   padding: clamp(16px, 2vw, 24px) 0;
@@ -3404,16 +3404,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   box-shadow: 0 14px 30px -18px rgba(40, 26, 12, 0.4), 0 2px 5px -2px rgba(40, 26, 12, 0.12);
   overflow: hidden;
 }
-.pz-win-bar {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  height: 22px;
-  padding: 0 10px;
-  background: linear-gradient(#f4ecda, #ece0c8);
-  border-bottom: 1px solid rgba(34, 28, 20, 0.08);
-}
-.pz-win-bar i { width: 6px; height: 6px; border-radius: 50%; background: rgba(34, 28, 20, 0.18); }
+.pz-win-bar { display: none; }
 .pz-win-body { position: relative; aspect-ratio: 16 / 11; }
 .pz-win--lg .pz-win-body { aspect-ratio: 16 / 10; }
 .pz-win-cap {
