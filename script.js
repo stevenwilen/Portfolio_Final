@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function () {
       problem: 'Opening relied on memory and repeated explanations, so steps got missed and managers couldn\'t easily confirm the shift was done.',
       howItWorks: 'Staff follow the guide, complete the checklist, and submit forms. Responses feed into the manager tracker automatically.',
       built: ['Start Here Guide', 'Opening Checklist', 'Completion Form', 'Issue Report Form', 'Manager Tracker', 'QR / Mobile Access'],
-      image: 'images/deliverable-role.png',
+      image: 'images/role-guides/role-front-desk-drive.webp',
       imageAlt: 'Google Drive package for the Front Desk Opening Handoff System — folder containing a Start Here Guide, Opening Checklist, Completion Form, Issue Report Form, Manager Tracker, printable cheat sheet, and a QR / mobile access card.',
       caption: 'Front Desk Opening · Staff handoff package in Google Drive'
     },
@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function () {
       problem: 'New hires kept asking the same questions, with no easy way to see what they had actually covered.',
       howItWorks: 'The hire follows a start-here guide and checklist and marks each step done, so managers can track progress at a glance.',
       built: ['Start Here Guide', 'First Week Checklist', 'Tool Walkthrough', 'Daily Task Reference', 'Progress Tracker', 'QR / Mobile Access'],
-      image: 'images/deliverable-role-2.png',
+      image: 'images/role-guides/role-staff-training-drive.webp',
       imageAlt: 'New Staff Training Guide package — a Start Here guide, first-week checklist, tool walkthrough, common questions, daily task reference, manager notes, and an editable training doc.',
       caption: 'New Staff Training · Staff handoff package in Google Drive'
     },
@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', function () {
       problem: 'Volunteers arrived unsure of their role or who to ask, with no quick way to confirm each station was covered.',
       howItWorks: 'Each volunteer scans a QR code, follows their station checklist, and reports issues, so the lead sees coverage in one place.',
       built: ['Role Guide', 'Station Checklists', 'Arrival Instructions', 'Event Map', 'Issue Form', 'QR / Mobile Access'],
-      image: 'images/deliverable-role-3.png',
+      image: 'images/role-guides/role-event-day-drive.webp',
       imageAlt: 'Event Day Role Guide package — a volunteer guide, role checklists, arrival instructions, an event map, a contact sheet, an issue form, and QR access.',
       caption: 'Event Day Roles · Staff handoff package in Google Drive'
     },
@@ -472,7 +472,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var CG = {
     'cust-03': {
       device: 'laptop',
-      img: 'images/student-course-laptop-screen.png',
+      img: 'images/customer-guides/customer-robot-laptop-guide.webp',
       alt: 'The Student Robot Build Guide opened on a laptop — a sidebar with Start Here, Parts, Build Steps, Wiring, Code, Testing, Troubleshooting, and Help, plus parts and simple wiring diagrams.',
       problem: 'Students need one place to follow the build instead of piecing together instructions from slides, videos, verbal explanations, and notes.',
       guide: ['Start here', 'Build steps', 'Parts + wiring', 'Code + testing', 'Troubleshooting help'],
@@ -480,10 +480,10 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     'cust-02': {
       device: 'tablet',
-      img: 'images/business-workshop-tablet-screen.png',
+      img: 'images/customer-guides/customer-workshop-tablet-guide.webp',
       alt: 'The finished Business Workshop Guide opened on a tablet — a sidebar with Start Here, Workshop Schedule, What to Bring, Preparation Steps, Business Checklist, Common Questions, and Contact / Help.',
       card: {
-        img: 'images/business-workshop-form-card.png',
+        img: 'images/customer-guides/customer-workshop-form-card.webp',
         label: 'Confirmation',
         alt: 'Registration confirmation for the Coastal Business Workshop — "Here\'s your guide" with an Open Attendee Guide button and a link to the workshop guide.'
       },
@@ -493,10 +493,10 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     'cust-01': {
       device: 'phone',
-      img: 'images/beach-rental-guide-screen.png',
+      img: 'images/customer-guides/customer-beach-mobile-guide.webp',
       alt: 'The mobile guest guide opened on a phone — a Welcome screen with Start Here check-in and an expandable guide covering Wi-Fi, house basics, local recommendations, checkout steps, and host contact.',
       card: {
-        img: 'images/beach-rental-qr-card.png',
+        img: 'images/customer-guides/customer-beach-qr-card.webp',
         label: 'Printout Card',
         alt: 'Printed QR welcome card for The Dune House beachside rental — "Scan to open your guest guide" with a QR code and an overview of what the guide includes.'
       },
