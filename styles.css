@@ -115,6 +115,12 @@
   /* Easing */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Motion timing — purpose-based micro-interactions */
+  --motion-fast: 160ms;
+  --motion-medium: 280ms;
+  --motion-slow: 500ms;
 
   /* Container */
   --container-w: 1200px;
@@ -973,15 +979,24 @@ img, svg { display: block; max-width: 100%; }
   overflow: hidden;
   isolation: isolate;
   text-shadow: 0 1px 0 rgba(0,0,0,0.18);
-  transition: background-color 0.2s ease, transform 0.18s ease, box-shadow 0.2s ease;
+  transition: background-color var(--motion-fast) var(--ease-out),
+    transform var(--motion-fast) var(--ease-out),
+    box-shadow var(--motion-fast) var(--ease-out);
 }
 #contact-email-link svg {
-  transition: transform 0.2s ease;
+  transition: transform var(--motion-fast) var(--ease-out);
+}
+/* Hover: button lifts and the drop shadow deepens; the arrow advances. */
+#contact-email-link:hover {
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 5px 0 var(--c-vermillion-2), 0 14px 24px -6px rgba(34, 28, 20, 0.4);
 }
 #contact-email-link:hover svg {
   transform: translateX(4px);
 }
+/* Active: presses down into the surface. */
 #contact-email-link:active {
+  transform: translateY(1px);
   background-color: var(--c-vermillion-2);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 0 var(--c-vermillion-2), 0 4px 10px -4px rgba(34, 28, 20, 0.24);
 }
@@ -2341,6 +2356,19 @@ button.rpp-card-media {
   box-shadow:
     0 18px 38px -16px rgba(45, 35, 20, 0.42),
     0 0 0 4px rgba(216, 65, 42, 0.08);
+}
+/* When the Final Output column reveals, the outcome card gets one subtle
+   accent-ring pulse to land the eye on it, then settles to its resting state. */
+@keyframes rppFinalReveal {
+  0%, 100% {
+    box-shadow: 0 18px 38px -16px rgba(45, 35, 20, 0.42), 0 0 0 4px rgba(216, 65, 42, 0.08);
+  }
+  40% {
+    box-shadow: 0 18px 40px -14px rgba(45, 35, 20, 0.46), 0 0 0 6px rgba(216, 65, 42, 0.30);
+  }
+}
+.rpp-col--final.is-in .rpp-card--hero .rpp-card-media {
+  animation: rppFinalReveal 1.6s var(--ease-out) 0.5s 1;
 }
 
 /* Video source cards — autoplay loop, with a play badge like the screenshot */
@@ -4427,20 +4455,36 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   letter-spacing: -0.005em;
   color: var(--c-ink-600);
   transition: background-color 0.18s var(--ease-out), color 0.18s var(--ease-out),
-    border-color 0.18s var(--ease-out), box-shadow 0.18s var(--ease-out);
+    border-color 0.18s var(--ease-out), box-shadow 0.18s var(--ease-out),
+    transform var(--motion-fast) var(--ease-out);
 }
-.cg-tab-ic { flex: none; display: grid; place-items: center; color: var(--c-ink-400); }
+.cg-tab-ic { flex: none; display: grid; place-items: center; color: var(--c-ink-400);
+  transition: color var(--motion-fast) var(--ease-out); }
 .cg-tab-ic svg { width: 16px; height: 16px; display: block; }
 .cg-tab:hover { color: var(--c-ink-900); }
+.cg-tab:hover:not([aria-selected="true"]) { transform: translateY(-1px); }
 .cg-tab:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 2px; }
 .cg-tab[aria-selected="true"] {
   background: #fffaf0;
   color: var(--c-ink-900);
   border-color: var(--tab-accent, var(--c-vermillion));
+  transform: translateY(-2px);
   box-shadow: 0 6px 14px -6px rgba(45, 35, 20, 0.22),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 .cg-tab[aria-selected="true"] .cg-tab-ic { color: var(--tab-accent, var(--c-vermillion)); }
+
+/* Inspect the deliverable: the device/mockup lifts and scales a touch on hover. */
+.cg-device .gp-frame--deliv {
+  transition: transform var(--motion-medium) var(--ease-out),
+    box-shadow var(--motion-medium) var(--ease-out);
+}
+@media (hover: hover) {
+  .cg-device .gp-frame--deliv:hover {
+    transform: translateY(-4px) scale(1.015);
+    box-shadow: 0 28px 50px -22px rgba(45, 35, 20, 0.4);
+  }
+}
 
 /* ---- Header ---- */
 .cg-head {
@@ -4685,4 +4729,21 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   .cg-swap-in { animation: none; }
   .cg-tab,
   .context-card { transition: none; }
+}
+
+/* ============================================================
+   GLOBAL REDUCED-MOTION SAFETY NET
+   Belt-and-suspenders on top of the targeted blocks above and
+   the JS prefers-reduced-motion checks: neutralise any motion
+   we (or future edits) might miss.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
 }
