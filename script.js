@@ -350,7 +350,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function renderShot(ex) {
-    return '<img class="gp-shot" src="' + esc(ex.image) + '" loading="lazy" decoding="async" alt="' + esc(ex.imageAlt) + '" />';
+    return '<img class="gp-shot" src="' + esc(ex.image) + '" width="1400" height="933" loading="lazy" decoding="async" alt="' + esc(ex.imageAlt) + '" />';
   }
   function renderCap(ex) {
     return ex.caption ? '<figcaption class="gp-frame-cap">' + esc(ex.caption) + '</figcaption>' : '';
