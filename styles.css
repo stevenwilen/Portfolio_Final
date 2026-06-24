@@ -986,11 +986,29 @@ img, svg { display: block; max-width: 100%; }
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 0 var(--c-vermillion-2), 0 4px 10px -4px rgba(34, 28, 20, 0.24);
 }
 
+/* Low-pressure support line between the subheading and the button */
+.contact-support {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1.55;
+  margin: 14px 0 0;
+  max-width: var(--measure-lede);
+  text-wrap: pretty;
+}
+/* Visible fallback email below the button (copyable if mailto fails) */
 .contact-meta {
-  font-size: 13px;
+  margin: 16px 0 0;
+  font-size: 13.5px;
   color: rgba(0, 0, 0, 0.55);
   font-weight: 400;
 }
+.contact-meta a {
+  color: var(--c-vermillion-2);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.contact-meta a:hover { color: var(--c-vermillion); }
 
 .contact-phone-line {
   margin: 14px 0 0;
@@ -1483,20 +1501,14 @@ img, svg { display: block; max-width: 100%; }
   background-image: var(--paper-grain-light);
   background-repeat: repeat;
   background-size: 480px 480px;
-  filter:
-    drop-shadow(0 -3px 5px rgba(34, 28, 20, 0.09))
-    drop-shadow(0 4px 9px rgba(34, 28, 20, 0.10));
+  filter: drop-shadow(0 -3px 5px rgba(34, 28, 20, 0.09));
+  /* Torn TOP edge only; the bottom is flat so the Contact section's green
+     torn-top edge below is the single, clean transition (no clashing edges). */
   clip-path: polygon(
     0 11px, 5% 4px, 10% 10px, 15% 3px, 20% 11px, 25% 5px, 30% 9px,
     35% 2px, 40% 11px, 45% 6px, 50% 10px, 55% 3px, 60% 11px, 65% 5px,
     70% 9px, 75% 2px, 80% 11px, 85% 6px, 90% 10px, 95% 3px, 100% 9px,
-    100% calc(100% - 9px), 95% calc(100% - 3px), 90% calc(100% - 10px),
-    85% calc(100% - 6px), 80% calc(100% - 11px), 75% calc(100% - 2px),
-    70% calc(100% - 9px), 65% calc(100% - 5px), 60% calc(100% - 11px),
-    55% calc(100% - 3px), 50% calc(100% - 10px), 45% calc(100% - 6px),
-    40% calc(100% - 11px), 35% calc(100% - 2px), 30% calc(100% - 9px),
-    25% calc(100% - 5px), 20% calc(100% - 11px), 15% calc(100% - 3px),
-    10% calc(100% - 10px), 5% calc(100% - 4px), 0 calc(100% - 11px)
+    100% 100%, 0 100%
   );
 }
 #project > .section-eyebrow {
@@ -3354,8 +3366,8 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 38px minmax(0, 1fr) clamp(210px, 46%, 360px);
-  column-gap: clamp(12px, 1.4vw, 22px);
+  grid-template-columns: 38px minmax(0, 0.9fr) minmax(0, 1.5fr);
+  column-gap: clamp(14px, 1.6vw, 26px);
   align-items: center;
   padding: clamp(16px, 2vw, 24px) 0;
 }
@@ -3405,24 +3417,18 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   overflow: hidden;
 }
 .pz-win-bar { display: none; }
-.pz-win-body { position: relative; aspect-ratio: 16 / 11; }
-.pz-win--lg .pz-win-body { aspect-ratio: 16 / 10; }
-.pz-win-cap {
-  position: absolute;
-  right: 9px; bottom: 7px;
-  z-index: 2;
-  font-family: var(--ff-body);
-  font-size: 9.5px;
-  color: var(--c-ink-500);
-}
+/* The window sizes to its content: a real image shows full (its own aspect,
+   no crop); the placeholder mock falls back to a fixed aspect. */
+.pz-win-body { position: relative; }
+.pz-win-cap { display: none; }
 .pz-shot {
-  position: absolute; inset: 0;
-  z-index: 1;
-  width: 100%; height: 100%;
-  object-fit: cover;
   display: block;
+  width: 100%;
+  height: auto;          /* full screenshot, never cropped */
 }
-.pz-mock { position: absolute; inset: 0; z-index: 0; padding: 12px; }
+.pz-mock { position: relative; aspect-ratio: 16 / 11; padding: 12px; }
+/* When a real image is present, hide the placeholder mock behind it */
+.pz-win-body:has(.pz-shot) .pz-mock { display: none; }
 
 /* conversation mock */
 .pz-mock--chat { display: flex; flex-direction: column; justify-content: center; gap: 11px; }
@@ -3450,7 +3456,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
 .pz-draft-line:last-child { width: 70%; }
 
 /* final-guide mock — sidebar + document */
-.pz-mock--final { display: grid; grid-template-columns: 26% 1fr; gap: 11px; padding: 14px; }
+.pz-mock--final { display: grid; grid-template-columns: 26% 1fr; gap: 11px; padding: 14px; aspect-ratio: 16 / 10; }
 .pz-final-side { display: flex; flex-direction: column; gap: 8px; }
 .pz-final-side span { height: 6px; border-radius: 3px; background: rgba(34, 28, 20, 0.08); }
 .pz-final-side span:nth-child(1) { width: 72%; }
