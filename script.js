@@ -427,6 +427,17 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
+    // Warm the cache for this section's tab images so switching tabs shows the
+    // preview instantly instead of fetching (and briefly blanking) on click.
+    var preloadGP = function () {
+      items.forEach(function (btn) {
+        var ex = EXAMPLES[btn.getAttribute('data-example')];
+        if (ex && ex.image) { var im = new Image(); im.decoding = 'async'; im.src = ex.image; }
+      });
+    };
+    if ('requestIdleCallback' in window) requestIdleCallback(preloadGP, { timeout: 1500 });
+    else setTimeout(preloadGP, 600);
+
     // On phones each example section collapses to a single example (the tab
     // selector is hidden via CSS). Above the breakpoint it returns to the
     // desktop default. Keyed by section id: { mobile, desktop } example ids.
@@ -592,6 +603,20 @@ document.addEventListener('DOMContentLoaded', function () {
       select(items[next].getAttribute('data-example'), true);
     });
   });
+
+  // Warm the browser cache for every tab's images so switching tabs shows the
+  // deliverable instantly instead of fetching (and briefly blanking) on click.
+  // Done on idle so it never competes with the initial page load.
+  function preloadCG() {
+    Object.keys(CG).forEach(function (id) {
+      var ex = CG[id];
+      [ex.img, ex.card && ex.card.img].forEach(function (src) {
+        if (src) { var im = new Image(); im.decoding = 'async'; im.src = src; }
+      });
+    });
+  }
+  if ('requestIdleCallback' in window) requestIdleCallback(preloadCG, { timeout: 1500 });
+  else setTimeout(preloadCG, 600);
 });
 
 
