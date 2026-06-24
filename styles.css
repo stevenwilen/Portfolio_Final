@@ -4476,13 +4476,11 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
 
 /* Inspect the deliverable: the device/mockup lifts and scales a touch on hover. */
 .cg-device .gp-frame--deliv {
-  transition: transform var(--motion-medium) var(--ease-out),
-    box-shadow var(--motion-medium) var(--ease-out);
+  transition: transform var(--motion-medium) var(--ease-out);
 }
 @media (hover: hover) {
   .cg-device .gp-frame--deliv:hover {
     transform: translateY(-4px) scale(1.015);
-    box-shadow: 0 28px 50px -22px rgba(45, 35, 20, 0.4);
   }
 }
 
