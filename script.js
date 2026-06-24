@@ -289,81 +289,6 @@ document.addEventListener('DOMContentLoaded', function () {
       imageAlt: 'Event Day Role Guide package — a volunteer guide, role checklists, arrival instructions, an event map, a contact sheet, an issue form, and QR access.',
       caption: 'Event Day Roles · Staff handoff package in Google Drive'
     },
-    // ── Customer Guides (QR / web guides) ──
-    'cust-01': {
-      kind: 'cust',
-      category: 'For guests',
-      title: 'QR Guest Guide for a Beachside Rental',
-      url: 'guides.site/beach-rental',
-      lead: 'A sample mobile guide guests open from a QR code inside a vacation rental.',
-      problem: 'Guests often text the host for the same basic details: Wi-Fi, parking, house instructions, local recommendations, and checkout steps.',
-      howItWorks: 'A QR card sits inside the rental. Guests scan it and open a polished guide with the most important stay information in one place.',
-      built: ['Wi-Fi Info', 'Check-In Details', 'House Basics', 'Local Picks', 'Checkout Checklist', 'Host Contact'],
-      image: 'images/beach-rental-guide-screen.png',
-      deliverable: {
-        bg: 'images/beach-rental-background.jpg',
-        card: {
-          img: 'images/beach-rental-qr-card.png',
-          label: 'Printout Card',
-          alt: 'Printed QR welcome card for The Dune House beachside rental — "Scan to open your guest guide" with a QR code and an overview of what the guide includes.'
-        },
-        device: {
-          type: 'phone',
-          img: 'images/beach-rental-guide-screen.png',
-          label: 'Web Guide',
-          alt: 'The mobile guest guide opened on a phone — a Welcome screen with Start Here check-in and an expandable guide covering Wi-Fi, house basics, local recommendations, checkout steps, and host contact.'
-        }
-      },
-      caption: 'QR Guest Guide for a Beachside Rental · Scan the card, open the mobile guide'
-    },
-    'cust-02': {
-      kind: 'cust',
-      category: 'For attendees',
-      title: 'Business Workshop Guide',
-      url: 'guides.site/workshop',
-      lead: 'A sample web guide attendees open on a tablet after registering for a workshop.',
-      problem: 'Attendees often get event details through long emails, scattered messages, or basic PDFs that are easy to miss.',
-      howItWorks: 'A business owner submits a short intake form and is sent a polished guide — opened on any device — with the schedule, what to bring, preparation steps, and a checklist.',
-      built: ['Workshop Schedule', 'What to Bring', 'Preparation Steps', 'Business Checklist', 'Common Questions', 'Contact / Help'],
-      image: 'images/business-workshop-tablet-screen.png',
-      deliverable: {
-        bg: 'images/business-workshop-background.png',
-        card: {
-          img: 'images/business-workshop-form-card.png',
-          label: 'Confirmation',
-          alt: 'Registration confirmation for the Coastal Business Workshop — "Here\'s your guide" with an Open Attendee Guide button and a link to the workshop guide.'
-        },
-        device: {
-          type: 'tablet',
-          img: 'images/business-workshop-tablet-screen.png',
-          label: 'Web Guide',
-          alt: 'The finished Business Workshop Guide opened on a tablet — a sidebar with Start Here, Workshop Schedule, What to Bring, Preparation Steps, Business Checklist, Common Questions, and Contact / Help.'
-        }
-      },
-      caption: 'Business Workshop Guide · Register, then open the guide on a tablet'
-    },
-    'cust-03': {
-      kind: 'cust',
-      category: 'Student / Class Guide',
-      title: 'Student Robot Build Guide',
-      url: 'guides.site/robot-build',
-      lead: 'A sample build guide for a student robotics class or club.',
-      problem: 'Students need to build the robot step by step, but the instructions can easily become scattered across verbal explanations, slides, videos, and teacher notes.',
-      howItWorks: 'The student sees the assignment, opens the guide, and follows the build process from parts to wiring, code setup, testing, and troubleshooting.',
-      built: ['Classroom Assignment Card', 'Laptop Web Guide', 'Parts Overview', 'Build Steps', 'Wiring Guide', 'Code Setup', 'Testing Checklist', 'Troubleshooting Tips'],
-      result: 'Students get one clear place to follow the project instead of relying on scattered instructions.',
-      image: 'images/student-course-laptop-screen.png',
-      deliverable: {
-        bg: 'images/student-course-background.png',
-        device: {
-          type: 'laptop',
-          img: 'images/student-course-laptop-screen.png',
-          label: 'Web Guide',
-          alt: 'The Student Robot Build Guide opened on a laptop — a sidebar with Start Here, Parts, Build Steps, Wiring, Code, Testing, Troubleshooting, and Help, plus parts and simple wiring diagrams.'
-        }
-      },
-      caption: 'Student Robot Build Guide · Open the assignment, follow the build on a laptop'
-    }
   };
 
   function esc(s) {
@@ -431,47 +356,6 @@ document.addEventListener('DOMContentLoaded', function () {
     return ex.caption ? '<figcaption class="gp-frame-cap">' + esc(ex.caption) + '</figcaption>' : '';
   }
 
-  // Deliverable presentation: a flat delivery card (left) + the guide on a
-  // device frame (right, phone or tablet), over a faded in-context backdrop.
-  function renderDeliverable(ex) {
-    var d = ex.deliverable;
-    var dev = d.device || {};
-    var devType = ['phone', 'tablet', 'laptop'].indexOf(dev.type) >= 0 ? dev.type : 'phone';
-    function label(t) {
-      return t ? '<span class="gp-deliv-label">' + esc(t) + '</span>' : '';
-    }
-    var screenImg = '<img src="' + esc(dev.img) + '" loading="lazy" decoding="async" alt="' + esc(dev.alt || '') + '" />';
-    // The laptop has a screen lid sitting on an aluminium base deck; the phone
-    // and tablet are a single framed screen.
-    var device = devType === 'laptop'
-      ? '<div class="gp-laptop">' +
-          '<div class="gp-laptop-lid"><div class="gp-laptop-screen">' + screenImg + '</div></div>' +
-          '<div class="gp-laptop-base"></div>' +
-        '</div>'
-      : '<div class="gp-' + devType + '"><div class="gp-' + devType + '-screen">' + screenImg + '</div></div>';
-    // The delivery card is optional — some examples show just the device.
-    var cardCol = d.card
-      ? '<div class="gp-deliv gp-deliv--card">' +
-          label(d.card.label) +
-          '<figure class="gp-card">' +
-            '<img src="' + esc(d.card.img) + '" loading="lazy" decoding="async" alt="' + esc(d.card.alt || '') + '" />' +
-          '</figure>' +
-        '</div>'
-      : '';
-    var soloClass = d.card ? '' : ' gp-frame--solo';
-    var bgStyle = d.bg ? " style=\"--gp-deliv-bg:url('" + d.bg + "')\"" : '';
-    return '<figure class="gp-frame gp-frame--web gp-frame--deliv gp-frame--' + devType + soloClass + '"' + bgStyle + '>' +
-      '<div class="gp-stage">' +
-        cardCol +
-        '<div class="gp-deliv gp-deliv--' + devType + '">' +
-          label(dev.label) +
-          device +
-        '</div>' +
-      '</div>' +
-      renderCap(ex) +
-      '</figure>';
-  }
-
   function renderPreview(ex) {
     if (!ex.image) {
       return '<figure class="gp-frame gp-frame--placeholder">' +
@@ -480,26 +364,6 @@ document.addEventListener('DOMContentLoaded', function () {
         '<span class="gp-empty-label">Sample coming soon</span>' +
         '<span class="gp-empty-sub">' + esc(ex.title) + '</span>' +
         '</div></div></div></figure>';
-    }
-    if (ex.kind === 'cust') {
-      // Two artifacts (a delivery card + the live guide on a device) are
-      // presented as real deliverables on a faded, in-context background —
-      // no browser chrome. The device is a phone or a landscape tablet.
-      if (ex.deliverable) {
-        return renderDeliverable(ex);
-      }
-      // Flat web-guide screenshot → shown in a simple browser window.
-      return '<figure class="gp-frame gp-frame--web">' +
-        '<div class="gp-screen">' +
-          '<div class="gp-chrome gp-chrome--web" aria-hidden="true">' +
-            '<span class="gp-chrome-dots"><i></i><i></i><i></i></span>' +
-            '<span class="gp-url"><span class="gp-url-lock"></span>' + esc(ex.url || 'guides.site') + '</span>' +
-            '<span class="gp-chrome-spacer"></span>' +
-          '</div>' +
-          '<div class="gp-window">' + renderShot(ex) + '</div>' +
-        '</div>' +
-        renderCap(ex) +
-        '</figure>';
     }
     // Role: Drive-folder window + a strip of file tiles below.
     return '<figure class="gp-frame gp-frame--drive">' +
@@ -567,8 +431,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // selector is hidden via CSS). Above the breakpoint it returns to the
     // desktop default. Keyed by section id: { mobile, desktop } example ids.
     var MOBILE_ONLY = {
-      'customer-guides': { mobile: 'cust-01', desktop: 'cust-03' },
-      'guide-projects':  { mobile: 'role-01', desktop: 'role-01' }
+      'guide-projects': { mobile: 'role-01', desktop: 'role-01' }
     };
     var collapseCfg = MOBILE_ONLY[section.id];
     if (collapseCfg && window.matchMedia) {
