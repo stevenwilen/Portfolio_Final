@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Steven Wilen · Custom Guides</title>
+
+    <!-- Favicons (RealFaviconGenerator set, served from site root) -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#d8412a" />
+    <link rel="manifest" href="/site.webmanifest" />
+
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -35,7 +44,7 @@
               <span>Start a guide project</span>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
-            <a class="hero-cta-link" href="#guide-projects">
+            <a class="hero-cta-link" href="#customer-guides">
               <span>See examples</span>
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="5 12 12 19 19 12"/></svg>
             </a>
@@ -208,91 +217,6 @@
             <span class="cg-flow-step">I build the guide</span>
             <span class="cg-flow-arrow">&rarr;</span>
             <span class="cg-flow-step">Customer opens by link or QR</span>
-          </div>
-
-        </div>
-      </section>
-
-
-      <!-- ============================================================
-           SECTION 3: ROLE & TASK INSTRUCTIONS
-           Sibling guide-example showcase (context left, Drive-package
-           mockup right). The first tab (Front Desk Opening) is rendered
-           statically so the section works without JS; script.js swaps
-           content for the other tabs from a data map keyed by data-example.
-      ============================================================ -->
-      <section class="gp-section gp-section--role" id="guide-projects" data-kind="role" aria-labelledby="gp-role-heading">
-
-        <header class="gp-head" data-reveal>
-          <span class="gp-eyebrow">For your team</span>
-          <h2 id="gp-role-heading" class="gp-heading">Role &amp; Task Guide Systems</h2>
-          <p class="gp-subhead">Simple handoff packages for repeated shifts, roles, and tasks — with guides, checklists, forms, and tracking so staff know what to do and managers can see what happened.</p>
-        </header>
-
-        <!-- TOP: slim folder-style example tabs -->
-        <div class="gp-rail gp-rail--folder" role="tablist" aria-label="Role &amp; Task Guides examples" data-reveal data-reveal-delay="1">
-          <button type="button" class="gp-rail-item" role="tab" data-example="role-01" aria-selected="true" tabindex="0">
-            <span class="gp-rail-ic" aria-hidden="true"></span>
-            <span class="gp-rail-tx">
-              <span class="gp-rail-label"><span class="gp-rail-num">01</span>Front Desk Opening</span>
-              <span class="gp-rail-desc">Staff handoff package</span>
-            </span>
-          </button>
-          <button type="button" class="gp-rail-item" role="tab" data-example="role-02" aria-selected="false" tabindex="-1">
-            <span class="gp-rail-ic" aria-hidden="true"></span>
-            <span class="gp-rail-tx">
-              <span class="gp-rail-label"><span class="gp-rail-num">02</span>New Staff Training</span>
-              <span class="gp-rail-desc">New hire onboarding</span>
-            </span>
-          </button>
-          <button type="button" class="gp-rail-item" role="tab" data-example="role-03" aria-selected="false" tabindex="-1">
-            <span class="gp-rail-ic" aria-hidden="true"></span>
-            <span class="gp-rail-tx">
-              <span class="gp-rail-label"><span class="gp-rail-num">03</span>Event Day Roles</span>
-              <span class="gp-rail-desc">Volunteer instructions</span>
-            </span>
-          </button>
-        </div>
-
-        <!-- Expanded view: compact context (left) + Drive package (right) -->
-        <div class="gp-showcase" data-reveal data-reveal-delay="2">
-
-          <!-- LEFT: project context (active example role-01) -->
-          <div class="gp-context" id="gp-role-context" aria-live="polite">
-            <span class="gp-category">For staff</span>
-            <h3 class="gp-title">Front Desk Opening Handoff System</h3>
-            <p class="gp-lead">A sample handoff package for a small fitness studio's opening shift.</p>
-            <dl class="gp-facts">
-              <div class="gp-fact context-card gp-fact--problem">
-                <dt>Problem</dt>
-                <dd>Opening relied on memory and repeated explanations, so steps got missed and managers couldn't easily confirm the shift was done.</dd>
-              </div>
-              <div class="gp-fact context-card gp-fact--how">
-                <dt>How it works</dt>
-                <dd>Staff follow the guide, complete the checklist, and submit forms. Responses feed into the manager tracker automatically.</dd>
-              </div>
-              <div class="gp-fact context-card gp-fact--included">
-                <dt>What's included</dt>
-                <dd><ul class="gp-pills"><li>Start Here Guide</li><li>Opening Checklist</li><li>Completion Form</li><li>Issue Report Form</li><li>Manager Tracker</li><li>QR / Mobile Access</li></ul></dd>
-              </div>
-            </dl>
-          </div>
-
-          <!-- RIGHT: Drive-folder window + the files in the package -->
-          <div class="gp-preview" id="gp-role-preview">
-            <figure class="gp-frame gp-frame--drive">
-              <div class="gp-screen">
-                <div class="gp-chrome gp-chrome--drive" aria-hidden="true">
-                  <span class="gp-chrome-dots"><i></i><i></i><i></i></span>
-                </div>
-                <div class="gp-window">
-                  <img class="gp-shot" src="images/role-guides/role-front-desk-drive.webp" width="1536" height="1024" loading="lazy" decoding="async"
-                    alt="Google Drive package for the Front Desk Opening Handoff System — folder containing a Start Here Guide, Opening Checklist, Completion Form, Issue Report Form, Manager Tracker, printable cheat sheet, and a QR / mobile access card." />
-                </div>
-              </div>
-              <figcaption class="gp-frame-cap">Front Desk Opening · Staff handoff package in Google Drive</figcaption>
-            </figure>
-
           </div>
 
         </div>
@@ -500,7 +424,6 @@
           <div class="footer-col">
             <h4 class="footer-col-heading">Site</h4>
             <ul>
-              <li><a href="#guide-projects">Role &amp; task guide systems</a></li>
               <li><a href="#customer-guides">Customer guides</a></li>
               <li><a href="#project">Real project</a></li>
               <li><a href="#contact">Contact</a></li>

@@ -139,7 +139,7 @@
   --space-block-md:     clamp(2rem,   4vw, 3rem);
 
   /* Extra hero bottom padding that lets the floating artifacts hang low
-     without crossing the divider. The torn-paper mask + the #guide-projects
+     without crossing the divider. The torn-paper mask + the #customer-guides
      pull-up below both reference this so the visible divider sits back at
      its pre-extension position while the cards keep their placement. */
   --hero-extend:        clamp(7rem,   13vw, 13rem);
@@ -3507,16 +3507,6 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
 #customer-guides {
   margin-top: calc(-1 * var(--hero-extend));
 }
-/* No divider rule between the two showcases — the red editorial eyebrow
-   label at the top of each section marks the transition, and the sections'
-   stacked vertical padding keeps them feeling connected but distinct.
-   Trim the second section's top padding slightly so it reads as a continued
-   showcase rather than a far-separated section. */
-#guide-projects {
-  padding-top: clamp(1.25rem, 2.5vw, 2.5rem);
-  padding-bottom: clamp(2.5rem, 5vw, 5rem);
-}
-
 /* ---- Head ---- */
 .gp-head {
   max-width: 620px;
@@ -3568,8 +3558,6 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   margin-inline: auto;
   align-items: start; /* top-align the caption with the screenshot frame */
 }
-/* Center the context block against the taller preview composition */
-#guide-projects .gp-context { align-self: center; }
 .gp-context { grid-area: context; }
 .gp-preview { grid-area: preview; }
 
@@ -4355,8 +4343,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
 
 /* ---- Responsive ---- */
 @media (max-width: 900px) {
-  .gp-showcase,
-  #guide-projects .gp-showcase {
+  .gp-showcase {
     grid-template-columns: 1fr;
     /* Stacked: the Drive package (with its attached flow callout) leads, then
        the context text. */
@@ -4385,8 +4372,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   /* Both example sections collapse to a single example on phones — hide the
      tab selectors; JS forces the right example to render (Beach Rental for
      Customer Guides, Front Desk Opening for Role & Task). */
-  #customer-guides .gp-rail,
-  #guide-projects .gp-rail { display: none; }
+  #customer-guides .gp-rail { display: none; }
   /* Show a single deliverable (the device mockup) — hide the delivery card */
   .gp-frame--deliv .gp-deliv--card { display: none; }
   /* Hide the faded in-context background photo on mobile */
