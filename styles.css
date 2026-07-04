@@ -1025,6 +1025,35 @@ img, svg { display: block; max-width: 100%; }
 }
 .contact-meta a:hover { color: var(--c-vermillion); }
 
+/* Contact card — mobile tuning. The default 40px card padding on top of the
+   page gutter squeezes the inner width until the CTA label wraps to two lines
+   with the arrow stranded to the right. Reclaim width, make the button
+   full-width so its label stays on one line, and calm the copy sizes so the
+   stacked text reads as grouped units instead of a wall. */
+@media (max-width: 640px) {
+  .contact-card {
+    padding: 34px 20px 36px;
+    transform: rotate(-0.4deg);
+  }
+  #contact-body {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .contact-support {
+    font-size: 13.5px;
+  }
+  .contact-actions {
+    width: 100%;
+    margin-top: 22px;
+  }
+  #contact-email-link {
+    width: 100%;
+    justify-content: center;
+    padding: 15px 16px;
+    font-size: 15px;
+  }
+}
+
 .contact-phone-line {
   margin: 14px 0 0;
   font-size: 14px;
@@ -4531,6 +4560,13 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
 /* Always show the access card (override the generic mobile hide) so every
    example shows access + guide together. */
 .cg .gp-frame--deliv .gp-deliv--card { display: flex; }
+/* ...except on phones, where the context card (Workshop form card / Rental QR
+   card) would stack above the device and crowd the screen — show the guide
+   deliverable alone. Only Workshop + Rental have a card; the Student laptop
+   is solo, so this doesn't affect it. */
+@media (max-width: 640px) {
+  .cg .gp-frame--deliv .gp-deliv--card { display: none; }
+}
 
 /* ---- Supporting panels ---- */
 .cg-aside {
