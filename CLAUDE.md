@@ -11,26 +11,30 @@ Three files, no build step, no dependencies: `index.html`, `styles.css`,
 copy-pasted from a component library (21st.dev, shadcn, etc.) is React + Tailwind
 and has to be hand-ported to the tokens below — it will not drop in.
 
-## Deploy — read this before assuming git is the source of truth
+## Deploy
 
-Hosted on Vercel at https://stevenwilen.dev. **The deploy source is not
-identified.** The Vercel account reachable from this machine does not contain the
-project, there is no `.vercel/` directory, and no second copy of the repo exists
-locally.
+Hosted on Vercel at https://stevenwilen.dev, deployed automatically from
+`main` of `github.com/stevenwilen/portfolio_final`. Confirmed on 2026-08-12: a
+push to `main` was live within a minute, byte-identical to the working tree.
 
-This has already caused one silent divergence: on 2026-08-12 the live site was
-found running commit `16bad9d` *plus* four changes that existed in no commit at
-all — a favicon set, the removal of an entire section, an anchor fix, and a
-mobile contact-card rule. They were recovered in `51ff430`.
+The Vercel *account* that owns the project is not the one reachable from this
+machine (the connected account holds five unrelated projects), so deployment
+logs and project settings cannot be inspected from here — only the result, by
+fetching the site.
 
-So:
+**A push to `main` publishes immediately.** Test locally first; there is no
+staging step between the push and the live site.
 
-- Before assuming the repo matches production, **diff against the deploy**:
-  `curl -sS https://stevenwilen.dev/styles.css -o /tmp/live.css` then compare with
-  `diff --strip-trailing-cr`. Byte comparison via `git hash-object` also works.
-- Never leave the deploy ahead of `main`. If you change the live site, commit it.
-- Work on a branch, test locally, and only push when the change is confirmed —
-  a push may or may not trigger a redeploy, which is itself unknown.
+Watch for drift in the other direction. On 2026-08-12 the live site was found
+running commit `16bad9d` *plus* four changes that were not in any commit — the
+work had been deployed from a machine whose commits had not been pushed. (Those
+commits, `8638d5d` and `464c6c0`, later arrived upstream and proved identical.)
+If more than one machine edits this site, verify before assuming git is current:
+
+```sh
+curl -sS https://stevenwilen.dev/styles.css -o /tmp/live.css
+diff --strip-trailing-cr styles.css /tmp/live.css
+```
 
 ## Design tokens
 
