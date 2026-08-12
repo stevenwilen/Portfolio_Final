@@ -3124,18 +3124,48 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   .hero-float--guide  { width: 300px; top: 6%; right: 1%; }
   .hero-float--call   { width: 280px; top: 40%; right: -4%; }
 }
-/* Small viewports (≤640px): drop the artifacts entirely.
-   Two of them used to be kept, tucked under the torn divider in the bottom
-   corners. Measured on a 393px viewport that left them 128px and 118px wide in
-   a 64px band between the "See examples" link and the divider, bleeding 3% off
-   each edge — at that size the guide inside a card is unreadable, so they read
-   as two accidental crops rather than artifacts, and the right-hand one landed
-   a single pixel from the link. There is no width here that makes them legible
-   without crowding the call to action, so the hero keeps the headline, the
-   subhead and the CTA, and the guide imagery gets properly introduced by the
-   laptop mockup in Customer Guides immediately below. */
+/* Small viewports (≤640px): keep two artifacts, but give them room to be
+   artifacts. Previously they were squeezed into the 64px band left between the
+   "See examples" link and the torn divider at 128px and 118px wide, bleeding 3%
+   off each edge — which read as two accidental crops rather than guides, with
+   the right-hand one landing a pixel from the link. The fix is space, not
+   removal: the hero takes extra bottom padding on phones purely to open that
+   band to ~150px, so the pair can sit larger, fully on-screen, clear of the
+   CTA, and still tuck under the divider the way they do on desktop. */
 @media (max-width: 640px) {
+  #hero { padding-block-end: calc(var(--space-section-y-lg) + var(--hero-extend) + 92px); }
+
   .hero-float { display: none; }
+  .hero-float--notes,
+  .hero-float--checklist {
+    display: block;
+    opacity: 1;
+    translate: none;                    /* hold still — no scroll parallax drift */
+    rotate: calc(var(--rot) * 1deg);
+    top: auto;
+    --z: 5;                             /* under the mask (z-index 6) so they tuck behind it */
+    box-shadow: 0 10px 22px -12px rgba(74, 56, 40, 0.34);
+  }
+  /* Full opacity — these two skip the cream veil the desktop cards wear */
+  .hero-float--notes::after,
+  .hero-float--checklist::after { opacity: 0; }
+
+  .hero-float--notes {
+    left: 4%; right: auto;
+    width: min(43vw, 172px);
+    --rot: -4;
+    bottom: calc(var(--hero-extend) - 42px);
+  }
+  /* The rental card is portrait where the lesson card is landscape, so matching
+     their widths would make it half as tall again and run it straight into the
+     CTA. It is narrower and tucked deeper instead, which lands both cards on a
+     similar visible height. */
+  .hero-float--checklist {
+    left: auto; right: 4%;
+    width: min(31vw, 124px);
+    --rot: 4;
+    bottom: calc(var(--hero-extend) - 62px);
+  }
 }
 
 /* Reduced motion: cancel JS-driven transform */
@@ -4172,11 +4202,21 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
 }
 
 /* Realistic iPad-style frame — even bezel, rounded corners, front camera dot */
+/* Bezel and corner radius are sized in cqw — percentages of the device's own
+   width — so the tablet keeps one set of proportions at every size. They were
+   fixed pixels, which meant the frame only looked right at one width: at 405px
+   wide the bezel was 3.0% and the corners 7.9% of the width, but at the 212px
+   the device renders at on a phone those same pixels became 5.7% and 15.1%,
+   which is why it read as a thick, over-rounded toy rather than a tablet.
+   For reference an iPad is roughly 5% bezel and 6.7% corner radius; this sits a
+   little slimmer at 3.8% / 6.4%, which suits the flat illustration style. */
+.gp-frame--deliv .gp-deliv--tablet { container-type: inline-size; }
 .gp-frame--deliv .gp-tablet {
   position: relative;
   width: 100%;
+  /* px fallback first, for anything without container query support */
   padding: 12px;
-  border-radius: 32px;
+  border-radius: 26px;
   background:
     linear-gradient(150deg, #1c1a17 0%, #0c0b09 24%, #050504 52%, #0c0b09 78%, #1c1a17 100%);
   box-shadow:
@@ -4202,9 +4242,25 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
 }
 .gp-frame--deliv .gp-tablet-screen {
   position: relative;
-  border-radius: 20px;
+  border-radius: 15px;
   overflow: hidden;
   background: #fff;
+}
+
+/* Proportional frame. On a real device the screen's corner radius is the outer
+   radius minus the bezel, so these three values stay locked together. */
+@supports (container-type: inline-size) {
+  .gp-frame--deliv .gp-tablet {
+    padding: 3.8cqw;
+    border-radius: 6.4cqw;
+  }
+  .gp-frame--deliv .gp-tablet::before {
+    /* Front camera, centred in the top bezel */
+    top: 1.35cqw;
+    width: 1.1cqw;
+    height: 1.1cqw;
+  }
+  .gp-frame--deliv .gp-tablet-screen { border-radius: 2.6cqw; }
 }
 .gp-frame--deliv .gp-tablet-screen img { display: block; width: 100%; height: auto; }
 /* Glass: a faint diagonal sheen over the screen */
@@ -4960,4 +5016,32 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
     transition-duration: 1ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+
+/* =============================================================
+   PHONE: TRIM THE CLOSING SECTIONS
+   Contact + footer ran to roughly 1400px on a 393px screen, and most
+   of it repeated something already said. On a phone the closing ask
+   should be one question, one sentence, and one button — everything
+   below is either a second way to do what the button already does or
+   browsing material nobody scrolls a phone for.
+   All of it stays in the DOM for wider screens; this only hides it
+   where the space genuinely costs something.
+   ============================================================= */
+@media (max-width: 640px) {
+  /* Secondary reassurance — the heading and body already carry the ask */
+  .contact-support { display: none; }
+
+  /* "Or email me directly at …" duplicates the button's mailto:, and the
+     address is still listed in the footer directly below it */
+  .contact-meta { display: none; }
+
+  /* Six drifting artifact chips over a card this size read as clutter
+     rather than atmosphere, and they sit behind the text */
+  .contact-card-fx { display: none; }
+
+  /* A six-item list of formats is browsing content; the phone footer keeps
+     identity, navigation and the address */
+  .footer-col--formats { display: none; }
 }

@@ -175,17 +175,17 @@
 
           <!-- Compact segmented example selector -->
           <div class="cg-rail" role="tablist" aria-label="Customer Guides examples" data-reveal data-reveal-delay="1">
-            <button type="button" class="cg-tab" role="tab" data-example="cust-03" aria-selected="true" tabindex="0">
-              <span class="cg-tab-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="8" width="15" height="11" rx="2.5"/><path d="M12 8V5"/><circle cx="12" cy="4" r="1"/><circle cx="9.3" cy="13" r="1.1"/><circle cx="14.7" cy="13" r="1.1"/><path d="M9.5 16.2h5"/></svg></span>
-              <span class="cg-tab-label">Student Build Guide</span>
-            </button>
-            <button type="button" class="cg-tab" role="tab" data-example="cust-02" aria-selected="false" tabindex="-1">
+            <button type="button" class="cg-tab" role="tab" data-example="cust-02" aria-selected="true" tabindex="0">
               <span class="cg-tab-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><rect x="6" y="4" width="12" height="16" rx="1.5"/><path d="M9.5 8h2M14.5 8h2M9.5 12h2M14.5 12h2M10.5 20v-3h3v3"/></svg></span>
               <span class="cg-tab-label">Workshop Guide</span>
             </button>
             <button type="button" class="cg-tab" role="tab" data-example="cust-01" aria-selected="false" tabindex="-1">
               <span class="cg-tab-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9"/><path d="M12 12c-1-3-4.5-4-7.5-2.7 2.4.2 3.9 1.4 4.6 3.1"/><path d="M12 12c1-3 4.5-4 7.5-2.7-2.4.2-3.9 1.4-4.6 3.1"/><path d="M12 12c-.6-3 .4-6.3 2.4-7.8-.4 2.6-.6 4.6-.9 6.6"/><path d="M9 21h6"/></svg></span>
               <span class="cg-tab-label">Rental Guest Guide</span>
+            </button>
+            <button type="button" class="cg-tab" role="tab" data-example="cust-03" aria-selected="false" tabindex="-1">
+              <span class="cg-tab-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="8" width="15" height="11" rx="2.5"/><path d="M12 8V5"/><circle cx="12" cy="4" r="1"/><circle cx="9.3" cy="13" r="1.1"/><circle cx="14.7" cy="13" r="1.1"/><path d="M9.5 16.2h5"/></svg></span>
+              <span class="cg-tab-label">Student Build Guide</span>
             </button>
           </div>
 
@@ -195,16 +195,23 @@
             <!-- LEFT: the access card + the live guide on its device -->
             <div class="cg-stage-wrap">
               <div class="cg-device" id="cg-device">
-                <figure class="gp-frame gp-frame--deliv gp-frame--laptop gp-frame--solo">
+                <!-- Rendered statically so the section works before/without JS.
+                     This must mirror what buildDevice() in script.js emits for
+                     the FIRST tab — currently cust-02, the Workshop Guide. If
+                     the tab order changes, this block changes with it. -->
+                <figure class="gp-frame gp-frame--deliv gp-frame--tablet">
                   <div class="gp-stage">
-                    <div class="gp-deliv gp-deliv--laptop">
-                      <div class="gp-laptop">
-                        <div class="gp-laptop-lid"><div class="gp-laptop-screen">
-                          <img id="cg-device-img" src="images/customer-guides/customer-robot-laptop-guide.webp" width="1400" height="933" loading="lazy" decoding="async"
-                            alt="The Student Robot Build Guide opened on a laptop — a sidebar with Start Here, Parts, Build Steps, Wiring, Code, Testing, Troubleshooting, and Help, plus parts and simple wiring diagrams." />
-                        </div></div>
-                        <div class="gp-laptop-base"></div>
-                      </div>
+                    <div class="gp-deliv gp-deliv--card">
+                      <figure class="gp-card">
+                        <img src="images/customer-guides/customer-workshop-form-card.webp" width="760" height="1333" loading="lazy" decoding="async"
+                          alt="Registration confirmation for the Coastal Business Workshop — &quot;Here&rsquo;s your guide&quot; with an Open Attendee Guide button and a link to the workshop guide." />
+                      </figure>
+                    </div>
+                    <div class="gp-deliv gp-deliv--tablet">
+                      <div class="gp-tablet"><div class="gp-tablet-screen">
+                        <img id="cg-device-img" src="images/customer-guides/customer-workshop-tablet-guide.webp" width="1000" height="1333" loading="lazy" decoding="async"
+                          alt="The finished Business Workshop Guide opened on a tablet — a sidebar with Start Here, Workshop Schedule, What to Bring, Preparation Steps, Business Checklist, Common Questions, and Contact / Help." />
+                      </div></div>
                     </div>
                   </div>
                 </figure>
@@ -218,7 +225,7 @@
                   <span class="cg-note-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5"/><path d="M12 16.4h.01"/></svg></span>
                   <span class="cg-note-label">Problem</span>
                 </h3>
-                <p class="cg-note-body" id="cg-problem">Students need one place to follow the build instead of piecing together instructions from slides, videos, verbal explanations, and notes.</p>
+                <p class="cg-note-body" id="cg-problem">Attendees often miss important details when event information is scattered across emails, messages, and PDFs.</p>
               </article>
 
               <article class="cg-note-card cg-note-card--guide context-card">
@@ -228,10 +235,9 @@
                 </h3>
                 <ul class="cg-guide-list" id="cg-guide">
                   <li class="cg-guide-item">Start here</li>
-                  <li class="cg-guide-item">Build steps</li>
-                  <li class="cg-guide-item">Parts + wiring</li>
-                  <li class="cg-guide-item">Code + testing</li>
-                  <li class="cg-guide-item">Troubleshooting help</li>
+                  <li class="cg-guide-item">Schedule + what to bring</li>
+                  <li class="cg-guide-item">Preparation steps</li>
+                  <li class="cg-guide-item">Checklist + help</li>
                 </ul>
               </article>
 
@@ -240,7 +246,7 @@
                   <span class="cg-note-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.3 12.3l2.6 2.6 4.8-5.3"/></svg></span>
                   <span class="cg-note-label">Result</span>
                 </h3>
-                <p class="cg-note-body" id="cg-result">Students can build, wire, code, and test the robot from one clear guide.</p>
+                <p class="cg-note-body" id="cg-result">Attendees arrive prepared with one guide for the workshop instead of digging through scattered messages.</p>
               </article>
             </aside>
 
@@ -465,7 +471,7 @@
               <li><a href="#contact">Contact</a></li>
             </ul>
           </div>
-          <div class="footer-col">
+          <div class="footer-col footer-col--formats">
             <h4 class="footer-col-heading">Formats</h4>
             <ul>
               <li>Reference guides</li>

@@ -71,8 +71,25 @@ hardcode values that a token already covers.
   the page into horizontal scroll on small phones.
 - **Hero floats bleed off both edges on purpose** above 640px. An automated
   "element is outside the viewport" check will flag them; that is not a bug.
-  They are hidden entirely ≤640px — there is no width there that makes them
-  legible without crowding the CTA.
+  ≤640px only two are kept (`--notes`, `--checklist`), tucked under the torn
+  divider. They need room to read as guides rather than crops, so the hero
+  takes an extra 92px of bottom padding on phones purely to open that band —
+  if you reduce that padding, the pair collides with the CTA. The rental card
+  is portrait and the lesson card landscape, so their widths are deliberately
+  unequal to land both on a similar visible height.
+- **The guide tabs' first tab is duplicated in static HTML.** `script.js`
+  renders tabs 2 and 3 on click, but the first is written out in `index.html`
+  so the section works before/without JS. Reordering the tabs means also
+  rewriting that static block — device frame, image, and the Problem / In the
+  guide / Result copy — to mirror what `buildDevice()` emits for the new first
+  tab. Current order: Workshop (`cust-02`, tablet) · Rental (`cust-01`, phone) ·
+  Student Build (`cust-03`, laptop).
+- **Device mockup proportions are sized in `cqw`**, not pixels, via
+  `container-type: inline-size` on the device wrapper. Fixed px bezels only look
+  right at one width — the tablet's 12px/32px read as 3.0%/7.9% at desktop size
+  but 5.7%/15.1% on a phone, which is why it looked like a thick toy. Bezel,
+  corner radius, screen radius and the camera dot must scale together; px
+  fallbacks are kept ahead of the `@supports` block.
 - `html` and `body` both set `overflow-x: clip`. Clipping on `body` alone does
   not stop overflow from widening the layout viewport.
 
@@ -102,6 +119,11 @@ boundary), 768, 820, 900/901 (proof-board boundary), 1024, 1180/1181, 1440.
   `tablet`. A grep-based sweep marks those live rules dead and silently breaks
   two of the three guide tabs. Removal needs runtime CSS coverage taken with all
   three tabs exercised, plus a pixel diff.
-- At 600px wide the page is the tallest it gets (~6300px), because that width
+- At 600px wide the page is the tallest it gets (~6200px), because that width
   lands in the phone contact-sheet layout with large thumbnails. Correct, just
   tall; an uncommon viewport.
+- **Phones hide several blocks rather than shrinking them** — the contact
+  support paragraph, the duplicate "or email me directly" line, the six drifting
+  contact chips, and the footer's Formats column. All stay in the DOM for wider
+  screens; the closing ask on a phone is one question, one sentence, one button.
+  See the trim block at the end of `styles.css`.
