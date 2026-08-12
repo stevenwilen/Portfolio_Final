@@ -3150,21 +3150,35 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   .hero-float--notes::after,
   .hero-float--checklist::after { opacity: 0; }
 
-  .hero-float--notes {
-    left: 4%; right: auto;
-    width: min(43vw, 172px);
-    --rot: -4;
-    bottom: calc(var(--hero-extend) - 42px);
+  /* These are atmosphere, not content — nobody is meant to read them. So they
+     are sized to feel like real guides sitting on a desk rather than to fit
+     whole: wide, bleeding off the edge the way the desktop cards do, and
+     cropped to a landscape slot so the extra width does not also buy extra
+     height and push them into the CTA. object-position keeps the top of each
+     guide in frame, which is the part that still reads as a document. */
+  /* Extra class on the float raises specificity above the per-card
+     aspect-ratio rules further down the sheet, which would otherwise win on
+     source order and leave these at their full document height. */
+  .hero-float.hero-float--notes .hero-float-slot,
+  .hero-float.hero-float--checklist .hero-float-slot { aspect-ratio: 5 / 3; }
+  .hero-float.hero-float--notes .hero-float-img,
+  .hero-float.hero-float--checklist .hero-float-img {
+    object-fit: cover;
+    object-position: top center;
+    transform: none;                    /* skip the video-chrome zoom crop */
   }
-  /* The rental card is portrait where the lesson card is landscape, so matching
-     their widths would make it half as tall again and run it straight into the
-     CTA. It is narrower and tucked deeper instead, which lands both cards on a
-     similar visible height. */
+
+  .hero-float--notes {
+    left: -13%; right: auto;
+    width: min(78vw, 306px);
+    --rot: -4;
+    bottom: calc(var(--hero-extend) - 68px);
+  }
   .hero-float--checklist {
-    left: auto; right: 4%;
-    width: min(31vw, 124px);
+    left: auto; right: -11%;
+    width: min(66vw, 260px);
     --rot: 4;
-    bottom: calc(var(--hero-extend) - 62px);
+    bottom: calc(var(--hero-extend) - 34px);
   }
 }
 
@@ -4880,25 +4894,13 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
 }
 .cg-flow-arrow { color: var(--c-ink-400); font-size: 15px; line-height: 1; }
 
-/* Phones: the three steps cannot sit on one line, and letting them wrap broke
-   the strip mid-sequence — "Send material → I build the guide →" then a
-   stranded arrow at the end of the line with the last step orphaned below it.
-   Stack the sequence instead and turn the arrows downward so the flow still
-   reads as a sequence rather than a wrapped sentence. */
+/* Phones: drop the process strip entirely. The three steps cannot sit on one
+   line, and stacking them turned a one-line aside into a three-row list that
+   competed with the example it sits under. It is context, not an action, and
+   the section already reads without it. It stays for wider screens, where it
+   costs a single line. */
 @media (max-width: 640px) {
-  .cg-flow {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 7px;
-    width: auto;
-    margin-inline: auto;
-  }
-  .cg-flow-arrow {
-    rotate: 90deg;
-    margin-inline-start: 2px;
-    font-size: 13px;
-    opacity: 0.75;
-  }
+  .cg-flow { display: none; }
 }
 
 /* ============================================================

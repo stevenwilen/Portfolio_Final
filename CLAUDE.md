@@ -72,11 +72,14 @@ hardcode values that a token already covers.
 - **Hero floats bleed off both edges on purpose** above 640px. An automated
   "element is outside the viewport" check will flag them; that is not a bug.
   ≤640px only two are kept (`--notes`, `--checklist`), tucked under the torn
-  divider. They need room to read as guides rather than crops, so the hero
-  takes an extra 92px of bottom padding on phones purely to open that band —
-  if you reduce that padding, the pair collides with the CTA. The rental card
-  is portrait and the lesson card landscape, so their widths are deliberately
-  unequal to land both on a similar visible height.
+  divider and bleeding off the side edges. **They are decoration — not meant to
+  be seen whole.** They are sized to feel like real guides on a desk, so on
+  phones their slots are overridden to a 5:3 landscape crop with
+  `object-position: top`; without that override the extra width also buys extra
+  height and they collide with the CTA. That override needs an extra class
+  (`.hero-float.hero-float--notes …`) to outrank the per-card `aspect-ratio`
+  rules further down the sheet. The hero also takes 92px of extra bottom
+  padding on phones purely to open the band they sit in.
 - **The guide tabs' first tab is duplicated in static HTML.** `script.js`
   renders tabs 2 and 3 on click, but the first is written out in `index.html`
   so the section works before/without JS. Reordering the tabs means also
@@ -124,6 +127,7 @@ boundary), 768, 820, 900/901 (proof-board boundary), 1024, 1180/1181, 1440.
   tall; an uncommon viewport.
 - **Phones hide several blocks rather than shrinking them** — the contact
   support paragraph, the duplicate "or email me directly" line, the six drifting
-  contact chips, and the footer's Formats column. All stay in the DOM for wider
-  screens; the closing ask on a phone is one question, one sentence, one button.
-  See the trim block at the end of `styles.css`.
+  contact chips, the footer's Formats column, and the `.cg-flow` process strip
+  under the examples. All stay in the DOM for wider screens; the closing ask on
+  a phone is one question, one sentence, one button. See the trim block at the
+  end of `styles.css`.
