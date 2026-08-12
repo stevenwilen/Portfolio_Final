@@ -1,6 +1,8 @@
 {
   "name": "Steven Wilen · Custom Guides",
   "short_name": "Steven Wilen",
+  "description": "Custom guides for things that are hard to explain.",
+  "start_url": "/",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -13,9 +15,21 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    },
+    {
+      "src": "/favicon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
     }
   ],
-  "theme_color": "#d8412a",
-  "background_color": "#f7ecd3",
+  "theme_color": "#eadcbd",
+  "background_color": "#fdf6e3",
   "display": "standalone"
 }

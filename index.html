@@ -3,15 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Steven Wilen · Custom Guides</title>
 
-    <!-- Favicons (RealFaviconGenerator set, served from site root) -->
+    <title>Steven Wilen · Custom Guides</title>
+    <meta
+      name="description"
+      content="I turn repeated staff instructions and customer questions into clear, polished guides — QR or link-based, ready to hand to guests, students, and new hires."
+    />
+    <link rel="canonical" href="https://stevenwilen.dev/" />
+
+    <!-- Matches the hero's top edge so mobile browser chrome blends into the page -->
+    <meta name="theme-color" content="#eadcbd" />
+
+    <!-- Favicons generated from images/pfp.jpg. No SVG variant: the icon is a
+         photograph, so an SVG could only wrap a raster and previously shipped
+         2.4 MB to do it. PNG + ICO covers every target. -->
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="#d8412a" />
     <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Social preview -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://stevenwilen.dev/" />
+    <meta property="og:title" content="Steven Wilen · Custom Guides" />
+    <meta
+      property="og:description"
+      content="I turn repeated staff instructions and customer questions into clear guides."
+    />
+    <meta property="og:image" content="https://stevenwilen.dev/og-image.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Steven Wilen — custom guides for things that take time to explain." />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Fonts load via <link> rather than an @import inside styles.css: an
+         @import cannot start downloading until the stylesheet has been fetched
+         and parsed, which serialises two round trips before any text renders.
+         Only roman 400–800 is requested — those are the weights actually used,
+         and dropping the italic axis drops a whole font file. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400..800&display=swap"
+    />
 
     <link rel="stylesheet" href="styles.css" />
   </head>
