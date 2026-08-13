@@ -12,7 +12,7 @@
     <link rel="canonical" href="https://stevenwilen.dev/" />
 
     <!-- Matches the hero's top edge so mobile browser chrome blends into the page -->
-    <meta name="theme-color" content="#efeae0" />
+    <meta name="theme-color" content="#eceef1" />
 
     <!-- Favicons generated from images/pfp.jpg. No SVG variant: the icon is a
          photograph, so an SVG could only wrap a raster and previously shipped
@@ -87,50 +87,43 @@
           </div>
         </div>
 
-        <!-- Guide strip. Replaces seven scattered, rotated paper artifacts:
-             same breadth, one readable band, and it moves. Duplicated once so
-             the CSS animation can loop seamlessly; the copy is aria-hidden so
-             screen readers hear the list once. -->
-        <div class="strip" aria-label="Guides I have built">
-          <div class="strip-track">
-            <ul class="strip-row">
-              <li><img src="images/hero/hero-rental-welcome-guide.webp" width="720" height="960" alt="Beachside rental welcome guide" loading="lazy" decoding="async" /></li>
-              <li><img src="images/hero/hero-workshop-email.webp" width="820" height="273" alt="Workshop confirmation email" loading="lazy" decoding="async" /></li>
-              <li><img src="images/hero/hero-robot-build-guide.webp" width="720" height="568" alt="Student robot build guide" loading="lazy" decoding="async" /></li>
-              <li><img src="images/hero/hero-front-desk-guide.webp" width="720" height="405" alt="Front desk opening guide" loading="lazy" decoding="async" /></li>
-              <li><img src="images/hero/hero-staff-training-guide.webp" width="720" height="398" alt="Staff training guide" loading="lazy" decoding="async" /></li>
-              <li><img src="images/hero/hero-lesson-guide.webp" width="720" height="576" alt="Lesson guide page" loading="lazy" decoding="async" /></li>
-              <li><img src="images/hero/hero-reference-guide.webp" width="720" height="960" alt="Reference guide" loading="lazy" decoding="async" /></li>
-            </ul>
-            <ul class="strip-row" aria-hidden="true">
-              <li><img src="images/hero/hero-rental-welcome-guide.webp" width="720" height="960" alt="" loading="lazy" decoding="async" /></li>
-              <li><img src="images/hero/hero-workshop-email.webp" width="820" height="273" alt="" loading="lazy" decoding="async" /></li>
-              <li><img src="images/hero/hero-robot-build-guide.webp" width="720" height="568" alt="" loading="lazy" decoding="async" /></li>
-              <li><img src="images/hero/hero-front-desk-guide.webp" width="720" height="405" alt="" loading="lazy" decoding="async" /></li>
-              <li><img src="images/hero/hero-staff-training-guide.webp" width="720" height="398" alt="" loading="lazy" decoding="async" /></li>
-              <li><img src="images/hero/hero-lesson-guide.webp" width="720" height="576" alt="" loading="lazy" decoding="async" /></li>
-              <li><img src="images/hero/hero-reference-guide.webp" width="720" height="960" alt="" loading="lazy" decoding="async" /></li>
-            </ul>
+        <!-- Faded devices behind the headline. Decoration only: aria-hidden,
+             no images, and every screen is drawn in CSS. -->
+        <div class="hero-bg" aria-hidden="true">
+
+          <div class="hero-dev hero-dev--laptop hero-dev--a">
+            <div class="hero-dev-screen">
+              <span class="hd-bar"></span>
+              <span class="hd-photo"></span>
+              <span class="hd-line hd-line--title"></span>
+              <span class="hd-line"></span>
+              <span class="hd-line hd-line--short"></span>
+              <span class="hd-rows"><i></i><i></i><i></i></span>
+            </div>
+            <div class="hero-dev-base"></div>
           </div>
+
+          <div class="hero-dev hero-dev--phone hero-dev--b">
+            <div class="hero-dev-screen">
+              <span class="hd-photo hd-photo--tall"></span>
+              <span class="hd-line hd-line--title"></span>
+              <span class="hd-line hd-line--short"></span>
+              <span class="hd-rows"><i></i><i></i><i></i><i></i></span>
+            </div>
+          </div>
+
+          <div class="hero-dev hero-dev--tablet hero-dev--c">
+            <div class="hero-dev-screen">
+              <span class="hd-bar"></span>
+              <span class="hd-line hd-line--title"></span>
+              <span class="hd-rows hd-rows--dense"><i></i><i></i><i></i><i></i><i></i></span>
+              <span class="hd-photo"></span>
+            </div>
+          </div>
+
         </div>
 
-
       </section>
-
-
-      <!-- ============================================================
-           SECTION 2: CUSTOMER GUIDES
-           Case-study showcase: heading + a compact segmented example
-           selector, then a two-column showcase - a dominant access-card +
-           device deliverable on the left, three supporting note panels
-           (Problem / In the guide / Result) on the right - and a one-line
-           process strip below. The Student Build Guide is rendered
-           statically; script.js swaps the deliverable + panels on select.
-      ============================================================ -->
-      <!-- Range strip: the repositioning in one row. The old site said "guides
-           for things you repeatedly explain", which read as internal training.
-           This says the subject can be anything and the format is always the
-           same, which is the actual offer. -->
       <section id="range" aria-labelledby="range-heading">
         <div class="range-wrap">
           <h2 id="range-heading" class="range-heading" data-reveal>A guide for anything.</h2>
@@ -230,8 +223,6 @@
             </aside>
 
           </div>
-
-          <!-- One-line process strip -->
           <div class="cg-flow" data-reveal data-reveal-delay="3" aria-hidden="true">
             <span class="cg-flow-step">Send material</span>
             <span class="cg-flow-arrow">&rarr;</span>
@@ -241,126 +232,6 @@
           </div>
 
         </div>
-      </section>
-
-
-      <!-- ============================================================
-           SECTION 4: REAL PROJECT - Morpheus Drive
-      ============================================================ -->
-      <section id="project" class="rpp" aria-labelledby="project-title">
-
-        <div class="rpp-wrap">
-
-          <!-- COL 1: narrative -->
-          <div class="rpp-intro" data-reveal>
-            <span class="rpp-eyebrow">How one gets made</span>
-            <h2 id="project-title" class="rpp-title">Morpheus<br>Drive Guide</h2>
-            <!-- One paragraph, not three blocks. The three columns to the right
-                 are the proof; this only has to say who it was for and what the
-                 job was. The Used / Created metadata lists were cut - they
-                 restated in prose what the columns already show. -->
-            <p class="rpp-lead">A robotics company needed one place to explain a technical component. I built it from their walkthrough videos, call notes, and emails. This is what going from raw material to a finished guide actually looks like.</p>
-          </div>
-
-          <!-- COL 2: source materials -->
-          <div class="rpp-col rpp-col--source" data-reveal data-reveal-delay="1">
-            <h3 class="rpp-col-head"><span class="rpp-col-num">01</span><span>Source Materials</span><span class="rpp-col-rule"></span></h3>
-            <div class="rpp-col-body">
-              <figure class="rpp-card rpp-card--video">
-                <div class="rpp-card-media">
-                  <video class="rpp-video" muted loop playsinline preload="metadata" aria-label="Demo walkthrough video 01">
-                    <source src="videos/morpheus-proof/morpheus-source-video-1.mp4" type="video/mp4" />
-                  </video>
-                  <span class="rpp-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-                </div>
-                <figcaption class="rpp-card-cap">Demo walkthrough video 01</figcaption>
-              </figure>
-              <figure class="rpp-card rpp-card--video">
-                <div class="rpp-card-media">
-                  <video class="rpp-video" muted loop playsinline preload="metadata" aria-label="Demo walkthrough video 02">
-                    <source src="videos/morpheus-proof/morpheus-source-video-2.mp4" type="video/mp4" />
-                  </video>
-                  <span class="rpp-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-                </div>
-                <figcaption class="rpp-card-cap">Demo walkthrough video 02</figcaption>
-              </figure>
-              <figure class="rpp-card">
-                <button type="button" class="rpp-card-media" data-rpp-zoom data-full="images/morpheus-proof/morpheus-source-email-notes.webp" aria-label="View full image: Client email notes"><img class="rpp-img" src="images/morpheus-proof/morpheus-source-email-notes.webp" width="797" height="420" alt="Client email notes" loading="lazy" decoding="async" /><span class="rpp-zoom-cue" aria-hidden="true">View full image</span></button>
-                <figcaption class="rpp-card-cap">Client email notes</figcaption>
-              </figure>
-              <figure class="rpp-card">
-                <button type="button" class="rpp-card-media" data-rpp-zoom data-full="images/morpheus-proof/morpheus-source-call-notes.webp" aria-label="View full image: Call notes / project notes"><img class="rpp-img" src="images/morpheus-proof/morpheus-source-call-notes.webp" width="1100" height="733" alt="Call notes / project notes" loading="lazy" decoding="async" /><span class="rpp-zoom-cue" aria-hidden="true">View full image</span></button>
-                <figcaption class="rpp-card-cap">Call notes / project notes</figcaption>
-              </figure>
-            </div>
-          </div>
-
-          <!-- COL 3: organized work -->
-          <div class="rpp-col rpp-col--org" data-reveal data-reveal-delay="2">
-            <h3 class="rpp-col-head"><span class="rpp-col-num">02</span><span>Organized Work</span><span class="rpp-col-rule"></span></h3>
-            <div class="rpp-col-body">
-              <figure class="rpp-card">
-                <button type="button" class="rpp-card-media" data-rpp-zoom data-full="images/morpheus-proof/morpheus-work-extracted-notes.webp" aria-label="View full image: Extracted notes"><img class="rpp-img" src="images/morpheus-proof/morpheus-work-extracted-notes.webp" width="1100" height="733" alt="Extracted notes" loading="lazy" decoding="async" /><span class="rpp-zoom-cue" aria-hidden="true">View full image</span></button>
-                <figcaption class="rpp-card-cap">Extracted notes</figcaption>
-              </figure>
-              <div class="rpp-row rpp-row--stack">
-                <figure class="rpp-card">
-                  <div class="rpp-card-media rpp-outline">
-                    <strong class="rpp-outline-h">Guide structure outline</strong>
-                    <ol class="rpp-outline-list">
-                      <li><span>1</span>Introduction</li>
-                      <li><span>2</span>System Overview</li>
-                      <li><span>3</span>Installation</li>
-                      <li><span>4</span>Operation</li>
-                      <li><span>5</span>Diagnostics &amp; Troubleshooting</li>
-                      <li><span>6</span>Maintenance</li>
-                      <li><span>7</span>Reference</li>
-                    </ol>
-                  </div>
-                  <figcaption class="rpp-card-cap">Guide structure outline</figcaption>
-                </figure>
-                <figure class="rpp-card">
-                  <button type="button" class="rpp-card-media" data-rpp-zoom data-full="images/morpheus-proof/morpheus-work-diagram-draft.webp" aria-label="View full image: Diagram draft"><img class="rpp-img" src="images/morpheus-proof/morpheus-work-diagram-draft.webp" width="1100" height="733" alt="Diagram draft" loading="lazy" decoding="async" /><span class="rpp-zoom-cue" aria-hidden="true">View full image</span></button>
-                  <figcaption class="rpp-card-cap">Diagram draft</figcaption>
-                </figure>
-              </div>
-            </div>
-          </div>
-
-          <!-- COL 4: final output -->
-          <div class="rpp-col rpp-col--final" data-reveal data-reveal-delay="3">
-            <h3 class="rpp-col-head"><span class="rpp-col-num">03</span><span>Final Output</span><span class="rpp-col-rule"></span></h3>
-            <div class="rpp-col-body">
-              <figure class="rpp-card rpp-card--hero">
-                <button type="button" class="rpp-card-media" data-rpp-zoom data-full="images/morpheus-proof/morpheus-final-lms-guide.webp" aria-label="View full image: Finished LMS course"><img class="rpp-img" src="images/morpheus-proof/morpheus-final-lms-guide.webp" width="1200" height="800" alt="Finished LMS course for the Morpheus Drive" loading="lazy" decoding="async" /><span class="rpp-zoom-cue" aria-hidden="true">View full image</span></button>
-              </figure>
-              <div class="rpp-row">
-                <figure class="rpp-card">
-                  <button type="button" class="rpp-card-media" data-rpp-zoom data-full="images/morpheus-proof/morpheus-final-section-1.webp" aria-label="View full image: Finished lesson section"><img class="rpp-img" src="images/morpheus-proof/morpheus-final-section-1.webp" width="1100" height="733" alt="Finished lesson section" loading="lazy" decoding="async" /><span class="rpp-zoom-cue" aria-hidden="true">View full image</span></button>
-                  <figcaption class="rpp-card-cap">Finished lesson section</figcaption>
-                </figure>
-                <figure class="rpp-card">
-                  <button type="button" class="rpp-card-media" data-rpp-zoom data-full="images/morpheus-proof/morpheus-final-section-2.webp" aria-label="View full image: Diagram-based lesson section"><img class="rpp-img" src="images/morpheus-proof/morpheus-final-section-2.webp" width="1100" height="733" alt="Diagram-based lesson section" loading="lazy" decoding="async" /><span class="rpp-zoom-cue" aria-hidden="true">View full image</span></button>
-                  <figcaption class="rpp-card-cap">Diagram-based lesson section</figcaption>
-                </figure>
-              </div>
-              <figure class="rpp-card">
-                <button type="button" class="rpp-card-media" data-rpp-zoom data-full="images/morpheus-proof/morpheus-final-diagram.webp" aria-label="View full image: Final diagram"><img class="rpp-img" src="images/morpheus-proof/morpheus-final-diagram.webp" width="1300" height="678" alt="Final diagram" loading="lazy" decoding="async" /><span class="rpp-zoom-cue" aria-hidden="true">View full image</span></button>
-                <figcaption class="rpp-card-cap">Final diagram</figcaption>
-              </figure>
-            </div>
-          </div>
-        </div>
-
-        <!-- Full-image lightbox - opened by the proof-board image cards -->
-        <div class="rpp-lightbox" id="rpp-lightbox" role="dialog" aria-modal="true" aria-label="Full project image" hidden>
-          <button type="button" class="rpp-lightbox-close" data-rpp-close aria-label="Close full image">&times;</button>
-          <figure class="rpp-lightbox-fig">
-            <img class="rpp-lightbox-img" id="rpp-lightbox-img" src="" alt="" decoding="async" />
-            <figcaption class="rpp-lightbox-cap" id="rpp-lightbox-cap"></figcaption>
-          </figure>
-        </div>
-
       </section>
 
 
@@ -407,7 +278,6 @@
             <h4 class="footer-col-heading">Site</h4>
             <ul>
               <li><a href="#customer-guides">Examples</a></li>
-              <li><a href="#project">How one gets made</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
           </div>
