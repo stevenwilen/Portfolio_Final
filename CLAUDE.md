@@ -1,6 +1,23 @@
 # stevenwilen.dev — working notes
 
-One-page portfolio for Steven Wilen's custom-guide work. Plain static site.
+One-page site for Steven Wilen's web-guide work. Plain static site.
+
+## What the site sells (repositioned Aug 2026)
+
+**A web guide for anything** — a property listing, a workshop, a rental, a
+product, instructions. Always the same format: one well-designed web page, one
+link (or a printed QR card), opens on any phone. No app, no PDF, no login.
+Flat pricing from $300.
+
+This replaced the previous framing — "guides for things you repeatedly explain,"
+built around internal staff training. **Do not reintroduce the internal /
+customer split, or language about explaining things repeatedly.** The subject of
+a guide is now open-ended; the format and the price are the fixed parts. The
+`#range` band near the top is where that positioning is stated — keep it plain
+(a heading, a list, one line about money) rather than turning it into cards.
+
+The `$300` figure in `.range-price` is Steven's own stated price. It is the one
+number on the page that costs money if it is wrong.
 
 ## Stack
 
@@ -41,19 +58,31 @@ diff --strip-trailing-cr styles.css /tmp/live.css
 Everything lives in `:root` at the top of `styles.css`. Use the tokens; do not
 hardcode values that a token already covers.
 
-- **Palette** — warm near-white paper. `--c-surface #fdfbf7` (body + cards),
+- **Palette** — warm near-white paper, deliberately restrained. `--c-surface #fdfbf7` (body + cards),
   `--c-cream #f8f5ef` (page base), `--c-cream-2 #efeae0` (hero + deep bands).
   `--c-vermillion #d8412a` is the single focal accent, plus marigold / leaf /
-  teal / kraft. Red is used *selectively*: warm neutrals (`--accent-tan`,
+  teal / kraft. The contact band was moved off grass green (#4fa84a) to a deep
+  muted green (#44604c) in Aug 2026 — it is the largest single colour field on
+  the page and the bright version undercut everything else. Red is used *selectively*: warm neutrals (`--accent-tan`,
   `--accent-gold-muted`) carry most lines and icons so the red still lands.
   **The neutrals were shifted off cream toward white in Aug 2026.** Accents were
   deliberately left untouched. If you add a paper tone, match the *relative*
   step between those three — collapsing them flattens the section separation.
   Note that warm tones also appear hardcoded as `rgba()` triples inside the hero
   gradients and the torn-divider fill; a token-only change misses those.
-- **Type** — Inter Tight, weights 400–800, loaded via `<link>` in the head.
-  Do not move it back into an `@import` in the CSS; that serialises the font
-  request behind the stylesheet download.
+- **Type** — two families, loaded together via one `<link>` in the head. Do not
+  move either into an `@import` in the CSS; that serialises the font request
+  behind the stylesheet download.
+  - **Fraunces** (`--ff-display`, variable, opsz 9–144, wght 400–900) for
+    *editorial voice only*: h1–h4, the wordmark, eyebrows, section headings,
+    `.range-price`. The `font-variation-settings: "opsz"` values on h1–h4 were
+    written for Fraunces and are meaningless without it.
+  - **Inter Tight** (`--ff-body`, and `--ff-display-legacy`) for *everything
+    that is interface*: buttons, tabs, labels, captions, and all simulated app
+    chrome inside the device mockups.
+  - The split is the point. If a new element is a control or a label it takes
+    `--ff-display-legacy`, not `--ff-display` — serif buttons read as decoration
+    rather than something you can press.
   Scale: `--fs-h1/h2/h2-sm/h3/lede/body`, and at the small end
   `--fs-eyebrow 12px` / `--fs-caption 12.5px` / `--fs-micro 11.5px`.
 - **Small type rule** — `--fs-micro` is the floor for real page text. Type
@@ -72,6 +101,14 @@ hardcode values that a token already covers.
   width; a card only pairs when it actually adjoins another plain card
   (`:has(+ .rpp-card)` forward, `+` backward). This is what stops a lone card
   sitting in a half-width cell with an empty one beside it.
+- **The section right after the hero owns the tuck.** The hero carries
+  `--hero-extend` of extra bottom padding for the floating artifacts, and the
+  next section pulls back up into it with
+  `margin-top: calc(-1 * var(--hero-extend))` so the torn divider lands on its
+  original line. That rule currently lives on `#range`. **If you insert a
+  section between the hero and `#range`, move the rule to it** — leaving it
+  behind makes the new section overlap the one after it by ~112px, which looks
+  like a spacing bug rather than an overlap.
 - **`.gp-laptop-base` is 112% of the lid** to read as a deck in perspective, so
   any container holding the laptop must cap the lid at ~89% or the flare pushes
   the page into horizontal scroll on small phones.

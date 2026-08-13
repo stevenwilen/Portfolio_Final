@@ -13,8 +13,8 @@
   --c-vermillion-2:#b32f1d;
   --c-marigold:   #f4b53e;   /* sunshine ochre */
   --c-marigold-2: #d9982a;
-  --c-leaf:       #4fa84a;   /* paper grass green */
-  --c-leaf-2:     #357c3a;
+  --c-leaf:       #44604c;   /* deep muted green — contact band */
+  --c-leaf-2:     #33493b;
   --c-teal:       #2f8f8a;   /* deep paper teal */
   --c-teal-2:     #1f6967;
   --c-sky-bright: #5dadd8;   /* paper sky blue */
@@ -127,7 +127,8 @@
   --container-w: 1200px;
 
   /* Type stacks */
-  --ff-display: 'Inter Tight', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ff-display: 'Fraunces', Georgia, 'Times New Roman', serif; /* editorial display — opsz tuned below */
+  --ff-display-legacy: 'Inter Tight', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --ff-script:  'Inter Tight', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --ff-body:    'Inter Tight', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
@@ -614,7 +615,7 @@ img, svg { display: block; max-width: 100%; }
   padding: 14px 26px;
   background-color: var(--c-vermillion);
   color: #fefdfb;
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-weight: 800;
   font-variation-settings: "opsz" 24;
   font-size: 16px;
@@ -992,7 +993,7 @@ img, svg { display: block; max-width: 100%; }
   padding: 14px 26px;
   background-color: var(--c-vermillion);
   color: #fefdfb;
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 16px;
   font-weight: 800;
   font-variation-settings: "opsz" 18;
@@ -1224,7 +1225,7 @@ img, svg { display: block; max-width: 100%; }
   gap: 32px;
 }
 .footer-col-heading {
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 12px;
   font-weight: 700;
   font-variation-settings: "opsz" 10;
@@ -1726,7 +1727,7 @@ img, svg { display: block; max-width: 100%; }
 .asset-group { grid-column: 1 / -1; display: contents; }
 .asset-group-label {
   grid-column: 1 / -1;
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.16em;
@@ -1754,7 +1755,7 @@ img, svg { display: block; max-width: 100%; }
   border: 1px solid rgba(34, 28, 20, 0.25);
   border-radius: 3px;
   transform: rotate(-1deg);
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.16em;
@@ -1897,7 +1898,7 @@ img, svg { display: block; max-width: 100%; }
   position: absolute;
   top: 8px;
   right: 10px;
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 9px;
   font-weight: 800;
   letter-spacing: 0.18em;
@@ -1906,7 +1907,7 @@ img, svg { display: block; max-width: 100%; }
 }
 .asset-frame-glyph--text {
   background: rgba(34, 28, 20, 0.10);
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-weight: 800;
   color: var(--c-ink-800);
 }
@@ -1958,7 +1959,7 @@ img, svg { display: block; max-width: 100%; }
 }
 
 .asset-frame-label {
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 14px;
   font-weight: 800;
   font-variation-settings: "opsz" 18;
@@ -1968,7 +1969,7 @@ img, svg { display: block; max-width: 100%; }
   margin: 0;
 }
 .asset-frame-meta {
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -1983,7 +1984,7 @@ img, svg { display: block; max-width: 100%; }
   padding: 4px 9px;
   background: var(--c-marigold);
   color: var(--c-ink-900);
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 9px;
   font-weight: 800;
   letter-spacing: 0.16em;
@@ -2141,7 +2142,7 @@ img, svg { display: block; max-width: 100%; }
   padding: 4px 11px;
   background: var(--c-kraft);
   color: var(--c-ink-900);
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.18em;
@@ -2158,7 +2159,7 @@ img, svg { display: block; max-width: 100%; }
   padding: 4px 12px;
   border: 2px solid currentColor;
   color: var(--c-vermillion-2);
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.22em;
@@ -2169,7 +2170,7 @@ img, svg { display: block; max-width: 100%; }
   opacity: 0.78;
 }
 .pp-museum-tag {
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 12.5px;
   font-weight: 600;
   line-height: 1.3;
@@ -2321,7 +2322,7 @@ img, svg { display: block; max-width: 100%; }
   display: flex;
   align-items: center;
   gap: 9px;
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -2346,7 +2347,7 @@ img, svg { display: block; max-width: 100%; }
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: var(--fs-eyebrow);
   font-weight: 800;
   letter-spacing: 0.1em;
@@ -2449,7 +2450,7 @@ button.rpp-card-media {
 .rpp-outline { padding: 13px 14px; }
 .rpp-outline-h {
   display: block;
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: var(--fs-caption);
   font-weight: 700;
   color: var(--c-ink-900);
@@ -2468,7 +2469,7 @@ button.rpp-card-media {
   flex: none;
   width: 15px; height: 15px;
   display: grid; place-items: center;
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 8.5px;
   font-weight: 700;
   color: var(--c-ink-500);
@@ -2478,7 +2479,7 @@ button.rpp-card-media {
 .rpp-lesson { padding: 13px 15px; }
 .rpp-lesson-h {
   display: block;
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 12px;
   font-weight: 700;
   color: var(--c-ink-900);
@@ -2510,7 +2511,7 @@ button.rpp-card-media {
   right: 0;
   bottom: 0;
   padding: 5px 8px;
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 10.5px;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -3269,7 +3270,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   z-index: 2;
 }
 .hero-float-label {
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 10.5px;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -3468,7 +3469,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
 }
 .hf-guide-row i {
   font-style: normal;
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 8px;
   font-weight: 800;
   color: var(--c-vermillion);
@@ -3540,7 +3541,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
 .hf-call-meta {
   position: absolute;
   left: 50px; bottom: 5px;
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 8px;
   font-weight: 700;
   letter-spacing: 0.10em;
@@ -3711,7 +3712,12 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
 /* First section after the hero — the hero's extra bottom padding
    (--hero-extend) is masked as torn paper, so pull this section up by the
    same amount to keep the divider-to-content spacing at its original value. */
-#customer-guides {
+/* The tuck belongs to whichever section directly follows the hero: the hero
+   carries --hero-extend of extra bottom padding for the floating artifacts, and
+   the next section pulls back up into it so the torn divider sits on its
+   original line. That used to be #customer-guides; it is now #range, and
+   applying it to both would pull the examples up over the range strip. */
+#range {
   margin-top: calc(-1 * var(--hero-extend));
 }
 /* ---- Head ---- */
@@ -3942,7 +3948,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   background: var(--c-vermillion);
 }
 .gp-drive-path {
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 12px;
   font-weight: 600;
   color: var(--c-ink-700);
@@ -4004,7 +4010,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   border: 1px solid rgba(34, 28, 20, 0.14);
   border-radius: 9px;
   box-shadow: 0 1px 2px rgba(34, 28, 20, 0.05);
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 12px;
   font-weight: 600;
   color: var(--c-ink-700);
@@ -4134,7 +4140,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
 .gp-frame--solo .gp-stage { padding-block: clamp(44px, 6vw, 104px); }
 /* Subtle caption above each artifact */
 .gp-frame--deliv .gp-deliv-label {
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -4391,7 +4397,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   gap: 6px;
 }
 .gp-pills li {
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 11.5px;
   font-weight: 600;
   color: var(--c-ink-700);
@@ -4402,7 +4408,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
 }
 .gp-frame-cap {
   margin-top: 12px;
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 12px;
   font-weight: 600;
   color: var(--c-ink-600);
@@ -4428,7 +4434,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   padding: 24px;
 }
 .gp-empty-label {
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.06em;
@@ -4526,7 +4532,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   display: flex;
   align-items: baseline;
   gap: 7px;
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 14px;
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -4672,7 +4678,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   border-radius: 10px;
   background: transparent;
   cursor: pointer;
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 13.5px;
   font-weight: 600;
   letter-spacing: -0.005em;
@@ -4837,7 +4843,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
 .cg-note-ic { flex: none; display: grid; place-items: center; color: var(--card-accent, var(--accent-tan)); }
 .cg-note-ic svg { width: 17px; height: 17px; display: block; }
 .cg-note-label {
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -4890,7 +4896,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--ff-display);
+  font-family: var(--ff-display-legacy);
   font-size: 12.5px;
   font-weight: 600;
   color: var(--c-ink-700);
@@ -5082,4 +5088,74 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   /* A six-item list of formats is browsing content; the phone footer keeps
      identity, navigation and the address */
   .footer-col--formats { display: none; }
+}
+
+/* =============================================================
+   RANGE STRIP — the repositioning, stated once
+   The old site framed the work as "guides for things you explain
+   repeatedly", which read as internal training. This band says the
+   subject can be anything and the format is always the same, then
+   names the price so nobody has to ask. Deliberately plain: no card
+   chrome, no icons — a heading, a list, one line about money.
+   ============================================================= */
+#range {
+  padding-block: var(--space-section-y);
+}
+.range-wrap {
+  max-width: 900px;
+  margin-inline: auto;
+}
+.range-heading {
+  font-size: var(--fs-h2);
+  margin: 0 0 clamp(20px, 2.6vw, 30px);
+  text-align: center;
+}
+.range-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2px clamp(20px, 3vw, 44px);
+}
+.range-list li {
+  font-size: var(--fs-lede);
+  line-height: 1.9;
+  color: var(--c-ink-700, var(--c-ink));
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+/* A rule rather than a bullet — the list is a range, not a checklist,
+   and dots read as features. */
+.range-list li::before {
+  content: "";
+  flex: none;
+  width: 14px;
+  height: 1px;
+  background: var(--accent-gold-muted);
+}
+.range-note {
+  margin: clamp(26px, 3.4vw, 40px) 0 0;
+  padding-block-start: clamp(20px, 2.6vw, 28px);
+  border-top: 1px solid var(--c-ink-200, rgba(34, 28, 20, 0.14));
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  text-align: center;
+}
+.range-price {
+  display: block;
+  font-family: var(--ff-display);
+  font-size: clamp(21px, 2.2vw, 27px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--c-ink);
+  margin-block-end: 6px;
+}
+
+@media (max-width: 640px) {
+  .range-heading { font-size: var(--fs-h2-sm); }
+  .range-list { grid-template-columns: 1fr; gap: 0; }
+  .range-list li { font-size: 16.5px; line-height: 1.75; }
+  .range-note { text-align: left; }
 }
