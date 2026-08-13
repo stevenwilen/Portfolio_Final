@@ -41,10 +41,16 @@ diff --strip-trailing-cr styles.css /tmp/live.css
 Everything lives in `:root` at the top of `styles.css`. Use the tokens; do not
 hardcode values that a token already covers.
 
-- **Palette** — warm paper-craft. `--c-cream #f7ecd3` page base,
-  `--c-vermillion #d8412a` the single focal accent, plus marigold / leaf / teal /
-  kraft. Red is used *selectively*: warm neutrals (`--accent-tan`,
+- **Palette** — warm near-white paper. `--c-surface #fdfbf7` (body + cards),
+  `--c-cream #f8f5ef` (page base), `--c-cream-2 #efeae0` (hero + deep bands).
+  `--c-vermillion #d8412a` is the single focal accent, plus marigold / leaf /
+  teal / kraft. Red is used *selectively*: warm neutrals (`--accent-tan`,
   `--accent-gold-muted`) carry most lines and icons so the red still lands.
+  **The neutrals were shifted off cream toward white in Aug 2026.** Accents were
+  deliberately left untouched. If you add a paper tone, match the *relative*
+  step between those three — collapsing them flattens the section separation.
+  Note that warm tones also appear hardcoded as `rgba()` triples inside the hero
+  gradients and the torn-divider fill; a token-only change misses those.
 - **Type** — Inter Tight, weights 400–800, loaded via `<link>` in the head.
   Do not move it back into an `@import` in the CSS; that serialises the font
   request behind the stylesheet download.
@@ -81,12 +87,24 @@ hardcode values that a token already covers.
   rules further down the sheet. The hero also takes 92px of extra bottom
   padding on phones purely to open the band they sit in.
 - **The guide tabs' first tab is duplicated in static HTML.** `script.js`
-  renders tabs 2 and 3 on click, but the first is written out in `index.html`
+  renders the other tabs on click, but the first is written out in `index.html`
   so the section works before/without JS. Reordering the tabs means also
-  rewriting that static block — device frame, image, and the Problem / In the
-  guide / Result copy — to mirror what `buildDevice()` emits for the new first
-  tab. Current order: Workshop (`cust-02`, tablet) · Rental (`cust-01`, phone) ·
-  Student Build (`cust-03`, laptop).
+  rewriting that static block — device frame, image, and the In the guide /
+  Result copy — to mirror what `buildDevice()` emits for the new first tab.
+  Current order: Open House (`cust-04`, phone, **solo** — no access card) ·
+  Workshop (`cust-02`, tablet) · Rental (`cust-01`, phone) · Student Build
+  (`cust-03`, laptop).
+- **Device widths are set twice, and the `.cg-device` scope wins.** There is a
+  generic `.gp-frame--phone .gp-deliv--phone` block around line 4124 and a
+  `.cg-device .gp-frame--phone .gp-deliv--phone` block around line 4800. They
+  have equal specificity, so the later `.cg-device` one always wins inside the
+  Customer Guides section. Editing only the generic block silently does nothing
+  — that is what left the solo phone rendering at 189px instead of 362px.
+- **The solo phone needs its stage capped at every width, not just desktop.**
+  `.cg-showcase:has(.gp-frame--phone.gp-frame--solo) .cg-device` caps the stage
+  to 412px (336px below 920px, where the showcase stacks). Without the
+  below-920 cap the phone takes the full 600px stage, renders ~1060px tall, and
+  adds ~1200px to the page between 768 and 919px.
 - **Device mockup proportions are sized in `cqw`**, not pixels, via
   `container-type: inline-size` on the device wrapper. Fixed px bezels only look
   right at one width — the tablet's 12px/32px read as 3.0%/7.9% at desktop size

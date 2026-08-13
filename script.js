@@ -249,7 +249,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var rail = section.querySelector('.cg-rail');
   var deviceEl = document.getElementById('cg-device');
-  var problemEl = document.getElementById('cg-problem');
   var guideEl = document.getElementById('cg-guide');
   var resultEl = document.getElementById('cg-result');
   if (!rail || !deviceEl) return;
@@ -258,11 +257,17 @@ document.addEventListener('DOMContentLoaded', function () {
     window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var CG = {
+    'cust-04': {
+      device: 'phone',
+      img: 'images/customer-guides/customer-openhouse-mobile-guide.webp',
+      alt: 'The open house guide for 214 Larkspur Lane opened on a phone — the address, price, beds, baths and square footage over a photo of the porch, with the agent’s name and a call button.',
+      guide: ['The home + photo gallery', 'What’s included', 'Neighborhood + schools', 'HOA / CDD fees', 'Agent contact'],
+      result: 'The listing goes home in the buyer’s pocket instead of the recycling, with the agent’s number attached to it.'
+    },
     'cust-03': {
       device: 'laptop',
       img: 'images/customer-guides/customer-robot-laptop-guide.webp',
       alt: 'The Student Robot Build Guide opened on a laptop — a sidebar with Start Here, Parts, Build Steps, Wiring, Code, Testing, Troubleshooting, and Help, plus parts and simple wiring diagrams.',
-      problem: 'Students need one place to follow the build instead of piecing together instructions from slides, videos, verbal explanations, and notes.',
       guide: ['Start here', 'Build steps', 'Parts + wiring', 'Code + testing', 'Troubleshooting help'],
       result: 'Students can build, wire, code, and test the robot from one clear guide.'
     },
@@ -275,7 +280,6 @@ document.addEventListener('DOMContentLoaded', function () {
         label: 'Confirmation',
         alt: 'Registration confirmation for the Coastal Business Workshop — "Here\'s your guide" with an Open Attendee Guide button and a link to the workshop guide.'
       },
-      problem: 'Attendees often miss important details when event information is scattered across emails, messages, and PDFs.',
       guide: ['Start here', 'Schedule + what to bring', 'Preparation steps', 'Checklist + help'],
       result: 'Attendees arrive prepared with one guide for the workshop instead of digging through scattered messages.'
     },
@@ -288,7 +292,6 @@ document.addEventListener('DOMContentLoaded', function () {
         label: 'Printout Card',
         alt: 'Printed QR welcome card for The Dune House beachside rental — "Scan to open your guest guide" with a QR code and an overview of what the guide includes.'
       },
-      problem: 'Guests often text the host for the same details: Wi-Fi, parking, house instructions, local recommendations, and checkout steps.',
       guide: ['Check-in details', 'House basics', 'Wi-Fi info', 'Local picks', 'Checkout + help'],
       result: 'Guests get quick answers from one polished guide, and the host answers fewer repeat questions.'
     }
@@ -345,7 +348,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!ex) return;
 
     deviceEl.innerHTML = buildDevice(ex);
-    if (problemEl) problemEl.textContent = ex.problem;
     if (resultEl) resultEl.textContent = ex.result;
     if (guideEl && ex.guide) {
       guideEl.innerHTML = ex.guide.map(function (g) {

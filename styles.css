@@ -22,8 +22,8 @@
   --c-kraft:      #c89764;   /* kraft paper brown */
   --c-kraft-2:    #9b6a3d;
   --c-ink:        #221c14;   /* warm near-black ink */
-  --c-cream:      #f7ecd3;   /* paper page base */
-  --c-cream-2:    #ede0c0;   /* slightly deeper cream */
+  --c-cream:      #f8f5ef;   /* paper page base */
+  --c-cream-2:    #efeae0;   /* slightly deeper cream */
 
   /* Accent — re-aimed at vermillion (was green) */
   --c-accent:     var(--c-vermillion);
@@ -40,9 +40,9 @@
 
   /* Aliases kept so existing var(--c-blue-*) references resolve
      to warm-tinted neutrals without touching every selector. */
-  --c-blue-50:  #f3ead3;
-  --c-blue-100: #e8dcbb;
-  --c-blue-200: #d4c39a;
+  --c-blue-50:  #f4f1e9;
+  --c-blue-100: #e8e3d8;
+  --c-blue-200: #d7d1c3;
   --c-blue-300: #b59d70;
   --c-blue-400: #8a7449;
   --c-blue-500: #5e4d2f;
@@ -59,10 +59,10 @@
   --c-ink-600: #5e4d2f;
   --c-ink-500: #8a7449;
   --c-ink-400: #b59d70;
-  --c-ink-300: #d4c39a;
-  --c-ink-200: #e8dcbb;
-  --c-ink-100: #f3ead3;
-  --c-ink-50:  #f9f1de;
+  --c-ink-300: #d7d1c3;
+  --c-ink-200: #e8e3d8;
+  --c-ink-100: #f4f1e9;
+  --c-ink-50:  #f9f7f2;
 
   /* Re-aliased "pastel" tokens → saturated paper colors */
   --c-peach:      #f4b53e;   /* marigold */
@@ -80,7 +80,7 @@
 
   /* Surfaces */
   --c-bg:       var(--c-cream);
-  --c-surface:  #fdf6e3;   /* lighter "fresh paper" for cards */
+  --c-surface:  #fdfbf7;   /* lighter "fresh paper" for cards */
   --c-surface-2:var(--c-cream-2);
   --c-border:   rgba(34, 28, 20, 0.18);
   --c-border-2: rgba(34, 28, 20, 0.28);
@@ -374,10 +374,10 @@ img, svg { display: block; max-width: 100%; }
   background-color: var(--c-cream-2);
   background-image:
     /* Warm radial halo behind the headline */
-    radial-gradient(ellipse 70% 55% at 50% 42%, rgba(255, 248, 230, 0.55), rgba(255, 248, 230, 0) 75%),
+    radial-gradient(ellipse 70% 55% at 50% 42%, rgba(255, 252, 248, 0.55), rgba(255, 252, 248, 0) 75%),
     /* Flat deeper-cream layer that dampens the grain and darkens the field
        so the lighter torn divider + body below stand out against it */
-    linear-gradient(rgba(237, 224, 192, 0.6), rgba(237, 224, 192, 0.6)),
+    linear-gradient(rgba(239, 234, 224, 0.6), rgba(239, 234, 224, 0.6)),
     /* Subtle paper grain — large tile + dampened */
     var(--paper-grain-light);
   background-repeat: no-repeat, no-repeat, repeat;
@@ -613,7 +613,7 @@ img, svg { display: block; max-width: 100%; }
   gap: 10px;
   padding: 14px 26px;
   background-color: var(--c-vermillion);
-  color: #fffaf0;
+  color: #fefdfb;
   font-family: var(--ff-display);
   font-weight: 800;
   font-variation-settings: "opsz" 24;
@@ -991,7 +991,7 @@ img, svg { display: block; max-width: 100%; }
   gap: 10px;
   padding: 14px 26px;
   background-color: var(--c-vermillion);
-  color: #fffaf0;
+  color: #fefdfb;
   font-family: var(--ff-display);
   font-size: 16px;
   font-weight: 800;
@@ -1161,7 +1161,7 @@ img, svg { display: block; max-width: 100%; }
 #site-footer .footer-col-heading,
 #site-footer #footer-name { color: var(--c-cream); }
 #site-footer .footer-tag,
-#site-footer .footer-col li { color: rgba(247, 236, 211, 0.78); }
+#site-footer .footer-col li { color: rgba(248, 245, 239, 0.78); }
 #site-footer .footer-col a:hover { color: var(--c-marigold); }
 #site-footer .footer-mark {
   background: var(--c-marigold);
@@ -1212,7 +1212,7 @@ img, svg { display: block; max-width: 100%; }
 .footer-tag {
   font-family: var(--ff-body);
   font-size: 14px;
-  color: rgba(247, 236, 211, 0.78);
+  color: rgba(248, 245, 239, 0.78);
   margin: 0;
   max-width: 320px;
   line-height: 1.55;
@@ -1237,7 +1237,7 @@ img, svg { display: block; max-width: 100%; }
 .footer-col li {
   font-family: var(--ff-body);
   font-size: 14px;
-  color: rgba(247, 236, 211, 0.78);
+  color: rgba(248, 245, 239, 0.78);
   font-weight: 500;
 }
 .footer-col a {
@@ -1260,12 +1260,12 @@ img, svg { display: block; max-width: 100%; }
   max-width: var(--container-w);
   margin: 40px auto 0;
   padding: 24px clamp(1rem, 4vw, 2.5rem) 0;
-  border-top: 1px solid rgba(247, 236, 211, 0.15);
+  border-top: 1px solid rgba(248, 245, 239, 0.15);
   display: flex;
   align-items: center;
   gap: 10px;
   font-size: 12px;
-  color: rgba(247, 236, 211, 0.55);
+  color: rgba(248, 245, 239, 0.55);
   flex-wrap: wrap;
 }
 .footer-bottom-sep { color: var(--c-ink-300); }
@@ -1849,14 +1849,14 @@ img, svg { display: block; max-width: 100%; }
 }
 .asset-frame--doc .asset-frame-thumb {
   aspect-ratio: 4 / 5;
-  background: #f1e6c8;
+  background: #f1ede3;
   flex-direction: column;
   gap: 8px;
   padding: 16px 14px;
 }
 .asset-frame--image .asset-frame-thumb {
   aspect-ratio: 16 / 10;
-  background: #e8dfc4;
+  background: #eae5da;
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
@@ -2233,8 +2233,8 @@ img, svg { display: block; max-width: 100%; }
   background-image:
     linear-gradient(180deg,
       var(--c-cream) 0%,
-      #f4ead4 38%,
-      #f4ead4 62%,
+      #f5f2ea 38%,
+      #f5f2ea 62%,
       var(--c-cream) 100%);
   opacity: 0.55;
   pointer-events: none;
@@ -2515,7 +2515,7 @@ button.rpp-card-media {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #fdf6e3;
+  color: #fdfbf7;
   background: rgba(28, 24, 20, 0.78);
   opacity: 0;
   transform: translateY(100%);
@@ -2604,12 +2604,12 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   object-fit: contain;
   border-radius: var(--r-sm);
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
-  background: #fdf6e3;
+  background: #fdfbf7;
 }
 .rpp-lightbox-cap {
   font-family: var(--ff-body);
   font-size: 13px;
-  color: #fdf6e3;
+  color: #fdfbf7;
   text-align: center;
 }
 .rpp-lightbox-close {
@@ -2623,7 +2623,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   justify-content: center;
   font-size: 24px;
   line-height: 1;
-  color: #fdf6e3;
+  color: #fdfbf7;
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 50%;
@@ -3196,7 +3196,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   border-radius: var(--r-xs);
   overflow: hidden;
   isolation: isolate;
-  background-color: #f3e8cf;                                  /* cream frame */
+  background-color: #f3f0e7;                                  /* cream frame */
   background-image: var(--paper-grain-light);
   background-repeat: repeat;
   background-size: 380px 380px;
@@ -3210,7 +3210,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   content: "";
   position: absolute;
   inset: 0 0 26% 0;            /* media area: top 74% */
-  background-color: #e7d6ae;   /* light variant default (paper) */
+  background-color: #e6e0d2;   /* light variant default (paper) */
   z-index: 0;
 }
 .hero-float-slot--video::before {
@@ -3341,8 +3341,8 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   width: 42px; height: 42px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: rgba(247, 236, 211, 0.14);
-  box-shadow: inset 0 0 0 1.5px rgba(247, 236, 211, 0.55);
+  background: rgba(248, 245, 239, 0.14);
+  box-shadow: inset 0 0 0 1.5px rgba(248, 245, 239, 0.55);
   z-index: 1;
 }
 .hf-play::after {
@@ -3351,7 +3351,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   left: 56%; top: 50%;
   transform: translate(-50%, -50%);
   width: 0; height: 0;
-  border-left: 12px solid rgba(247, 236, 211, 0.92);
+  border-left: 12px solid rgba(248, 245, 239, 0.92);
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
 }
@@ -3371,13 +3371,13 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   background:
     linear-gradient(to right,
       var(--c-vermillion) 0%, var(--c-vermillion) 32%,
-      rgba(247, 236, 211, 0.30) 32%, rgba(247, 236, 211, 0.30) 100%);
+      rgba(248, 245, 239, 0.30) 32%, rgba(248, 245, 239, 0.30) 100%);
 }
 .hf-vctrl-time {
   font-family: var(--ff-body);
   font-size: 9px;
   font-variant-numeric: tabular-nums;
-  color: rgba(247, 236, 211, 0.75);
+  color: rgba(248, 245, 239, 0.75);
 }
 
 
@@ -3520,15 +3520,15 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   height: 22px;
   background-image: repeating-linear-gradient(
     to right,
-    rgba(247, 236, 211, 0.65) 0 2px,
+    rgba(248, 245, 239, 0.65) 0 2px,
     transparent 2px 5px,
-    rgba(247, 236, 211, 0.35) 5px 6px,
+    rgba(248, 245, 239, 0.35) 5px 6px,
     transparent 6px 11px,
-    rgba(247, 236, 211, 0.80) 11px 13px,
+    rgba(248, 245, 239, 0.80) 11px 13px,
     transparent 13px 18px,
-    rgba(247, 236, 211, 0.45) 18px 19px,
+    rgba(248, 245, 239, 0.45) 18px 19px,
     transparent 19px 24px,
-    rgba(247, 236, 211, 0.30) 24px 25px,
+    rgba(248, 245, 239, 0.30) 24px 25px,
     transparent 25px 30px
   );
   -webkit-mask-image: linear-gradient(to bottom,
@@ -3545,7 +3545,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   font-weight: 700;
   letter-spacing: 0.10em;
   text-transform: uppercase;
-  color: rgba(247, 236, 211, 0.62);
+  color: rgba(248, 245, 239, 0.62);
   z-index: 2;
 }
 
@@ -3557,7 +3557,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   position: absolute;
   left: 0; right: 0; top: 0;
   height: 14px;
-  background: #d8c7a0;
+  background: #dbd5c5;
   border-bottom: 1px solid rgba(74, 56, 40, 0.18);
   display: flex;
   align-items: center;
@@ -3586,7 +3586,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   left: 0; right: 0;
   top: 14px;
   bottom: 26%;
-  background-color: #f0e0bc;
+  background-color: #eee9dd;
   background-image: repeating-linear-gradient(
     to bottom,
     rgba(74, 56, 40, 0.10) 0 2px,
@@ -3914,7 +3914,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   align-items: center;
   gap: 9px;
   padding: 8px 12px;
-  background: linear-gradient(180deg, #fbf4e5, #f2e7d3);
+  background: linear-gradient(180deg, #fbf9f5, #f2efe7);
   border-bottom: 1px solid rgba(34, 28, 20, 0.14);
 }
 .gp-chrome-dots { display: flex; gap: 5px; }
@@ -4088,7 +4088,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   inset: 0;
   z-index: 0;
   background-image:
-    linear-gradient(rgba(247, 239, 223, 0.42), rgba(247, 239, 223, 0.42)),
+    linear-gradient(rgba(249, 247, 243, 0.42), rgba(249, 247, 243, 0.42)),
     var(--gp-deliv-bg, none);
   background-size: cover, cover;
   background-position: center, center;
@@ -4688,7 +4688,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
 .cg-tab:hover:not([aria-selected="true"]) { transform: translateY(-1px); }
 .cg-tab:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 2px; }
 .cg-tab[aria-selected="true"] {
-  background: #fffaf0;
+  background: #fefdfb;
   color: var(--c-ink-900);
   border-color: var(--tab-accent, var(--c-vermillion));
   transform: translateY(-2px);
@@ -4793,6 +4793,22 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
 .cg-device .gp-frame--tablet .gp-deliv--tablet { width: clamp(210px, 56%, 400px); }
 .cg-device .gp-frame--phone .gp-deliv--card    { width: clamp(150px, 42%, 250px); }
 .cg-device .gp-frame--phone .gp-deliv--phone   { width: clamp(150px, 46%, 270px); }
+/* Solo phone (Open House — no access card beside it). The 46% above assumes a
+   card is sharing the stage; with the stage to itself the phone should fill it.
+   This has to live here, inside the .cg-device scope: the equivalent rule up in
+   the .gp-frame block has the same specificity and loses on source order. */
+.cg-device .gp-frame--phone.gp-frame--solo .gp-deliv--phone { width: clamp(240px, 88%, 366px); }
+/* Cap the stage around the solo phone at EVERY width, not just on desktop.
+   Scoped to the >=920 block this let the stacked layout hand the phone the full
+   600px stage — 88% of that is a 528px-wide phone, ~1060px tall, which added
+   ~1200px to the page between 768 and 919px. */
+.cg-showcase:has(.gp-frame--phone.gp-frame--solo) .cg-device { max-width: 412px; }
+/* Below 920 the showcase stacks, so the phone is centred on its own row with
+   nothing beside it. At the desktop cap it renders ~730px tall there and
+   dominates the section, so pull it in — the panels sit under it either way. */
+@media (max-width: 919px) {
+  .cg-showcase:has(.gp-frame--phone.gp-frame--solo) .cg-device { max-width: 336px; }
+}
 /* Always show the access card (override the generic mobile hide) so every
    example shows access + guide together. */
 .cg .gp-frame--deliv .gp-deliv--card { display: flex; }
@@ -4912,7 +4928,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
 .context-card {
   position: relative;
   /* Real paper: ivory stock + faint fibre grain */
-  background-color: #fffaf0;
+  background-color: #fefdfb;
   background-image: var(--paper-grain-light);
   background-repeat: repeat;
   background-size: 280px 280px;
@@ -4922,7 +4938,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
      card-stock colour), then a soft drop — so each note reads as cut paper. */
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.7),
-    0 2.5px 0 color-mix(in srgb, var(--card-accent, #b59d70) 36%, #d8c7a3),
+    0 2.5px 0 color-mix(in srgb, var(--card-accent, #b59d70) 36%, #dbd5c7),
     0 14px 30px -12px rgba(45, 35, 20, 0.30),
     0 3px 8px -4px rgba(45, 35, 20, 0.10);
   padding: 15px 18px 15px 22px;
@@ -4949,7 +4965,7 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   transform: translateY(-2px) rotate(var(--card-tilt, 0deg));
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.75),
-    0 2.5px 0 color-mix(in srgb, var(--card-accent, #b59d70) 44%, #d8c7a3),
+    0 2.5px 0 color-mix(in srgb, var(--card-accent, #b59d70) 44%, #dbd5c7),
     0 24px 46px -14px rgba(45, 35, 20, 0.34),
     0 4px 10px -4px rgba(45, 35, 20, 0.12);
 }
@@ -4995,6 +5011,26 @@ button.rpp-card-media:focus-visible .rpp-zoom-cue {
   }
   .cg-device { max-width: none; }
   .cg-aside { grid-template-columns: 1fr; align-self: center; }
+
+  /* The 1.6fr column is sized for a laptop or tablet. A solo phone is roughly
+     half that width, so it left an obvious hole between the device and the
+     panels. Rebalance the columns for that case only — :has() is already used
+     elsewhere in this sheet for the proof-board pairing. */
+  .cg-showcase:has(.gp-frame--phone.gp-frame--solo) {
+    grid-template-columns: minmax(0, 0.85fr) minmax(270px, 1fr);
+    gap: clamp(24px, 3vw, 48px);
+    align-items: start;
+  }
+  /* Cap the stage around the phone itself, otherwise .cg-stage-wrap centres a
+     344px device inside a ~550px column and reopens the hole this block exists
+     to close. */
+  /* The panels are ~230px against a ~530px phone. Centring them left the text
+     floating in the middle of the column; aligning to the top of the device
+     reads as a caption beside it. */
+  .cg-showcase:has(.gp-frame--phone.gp-frame--solo) .cg-aside {
+    align-self: start;
+    padding-block-start: clamp(8px, 3vw, 46px);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

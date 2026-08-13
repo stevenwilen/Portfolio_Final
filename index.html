@@ -12,7 +12,7 @@
     <link rel="canonical" href="https://stevenwilen.dev/" />
 
     <!-- Matches the hero's top edge so mobile browser chrome blends into the page -->
-    <meta name="theme-color" content="#eadcbd" />
+    <meta name="theme-color" content="#efeae0" />
 
     <!-- Favicons generated from images/pfp.jpg. No SVG variant: the icon is a
          photograph, so an SVG could only wrap a raster and previously shipped
@@ -175,7 +175,11 @@
 
           <!-- Compact segmented example selector -->
           <div class="cg-rail" role="tablist" aria-label="Customer Guides examples" data-reveal data-reveal-delay="1">
-            <button type="button" class="cg-tab" role="tab" data-example="cust-02" aria-selected="true" tabindex="0">
+            <button type="button" class="cg-tab" role="tab" data-example="cust-04" aria-selected="true" tabindex="0">
+              <span class="cg-tab-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.8V20h13V9.8"/><path d="M10 20v-5h4v5"/><path d="M15.5 5.5V4h2.5v3.6"/></svg></span>
+              <span class="cg-tab-label">Open House Guide</span>
+            </button>
+            <button type="button" class="cg-tab" role="tab" data-example="cust-02" aria-selected="false" tabindex="-1">
               <span class="cg-tab-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><rect x="6" y="4" width="12" height="16" rx="1.5"/><path d="M9.5 8h2M14.5 8h2M9.5 12h2M14.5 12h2M10.5 20v-3h3v3"/></svg></span>
               <span class="cg-tab-label">Workshop Guide</span>
             </button>
@@ -199,18 +203,12 @@
                      This must mirror what buildDevice() in script.js emits for
                      the FIRST tab — currently cust-02, the Workshop Guide. If
                      the tab order changes, this block changes with it. -->
-                <figure class="gp-frame gp-frame--deliv gp-frame--tablet">
+                <figure class="gp-frame gp-frame--deliv gp-frame--phone gp-frame--solo">
                   <div class="gp-stage">
-                    <div class="gp-deliv gp-deliv--card">
-                      <figure class="gp-card">
-                        <img src="images/customer-guides/customer-workshop-form-card.webp" width="760" height="1333" loading="lazy" decoding="async"
-                          alt="Registration confirmation for the Coastal Business Workshop — &quot;Here&rsquo;s your guide&quot; with an Open Attendee Guide button and a link to the workshop guide." />
-                      </figure>
-                    </div>
-                    <div class="gp-deliv gp-deliv--tablet">
-                      <div class="gp-tablet"><div class="gp-tablet-screen">
-                        <img id="cg-device-img" src="images/customer-guides/customer-workshop-tablet-guide.webp" width="1000" height="1333" loading="lazy" decoding="async"
-                          alt="The finished Business Workshop Guide opened on a tablet — a sidebar with Start Here, Workshop Schedule, What to Bring, Preparation Steps, Business Checklist, Common Questions, and Contact / Help." />
+                    <div class="gp-deliv gp-deliv--phone">
+                      <div class="gp-phone"><div class="gp-phone-screen">
+                        <img id="cg-device-img" src="images/customer-guides/customer-openhouse-mobile-guide.webp" width="620" height="1248" loading="lazy" decoding="async"
+                          alt="The open house guide for 214 Larkspur Lane opened on a phone — the address, price, beds, baths and square footage over a photo of the porch, with the agent&rsquo;s name and a call button." />
                       </div></div>
                     </div>
                   </div>
@@ -218,35 +216,31 @@
               </div>
             </div>
 
-            <!-- RIGHT: supporting context — Problem / In the guide / Result -->
+            <!-- RIGHT: supporting context. Deliberately two blocks, not three —
+                 the guide contents and the outcome. The "Problem" card was cut:
+                 it restated the section subhead in negative form and made the
+                 column read as a stack of boxes rather than a caption. -->
             <aside class="cg-aside" id="cg-aside" aria-live="polite">
-              <article class="cg-note-card cg-note-card--problem context-card">
-                <h3 class="cg-note-head">
-                  <span class="cg-note-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5"/><path d="M12 16.4h.01"/></svg></span>
-                  <span class="cg-note-label">Problem</span>
-                </h3>
-                <p class="cg-note-body" id="cg-problem">Attendees often miss important details when event information is scattered across emails, messages, and PDFs.</p>
-              </article>
-
-              <article class="cg-note-card cg-note-card--guide context-card">
+              <article class="cg-note-card cg-note-card--guide">
                 <h3 class="cg-note-head">
                   <span class="cg-note-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5v13"/><path d="M12 6.5C10 5 7 5 4 5.6v12.5c3-.6 6-.6 8 .9 2-1.5 5-1.5 8-.9V5.6C17 5 14 5 12 6.5z"/></svg></span>
                   <span class="cg-note-label">In the guide</span>
                 </h3>
                 <ul class="cg-guide-list" id="cg-guide">
-                  <li class="cg-guide-item">Start here</li>
-                  <li class="cg-guide-item">Schedule + what to bring</li>
-                  <li class="cg-guide-item">Preparation steps</li>
-                  <li class="cg-guide-item">Checklist + help</li>
+                  <li class="cg-guide-item">The home + photo gallery</li>
+                  <li class="cg-guide-item">What&rsquo;s included</li>
+                  <li class="cg-guide-item">Neighborhood + schools</li>
+                  <li class="cg-guide-item">HOA / CDD fees</li>
+                  <li class="cg-guide-item">Agent contact</li>
                 </ul>
               </article>
 
-              <article class="cg-note-card cg-note-card--result context-card">
+              <article class="cg-note-card cg-note-card--result">
                 <h3 class="cg-note-head">
                   <span class="cg-note-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.3 12.3l2.6 2.6 4.8-5.3"/></svg></span>
                   <span class="cg-note-label">Result</span>
                 </h3>
-                <p class="cg-note-body" id="cg-result">Attendees arrive prepared with one guide for the workshop instead of digging through scattered messages.</p>
+                <p class="cg-note-body" id="cg-result">The listing goes home in the buyer&rsquo;s pocket instead of the recycling, with the agent&rsquo;s number attached to it.</p>
               </article>
             </aside>
 
@@ -276,21 +270,11 @@
           <div class="rpp-intro" data-reveal>
             <span class="rpp-eyebrow">Real project proof</span>
             <h2 id="project-title" class="rpp-title">Morpheus<br>Drive Guide</h2>
-            <p class="rpp-lead">A robotics company needed a clearer way to explain a technical component to interns using it inside functional robots.</p>
-            <p class="rpp-lead rpp-lead--sub">I worked from walkthrough videos, email notes, phone calls, and client explanations, then organized the material into website-ready guide content formatted for their LMS.</p>
-
-            <hr class="rpp-divider" />
-
-            <dl class="rpp-meta">
-              <div class="rpp-meta-row">
-                <dt><span class="rpp-meta-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 3.5 7v10L12 21.5 20.5 17V7z"/><path d="M3.5 7 12 11.5 20.5 7"/><path d="M12 11.5v10"/></svg></span>Used</dt>
-                <dd>Walkthrough videos · Email notes · Phone calls · Client explanations</dd>
-              </div>
-              <div class="rpp-meta-row">
-                <dt><span class="rpp-meta-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>Created</dt>
-                <dd>LMS-ready guide content · Diagrams · Video-supported sections · Intern reference material</dd>
-              </div>
-            </dl>
+            <!-- One paragraph, not three blocks. The three columns to the right
+                 are the proof; this only has to say who it was for and what the
+                 job was. The Used / Created metadata lists were cut — they
+                 restated in prose what the columns already show. -->
+            <p class="rpp-lead">A robotics company needed a clearer way to explain a technical component to the interns working with it. I built their guide from walkthrough videos, call notes, and client explanations.</p>
           </div>
 
           <!-- COL 2: source materials -->
@@ -434,7 +418,6 @@
             <span class="contact-eyebrow" data-reveal="left"><span class="contact-eyebrow-dot"></span>Get in touch</span>
             <h2 id="contact-heading" data-reveal data-reveal-delay="1">Have something you keep explaining?</h2>
             <p id="contact-body" data-reveal data-reveal-delay="2">Send me the task, guide, process, role, customer question, app, or workflow you want made easier to understand.</p>
-            <p class="contact-support" data-reveal data-reveal-delay="3">You don&rsquo;t need polished materials to start. A rough explanation, notes, screenshots, video, or call is enough.</p>
 
             <div class="contact-actions" data-reveal data-reveal-delay="4">
               <a id="contact-email-link" href="mailto:steven.wilen@gmail.com?subject=Guide%20project%20inquiry">
@@ -442,7 +425,6 @@
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </a>
             </div>
-            <p class="contact-meta" data-reveal data-reveal-delay="5">Or email me directly at <a href="mailto:steven.wilen@gmail.com">steven.wilen@gmail.com</a></p>
           </div>
         </div>
 
@@ -469,17 +451,6 @@
               <li><a href="#customer-guides">Customer guides</a></li>
               <li><a href="#project">Real project</a></li>
               <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div>
-          <div class="footer-col footer-col--formats">
-            <h4 class="footer-col-heading">Formats</h4>
-            <ul>
-              <li>Reference guides</li>
-              <li>Walkthroughs &amp; tutorials</li>
-              <li>SOPs &amp; checklists</li>
-              <li>Training material</li>
-              <li>Onboarding docs</li>
-              <li>Short video guides</li>
             </ul>
           </div>
           <div class="footer-col">
