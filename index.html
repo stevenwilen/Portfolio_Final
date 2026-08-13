@@ -7,7 +7,7 @@
     <title>Steven Wilen · Web Guides</title>
     <meta
       name="description"
-      content="Simple, well-designed web guides for anything — a listing, a workshop, a rental, a product. One link, opens on any phone, flat pricing."
+      content="Simple, well-designed web guides for anything: a listing, a workshop, a rental, a product. One link, opens on any phone, flat pricing."
     />
     <link rel="canonical" href="https://stevenwilen.dev/" />
 
@@ -34,19 +34,19 @@
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Steven Wilen — simple, well-designed web guides for anything." />
+    <meta property="og:image:alt" content="Steven Wilen: simple, well-designed web guides for anything." />
     <meta name="twitter:card" content="summary_large_image" />
 
     <!-- Fonts load via <link> rather than an @import inside styles.css: an
          @import cannot start downloading until the stylesheet has been fetched
          and parsed, which serialises two round trips before any text renders.
-         Only roman 400–800 is requested — those are the weights actually used,
-         and dropping the italic axis drops a whole font file. -->
+         One family, one request. Archivo covers display and text, so the page
+         no longer pays for a second family to set headings. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..900&family=Inter+Tight:wght@400..700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400..900&display=swap"
     />
 
     <link rel="stylesheet" href="styles.css" />
@@ -69,11 +69,11 @@
         <div id="hero-intro">
 
           <h1 id="hero-headline" data-reveal>
-            <span class="hh-line">Everything they</span>
-            <span class="hh-line">need to know,</span>
-            <span class="hh-line">in one link.</span>
+            <span class="hh-line"><span class="hh-inner">Everything they</span></span>
+            <span class="hh-line"><span class="hh-inner">need to know,</span></span>
+            <span class="hh-line"><span class="hh-inner">in one link.</span></span>
           </h1>
-          <p id="hero-subheadline" data-reveal data-reveal-delay="1">A listing, a workshop, a rental, a product — I turn it into one clean web guide. No app, no PDF, no login.</p>
+          <p id="hero-subheadline" data-reveal data-reveal-delay="1">A listing, a workshop, a rental, a product. I turn it into one clean web guide. No app, no PDF, no login.</p>
 
           <div class="hero-cta-row" data-reveal data-reveal-delay="2">
             <a class="hero-cta" href="#contact">
@@ -87,70 +87,33 @@
           </div>
         </div>
 
-        <!-- Floating asset placeholders pushed to the outer edges.
-             Each is a paper frame waiting to hold a real (redacted)
-             asset later. Layout matches the reference: source materials
-             on the left (notes, video, reference guide), finished
-             outputs on the right (quick-start, call recording,
-             annotated screenshot, maintenance checklist). -->
-
-        <!-- LEFT side -->
-
-        <!-- Lesson page — a real (simplified) guide artifact -->
-        <div class="hero-float hero-float--notes" aria-hidden="true" data-parallax="0.22">
-          <div class="hero-float-slot hero-float-slot--filled">
-            <img class="hero-float-img" src="images/hero/hero-lesson-guide.webp" width="720" height="576" alt="" loading="lazy" decoding="async" />
+        <!-- Guide strip. Replaces seven scattered, rotated paper artifacts:
+             same breadth, one readable band, and it moves. Duplicated once so
+             the CSS animation can loop seamlessly; the copy is aria-hidden so
+             screen readers hear the list once. -->
+        <div class="strip" aria-label="Guides I have built">
+          <div class="strip-track">
+            <ul class="strip-row">
+              <li><img src="images/hero/hero-rental-welcome-guide.webp" width="720" height="960" alt="Beachside rental welcome guide" loading="lazy" decoding="async" /></li>
+              <li><img src="images/hero/hero-workshop-email.webp" width="820" height="273" alt="Workshop confirmation email" loading="lazy" decoding="async" /></li>
+              <li><img src="images/hero/hero-robot-build-guide.webp" width="720" height="568" alt="Student robot build guide" loading="lazy" decoding="async" /></li>
+              <li><img src="images/hero/hero-front-desk-guide.webp" width="720" height="405" alt="Front desk opening guide" loading="lazy" decoding="async" /></li>
+              <li><img src="images/hero/hero-staff-training-guide.webp" width="720" height="398" alt="Staff training guide" loading="lazy" decoding="async" /></li>
+              <li><img src="images/hero/hero-lesson-guide.webp" width="720" height="576" alt="Lesson guide page" loading="lazy" decoding="async" /></li>
+              <li><img src="images/hero/hero-reference-guide.webp" width="720" height="960" alt="Reference guide" loading="lazy" decoding="async" /></li>
+            </ul>
+            <ul class="strip-row" aria-hidden="true">
+              <li><img src="images/hero/hero-rental-welcome-guide.webp" width="720" height="960" alt="" loading="lazy" decoding="async" /></li>
+              <li><img src="images/hero/hero-workshop-email.webp" width="820" height="273" alt="" loading="lazy" decoding="async" /></li>
+              <li><img src="images/hero/hero-robot-build-guide.webp" width="720" height="568" alt="" loading="lazy" decoding="async" /></li>
+              <li><img src="images/hero/hero-front-desk-guide.webp" width="720" height="405" alt="" loading="lazy" decoding="async" /></li>
+              <li><img src="images/hero/hero-staff-training-guide.webp" width="720" height="398" alt="" loading="lazy" decoding="async" /></li>
+              <li><img src="images/hero/hero-lesson-guide.webp" width="720" height="576" alt="" loading="lazy" decoding="async" /></li>
+              <li><img src="images/hero/hero-reference-guide.webp" width="720" height="960" alt="" loading="lazy" decoding="async" /></li>
+            </ul>
           </div>
         </div>
 
-        <!-- New staff training guide — a real (simplified) guide artifact -->
-        <div class="hero-float hero-float--video" aria-hidden="true" data-parallax="0.18">
-          <div class="hero-float-slot hero-float-slot--filled">
-            <img class="hero-float-img" src="images/hero/hero-staff-training-guide.webp" width="720" height="398" alt="" loading="lazy" decoding="async" />
-          </div>
-        </div>
-
-        <!-- Reference guide — a real (simplified) guide artifact, peeking from behind video -->
-        <div class="hero-float hero-float--reference" aria-hidden="true" data-parallax="0.20">
-          <div class="hero-float-slot hero-float-slot--filled">
-            <img class="hero-float-img" src="images/hero/hero-reference-guide.webp" width="720" height="960" alt="" loading="lazy" decoding="async" />
-          </div>
-        </div>
-
-        <!-- RIGHT side -->
-
-        <!-- Front desk opening guide — a real (simplified) guide artifact -->
-        <div class="hero-float hero-float--guide" aria-hidden="true" data-parallax="0.15">
-          <div class="hero-float-slot hero-float-slot--filled">
-            <img class="hero-float-img" src="images/hero/hero-front-desk-guide.webp" width="720" height="405" alt="" loading="lazy" decoding="async" />
-          </div>
-        </div>
-
-        <!-- Business workshop email — a real (simplified) deliverable artifact -->
-        <div class="hero-float hero-float--call" aria-hidden="true" data-parallax="0.26">
-          <div class="hero-float-slot hero-float-slot--filled">
-            <img class="hero-float-img" src="images/hero/hero-workshop-email.webp" width="820" height="273" alt="" loading="lazy" decoding="async" />
-          </div>
-        </div>
-
-        <!-- Student robot build guide — a real (simplified) guide artifact -->
-        <div class="hero-float hero-float--annotated" aria-hidden="true" data-parallax="0.18">
-          <div class="hero-float-slot hero-float-slot--filled">
-            <img class="hero-float-img" src="images/hero/hero-robot-build-guide.webp" width="720" height="568" alt="" loading="lazy" decoding="async" />
-          </div>
-        </div>
-
-        <!-- Beachside rental welcome guide — a real (simplified) guide artifact, overlapping annotated bottom-right -->
-        <div class="hero-float hero-float--checklist" aria-hidden="true" data-parallax="0.28">
-          <div class="hero-float-slot hero-float-slot--filled">
-            <img class="hero-float-img" src="images/hero/hero-rental-welcome-guide.webp" width="720" height="1019" alt="" loading="lazy" decoding="async" />
-          </div>
-        </div>
-
-        <!-- Torn-paper mask: lays the body surface over the hero's bottom
-             padding so the divider sits back at its original line and the
-             lower artifacts tuck behind it. -->
-        <div class="hero-bottom-mask" aria-hidden="true"></div>
 
       </section>
 
@@ -158,9 +121,9 @@
       <!-- ============================================================
            SECTION 2: CUSTOMER GUIDES
            Case-study showcase: heading + a compact segmented example
-           selector, then a two-column showcase — a dominant access-card +
+           selector, then a two-column showcase - a dominant access-card +
            device deliverable on the left, three supporting note panels
-           (Problem / In the guide / Result) on the right — and a one-line
+           (Problem / In the guide / Result) on the right - and a one-line
            process strip below. The Student Build Guide is rendered
            statically; script.js swaps the deliverable + panels on select.
       ============================================================ -->
@@ -177,11 +140,11 @@
             <li>A rental or Airbnb</li>
             <li>A product or how it works</li>
             <li>Instructions and training</li>
-            <li>The PDF you keep re-sending</li>
+            <li>The PDF you keep resending</li>
           </ul>
           <p class="range-note" data-reveal data-reveal-delay="2">
             <span class="range-price">Flat pricing from $300.</span>
-            One price per guide — no subscription, no per-view fee, nothing to maintain.
+            One price per guide. No subscription, no per-view fee, nothing to maintain.
           </p>
         </div>
       </section>
@@ -192,7 +155,7 @@
           <header class="cg-head" data-reveal>
             <span class="cg-eyebrow">Recent work</span>
             <h2 id="gp-cust-heading" class="cg-heading">Guides I&rsquo;ve built</h2>
-            <p class="cg-subhead">Every one of these is a single web page. You share one link — or a printed QR card — and it opens on any phone.</p>
+            <p class="cg-subhead">Every one of these is a single web page. You share one link, or a printed QR card, and it opens on any phone.</p>
           </header>
 
           <!-- Compact segmented example selector -->
@@ -223,14 +186,14 @@
               <div class="cg-device" id="cg-device">
                 <!-- Rendered statically so the section works before/without JS.
                      This must mirror what buildDevice() in script.js emits for
-                     the FIRST tab — currently cust-02, the Workshop Guide. If
+                     the FIRST tab - currently cust-02, the Workshop Guide. If
                      the tab order changes, this block changes with it. -->
                 <figure class="gp-frame gp-frame--deliv gp-frame--phone gp-frame--solo">
                   <div class="gp-stage">
                     <div class="gp-deliv gp-deliv--phone">
                       <div class="gp-phone"><div class="gp-phone-screen">
                         <img id="cg-device-img" src="images/customer-guides/customer-openhouse-mobile-guide.webp" width="620" height="1248" loading="lazy" decoding="async"
-                          alt="The open house guide for 214 Larkspur Lane opened on a phone — the address, price, beds, baths and square footage over a photo of the porch, with the agent&rsquo;s name and a call button." />
+                          alt="The open house guide for 214 Larkspur Lane opened on a phone: the address, price, beds, baths and square footage over a photo of the porch, with the agent&rsquo;s name and a call button." />
                       </div></div>
                     </div>
                   </div>
@@ -238,7 +201,7 @@
               </div>
             </div>
 
-            <!-- RIGHT: supporting context. Deliberately two blocks, not three —
+            <!-- RIGHT: supporting context. Deliberately two blocks, not three -
                  the guide contents and the outcome. The "Problem" card was cut:
                  it restated the section subhead in negative form and made the
                  column read as a stack of boxes rather than a caption. -->
@@ -282,7 +245,7 @@
 
 
       <!-- ============================================================
-           SECTION 4: REAL PROJECT — Morpheus Drive
+           SECTION 4: REAL PROJECT - Morpheus Drive
       ============================================================ -->
       <section id="project" class="rpp" aria-labelledby="project-title">
 
@@ -294,9 +257,9 @@
             <h2 id="project-title" class="rpp-title">Morpheus<br>Drive Guide</h2>
             <!-- One paragraph, not three blocks. The three columns to the right
                  are the proof; this only has to say who it was for and what the
-                 job was. The Used / Created metadata lists were cut — they
+                 job was. The Used / Created metadata lists were cut - they
                  restated in prose what the columns already show. -->
-            <p class="rpp-lead">A robotics company needed one place to explain a technical component. I built it from their walkthrough videos, call notes, and emails — this is what going from raw material to a finished guide actually looks like.</p>
+            <p class="rpp-lead">A robotics company needed one place to explain a technical component. I built it from their walkthrough videos, call notes, and emails. This is what going from raw material to a finished guide actually looks like.</p>
           </div>
 
           <!-- COL 2: source materials -->
@@ -389,7 +352,7 @@
           </div>
         </div>
 
-        <!-- Full-image lightbox — opened by the proof-board image cards -->
+        <!-- Full-image lightbox - opened by the proof-board image cards -->
         <div class="rpp-lightbox" id="rpp-lightbox" role="dialog" aria-modal="true" aria-label="Full project image" hidden>
           <button type="button" class="rpp-lightbox-close" data-rpp-close aria-label="Close full image">&times;</button>
           <figure class="rpp-lightbox-fig">
@@ -409,37 +372,10 @@
         <div class="contact-card">
 
           <!-- Drifting raw-material chips -->
-          <div class="contact-card-fx" aria-hidden="true">
-            <div class="cc-chip cc-chip--voice" style="top: 8%; left: 5%;  --d: 22s; --delay: 0s;">
-              <span class="cc-chip-dot"></span>
-              <span class="cc-chip-wave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>
-            </div>
-            <div class="cc-chip cc-chip--doc" style="top: 12%; right: 6%; --d: 26s; --delay: -3s;">
-              <span class="cc-chip-doc-icon">PDF</span>
-              <span class="cc-chip-doc-lines"><span></span><span></span><span></span></span>
-            </div>
-            <div class="cc-chip cc-chip--video" style="bottom: 12%; left: 7%; --d: 24s; --delay: -7s;">
-              <span class="cc-chip-play">▶</span>
-              <span class="cc-chip-time">0:00</span>
-            </div>
-            <div class="cc-chip cc-chip--chat" style="bottom: 14%; right: 8%; --d: 28s; --delay: -4s;">
-              <span class="cc-chip-avatar">A</span>
-              <span class="cc-chip-bubble"><span></span><span></span></span>
-            </div>
-            <div class="cc-chip cc-chip--slide" style="top: 42%; left: 3%; --d: 30s; --delay: -10s;">
-              <span class="cc-chip-slide-bar"></span>
-              <span class="cc-chip-slide-bullets"><span></span><span></span><span></span></span>
-            </div>
-            <div class="cc-chip cc-chip--audio" style="top: 48%; right: 3%; --d: 26s; --delay: -2s;">
-              <span class="cc-chip-rec-dot"></span>
-              <span class="cc-chip-label">REC</span>
-            </div>
-          </div>
-
           <div class="contact-card-inner">
             <span class="contact-eyebrow" data-reveal="left"><span class="contact-eyebrow-dot"></span>Get in touch</span>
             <h2 id="contact-heading" data-reveal data-reveal-delay="1">What do you need a guide for?</h2>
-            <p id="contact-body" data-reveal data-reveal-delay="2">Tell me what it&rsquo;s for and send whatever you already have — notes, photos, a rough explanation. I&rsquo;ll come back with a price and a date.</p>
+            <p id="contact-body" data-reveal data-reveal-delay="2">Tell me what it&rsquo;s for and send whatever you already have: notes, photos, a rough explanation. I&rsquo;ll come back with a price and a date.</p>
 
             <div class="contact-actions" data-reveal data-reveal-delay="4">
               <a id="contact-email-link" href="mailto:steven.wilen@gmail.com?subject=Guide%20project%20inquiry">
