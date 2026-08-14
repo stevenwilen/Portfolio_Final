@@ -114,10 +114,49 @@
       <span class="eyebrow">Get in touch</span>
       <h2>What do you need a guide for?</h2>
       <p>Tell me what it&rsquo;s for and send whatever you already have: notes, photos, a rough explanation. I&rsquo;ll come back with a price and a date.</p>
-      <div class="contact-desktop">
-        <a class="btn" href="mailto:steven.wilen@gmail.com?subject=Guide%20project%20inquiry">Email me about a guide
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
+      <form class="inquiry" id="inquiry" novalidate>
+        <div class="field">
+          <label for="f-name">Name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+          <span class="err" data-for="f-name"></span>
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+          <span class="err" data-for="f-email"></span>
+        </div>
+        <div class="field field--full">
+          <label for="f-kind">What&rsquo;s it for?</label>
+          <div class="select-wrap">
+            <select id="f-kind" name="kind">
+              <option>A property listing</option>
+              <option>A workshop or event</option>
+              <option>A rental or Airbnb</option>
+              <option>A product or how it works</option>
+              <option>Instructions and training</option>
+              <option>A PDF I keep resending</option>
+              <option>Something else</option>
+            </select>
+            <span class="chev" aria-hidden="true">▾</span>
+          </div>
+        </div>
+        <div class="field field--full">
+          <label for="f-details">Tell me about it</label>
+          <textarea id="f-details" name="details" rows="5" placeholder="What it&rsquo;s for, who it&rsquo;s for, and when you need it." required></textarea>
+          <span class="hint">A few sentences is plenty. Send links or notes too.</span>
+          <span class="err" data-for="f-details"></span>
+        </div>
+        <div class="field field--full form-actions">
+          <button class="btn" type="submit">Send
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+          <span class="form-alt">or email <a href="mailto:steven.wilen@gmail.com?subject=Guide%20project%20inquiry">steven.wilen@gmail.com</a></span>
+        </div>
+      </form>
+      <div class="form-sent" id="form-sent" hidden>
+        <b>Got it.</b>
+        <span>I read everything myself and reply within a day or two.</span>
+        <button class="btn btn-outline" type="button" id="form-again">Send another</button>
       </div>
       <div class="contact-mobile">
         <a class="btn" href="tel:+10000000000">

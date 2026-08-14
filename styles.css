@@ -104,6 +104,34 @@ img{max-width:100%;display:block}
 .contact h2{font-size:clamp(30px,4.4vw,54px);margin:var(--sp-5) 0}
 .contact p{color:var(--text-muted);font-size:clamp(16px,1.6vw,20px);max-width:56ch;margin-bottom:var(--sp-7)}
 .contact-mobile{display:none}
+/* inquiry form */
+.inquiry{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-5);background:var(--surface-card);border:1px solid var(--border-hairline);border-radius:var(--radius-md);padding:clamp(20px,3vw,32px)}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field--full{grid-column:1 / -1}
+.field label{font-size:15px;font-weight:500;color:var(--text-strong)}
+.field input,.field textarea,.field select{width:100%;font-family:var(--font-sans);font-size:15px;color:var(--text-strong);background:var(--surface-card);border:1px solid var(--border-hairline);border-radius:var(--radius-sm);padding:10px 12px;transition:border-color var(--dur-fast) var(--ease-standard),box-shadow var(--dur-fast) var(--ease-standard);outline:none}
+.field textarea{resize:vertical;line-height:1.5}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--ink-600);box-shadow:0 0 0 3px var(--ochre-100)}
+.field input::placeholder,.field textarea::placeholder{color:var(--text-faint)}
+.field .hint{font-size:13px;color:var(--text-muted)}
+.field .err{font-size:13px;color:#8E3A32;display:none}
+.field.invalid .err{display:block}
+.field.invalid input,.field.invalid textarea{border-color:#8E3A32}
+.select-wrap{position:relative}
+.select-wrap select{appearance:none;padding-right:34px;cursor:pointer}
+.select-wrap .chev{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--text-faint);font-size:11px;pointer-events:none}
+.form-actions{flex-direction:row;align-items:center;gap:var(--sp-5);flex-wrap:wrap}
+.form-alt{font-size:15px;color:var(--text-muted)}
+.form-alt a{border-bottom:1px solid var(--ochre-300)}
+.form-alt a:hover{color:var(--ochre-700);border-bottom-color:var(--ochre-600)}
+.form-sent{display:flex;flex-direction:column;align-items:flex-start;gap:var(--sp-3);background:var(--surface-card);border:1px solid var(--border-hairline);border-radius:var(--radius-md);padding:clamp(24px,3vw,36px)}
+.form-sent b{font-family:var(--font-display);font-weight:400;font-size:25px;color:var(--text-strong)}
+.form-sent span{font-size:15px;color:var(--text-muted)}
+.form-sent .btn{margin-top:var(--sp-3)}
+/* .inquiry sets display:grid and .form-sent sets display:flex, and a class rule
+   outranks the UA [hidden]{display:none}. Without this the confirmation panel
+   renders on page load and form.hidden=true never hides the form after submit. */
+.inquiry[hidden],.form-sent[hidden]{display:none}
 
 /* footer */
 .site-footer{padding:clamp(36px,5vw,64px) var(--pad-x)}
@@ -122,7 +150,7 @@ img{max-width:100%;display:block}
   .phone-wrap{order:-1}
 }
 @media (max-width:640px){
-  .contact-desktop{display:none}
+  .inquiry{grid-template-columns:1fr}
   .contact-mobile{display:flex;gap:12px}
   .contact-mobile .btn{flex:1;padding:16px 20px}
 }
