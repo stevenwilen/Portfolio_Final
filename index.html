@@ -1,302 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steven Wilen · Web Guides</title>
+<meta name="description" content="Simple, well-designed web guides for anything: a listing, a workshop, a rental, a product. One link, opens on any phone, flat pricing.">
+<link rel="canonical" href="https://stevenwilen.dev/">
+<meta name="theme-color" content="#FAF8F5">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://stevenwilen.dev/">
+<meta property="og:title" content="Steven Wilen · Web Guides">
+<meta property="og:description" content="Simple, well-designed web guides for anything. One link, opens on any phone.">
+<meta property="og:image" content="https://stevenwilen.dev/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Steven Wilen: simple, well-designed web guides for anything.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-    <title>Steven Wilen · Web Guides</title>
-    <meta
-      name="description"
-      content="Simple, well-designed web guides for anything: a listing, a workshop, a rental, a product. One link, opens on any phone, flat pricing."
-    />
-    <link rel="canonical" href="https://stevenwilen.dev/" />
+<header class="site-header">
+  <a class="wordmark" href="#top"><b>Steven Wilen</b><i>·</i><span>Web Guides</span></a>
+  <nav class="site-nav">
+    <a href="#work">Examples</a>
+    <a class="strong" href="#contact">Start a guide</a>
+  </nav>
+</header>
 
-    <!-- Matches the hero's top edge so mobile browser chrome blends into the page -->
-    <meta name="theme-color" content="#eceef1" />
+<main id="top">
 
-    <!-- Favicons generated from images/pfp.jpg. No SVG variant: the icon is a
-         photograph, so an SVG could only wrap a raster and previously shipped
-         2.4 MB to do it. PNG + ICO covers every target. -->
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-
-    <!-- Social preview -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://stevenwilen.dev/" />
-    <meta property="og:title" content="Steven Wilen · Web Guides" />
-    <meta
-      property="og:description"
-      content="Simple, well-designed web guides for anything. One link, opens on any phone."
-    />
-    <meta property="og:image" content="https://stevenwilen.dev/og-image.jpg" />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Steven Wilen: simple, well-designed web guides for anything." />
-    <meta name="twitter:card" content="summary_large_image" />
-
-    <!-- Fonts load via <link> rather than an @import inside styles.css: an
-         @import cannot start downloading until the stylesheet has been fetched
-         and parsed, which serialises two round trips before any text renders.
-         One family, one request. Archivo covers display and text, so the page
-         no longer pays for a second family to set headings. -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400..900&display=swap"
-    />
-
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-
-    <main id="portfolio">
-
-      <!-- ============================================================
-           SECTION 1: HERO
-      ============================================================ -->
-      <section id="hero" aria-labelledby="hero-headline">
-
-        <div class="site-wordmark" aria-label="Steven Wilen, Web Guides">
-          <span class="site-wordmark-name">Steven Wilen</span>
-          <span class="site-wordmark-sep" aria-hidden="true">·</span>
-          <span class="site-wordmark-role">Web Guides</span>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1 data-reveal>
+          <span class="line"><span>Everything they</span></span>
+          <span class="line"><span>need to know,</span></span>
+          <span class="line"><span>in one link.</span></span>
+        </h1>
+        <p class="hero-sub" data-reveal data-reveal-delay="1">A listing, a workshop, a rental, a product. I turn it into one clean web guide. No app, no PDF, no login.</p>
+        <div class="link-pill" data-reveal data-reveal-delay="2">
+          <span class="dot"></span>
+          <span>stevenwilen.dev/<span class="slug" id="slug"></span><span class="caret">|</span></span>
         </div>
-
-        <div id="hero-intro">
-
-          <h1 id="hero-headline" data-reveal>
-            <span class="hh-line"><span class="hh-inner">Everything they</span></span>
-            <span class="hh-line"><span class="hh-inner">need to know,</span></span>
-            <span class="hh-line"><span class="hh-inner">in one link.</span></span>
-          </h1>
-          <p id="hero-subheadline" data-reveal data-reveal-delay="1">A listing, a workshop, a rental, a product. I turn it into one clean web guide. No app, no PDF, no login.</p>
-
-          <div class="hero-cta-row" data-reveal data-reveal-delay="2">
-            <a class="hero-cta" href="#contact">
-              <span>Start a guide</span>
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
-            <a class="hero-cta-link" href="#customer-guides">
-              <span>See examples</span>
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="5 12 12 19 19 12"/></svg>
-            </a>
-          </div>
+        <div class="hero-actions" data-reveal data-reveal-delay="3">
+          <a class="btn" href="#contact">Start a guide
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a class="btn btn-link" href="#work">See examples</a>
         </div>
-
-        <!-- Faded devices behind the headline. Decoration only: aria-hidden,
-             no images, and every screen is drawn in CSS. -->
-        <div class="hero-bg" aria-hidden="true">
-
-          <div class="hero-dev hero-dev--laptop hero-dev--a">
-            <div class="hero-dev-screen">
-              <span class="hd-bar"></span>
-              <span class="hd-photo"></span>
-              <span class="hd-line hd-line--title"></span>
-              <span class="hd-line"></span>
-              <span class="hd-line hd-line--short"></span>
-              <span class="hd-rows"><i></i><i></i><i></i></span>
-            </div>
-            <div class="hero-dev-base"></div>
-          </div>
-
-          <div class="hero-dev hero-dev--phone hero-dev--b">
-            <div class="hero-dev-screen">
-              <span class="hd-photo hd-photo--tall"></span>
-              <span class="hd-line hd-line--title"></span>
-              <span class="hd-line hd-line--short"></span>
-              <span class="hd-rows"><i></i><i></i><i></i><i></i></span>
-            </div>
-          </div>
-
-          <div class="hero-dev hero-dev--tablet hero-dev--c">
-            <div class="hero-dev-screen">
-              <span class="hd-bar"></span>
-              <span class="hd-line hd-line--title"></span>
-              <span class="hd-rows hd-rows--dense"><i></i><i></i><i></i><i></i><i></i></span>
-              <span class="hd-photo"></span>
-            </div>
-          </div>
-
-        </div>
-
-      </section>
-      <section id="range" aria-labelledby="range-heading">
-        <div class="range-wrap">
-          <h2 id="range-heading" class="range-heading" data-reveal>A guide for anything.</h2>
-          <ul class="range-list" data-reveal data-reveal-delay="1">
-            <li>A property listing</li>
-            <li>A workshop or event</li>
-            <li>A rental or Airbnb</li>
-            <li>A product or how it works</li>
-            <li>Instructions and training</li>
-            <li>The PDF you keep resending</li>
-          </ul>
-          <p class="range-note" data-reveal data-reveal-delay="2">
-            <span class="range-price">Flat pricing from $300.</span>
-            One price per guide. No subscription, no per-view fee, nothing to maintain.
-          </p>
-        </div>
-      </section>
-
-      <section class="gp-section cg" id="customer-guides" data-kind="cust" aria-labelledby="gp-cust-heading">
-        <div class="cg-wrap">
-
-          <header class="cg-head" data-reveal>
-            <span class="cg-eyebrow">Recent work</span>
-            <h2 id="gp-cust-heading" class="cg-heading">Guides I&rsquo;ve built</h2>
-            <p class="cg-subhead">Every one of these is a single web page. You share one link, or a printed QR card, and it opens on any phone.</p>
-          </header>
-
-          <!-- Compact segmented example selector -->
-          <div class="cg-rail" role="tablist" aria-label="Guides I&rsquo;ve built examples" data-reveal data-reveal-delay="1">
-            <button type="button" class="cg-tab" role="tab" data-example="cust-04" aria-selected="true" tabindex="0">
-              <span class="cg-tab-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.8V20h13V9.8"/><path d="M10 20v-5h4v5"/><path d="M15.5 5.5V4h2.5v3.6"/></svg></span>
-              <span class="cg-tab-label">Open House Guide</span>
-            </button>
-            <button type="button" class="cg-tab" role="tab" data-example="cust-02" aria-selected="false" tabindex="-1">
-              <span class="cg-tab-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><rect x="6" y="4" width="12" height="16" rx="1.5"/><path d="M9.5 8h2M14.5 8h2M9.5 12h2M14.5 12h2M10.5 20v-3h3v3"/></svg></span>
-              <span class="cg-tab-label">Workshop Guide</span>
-            </button>
-            <button type="button" class="cg-tab" role="tab" data-example="cust-01" aria-selected="false" tabindex="-1">
-              <span class="cg-tab-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9"/><path d="M12 12c-1-3-4.5-4-7.5-2.7 2.4.2 3.9 1.4 4.6 3.1"/><path d="M12 12c1-3 4.5-4 7.5-2.7-2.4.2-3.9 1.4-4.6 3.1"/><path d="M12 12c-.6-3 .4-6.3 2.4-7.8-.4 2.6-.6 4.6-.9 6.6"/><path d="M9 21h6"/></svg></span>
-              <span class="cg-tab-label">Rental Guest Guide</span>
-            </button>
-            <button type="button" class="cg-tab" role="tab" data-example="cust-03" aria-selected="false" tabindex="-1">
-              <span class="cg-tab-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="8" width="15" height="11" rx="2.5"/><path d="M12 8V5"/><circle cx="12" cy="4" r="1"/><circle cx="9.3" cy="13" r="1.1"/><circle cx="14.7" cy="13" r="1.1"/><path d="M9.5 16.2h5"/></svg></span>
-              <span class="cg-tab-label">Student Build Guide</span>
-            </button>
-          </div>
-
-          <!-- Showcase: dominant access + guide deliverable, supporting panels -->
-          <div class="cg-showcase" data-reveal data-reveal-delay="2">
-
-            <!-- LEFT: the access card + the live guide on its device -->
-            <div class="cg-stage-wrap">
-              <div class="cg-device" id="cg-device">
-                <!-- Rendered statically so the section works before/without JS.
-                     This must mirror what buildDevice() in script.js emits for
-                     the FIRST tab - currently cust-02, the Workshop Guide. If
-                     the tab order changes, this block changes with it. -->
-                <figure class="gp-frame gp-frame--deliv gp-frame--phone gp-frame--solo">
-                  <div class="gp-stage">
-                    <div class="gp-deliv gp-deliv--phone">
-                      <div class="gp-phone"><div class="gp-phone-screen">
-                        <img id="cg-device-img" src="images/customer-guides/customer-openhouse-mobile-guide.webp" width="620" height="1248" loading="lazy" decoding="async"
-                          alt="The open house guide for 214 Larkspur Lane opened on a phone: the address, price, beds, baths and square footage over a photo of the porch, with the agent&rsquo;s name and a call button." />
-                      </div></div>
-                    </div>
-                  </div>
-                </figure>
-              </div>
-            </div>
-
-            <!-- RIGHT: supporting context. Deliberately two blocks, not three -
-                 the guide contents and the outcome. The "Problem" card was cut:
-                 it restated the section subhead in negative form and made the
-                 column read as a stack of boxes rather than a caption. -->
-            <aside class="cg-aside" id="cg-aside" aria-live="polite">
-              <article class="cg-note-card cg-note-card--guide">
-                <h3 class="cg-note-head">
-                  <span class="cg-note-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5v13"/><path d="M12 6.5C10 5 7 5 4 5.6v12.5c3-.6 6-.6 8 .9 2-1.5 5-1.5 8-.9V5.6C17 5 14 5 12 6.5z"/></svg></span>
-                  <span class="cg-note-label">In the guide</span>
-                </h3>
-                <ul class="cg-guide-list" id="cg-guide">
-                  <li class="cg-guide-item">The home + photo gallery</li>
-                  <li class="cg-guide-item">What&rsquo;s included</li>
-                  <li class="cg-guide-item">Neighborhood + schools</li>
-                  <li class="cg-guide-item">HOA / CDD fees</li>
-                  <li class="cg-guide-item">Agent contact</li>
-                </ul>
-              </article>
-
-              <article class="cg-note-card cg-note-card--result">
-                <h3 class="cg-note-head">
-                  <span class="cg-note-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.3 12.3l2.6 2.6 4.8-5.3"/></svg></span>
-                  <span class="cg-note-label">Result</span>
-                </h3>
-                <p class="cg-note-body" id="cg-result">The listing goes home in the buyer&rsquo;s pocket instead of the recycling, with the agent&rsquo;s number attached to it.</p>
-              </article>
-            </aside>
-
-          </div>
-          <div class="cg-flow" data-reveal data-reveal-delay="3" aria-hidden="true">
-            <span class="cg-flow-step">Send material</span>
-            <span class="cg-flow-arrow">&rarr;</span>
-            <span class="cg-flow-step">I build the guide</span>
-            <span class="cg-flow-arrow">&rarr;</span>
-            <span class="cg-flow-step">You share one link</span>
-          </div>
-
-        </div>
-      </section>
-
-
-      <!-- ============================================================
-           SECTION 7: CONTACT
-      ============================================================ -->
-      <section id="contact" aria-labelledby="contact-heading">
-
-        <div class="contact-card">
-
-          <!-- Drifting raw-material chips -->
-          <div class="contact-card-inner">
-            <span class="contact-eyebrow" data-reveal="left"><span class="contact-eyebrow-dot"></span>Get in touch</span>
-            <h2 id="contact-heading" data-reveal data-reveal-delay="1">What do you need a guide for?</h2>
-            <p id="contact-body" data-reveal data-reveal-delay="2">Tell me what it&rsquo;s for and send whatever you already have: notes, photos, a rough explanation. I&rsquo;ll come back with a price and a date.</p>
-
-            <div class="contact-actions" data-reveal data-reveal-delay="4">
-              <a id="contact-email-link" href="mailto:steven.wilen@gmail.com?subject=Guide%20project%20inquiry">
-                <span>Email me about a guide</span>
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </section>
-
-    </main>
-
-
-    <footer id="site-footer">
-      <div class="footer-inner">
-
-        <div class="footer-brand">
-          <div class="footer-mark">
-            <span class="footer-mark-glyph">S</span>
-          </div>
-          <p id="footer-name">Steven Wilen</p>
-          <p class="footer-tag">Simple, well-designed web guides for anything.</p>
-        </div>
-
-        <div class="footer-cols">
-          <div class="footer-col">
-            <h4 class="footer-col-heading">Site</h4>
-            <ul>
-              <li><a href="#customer-guides">Examples</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h4 class="footer-col-heading">Contact</h4>
-            <ul>
-              <li><a href="mailto:steven.wilen@gmail.com">steven.wilen@gmail.com</a></li>
-              <li>By appointment</li>
-            </ul>
-          </div>
-        </div>
-
       </div>
-      <div class="footer-bottom">
-        <span>© <span id="footer-year">2026</span> Steven Wilen. All rights reserved.</span>
+      <div class="phone-wrap" data-reveal data-reveal-delay="1">
+        <div class="phone-glow" aria-hidden="true"></div>
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="slot on">Guide screen 1</div>
+            <div class="slot">Guide screen 2</div>
+            <div class="slot">Guide screen 3</div>
+          </div>
+        </div>
       </div>
-    </footer>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <section class="work" id="work">
+    <div class="wrap">
+      <div data-reveal>
+        <span class="eyebrow">Recent work</span>
+        <h2>Guides I&rsquo;ve built</h2>
+        <p class="work-lede">Every one of these is a single web page. You share one link, or a printed QR card, and it opens on any phone.</p>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Examples" data-reveal data-reveal-delay="1">
+        <button class="tab" type="button" role="tab" aria-selected="true">Example 1</button>
+        <button class="tab" type="button" role="tab" aria-selected="false">Example 2</button>
+        <button class="tab" type="button" role="tab" aria-selected="false">Example 3</button>
+        <button class="tab" type="button" role="tab" aria-selected="false">Example 4</button>
+      </div>
+      <div class="work-grid">
+        <div class="work-visual">Visual to come</div>
+        <div class="work-aside">
+          <div class="note">
+            <span class="eyebrow">In the guide</span>
+            <ul id="in-guide"></ul>
+          </div>
+          <div class="note note--sunken">
+            <span class="eyebrow">Result</span>
+            <p id="result"></p>
+          </div>
+        </div>
+      </div>
+      <div class="flow" data-reveal>
+        <span>01&nbsp;&nbsp;Send material</span><span class="rule"></span>
+        <span>02&nbsp;&nbsp;I build the guide</span><span class="rule"></span>
+        <span>03&nbsp;&nbsp;You share one link</span>
+      </div>
+      <div class="price" data-reveal data-reveal-delay="1">
+        <b>Flat pricing from $300.</b>
+        <span>One price per guide. No subscription, no per-view fee, nothing to maintain.</span>
+      </div>
+    </div>
+  </section>
 
-  </body>
+  <section class="contact" id="contact">
+    <div class="contact-inner" data-reveal>
+      <span class="eyebrow">Get in touch</span>
+      <h2>What do you need a guide for?</h2>
+      <p>Tell me what it&rsquo;s for and send whatever you already have: notes, photos, a rough explanation. I&rsquo;ll come back with a price and a date.</p>
+      <div class="contact-desktop">
+        <a class="btn" href="mailto:steven.wilen@gmail.com?subject=Guide%20project%20inquiry">Email me about a guide
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <div class="contact-mobile">
+        <a class="btn" href="tel:+10000000000">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call
+        </a>
+        <a class="btn btn-outline" href="sms:+10000000000">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          Text
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div>
+          <b>Steven Wilen</b>
+          <span>Simple, well-designed web guides for anything.</span>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <span class="eyebrow">Site</span>
+          <a href="#work">Examples</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-col">
+          <span class="eyebrow">Contact</span>
+          <a href="mailto:steven.wilen@gmail.com">steven.wilen@gmail.com</a>
+          <span style="color:var(--text-faint)">By appointment</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span id="year">2026</span> Steven Wilen. All rights reserved.</div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
 </html>
