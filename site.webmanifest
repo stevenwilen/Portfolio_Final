@@ -1,7 +1,7 @@
 {
-  "name": "Steven Wilen · Custom Guides",
+  "name": "Steven Wilen · Web Guides",
   "short_name": "Steven Wilen",
-  "description": "Custom guides for things that are hard to explain.",
+  "description": "Simple, well-designed web guides for anything. One link, opens on any phone.",
   "start_url": "/",
   "icons": [
     {
