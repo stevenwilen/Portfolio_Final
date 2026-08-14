@@ -73,7 +73,8 @@ img{max-width:100%;display:block}
 .phone{position:relative;border-radius:32px;padding:9px;background:var(--ink-800);box-shadow:var(--shadow-lifted);animation:floatY 7s ease-in-out infinite}
 @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .phone-screen{position:relative;border-radius:24px;overflow:hidden;background:var(--paper-100);aspect-ratio:620/1248}
-.phone-screen .slot{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--paper-000);border:1px dashed var(--border-soft);border-radius:24px;font-size:13px;color:var(--text-faint);letter-spacing:.02em;opacity:0;transition:opacity 620ms var(--ease-soft)}
+.phone-screen .slot{position:absolute;inset:0;background:var(--paper-000);border-radius:24px;overflow:hidden;opacity:0;transition:opacity 620ms var(--ease-soft)}
+.phone-screen .slot img{width:100%;height:100%;object-fit:cover;display:block}
 .phone-screen .slot.on{opacity:1}
 
 /* work */
@@ -84,7 +85,8 @@ img{max-width:100%;display:block}
 .tab{border:1px solid var(--border-hairline);background:var(--surface-card);color:var(--text-muted);padding:9px 15px;border-radius:var(--radius-pill);font-size:15px;font-family:var(--font-sans);line-height:1.2;white-space:nowrap;cursor:pointer;transition:background var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard)}
 .tab[aria-selected="true"]{background:var(--ink-800);border-color:var(--ink-800);color:var(--text-inverse)}
 .work-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(24px,4vw,56px);align-items:stretch}
-.work-visual{border-radius:var(--radius-lg);border:1px dashed var(--border-soft);background:var(--paper-100);padding:clamp(22px,3.5vw,44px);display:flex;align-items:center;justify-content:center;min-height:clamp(320px,42vw,520px);font-size:13px;color:var(--text-faint);letter-spacing:.02em}
+.work-visual{border-radius:var(--radius-lg);border:1px solid var(--border-hairline);background:var(--paper-100);overflow:hidden;min-height:clamp(320px,42vw,520px);display:flex}
+.work-visual img{width:100%;height:100%;object-fit:cover;display:block}
 .work-aside{display:flex;flex-direction:column;gap:var(--sp-5)}
 .note{border:1px solid var(--border-hairline);border-radius:var(--radius-md);background:var(--surface-card);padding:var(--sp-5)}
 .note--sunken{background:var(--surface-sunken)}

@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded',function(){
   // hero: the link types itself, the phone screen follows
   var slugEl=document.getElementById('slug');
   var slots=Array.prototype.slice.call(document.querySelectorAll('.phone-screen .slot'));
-  var SLUGS=['guide-name-one','guide-name-two','guide-name-three'];
+  var SLUGS=['214-larkspur-lane','coastal-workshop','the-dune-house'];
   var i=0,timer=null;
   function type(){
     var target=SLUGS[i],n=0;
