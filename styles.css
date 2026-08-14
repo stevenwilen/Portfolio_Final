@@ -117,9 +117,6 @@ img{max-width:100%;display:block}
 .field .err{font-size:13px;color:#8E3A32;display:none}
 .field.invalid .err{display:block}
 .field.invalid input,.field.invalid textarea{border-color:#8E3A32}
-.select-wrap{position:relative}
-.select-wrap select{appearance:none;padding-right:34px;cursor:pointer}
-.select-wrap .chev{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--text-faint);font-size:11px;pointer-events:none}
 .form-actions{flex-direction:row;align-items:center;gap:var(--sp-5);flex-wrap:wrap}
 .form-alt{font-size:15px;color:var(--text-muted)}
 .form-alt a{border-bottom:1px solid var(--ochre-300)}

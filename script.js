@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded',function(){
       if(!details.value.trim()){invalid(details,'A sentence or two about the project.');ok=false}
       if(!ok){form.querySelector('.field.invalid input, .field.invalid textarea').focus();return}
 
-      var data={name:name.value.trim(),email:email.value.trim(),kind:form.querySelector('#f-kind').value,details:details.value.trim()};
+      var data={name:name.value.trim(),email:email.value.trim(),details:details.value.trim()};
       var done=function(){form.hidden=true;sent.hidden=false;form.reset()};
 
       if(FORM_ENDPOINT){
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded',function(){
           .then(function(r){if(!r.ok)throw new Error('bad status');done()})
           .catch(function(){btn.disabled=false;btn.textContent='Send';invalid(details,'That didn\u2019t send. Email steven.wilen@gmail.com instead.')});
       }else{
-        var body='Name: '+data.name+'\nEmail: '+data.email+'\nFor: '+data.kind+'\n\n'+data.details;
+        var body='Name: '+data.name+'\nEmail: '+data.email+'\n\n'+data.details;
         window.location.href='mailto:steven.wilen@gmail.com?subject='+encodeURIComponent('Guide project inquiry - '+data.name)+'&body='+encodeURIComponent(body);
         done();
       }
