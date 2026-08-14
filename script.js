@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded',function(){
   // inquiry form. No backend on a static host: point FORM_ENDPOINT at a form
   // service (Formspree, Basin, Vercel serverless route). With it left empty the
   // form opens a pre-filled email instead, so it never silently drops a message.
-  var FORM_ENDPOINT='';
+  var FORM_ENDPOINT='https://formspree.io/f/xjgzyady';
   var form=document.getElementById('inquiry');
   var sent=document.getElementById('form-sent');
   function invalid(el,msg){
