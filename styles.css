@@ -109,7 +109,7 @@ img{max-width:100%;display:block}
 .field{display:flex;flex-direction:column;gap:6px;min-width:0}
 .field--full{grid-column:1 / -1}
 .field label{font-size:15px;font-weight:500;color:var(--text-strong)}
-.field input,.field textarea,.field select{width:100%;font-family:var(--font-sans);font-size:15px;color:var(--text-strong);background:var(--surface-card);border:1px solid var(--border-hairline);border-radius:var(--radius-sm);padding:10px 12px;transition:border-color var(--dur-fast) var(--ease-standard),box-shadow var(--dur-fast) var(--ease-standard);outline:none}
+.field input,.field textarea,.field select{width:100%;min-height:46px;font-family:var(--font-sans);font-size:16px;color:var(--text-strong);background:var(--surface-card);border:1px solid var(--border-hairline);border-radius:var(--radius-sm);padding:10px 12px;transition:border-color var(--dur-fast) var(--ease-standard),box-shadow var(--dur-fast) var(--ease-standard);outline:none}
 .field textarea{resize:vertical;line-height:1.5}
 .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--ink-600);box-shadow:0 0 0 3px var(--ochre-100)}
 .field input::placeholder,.field textarea::placeholder{color:var(--text-faint)}
@@ -144,7 +144,9 @@ img{max-width:100%;display:block}
 
 @media (max-width:900px){
   .hero-grid,.work-grid{grid-template-columns:minmax(0,1fr)}
-  .phone-wrap{order:-1}
+  /* Text first, as on desktop. order:-1 pushed the placeholder device above
+     the headline, so the whole pitch started ~690px down the page. */
+  .phone-wrap{order:0}
 }
 @media (max-width:640px){
   .inquiry{grid-template-columns:1fr}
@@ -152,3 +154,16 @@ img{max-width:100%;display:block}
   .contact-mobile .btn{flex:1;padding:16px 20px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:1ms!important}}
+
+/* Phones: the header had no mobile handling, so the wordmark broke across two
+   lines ("Steven" / "Wilen") and the nav CTA onto two or three. Drop the
+   "Web Guides" suffix and the Examples link, which the hero already offers as
+   "See examples", leaving brand left and one CTA right on a single line. */
+@media (max-width:640px){
+  .wordmark i,.wordmark span{display:none}
+  .site-nav a:not(.strong){display:none}
+  .wordmark b,.site-nav a{white-space:nowrap}
+  .site-nav a,.tab,.wordmark{min-height:44px;display:inline-flex;align-items:center}
+  .footer-col a{min-height:44px;display:inline-flex;align-items:center}
+  .btn-link{min-height:44px;display:inline-flex;align-items:center}
+}
