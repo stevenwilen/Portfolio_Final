@@ -1,20 +1,26 @@
-# Production build — Steven Wilen · Web Guides
+# stevenwilen.dev
 
-Vanilla HTML/CSS/JS, no framework, no build step — same stack your current site uses. Three files replace everything in the repo except the icon/manifest assets.
+One-page site for Steven Wilen's web-guide work. Vanilla HTML, CSS and JS. No
+framework, no build step, no dependencies: `index.html`, `styles.css`,
+`script.js`, plus the icon and manifest assets at the root.
 
-## Replacing the live site
+## Deploy
 
-1. In `Portfolio_Final/`, delete: `index.html`, `styles.css`, `script.js`, `images/`, `videos/`, and `CLAUDE.md` if it only described the old design.
-2. Copy in the three files from this folder: `index.html`, `styles.css`, `script.js`.
-3. Keep these as they are — the new `index.html` still references them: `favicon.ico`, `favicon-96x96.png`, `apple-touch-icon.png`, `web-app-manifest-192x192.png`, `web-app-manifest-512x512.png`, `site.webmanifest`, `og-image.jpg`.
-4. Commit and push to `main`. Vercel redeploys automatically.
-
-Nothing from the previous design survives: old palette, Archivo, the paper-craft CSS, the hero device drawings, the proof board, and the 3,467-line stylesheet are all gone.
+Hosted on Vercel, deployed from `main`. A push goes live within about a minute,
+so test locally before pushing. There is no staging step.
 
 ## Still placeholder
 
-- **Phone screens** — three empty slots labelled "Guide screen 1–3". Replace each `<div class="slot">` with `<img src="images/…" alt="…">` when you pick the screenshots.
-- **Examples** — tabs read "Example 1–4"; bullets and results are neutral copy. Real labels go in `script.js` (`EXAMPLES`) and `index.html` (the four `.tab` buttons).
-- **Visual panel** — a dashed "Visual to come" box.
-- **Phone number** — `tel:+10000000000` and `sms:+10000000000` in the mobile Call/Text buttons.
-- **`og-image.jpg`** still shows the old design; regenerate it when the new site is live.
+These are live on the site right now.
+
+- **Phone screens.** Three empty slots labelled "Guide screen 1" through
+  "Guide screen 3". Swap each `<div class="slot">` for an `<img>` once you pick
+  the screenshots.
+- **Example tabs.** The four tabs read "Example 1" through "Example 4", and the
+  bullets and result lines under them are filler. Real labels go in `EXAMPLES`
+  in `script.js` and the four `.tab` buttons in `index.html`.
+- **Work visual.** A dashed box reading "Visual to come".
+- **Phone number.** The mobile Call and Text buttons point at
+  `tel:+10000000000` and `sms:+10000000000`. The email link is real.
+- **`og-image.jpg`.** Still shows the old design, so link previews are wrong.
+  Regenerate it.
