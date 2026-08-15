@@ -149,6 +149,7 @@ img{max-width:100%;display:block}
 .site-footer{padding:clamp(36px,5vw,64px) var(--pad-x)}
 .footer-top{display:flex;flex-wrap:wrap;gap:var(--sp-7);justify-content:space-between;align-items:flex-end}
 .footer-brand{display:flex;gap:var(--sp-4);align-items:center}
+.footer-avatar{width:48px;height:48px;flex:0 0 auto;border-radius:var(--radius-pill);object-fit:cover}
 .footer-brand b{font-family:var(--font-display);font-weight:400;font-size:17px;color:var(--text-strong);display:block}
 .footer-brand span{font-size:15px;color:var(--text-muted)}
 .footer-cols{display:flex;gap:clamp(24px,5vw,64px);font-size:15px}
