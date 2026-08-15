@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded',function(){
   // hero: the link types itself, the phone screen follows
   var slugEl=document.getElementById('slug');
   var slots=Array.prototype.slice.call(document.querySelectorAll('.phone-screen .slot'));
-  var SLUGS=['214-larkspur-lane','coastal-workshop','the-dune-house'];
+  var SLUGS=['214-larkspur-lane','filler-aftercare','cedar-and-pine','brookfield-handover'];
   var i=0,timer=null;
   function type(){
     var target=SLUGS[i],n=0;
@@ -83,14 +83,22 @@ document.addEventListener('DOMContentLoaded',function(){
 
   // examples: tab switcher
   var EXAMPLES=[
-    {inGuide:['Section one','Section two','Section three','Section four','Section five'],
-     result:'One line on what changed for the client once the guide was live.'},
-    {inGuide:['Section one','Section two','Section three','Section four','Section five'],
-     result:'One line on what changed for the client once the guide was live.'},
-    {inGuide:['Section one','Section two','Section three','Section four','Section five'],
-     result:'One line on what changed for the client once the guide was live.'},
-    {inGuide:['Section one','Section two','Section three','Section four','Section five'],
-     result:'One line on what changed for the client once the guide was live.'}
+    {visual:'guide-openhouse-wide.webp',
+     alt:'An open house guide on a wide screen: a photo of the home, the price and stats, and the sections the guide contains.',
+     inGuide:['The home','What\u2019s included','Neighborhood + schools','HOA + taxes','Contact the agent'],
+     result:'The paper flyer buyers leave in the car.'},
+    {visual:'guide-aftercare-wide.webp',
+     alt:'A treatment aftercare guide on a wide screen: a photo from the clinic and the sections the guide contains.',
+     inGuide:['What to expect','The first 24 hours','What to avoid','When to call us','Book your follow-up'],
+     result:'The photocopied sheet that gets folded into a bag.'},
+    {visual:'guide-checkin-wide.webp',
+     alt:'A guest check-in guide on a wide screen: a photo of the room and the sections the guide contains.',
+     inGuide:['Getting in','Wi-Fi and basics','How things work','Where to eat nearby','Check-out steps'],
+     result:'The binder on the kitchen counter nobody opens.'},
+    {visual:'guide-handover-wide.webp',
+     alt:'A project handover guide on a wide screen: a photo of the finished room and the sections the guide contains.',
+     inGuide:['What we installed','Care and cleaning','Warranty + registration','If something looks off','Your contacts'],
+     result:'A folder of manuals and receipts.'}
   ];
   var tabs=Array.prototype.slice.call(document.querySelectorAll('.tab'));
   var listEl=document.getElementById('in-guide');
@@ -99,6 +107,8 @@ document.addEventListener('DOMContentLoaded',function(){
     tabs.forEach(function(t,k){t.setAttribute('aria-selected',String(k===n));t.tabIndex=k===n?0:-1});
     var e=EXAMPLES[n];
     listEl.innerHTML=e.inGuide.map(function(s){return '<li>'+s+'</li>'}).join('');
+    var wimg=document.getElementById('work-img');
+    if(wimg&&e.visual){wimg.src='images/'+e.visual;wimg.alt=e.alt||''}
     resultEl.textContent=e.result;
   }
   tabs.forEach(function(t,n){t.addEventListener('click',function(){show(n)})});
