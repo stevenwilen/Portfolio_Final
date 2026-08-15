@@ -6,7 +6,7 @@
 --ochre-700:#8C6524;--ochre-600:#A8762B;--ochre-500:#B8863B;--ochre-300:#DFC48A;--ochre-100:#F2E7CF;
 --text-strong:var(--ink-900);--text-body:var(--ink-700);--text-muted:var(--ink-500);--text-faint:var(--ink-400);--text-inverse:var(--paper-050);
 --surface-page:var(--paper-050);--surface-card:var(--paper-000);--surface-sunken:var(--paper-100);
---border-hairline:var(--ink-200);--border-soft:var(--paper-300);
+--border-hairline:var(--ink-200);--border-soft:var(--paper-300);--border-field:#857E72;
 --font-display:"Libre Baskerville",Georgia,serif;--font-sans:"IBM Plex Sans",-apple-system,"Segoe UI",Helvetica,sans-serif;--font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
 --radius-xs:2px;--radius-sm:4px;--radius-md:6px;--radius-lg:10px;--radius-pill:999px;
 --shadow-sm:0 1px 2px rgba(15,23,32,.06);--shadow-md:0 6px 18px -8px rgba(15,23,32,.14);--shadow-lifted:0 18px 40px -20px rgba(15,23,32,.28);
@@ -107,25 +107,38 @@ img{max-width:100%;display:block}
 .contact p{color:var(--text-muted);font-size:clamp(16px,1.6vw,20px);max-width:56ch;margin-bottom:var(--sp-7)}
 .contact-mobile{display:none}
 /* inquiry form */
-.inquiry{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-5);background:var(--surface-card);border:1px solid var(--border-hairline);border-radius:var(--radius-md);padding:clamp(20px,3vw,32px)}
-.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+/* Inquiry form. Deliberately not a card: a white panel dropped on the section
+   is what makes a form read as a plugin rather than part of the page, and at
+   1.13:1 against the background it was doing no visual work anyway. The fields
+   sit directly on the paper and are drawn with a border that actually passes
+   contrast, so the affordance comes from the field itself. */
+.inquiry{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-6) var(--sp-5)}
+.field{display:flex;flex-direction:column;gap:10px;min-width:0}
 .field--full{grid-column:1 / -1}
-.field label{font-size:15px;font-weight:500;color:var(--text-strong)}
-.field input,.field textarea,.field select{width:100%;min-height:46px;font-family:var(--font-sans);font-size:16px;color:var(--text-strong);background:var(--surface-card);border:1px solid var(--border-hairline);border-radius:var(--radius-sm);padding:10px 12px;transition:border-color var(--dur-fast) var(--ease-standard),box-shadow var(--dur-fast) var(--ease-standard);outline:none}
-.field textarea{resize:vertical;line-height:1.5}
-.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--ink-600);box-shadow:0 0 0 3px var(--ochre-100)}
-.field input::placeholder,.field textarea::placeholder{color:var(--text-faint)}
+/* Labels borrow the site's eyebrow treatment, the same one used by GET IN TOUCH
+   and IN THE GUIDE, so the form speaks the page's language instead of a
+   framework's default 15px medium. */
+.field label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);font-weight:500}
+.field input,.field textarea{width:100%;min-height:52px;font-family:var(--font-sans);font-size:16px;line-height:1.5;color:var(--text-strong);background:var(--surface-card);border:1px solid var(--border-field);border-radius:var(--radius-md);padding:14px 16px;transition:border-color var(--dur-fast) var(--ease-standard),box-shadow var(--dur-fast) var(--ease-standard);outline:none}
+/* No resize grabber. The textarea grows with what you type instead, which is
+   handled in script.js. */
+.field textarea{resize:none;overflow:hidden;min-height:104px}
+.field input:focus,.field textarea:focus{border-color:var(--ochre-600);box-shadow:0 0 0 3px var(--ochre-100)}
+.field input::placeholder,.field textarea::placeholder{color:var(--text-muted)}
 .field .hint{font-size:13px;color:var(--text-muted)}
 .field .err{font-size:13px;color:#8E3A32;display:none}
 .field.invalid .err{display:block}
 .field.invalid input,.field.invalid textarea{border-color:#8E3A32}
-.form-actions{flex-direction:row;align-items:center;gap:var(--sp-5);flex-wrap:wrap}
+.field.invalid input:focus,.field.invalid textarea:focus{box-shadow:0 0 0 3px rgba(142,58,50,.14)}
+.form-actions{flex-direction:row;align-items:center;gap:var(--sp-5);flex-wrap:wrap;margin-top:var(--sp-2)}
 .form-alt{font-size:15px;color:var(--text-muted)}
 .form-alt a{border-bottom:1px solid var(--ochre-300)}
 .form-alt a:hover{color:var(--ochre-700);border-bottom-color:var(--ochre-600)}
-.form-sent{display:flex;flex-direction:column;align-items:flex-start;gap:var(--sp-3);background:var(--surface-card);border:1px solid var(--border-hairline);border-radius:var(--radius-md);padding:clamp(24px,3vw,36px)}
-.form-sent b{font-family:var(--font-display);font-weight:400;font-size:25px;color:var(--text-strong)}
-.form-sent span{font-size:15px;color:var(--text-muted)}
+/* The confirmation replaces the form, so it is ruled rather than boxed for the
+   same reason the form is not a card. */
+.form-sent{display:flex;flex-direction:column;align-items:flex-start;gap:var(--sp-3);border-left:2px solid var(--ochre-500);padding:var(--sp-2) 0 var(--sp-2) var(--sp-5)}
+.form-sent b{font-family:var(--font-display);font-weight:400;font-size:clamp(22px,2.4vw,28px);color:var(--text-strong)}
+.form-sent span{font-size:16px;color:var(--text-muted)}
 .form-sent .btn{margin-top:var(--sp-3)}
 /* .inquiry sets display:grid and .form-sent sets display:flex, and a class rule
    outranks the UA [hidden]{display:none}. Without this the confirmation panel

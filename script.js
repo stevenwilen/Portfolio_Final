@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded',function(){
       if(!ok){form.querySelector('.field.invalid input, .field.invalid textarea').focus();return}
 
       var data={name:name.value.trim(),email:email.value.trim(),details:details.value.trim()};
-      var done=function(){form.hidden=true;sent.hidden=false;form.reset()};
+      var done=function(){form.hidden=true;sent.hidden=false;form.reset();grow()};
 
       if(FORM_ENDPOINT){
         var btn=form.querySelector('button[type="submit"]');
@@ -78,8 +78,13 @@ document.addEventListener('DOMContentLoaded',function(){
       }
     });
   }
+  // Textarea grows with its content, so there is no resize grabber to drag.
+  var ta=document.getElementById('f-details');
+  function grow(){if(!ta)return;ta.style.height='auto';ta.style.height=Math.min(ta.scrollHeight,420)+'px'}
+  if(ta){ta.addEventListener('input',grow);grow()}
+
   var again=document.getElementById('form-again');
-  if(again){again.addEventListener('click',function(){sent.hidden=true;form.hidden=false})}
+  if(again){again.addEventListener('click',function(){sent.hidden=true;form.hidden=false;grow()})}
 
   // examples: tab switcher
   var EXAMPLES=[
