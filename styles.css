@@ -47,8 +47,9 @@ img{max-width:100%;display:block}
 .hero{padding:clamp(28px,6vw,64px) var(--pad-x) clamp(32px,3.4vw,46px)}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,5vw,72px);align-items:center}
 .hero h1{font-size:clamp(38px,6vw,74px);line-height:1.06;margin-bottom:var(--sp-5)}
-.hero h1 .line{display:block;overflow:hidden}
-.hero h1 .line>span{display:block;transform:translateY(105%);transition:transform 720ms var(--ease-soft)}
+.hero h1 .line{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em}
+.hero h1 .line:last-child{margin-bottom:0}
+.hero h1 .line>span{display:block;transform:translateY(120%);transition:transform 720ms var(--ease-soft)}
 .hero h1.in .line>span{transform:none}
 .hero h1.in .line:nth-child(2)>span{transition-delay:90ms}
 .hero h1.in .line:nth-child(3)>span{transition-delay:180ms}
