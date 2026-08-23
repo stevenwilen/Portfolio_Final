@@ -89,8 +89,8 @@ document.addEventListener('DOMContentLoaded',function(){
   // examples: tab switcher
   var EXAMPLES=[
     {visual:'guide-openhouse-wide.webp',
-     alt:'An open house guide on a wide screen: a photo of the home, the price and stats, and the sections the guide contains.',
-     inGuide:['The home','What\u2019s included','Neighborhood + schools','HOA + taxes','Contact the agent'],
+     alt:'The 268 Harper’s Mill Drive guide on two phones: the address over a photo of the home, and the figures table listing sold price, original list, days on market, year built, lot, taxes and more.',
+     inGuide:['The line','Gallery','The figures','The house','The area'],
      result:'The paper flyer buyers leave in the car.'},
     {visual:'guide-aftercare-wide.webp',
      alt:'A treatment aftercare guide on a wide screen: a photo from the clinic and the sections the guide contains.',
