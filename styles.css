@@ -44,7 +44,7 @@ img{max-width:100%;display:block}
 .site-nav a.strong{color:var(--text-strong)}
 
 /* hero */
-.hero{padding:clamp(28px,6vw,64px) var(--pad-x) clamp(32px,3.4vw,46px)}
+.hero{padding:clamp(18px,2.6vw,36px) var(--pad-x) clamp(32px,3.4vw,46px)}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,5vw,72px);align-items:center}
 .hero h1{font-size:clamp(38px,6vw,74px);line-height:1.06;margin-bottom:var(--sp-5)}
 .hero h1 .line{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em}
@@ -75,19 +75,19 @@ img{max-width:100%;display:block}
 @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .phone-screen{position:relative;border-radius:24px;overflow:hidden;background:var(--paper-100);aspect-ratio:620/1248}
 /* Four real screenfuls of the guide, cross-faded. Each frame runs the same
-   24s keyframe offset by 6s, and its visible window (0 to 29%) is slightly
+   16s keyframe offset by 4s, and its visible window (0 to 29%) is slightly
    longer than its slot, so the outgoing and incoming frames overlap instead of
    dipping through the background. The first frame carries a static opacity:1 so
    that under prefers-reduced-motion, where animations are switched off further
    down this sheet, the screen still shows the guide rather than going blank.
    The phone's floatY is untouched: it sits on .phone, this sits on the frames. */
-.phone-screen .frame{position:absolute;inset:0;opacity:0;border-radius:24px;overflow:hidden;animation:frameFade 24s linear infinite}
+.phone-screen .frame{position:absolute;inset:0;opacity:0;border-radius:24px;overflow:hidden;animation:frameFade 16s linear infinite}
 .phone-screen .frame:first-child{opacity:1}
 .phone-screen .frame img{width:100%;height:100%;object-fit:cover;display:block}
 .phone-screen .frame:nth-child(1){animation-delay:0s}
-.phone-screen .frame:nth-child(2){animation-delay:6s}
-.phone-screen .frame:nth-child(3){animation-delay:12s}
-.phone-screen .frame:nth-child(4){animation-delay:18s}
+.phone-screen .frame:nth-child(2){animation-delay:4s}
+.phone-screen .frame:nth-child(3){animation-delay:8s}
+.phone-screen .frame:nth-child(4){animation-delay:12s}
 @keyframes frameFade{0%{opacity:0}4%{opacity:1}25%{opacity:1}29%{opacity:0}100%{opacity:0}}
 
 /* work */
