@@ -15,8 +15,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
   // hero: the link types itself, the phone screen follows
   var slugEl=document.getElementById('slug');
-  var slots=Array.prototype.slice.call(document.querySelectorAll('.phone-screen .slot'));
-  var SLUGS=['214-larkspur-lane','filler-aftercare','cedar-and-pine','brookfield-handover'];
+  var SLUGS=['268-harpers-mill-drive'];
   var i=0,timer=null;
   function type(){
     var target=SLUGS[i],n=0;
@@ -25,15 +24,13 @@ document.addEventListener('DOMContentLoaded',function(){
       if(n<target.length){timer=setTimeout(step,46)}
       else{timer=setTimeout(function(){
         i=(i+1)%SLUGS.length;
-        slots.forEach(function(s,k){s.classList.toggle('on',k===i)});
         slugEl.textContent='';type();
       },2600)}
     })();
   }
   if(slugEl&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    slots.forEach(function(s,k){s.classList.toggle('on',k===0)});
     timer=setTimeout(type,420);
-  }else if(slugEl){slugEl.textContent=SLUGS[0];slots[0]&&slots[0].classList.add('on')}
+  }else if(slugEl){slugEl.textContent=SLUGS[0]}
 
   // inquiry form. No backend on a static host: point FORM_ENDPOINT at a form
   // service (Formspree, Basin, Vercel serverless route). With it left empty the
