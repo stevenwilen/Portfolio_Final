@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded',function(){
   // examples: tab switcher
   var EXAMPLES=[
     {visual:'guide-openhouse-wide.webp',
-     alt:'The 268 Harper’s Mill Drive guide on two phones: the address over a photo of the home, and an aerial shot above the square footage and price per square foot.',
+     alt:'The 268 Harper’s Mill Drive guide on two phones: the address over a photo of the home, and an aerial shot above the square footage and price per square foot, each with the agent’s call band along the bottom.',
      inGuide:['The line','Gallery','The figures','The house','The area'],
      result:'The paper flyer buyers leave in the car.'},
     {visual:'guide-aftercare-wide.webp',
