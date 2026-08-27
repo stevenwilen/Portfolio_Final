@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded',function(){
      url:'https://open-house-example.vercel.app/',
      frames:[
        {src:'guide-openhouse-home.webp',alt:'The guide’s opening screen: 268 Harper’s Mill Drive over a photo of the home, the sold price below it, and the agent’s call band along the bottom.'},
-       {src:'guide-openhouse-photo.webp',alt:'The same guide further down: an aerial shot of the corner lot above 4,252 square feet at $423 per square foot.'}
+       {src:'guide-openhouse-pool.webp',alt:'Further down the same guide: the screened pool and spa across the full width of the screen, captioned, with the outdoor kitchen starting below it.'}
      ],
      inGuide:['The line','Gallery','The figures','The house','The area'],
      result:'The paper flyer buyers leave in the car.'},
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded',function(){
      url:'https://aftercare-example.vercel.app/',
      frames:[
        {src:'guide-aftercare-home.webp',alt:'The guide’s opening screen: After your cataract surgery, marked right eye, over the red list of reasons to call the clinic.'},
-       {src:'guide-aftercare-meds.webp',alt:'The medications screen: each drop, what it is for, how many times a day and for how long, with a four-times-a-day pattern spelled out.'}
+       {src:'guide-aftercare-drops.webp',alt:'Further down the same guide: a photo of the drop going into the pulled-down lower lid, captioned, above what to expect over the first week.'}
      ],
      inGuide:['Call us if','The first 24 hours','Do, and do not','Every drop, and when','Next appointment'],
      result:'The discharge sheet that gets folded into a bag.'},
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded',function(){
      url:'https://cabin-example.vercel.app/',
      frames:[
        {src:'guide-checkin-home.webp',alt:'The guide’s opening screen: the cabin’s fireplace over the address, the check-in time and the door code.'},
-       {src:'guide-checkin-codes.webp',alt:'The front door keypad above the Wi-Fi network and password, then how the heat and hot water work.'}
+       {src:'guide-checkin-hottub.webp',alt:'Further down the same guide: how the hot tub works, 102 degrees and 45 minutes to heat, above a photo of it on the deck.'}
      ],
      inGuide:['Door and gate codes','Wi-Fi, heat, hot water','Hot tub, fire pit, grill','Nearby, with drive times','Check-out at 10am'],
      result:'The binder on the kitchen counter nobody opens.'},
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded',function(){
      url:'https://handover-example.vercel.app/',
      frames:[
        {src:'guide-handover-home.webp',alt:'The guide’s opening screen: the finished solar array over Woodstock Boulevard and the installer’s name.'},
-       {src:'guide-handover-warranty.webp',alt:'The warranty screen: every unit installed with the date its cover expires, out to 2051 for the modules.'}
+       {src:'guide-handover-equipment.webp',alt:'Further down the same guide: the installed equipment gallery, opening on the Powerwall mounted on the garage wall.'}
      ],
      inGuide:['What was installed','Equipment, model by model','Cover and expiry','What to do, and when','Trades and suppliers'],
      result:'The folder of manuals and warranty cards.'}
