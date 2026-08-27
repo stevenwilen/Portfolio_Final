@@ -110,38 +110,36 @@ img{max-width:100%;display:block}
 .tabs{display:flex;gap:var(--sp-2);flex-wrap:wrap;margin:clamp(20px,3vw,32px) 0}
 .tab{border:1px solid var(--border-hairline);background:var(--surface-card);color:var(--text-muted);padding:9px 15px;border-radius:var(--radius-pill);font-size:15px;font-family:var(--font-sans);line-height:1.2;white-space:nowrap;cursor:pointer;transition:background var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard)}
 .tab[aria-selected="true"]{background:var(--ink-800);border-color:var(--ink-800);color:var(--text-inverse)}
-/* Which guide the tabs are showing, and the way into the live thing. The
-   examples are real pages, so the name and the link matter as much as the
-   screenshot: the visual is an anchor to the same url. */
-.work-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:var(--sp-3) var(--sp-5);margin-bottom:clamp(16px,2.4vw,26px)}
-.work-head h3{font-size:clamp(21px,2.6vw,30px)}
+/* Which guide the tabs are showing, the two screens, and what is in it. The
+   phones overlap rather than sitting side by side: a phone is twice as tall as
+   it is wide, so a side-by-side pair set the height of the whole section and
+   pushed the text below the fold. Overlapped, the pair costs one phone of
+   width and frees the second column for everything the tabs used to stack. */
+.work-grid{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);grid-template-areas:"visual head" "visual aside";column-gap:clamp(28px,4vw,72px);row-gap:clamp(12px,1.8vw,20px);align-items:start}
+.work-visual{grid-area:visual;align-self:center;display:block;padding:clamp(6px,1.4vw,16px) 0 clamp(16px,2.4vw,28px)}
+.work-head{grid-area:head;align-self:end;max-width:620px}
+.work-head h3{font-size:clamp(23px,2.7vw,33px)}
 .work-head p{margin-top:6px;font-size:15px;color:var(--text-muted)}
-.ex-open{display:inline-flex;align-items:center;gap:8px;font-size:15px;white-space:nowrap;color:var(--text-strong);border-bottom:1px solid var(--ochre-300);padding-bottom:2px;transition:color var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard)}
-.ex-open:hover{color:var(--ochre-700);border-bottom-color:var(--ochre-600)}
-.work-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(24px,4vw,56px);align-items:center}
-/* No panel behind the examples. The two screens stand on the page the way the
-   hero phone does, which is also why the visual is now real elements instead
-   of one flat composite: the screenshots are placed at their own resolution
-   and never resampled into a background. */
-.work-visual{display:block;padding:clamp(10px,2vw,22px) 0 clamp(34px,5vw,54px)}
-.stage{position:relative;display:flex;align-items:center;justify-content:center;gap:clamp(10px,2.2vw,28px);perspective:1700px;perspective-origin:50% 42%}
-.stage-slot{width:min(330px,46%);transition:transform var(--dur-slow) var(--ease-soft)}
-.stage-slot--b{margin-top:clamp(20px,3.4vw,44px)}
-.work-visual:hover .stage-slot{transform:translateY(-7px)}
-/* Each phone turns toward the middle, so the pair reads as one object seen
-   slightly off-axis rather than two stickers side by side. The tilt lives in
-   the keyframes because the float animates transform too. */
-.stage-slot--a .phone{transform:rotateY(8deg) rotateX(1.5deg);animation:floatLeft 8s ease-in-out infinite}
-.stage-slot--b .phone{transform:rotateY(-8deg) rotateX(1.5deg) translateZ(-46px);animation:floatRight 8s ease-in-out infinite;animation-delay:-4s}
-@keyframes floatLeft{0%,100%{transform:rotateY(8deg) rotateX(1.5deg) translateY(0)}50%{transform:rotateY(8deg) rotateX(1.5deg) translateY(-10px)}}
-@keyframes floatRight{0%,100%{transform:rotateY(-8deg) rotateX(1.5deg) translateZ(-46px) translateY(0)}50%{transform:rotateY(-8deg) rotateX(1.5deg) translateZ(-46px) translateY(-10px)}}
-.work-aside{display:flex;flex-direction:column;gap:var(--sp-5)}
-.note{border:1px solid var(--border-hairline);border-radius:var(--radius-md);background:var(--surface-card);padding:var(--sp-5)}
-.note--sunken{background:var(--surface-sunken)}
-.note ul{list-style:none;margin:var(--sp-4) 0 0;padding:0;display:flex;flex-direction:column;gap:var(--sp-3)}
-.note li{display:grid;grid-template-columns:auto 1fr;gap:var(--sp-3);font-size:15px}
+.work-aside{grid-area:aside;display:flex;flex-direction:column;gap:var(--sp-5);max-width:620px}
+/* Ruled, not boxed. Two cards next to a device this size read as a form. */
+.note{border:0;border-top:1px solid var(--border-soft);border-radius:0;background:none;padding:var(--sp-4) 0 0}
+.note ul{list-style:none;margin:var(--sp-3) 0 0;padding:0;columns:2;column-gap:var(--sp-6)}
+.note li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:15px;break-inside:avoid;padding-bottom:var(--sp-3)}
 .note li::before{content:"";width:5px;height:5px;border-radius:var(--radius-pill);background:var(--ochre-500);margin-top:9px}
 .note p{margin-top:var(--sp-3);font-size:15px}
+.ex-open{display:inline-flex;align-items:center;gap:8px;font-size:15px;white-space:nowrap;width:fit-content;color:var(--text-strong);border-bottom:1px solid var(--ochre-300);padding-bottom:2px;transition:color var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard)}
+.ex-open:hover{color:var(--ochre-700);border-bottom-color:var(--ochre-600)}
+/* The front screen carries the guide; the second sits behind it, turned the
+   other way and set back in z so it recedes instead of just being smaller. */
+.stage{position:relative;perspective:1600px;perspective-origin:50% 42%}
+.stage-slot{transition:transform var(--dur-slow) var(--ease-soft)}
+.stage-slot--a{position:relative;z-index:1;width:min(258px,64%)}
+.stage-slot--b{position:absolute;top:6%;right:-4%;z-index:0;width:min(230px,57%)}
+.work-visual:hover .stage-slot{transform:translateY(-7px)}
+.stage-slot--a .phone{transform:rotateY(7deg) rotateX(1.5deg);animation:floatLeft 8s ease-in-out infinite}
+.stage-slot--b .phone{transform:rotateY(-7deg) rotateX(1.5deg) translateZ(-40px);animation:floatRight 8s ease-in-out infinite;animation-delay:-4s}
+@keyframes floatLeft{0%,100%{transform:rotateY(7deg) rotateX(1.5deg) translateY(0)}50%{transform:rotateY(7deg) rotateX(1.5deg) translateY(-10px)}}
+@keyframes floatRight{0%,100%{transform:rotateY(-7deg) rotateX(1.5deg) translateZ(-40px) translateY(0)}50%{transform:rotateY(-7deg) rotateX(1.5deg) translateZ(-40px) translateY(-9px)}}
 .flow{margin-top:clamp(36px,5vw,64px);display:flex;align-items:center;gap:clamp(12px,2vw,22px);flex-wrap:wrap;font-family:var(--font-mono);font-size:13px;color:var(--text-muted)}
 .flow .rule{width:clamp(24px,4vw,56px);height:1px;background:var(--border-soft)}
 .price{margin-top:clamp(32px,5vw,56px);padding-top:var(--sp-6);border-top:1px solid var(--border-soft);display:flex;flex-wrap:wrap;gap:var(--sp-5);align-items:center}
@@ -207,17 +205,15 @@ img{max-width:100%;display:block}
 .footer-bottom{margin-top:var(--sp-7);padding-top:var(--sp-4);border-top:1px solid var(--border-hairline);font-size:13px;color:var(--text-faint)}
 
 @media (max-width:900px){
-  .hero-grid,.work-grid{grid-template-columns:minmax(0,1fr)}
+  .hero-grid{grid-template-columns:minmax(0,1fr)}
+  .work-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "visual" "aside";row-gap:clamp(14px,2.4vw,24px)}
+  .work-visual{justify-self:start;width:min(420px,100%)}
   /* Text first, as on desktop. order:-1 pushed the placeholder device above
      the headline, so the whole pitch started ~690px down the page. */
   .phone-wrap{order:0}
 }
 @media (max-width:640px){
-  /* Side by side, two 160px phones are unreadable. Overlap them instead: the
-     front one big enough to read, the second angled behind it. */
-  .stage{justify-content:flex-start;padding:0 0 0 2%}
-  .stage-slot--a{width:62%;z-index:1}
-  .stage-slot--b{position:absolute;top:9%;right:0;width:54%;margin-top:0;z-index:0}
+  .note ul{columns:1}
   .inquiry{grid-template-columns:1fr}
   .contact-mobile{display:flex;gap:12px}
   .contact-mobile .btn{flex:1;padding:16px 20px}
