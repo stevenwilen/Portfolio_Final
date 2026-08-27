@@ -104,10 +104,13 @@ img{max-width:100%;display:block}
 .phone-screen .frame img{width:100%;height:100%;object-fit:cover;display:block}
 
 /* work */
-.work{padding:clamp(34px,3.6vw,50px) var(--pad-x) clamp(56px,8vw,110px)}
-.work h2{font-size:clamp(30px,3.6vw,46px);margin:var(--sp-4) 0}
-.work-lede{color:var(--text-muted);max-width:62ch}
-.tabs{display:flex;gap:var(--sp-2);flex-wrap:wrap;margin:clamp(20px,3vw,32px) 0}
+.work{padding:clamp(22px,2.4vw,32px) var(--pad-x) clamp(48px,6vw,88px)}
+/* Heading and lede share a line, so the pitch costs one block of height
+   instead of two and the screens stay in view with it. */
+.work-intro{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:var(--sp-3) clamp(24px,4vw,64px)}
+.work h2{font-size:clamp(28px,3.2vw,42px);margin:var(--sp-2) 0 0}
+.work-lede{color:var(--text-muted);max-width:52ch;font-size:16px;flex:1 1 380px}
+.tabs{display:flex;gap:var(--sp-2);flex-wrap:wrap;margin:clamp(16px,2.2vw,24px) 0}
 .tab{border:1px solid var(--border-hairline);background:var(--surface-card);color:var(--text-muted);padding:9px 15px;border-radius:var(--radius-pill);font-size:15px;font-family:var(--font-sans);line-height:1.2;white-space:nowrap;cursor:pointer;transition:background var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard)}
 .tab[aria-selected="true"]{background:var(--ink-800);border-color:var(--ink-800);color:var(--text-inverse)}
 /* Which guide the tabs are showing, the two screens, and what is in it. The
@@ -115,9 +118,9 @@ img{max-width:100%;display:block}
    it is wide, so a side-by-side pair set the height of the whole section and
    pushed the text below the fold. Overlapped, the pair costs one phone of
    width and frees the second column for everything the tabs used to stack. */
-.work-grid{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);grid-template-areas:"visual head" "visual aside";column-gap:clamp(28px,4vw,72px);row-gap:clamp(12px,1.8vw,20px);align-items:start}
-.work-visual{grid-area:visual;align-self:center;display:block;padding:clamp(6px,1.4vw,16px) 0 clamp(16px,2.4vw,28px)}
-.work-head{grid-area:head;align-self:end;max-width:620px}
+.work-grid{display:grid;grid-template-columns:minmax(0,570px) minmax(0,1fr);grid-template-areas:"visual head" "visual aside";grid-template-rows:auto 1fr;column-gap:clamp(28px,4vw,72px);row-gap:clamp(12px,1.8vw,20px);align-items:start}
+.work-visual{grid-area:visual;align-self:start;display:block;padding:clamp(2px,.8vw,8px) 0 clamp(10px,1.6vw,18px)}
+.work-head{grid-area:head;align-self:start;max-width:620px}
 .work-head h3{font-size:clamp(23px,2.7vw,33px)}
 .work-head p{margin-top:6px;font-size:15px;color:var(--text-muted)}
 .work-aside{grid-area:aside;display:flex;flex-direction:column;gap:var(--sp-5);max-width:620px}
@@ -131,10 +134,9 @@ img{max-width:100%;display:block}
 .ex-open:hover{color:var(--ochre-700);border-bottom-color:var(--ochre-600)}
 /* The front screen carries the guide; the second sits behind it, turned the
    other way and set back in z so it recedes instead of just being smaller. */
-.stage{position:relative;perspective:1600px;perspective-origin:50% 42%}
-.stage-slot{transition:transform var(--dur-slow) var(--ease-soft)}
-.stage-slot--a{position:relative;z-index:1;width:min(258px,64%)}
-.stage-slot--b{position:absolute;top:6%;right:-4%;z-index:0;width:min(230px,57%)}
+.stage{position:relative;display:flex;align-items:center;justify-content:flex-start;gap:clamp(12px,1.8vw,26px);perspective:1600px;perspective-origin:50% 42%}
+.stage-slot{width:min(250px,47%);transition:transform var(--dur-slow) var(--ease-soft)}
+.stage-slot--b{order:2;margin-top:clamp(12px,2vw,26px)}
 .work-visual:hover .stage-slot{transform:translateY(-7px)}
 .stage-slot--a .phone{transform:rotateY(7deg) rotateX(1.5deg);animation:floatLeft 8s ease-in-out infinite}
 .stage-slot--b .phone{transform:rotateY(-7deg) rotateX(1.5deg) translateZ(-40px);animation:floatRight 8s ease-in-out infinite;animation-delay:-4s}
@@ -207,12 +209,16 @@ img{max-width:100%;display:block}
 @media (max-width:900px){
   .hero-grid{grid-template-columns:minmax(0,1fr)}
   .work-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "visual" "aside";row-gap:clamp(14px,2.4vw,24px)}
-  .work-visual{justify-self:start;width:min(420px,100%)}
+  .work-visual{justify-self:start;width:min(480px,100%)}
   /* Text first, as on desktop. order:-1 pushed the placeholder device above
      the headline, so the whole pitch started ~690px down the page. */
   .phone-wrap{order:0}
 }
 @media (max-width:640px){
+  /* Side by side, two screens this narrow are thumbnails. Overlap them: the
+     front one big enough to read, the second angled behind it. */
+  .stage-slot--a{width:62%;z-index:1}
+  .stage-slot--b{position:absolute;top:7%;right:0;width:54%;margin-top:0;z-index:0}
   .note ul{columns:1}
   .inquiry{grid-template-columns:1fr}
   .contact-mobile{display:flex;gap:12px}
