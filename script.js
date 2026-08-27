@@ -83,28 +83,45 @@ document.addEventListener('DOMContentLoaded',function(){
   var again=document.getElementById('form-again');
   if(again){again.addEventListener('click',function(){sent.hidden=true;form.hidden=false;grow()})}
 
-  // examples: tab switcher
+  // examples: tab switcher. Every one of these is a guide that is actually
+  // live, and every visual is a screenshot of it rather than a mockup, so the
+  // url below is both what the tab links to and where the image came from.
   var EXAMPLES=[
-    {visual:'guide-openhouse-wide.webp',
+    {title:'268 Harper’s Mill Drive',
+     meta:'Open house · Settlers Landing, Ponte Vedra',
+     url:'https://open-house-example.vercel.app/',
+     visual:'guide-openhouse-wide.webp',
      alt:'The 268 Harper’s Mill Drive guide on two phones: the address over a photo of the home, and an aerial shot above the square footage and price per square foot, each with the agent’s call band along the bottom.',
      inGuide:['The line','Gallery','The figures','The house','The area'],
      result:'The paper flyer buyers leave in the car.'},
-    {visual:'guide-aftercare-wide.webp',
-     alt:'A treatment aftercare guide on a wide screen: a photo from the clinic and the sections the guide contains.',
-     inGuide:['What to expect','The first 24 hours','What to avoid','When to call us','Book your follow-up'],
-     result:'The photocopied sheet that gets folded into a bag.'},
-    {visual:'guide-checkin-wide.webp',
-     alt:'A guest check-in guide on a wide screen: a photo of the room and the sections the guide contains.',
-     inGuide:['Getting in','Wi-Fi and basics','How things work','Where to eat nearby','Check-out steps'],
+    {title:'After your cataract surgery',
+     meta:'Aftercare · Riverside Eye Centre, Bristol',
+     url:'https://aftercare-example.vercel.app/',
+     visual:'guide-aftercare-wide.webp',
+     alt:'The cataract aftercare guide on two phones: the opening screen with the red “call us if” list, and the medications screen giving each drop, how often and for how long, with the clinic’s call band along the bottom.',
+     inGuide:['Call us if','The first 24 hours','Do, and do not','Every drop, and when','Next appointment'],
+     result:'The discharge sheet that gets folded into a bag.'},
+    {title:'Laurel Fork Cabin',
+     meta:'Guest check-in · Gatlinburg, Tennessee',
+     url:'https://cabin-example.vercel.app/',
+     visual:'guide-checkin-wide.webp',
+     alt:'The Laurel Fork Cabin guide on two phones: the fireplace above the address and the door code, and the front door keypad above the Wi-Fi network and password, each with the host’s call band along the bottom.',
+     inGuide:['Door and gate codes','Wi-Fi, heat, hot water','Hot tub, fire pit, grill','Nearby, with drive times','Check-out at 10am'],
      result:'The binder on the kitchen counter nobody opens.'},
-    {visual:'guide-handover-wide.webp',
-     alt:'A project handover guide on a wide screen: a photo of the finished room and the sections the guide contains.',
-     inGuide:['What we installed','Care and cleaning','Warranty + registration','If something looks off','Your contacts'],
-     result:'A folder of manuals and receipts.'}
+    {title:'Woodstock Boulevard',
+     meta:'Handover · Northbridge Energy, Portland',
+     url:'https://handover-example.vercel.app/',
+     visual:'guide-handover-wide.webp',
+     alt:'The Woodstock Boulevard handover guide on two phones: the solar array over the address, and the warranty table giving each unit and the date its cover expires, with the installer’s call band along the bottom.',
+     inGuide:['What was installed','Equipment, model by model','Cover and expiry','What to do, and when','Trades and suppliers'],
+     result:'The folder of manuals and warranty cards.'}
   ];
   var tabs=Array.prototype.slice.call(document.querySelectorAll('.tab'));
   var listEl=document.getElementById('in-guide');
   var resultEl=document.getElementById('result');
+  var titleEl=document.getElementById('ex-title');
+  var metaEl=document.getElementById('ex-meta');
+  var linkEls=[document.getElementById('ex-link'),document.getElementById('work-visual')];
   function show(n){
     tabs.forEach(function(t,k){t.setAttribute('aria-selected',String(k===n));t.tabIndex=k===n?0:-1});
     var e=EXAMPLES[n];
@@ -112,6 +129,10 @@ document.addEventListener('DOMContentLoaded',function(){
     var wimg=document.getElementById('work-img');
     if(wimg&&e.visual){wimg.src='images/'+e.visual;wimg.alt=e.alt||''}
     resultEl.textContent=e.result;
+    if(titleEl){titleEl.textContent=e.title}
+    if(metaEl){metaEl.textContent=e.meta}
+    linkEls.forEach(function(a){if(a){a.href=e.url}});
+    if(linkEls[1]){linkEls[1].setAttribute('aria-label','Open the '+e.title+' guide')}
   }
   tabs.forEach(function(t,n){t.addEventListener('click',function(){show(n)})});
   if(tabs.length){show(0)}
