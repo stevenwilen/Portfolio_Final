@@ -69,11 +69,28 @@ img{max-width:100%;display:block}
 .btn-link:hover{background:none;color:var(--ochre-700);border-bottom-color:var(--ochre-600)}
 
 /* hero phone */
-.phone-wrap{position:relative;width:min(300px,74vw);justify-self:center}
+.phone-wrap{position:relative;width:min(300px,74vw);justify-self:center;perspective:1500px;perspective-origin:62% 45%}
 .phone-glow{position:absolute;inset:-9% -14%;background:radial-gradient(60% 50% at 50% 40%,rgba(184,134,59,.16),transparent 72%);pointer-events:none}
-.phone{position:relative;border-radius:32px;padding:9px;background:var(--ink-800);box-shadow:var(--shadow-lifted);animation:floatY 7s ease-in-out infinite}
-@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.phone-screen{position:relative;border-radius:24px;overflow:hidden;background:var(--ink-800);aspect-ratio:620/1248}
+/* The device, used by the hero and by the examples below. Three things carry
+   the weight: a bezel lit along one edge instead of a flat fill, a shadow
+   stacked out of contact + ambient + cast rather than one blur, and a small
+   turn away from the viewer so it reads as an object rather than a rectangle.
+   Nothing is drawn over the screen - no gloss, no tint, no overlay - because
+   the screens are real screenshots and have to stay exactly that. */
+.phone{position:relative;border-radius:34px;padding:9px;
+  background:linear-gradient(152deg,#3E5165 0%,#1C2733 16%,#0F1720 46%,#151F2A 72%,#3E5165 100%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),inset 0 1px 1px rgba(255,255,255,.22),
+    0 1px 2px rgba(15,23,32,.12),4px 10px 20px -8px rgba(15,23,32,.22),
+    8px 30px 48px -20px rgba(15,23,32,.30),16px 64px 96px -44px rgba(15,23,32,.46);
+  transform:rotateY(-8deg) rotateX(2deg);animation:floatHero 7.5s ease-in-out infinite}
+/* The shadow the phone casts on the page it is floating over. Separate from
+   the box-shadow stack so it stays put under the device and does not travel
+   with the tilt of the body. */
+.phone::after{content:"";position:absolute;left:7%;right:7%;bottom:-28px;height:28px;border-radius:50%;
+  background:radial-gradient(50% 50% at 50% 50%,rgba(15,23,32,.30),rgba(15,23,32,0) 72%);filter:blur(4px)}
+@keyframes floatHero{0%,100%{transform:rotateY(-8deg) rotateX(2deg) translateY(0)}50%{transform:rotateY(-8deg) rotateX(2deg) translateY(-9px)}}
+.phone-screen{position:relative;border-radius:26px;overflow:hidden;background:var(--ink-800);aspect-ratio:620/1248;box-shadow:inset 0 0 0 1px rgba(0,0,0,.55)}
+.phone-screen>img{width:100%;height:100%;object-fit:cover;display:block}
 /* Two real screenfuls of the guide, cross-faded. Each frame runs the same
    8s keyframe offset by 4s. A frame fades out over exactly the window the
    next one fades in, so the two are complementary and the pair always sums to 1,
@@ -103,11 +120,23 @@ img{max-width:100%;display:block}
 .work-head p{margin-top:6px;font-size:15px;color:var(--text-muted)}
 .ex-open{display:inline-flex;align-items:center;gap:8px;font-size:15px;white-space:nowrap;color:var(--text-strong);border-bottom:1px solid var(--ochre-300);padding-bottom:2px;transition:color var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard)}
 .ex-open:hover{color:var(--ochre-700);border-bottom-color:var(--ochre-600)}
-.work-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(24px,4vw,56px);align-items:stretch}
-.work-visual{border-radius:var(--radius-lg);border:1px solid var(--border-hairline);background:var(--paper-100);overflow:hidden;min-height:clamp(320px,42vw,520px);display:flex;transition:border-color var(--dur-base) var(--ease-standard),box-shadow var(--dur-base) var(--ease-standard)}
-.work-visual:hover{border-color:var(--ochre-300);box-shadow:var(--shadow-md)}
-.work-visual img{width:100%;height:100%;object-fit:cover;display:block;transition:transform var(--dur-slow) var(--ease-soft)}
-.work-visual:hover img{transform:scale(1.012)}
+.work-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(24px,4vw,56px);align-items:center}
+/* No panel behind the examples. The two screens stand on the page the way the
+   hero phone does, which is also why the visual is now real elements instead
+   of one flat composite: the screenshots are placed at their own resolution
+   and never resampled into a background. */
+.work-visual{display:block;padding:clamp(10px,2vw,22px) 0 clamp(34px,5vw,54px)}
+.stage{position:relative;display:flex;align-items:center;justify-content:center;gap:clamp(10px,2.2vw,28px);perspective:1700px;perspective-origin:50% 42%}
+.stage-slot{width:min(330px,46%);transition:transform var(--dur-slow) var(--ease-soft)}
+.stage-slot--b{margin-top:clamp(20px,3.4vw,44px)}
+.work-visual:hover .stage-slot{transform:translateY(-7px)}
+/* Each phone turns toward the middle, so the pair reads as one object seen
+   slightly off-axis rather than two stickers side by side. The tilt lives in
+   the keyframes because the float animates transform too. */
+.stage-slot--a .phone{transform:rotateY(8deg) rotateX(1.5deg);animation:floatLeft 8s ease-in-out infinite}
+.stage-slot--b .phone{transform:rotateY(-8deg) rotateX(1.5deg) translateZ(-46px);animation:floatRight 8s ease-in-out infinite;animation-delay:-4s}
+@keyframes floatLeft{0%,100%{transform:rotateY(8deg) rotateX(1.5deg) translateY(0)}50%{transform:rotateY(8deg) rotateX(1.5deg) translateY(-10px)}}
+@keyframes floatRight{0%,100%{transform:rotateY(-8deg) rotateX(1.5deg) translateZ(-46px) translateY(0)}50%{transform:rotateY(-8deg) rotateX(1.5deg) translateZ(-46px) translateY(-10px)}}
 .work-aside{display:flex;flex-direction:column;gap:var(--sp-5)}
 .note{border:1px solid var(--border-hairline);border-radius:var(--radius-md);background:var(--surface-card);padding:var(--sp-5)}
 .note--sunken{background:var(--surface-sunken)}
@@ -186,6 +215,11 @@ img{max-width:100%;display:block}
   .phone-wrap{order:0}
 }
 @media (max-width:640px){
+  /* Side by side, two 160px phones are unreadable. Overlap them instead: the
+     front one big enough to read, the second angled behind it. */
+  .stage{justify-content:flex-start;padding:0 0 0 2%}
+  .stage-slot--a{width:62%;z-index:1}
+  .stage-slot--b{position:absolute;top:9%;right:0;width:54%;margin-top:0;z-index:0}
   .inquiry{grid-template-columns:1fr}
   .contact-mobile{display:flex;gap:12px}
   .contact-mobile .btn{flex:1;padding:16px 20px}

@@ -90,35 +90,44 @@ document.addEventListener('DOMContentLoaded',function(){
     {title:'268 Harper’s Mill Drive',
      meta:'Open house · Settlers Landing, Ponte Vedra',
      url:'https://open-house-example.vercel.app/',
-     visual:'guide-openhouse-wide.webp',
-     alt:'The 268 Harper’s Mill Drive guide on two phones: the address over a photo of the home, and an aerial shot above the square footage and price per square foot, each with the agent’s call band along the bottom.',
+     frames:[
+       {src:'guide-openhouse-home.webp',alt:'The guide’s opening screen: 268 Harper’s Mill Drive over a photo of the home, the sold price below it, and the agent’s call band along the bottom.'},
+       {src:'guide-openhouse-photo.webp',alt:'The same guide further down: an aerial shot of the corner lot above 4,252 square feet at $423 per square foot.'}
+     ],
      inGuide:['The line','Gallery','The figures','The house','The area'],
      result:'The paper flyer buyers leave in the car.'},
     {title:'After your cataract surgery',
      meta:'Aftercare · Riverside Eye Centre, Bristol',
      url:'https://aftercare-example.vercel.app/',
-     visual:'guide-aftercare-wide.webp',
-     alt:'The cataract aftercare guide on two phones: the opening screen with the red “call us if” list, and the medications screen giving each drop, how often and for how long, with the clinic’s call band along the bottom.',
+     frames:[
+       {src:'guide-aftercare-home.webp',alt:'The guide’s opening screen: After your cataract surgery, marked right eye, over the red list of reasons to call the clinic.'},
+       {src:'guide-aftercare-meds.webp',alt:'The medications screen: each drop, what it is for, how many times a day and for how long, with a four-times-a-day pattern spelled out.'}
+     ],
      inGuide:['Call us if','The first 24 hours','Do, and do not','Every drop, and when','Next appointment'],
      result:'The discharge sheet that gets folded into a bag.'},
     {title:'Laurel Fork Cabin',
      meta:'Guest check-in · Gatlinburg, Tennessee',
      url:'https://cabin-example.vercel.app/',
-     visual:'guide-checkin-wide.webp',
-     alt:'The Laurel Fork Cabin guide on two phones: the fireplace above the address and the door code, and the front door keypad above the Wi-Fi network and password, each with the host’s call band along the bottom.',
+     frames:[
+       {src:'guide-checkin-home.webp',alt:'The guide’s opening screen: the cabin’s fireplace over the address, the check-in time and the door code.'},
+       {src:'guide-checkin-codes.webp',alt:'The front door keypad above the Wi-Fi network and password, then how the heat and hot water work.'}
+     ],
      inGuide:['Door and gate codes','Wi-Fi, heat, hot water','Hot tub, fire pit, grill','Nearby, with drive times','Check-out at 10am'],
      result:'The binder on the kitchen counter nobody opens.'},
     {title:'Woodstock Boulevard',
      meta:'Handover · Northbridge Energy, Portland',
      url:'https://handover-example.vercel.app/',
-     visual:'guide-handover-wide.webp',
-     alt:'The Woodstock Boulevard handover guide on two phones: the solar array over the address, and the warranty table giving each unit and the date its cover expires, with the installer’s call band along the bottom.',
+     frames:[
+       {src:'guide-handover-home.webp',alt:'The guide’s opening screen: the finished solar array over Woodstock Boulevard and the installer’s name.'},
+       {src:'guide-handover-warranty.webp',alt:'The warranty screen: every unit installed with the date its cover expires, out to 2051 for the modules.'}
+     ],
      inGuide:['What was installed','Equipment, model by model','Cover and expiry','What to do, and when','Trades and suppliers'],
      result:'The folder of manuals and warranty cards.'}
   ];
   var tabs=Array.prototype.slice.call(document.querySelectorAll('.tab'));
   var listEl=document.getElementById('in-guide');
   var resultEl=document.getElementById('result');
+  var frameEls=[document.getElementById('work-img-a'),document.getElementById('work-img-b')];
   var titleEl=document.getElementById('ex-title');
   var metaEl=document.getElementById('ex-meta');
   var linkEls=[document.getElementById('ex-link'),document.getElementById('work-visual')];
@@ -126,8 +135,10 @@ document.addEventListener('DOMContentLoaded',function(){
     tabs.forEach(function(t,k){t.setAttribute('aria-selected',String(k===n));t.tabIndex=k===n?0:-1});
     var e=EXAMPLES[n];
     listEl.innerHTML=e.inGuide.map(function(s){return '<li>'+s+'</li>'}).join('');
-    var wimg=document.getElementById('work-img');
-    if(wimg&&e.visual){wimg.src='images/'+e.visual;wimg.alt=e.alt||''}
+    frameEls.forEach(function(img,k){
+      var f=e.frames[k];
+      if(img&&f){img.src='images/'+f.src;img.alt=f.alt}
+    });
     resultEl.textContent=e.result;
     if(titleEl){titleEl.textContent=e.title}
     if(metaEl){metaEl.textContent=e.meta}
