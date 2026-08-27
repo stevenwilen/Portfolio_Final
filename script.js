@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded',function(){
   // url below is both what the tab links to and where the image came from.
   var EXAMPLES=[
     {title:'268 Harper’s Mill Drive',
-     meta:'Open house · Settlers Landing, Ponte Vedra',
+     meta:'Listing · Settlers Landing, Ponte Vedra',
      url:'https://open-house-example.vercel.app/',
      frames:[
        {src:'guide-openhouse-home.webp',alt:'The guide’s opening screen: 268 Harper’s Mill Drive over a photo of the home, the sold price below it, and the agent’s call band along the bottom.'},
