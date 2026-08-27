@@ -91,19 +91,17 @@ img{max-width:100%;display:block}
 @keyframes floatHero{0%,100%{transform:rotateY(-8deg) rotateX(2deg) translateY(0)}50%{transform:rotateY(-8deg) rotateX(2deg) translateY(-9px)}}
 .phone-screen{position:relative;border-radius:26px;overflow:hidden;background:var(--ink-800);aspect-ratio:620/1248;box-shadow:inset 0 0 0 1px rgba(0,0,0,.55)}
 .phone-screen>img{width:100%;height:100%;object-fit:cover;display:block}
-/* Two real screenfuls of the guide, cross-faded. Each frame runs the same
-   8s keyframe offset by 4s. A frame fades out over exactly the window the
-   next one fades in, so the two are complementary and the pair always sums to 1,
-   never dipping toward the background. The first frame carries a static opacity:1 so
-   that under prefers-reduced-motion, where animations are switched off further
-   down this sheet, the screen still shows the guide rather than going blank.
-   The phone's floatY is untouched: it sits on .phone, this sits on the frames. */
-.phone-screen .frame{position:absolute;inset:0;opacity:0;animation:frameFade 8s linear infinite}
-.phone-screen .frame:first-child{opacity:1}
+/* The front page of all four guides, cross-faded. Which one is showing is
+   driven from script.js rather than from a keyframe offset, because the url
+   typing itself into the pill beside the phone has to name the guide that is
+   actually on screen - two independent timelines drift apart within a minute.
+   The first frame carries .on in the markup, so with scripting off, or under
+   prefers-reduced-motion where the cycle never starts, the screen still shows
+   a guide instead of going blank. Fading is linear so the outgoing and
+   incoming frames sum to 1 and the pair never dips toward the background. */
+.phone-screen .frame{position:absolute;inset:0;opacity:0;transition:opacity 700ms linear}
+.phone-screen .frame.on{opacity:1}
 .phone-screen .frame img{width:100%;height:100%;object-fit:cover;display:block}
-.phone-screen .frame:nth-child(1){animation-delay:0s}
-.phone-screen .frame:nth-child(2){animation-delay:4s}
-@keyframes frameFade{0%{opacity:0}7.5%{opacity:1}50%{opacity:1}57.5%{opacity:0}100%{opacity:0}}
 
 /* work */
 .work{padding:clamp(34px,3.6vw,50px) var(--pad-x) clamp(56px,8vw,110px)}
@@ -125,13 +123,10 @@ img{max-width:100%;display:block}
    hero phone does, which is also why the visual is now real elements instead
    of one flat composite: the screenshots are placed at their own resolution
    and never resampled into a background. */
-.work-visual{display:block;padding:clamp(6px,1.4vw,16px) 0 clamp(26px,3.6vw,40px)}
+.work-visual{display:block;padding:clamp(10px,2vw,22px) 0 clamp(34px,5vw,54px)}
 .stage{position:relative;display:flex;align-items:center;justify-content:center;gap:clamp(10px,2.2vw,28px);perspective:1700px;perspective-origin:50% 42%}
-/* Sized off the viewport as well as the column: a phone is about twice as
-   tall as it is wide, so an unbounded width pushes the examples past the
-   bottom of a laptop screen. 30vh keeps the pair inside one screenful. */
-.stage-slot{width:min(300px,44%,30vh);transition:transform var(--dur-slow) var(--ease-soft)}
-.stage-slot--b{margin-top:clamp(14px,2.6vw,34px)}
+.stage-slot{width:min(330px,46%);transition:transform var(--dur-slow) var(--ease-soft)}
+.stage-slot--b{margin-top:clamp(20px,3.4vw,44px)}
 .work-visual:hover .stage-slot{transform:translateY(-7px)}
 /* Each phone turns toward the middle, so the pair reads as one object seen
    slightly off-axis rather than two stickers side by side. The tilt lives in

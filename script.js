@@ -13,24 +13,50 @@ document.addEventListener('DOMContentLoaded',function(){
   },{threshold:.2});
   document.querySelectorAll('[data-reveal]').forEach(function(el){io.observe(el)});
 
-  // hero: the link types itself, the phone screen follows
+  // hero: the phone cycles the front page of all four guides and the link
+  // types itself to match. One timeline runs both, so the url in the pill
+  // always names the guide on screen. The frames after the first carry their
+  // image in data-src and are only fetched once the cycle is under way, so
+  // the hero still paints on one image.
+  var HERO=[
+    {slug:'268-harpers-mill-drive'},
+    {slug:'riverside-eye-aftercare'},
+    {slug:'laurel-fork-cabin'},
+    {slug:'woodstock-boulevard'}
+  ];
+  var HERO_HOLD=5200;   // per guide, typing included
+  var TYPE_MS=46;       // per character
   var slugEl=document.getElementById('slug');
-  var SLUGS=['268-harpers-mill-drive'];
-  var i=0,timer=null;
-  function type(){
-    var target=SLUGS[i],n=0;
+  var frames=Array.prototype.slice.call(document.querySelectorAll('.phone-screen .frame'));
+  var typeTimer=null,cycleTimer=null;
+
+  function typeSlug(text){
+    clearTimeout(typeTimer);
+    var n=0;
+    slugEl.textContent='';
     (function step(){
-      n++;slugEl.textContent=target.slice(0,n);
-      if(n<target.length){timer=setTimeout(step,46)}
-      else{timer=setTimeout(function(){
-        i=(i+1)%SLUGS.length;
-        slugEl.textContent='';type();
-      },2600)}
+      n++;
+      slugEl.textContent=text.slice(0,n);
+      if(n<text.length){typeTimer=setTimeout(step,TYPE_MS)}
     })();
   }
+  function loadRest(){
+    frames.forEach(function(f){
+      var img=f.querySelector('img[data-src]');
+      if(img){img.src=img.getAttribute('data-src');img.removeAttribute('data-src')}
+    });
+  }
+  function cycle(n){
+    frames.forEach(function(f,k){f.classList.toggle('on',k===n)});
+    if(slugEl){typeSlug(HERO[n].slug)}
+    cycleTimer=setTimeout(function(){cycle((n+1)%HERO.length)},HERO_HOLD);
+  }
   if(slugEl&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    timer=setTimeout(type,420);
-  }else if(slugEl){slugEl.textContent=SLUGS[0]}
+    // The first frame is already on screen and already loaded; give it the
+    // page's first moments to itself before pulling the other three.
+    setTimeout(loadRest,900);
+    cycleTimer=setTimeout(function(){cycle(0)},420);
+  }else if(slugEl){slugEl.textContent=HERO[0].slug}
 
   // inquiry form. No backend on a static host: point FORM_ENDPOINT at a form
   // service (Formspree, Basin, Vercel serverless route). With it left empty the
