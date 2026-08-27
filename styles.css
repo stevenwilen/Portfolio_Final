@@ -148,9 +148,8 @@ img{max-width:100%;display:block}
 /* The front screen carries the guide; the second sits behind it, turned the
    other way and set back in z so it recedes instead of just being smaller. */
 .stage{position:relative;display:flex;align-items:center;justify-content:flex-start;gap:clamp(12px,1.8vw,26px);perspective:1600px;perspective-origin:50% 42%}
-.stage-slot{width:min(240px,47%);transition:transform var(--dur-slow) var(--ease-soft)}
+.stage-slot{width:min(240px,47%)}
 .stage-slot--b{order:2;margin-top:clamp(4px,.8vw,10px)}
-.work-visual:hover .stage-slot{transform:translateY(-5px)}
 .stage-slot .phone{--bezel:7.5px;--rim:1.5px;--radius:27px}
 .stage-slot--a .phone{transform:rotateY(7deg) rotateX(1.5deg);animation:floatLeft 8s ease-in-out infinite}
 .stage-slot--b .phone{transform:rotateY(-7deg) rotateX(1.5deg) translateZ(-22px);animation:floatRight 8s ease-in-out infinite;animation-delay:-4s}
