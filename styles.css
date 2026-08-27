@@ -133,7 +133,8 @@ img{max-width:100%;display:block}
 .note p{margin-top:var(--sp-3);font-size:15px}
 /* The way into the live guide is a button, not a text link: it is the one
    thing in this column anybody is meant to click. */
-.work-aside .btn{align-self:flex-start;font-size:16px;padding:12px 20px}
+.work-aside .btn{align-self:flex-start;font-size:16px;padding:12px 20px;background:none}
+.work-aside .btn:hover{background:none;border-color:var(--ochre-600);color:var(--ochre-700)}
 /* The front screen carries the guide; the second sits behind it, turned the
    other way and set back in z so it recedes instead of just being smaller. */
 .stage{position:relative;display:flex;align-items:center;justify-content:flex-start;gap:clamp(12px,1.8vw,26px);perspective:1600px;perspective-origin:50% 42%}
