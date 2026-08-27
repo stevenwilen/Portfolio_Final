@@ -79,23 +79,23 @@ img{max-width:100%;display:block}
    the screens are real screenshots and have to stay exactly that. */
 .phone{position:relative;border-radius:34px;padding:8px;border:2px solid transparent;
   background:
-    linear-gradient(158deg,#4C525A 0%,#31363D 15%,#22272C 41%,#171B1F 61%,#282E34 81%,#414850 100%) padding-box,
-    linear-gradient(168deg,rgba(255,255,255,.46) 0%,rgba(255,255,255,.16) 10%,rgba(0,0,0,.55) 44%,rgba(0,0,0,.55) 64%,rgba(255,255,255,.14) 88%,rgba(255,255,255,.30) 100%) border-box;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 -1px 0 rgba(255,255,255,.08),0 1px 2px rgba(17,17,19,.14),4px 10px 20px -8px rgba(17,17,19,.24),
+    linear-gradient(158deg,#4C525A 0%,#31363D 15%,#22272C 41%,#171B1F 64%,#1D2226 84%,#262B31 100%) padding-box,
+    linear-gradient(168deg,#A9B0B8 0%,#5C626A 10%,#14171A 42%,#0C0E10 72%,#121417 92%,#1E2227 100%) border-box;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 1px 2px rgba(17,17,19,.18),0 3px 7px -2px rgba(17,17,19,.34),4px 10px 20px -8px rgba(17,17,19,.24),
     8px 30px 48px -20px rgba(17,17,19,.30),16px 64px 96px -44px rgba(17,17,19,.46);
   transform:rotateY(-4.5deg) rotateX(1.2deg);animation:floatHero 7.5s ease-in-out infinite}
 /* The shadow the phone casts on the page it is floating over. Separate from
    the box-shadow stack so it stays put under the device and does not travel
    with the tilt of the body. */
-.phone::after{content:"";position:absolute;left:7%;right:7%;bottom:-28px;height:28px;border-radius:50%;
+.phone::after{content:"";position:absolute;left:5%;right:5%;bottom:-18px;height:26px;border-radius:50%;
   background:radial-gradient(50% 50% at 50% 50%,rgba(17,17,19,.30),rgba(17,17,19,0) 72%);filter:blur(4px)}
 @keyframes floatHero{0%,100%{transform:rotateY(-4.5deg) rotateX(1.2deg) translateY(0)}50%{transform:rotateY(-4.5deg) rotateX(1.2deg) translateY(-7px)}}
 /* Frame, then a black mask, then the display. Without the mask the picture
    runs straight into the bezel and the whole thing reads as a shape with a
    hole cut in it. The ring outside the mask is the polished chamfer where the
    frame meets the glass; the one inside is the edge of the panel itself. */
-.phone-screen{position:relative;border-radius:26px;overflow:hidden;padding:4px;background:#000;aspect-ratio:620/1248;
-  box-shadow:0 0 0 1px rgba(255,255,255,.13),0 0 0 4px rgba(0,0,0,.5),inset 0 1px 3px rgba(0,0,0,.95)}
+.phone-screen{position:relative;border-radius:26px;overflow:hidden;padding:2px;background:#000;aspect-ratio:620/1248;
+  box-shadow:0 0 0 1px rgba(255,255,255,.12),0 0 0 2px rgba(0,0,0,.55),inset 0 1px 2px rgba(0,0,0,.9)}
 .phone-screen>img{width:100%;height:100%;object-fit:cover;display:block}
 /* The front page of all four guides, cross-faded. Which one is showing is
    driven from script.js rather than from a keyframe offset, because the url
