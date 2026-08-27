@@ -125,10 +125,13 @@ img{max-width:100%;display:block}
    hero phone does, which is also why the visual is now real elements instead
    of one flat composite: the screenshots are placed at their own resolution
    and never resampled into a background. */
-.work-visual{display:block;padding:clamp(10px,2vw,22px) 0 clamp(34px,5vw,54px)}
+.work-visual{display:block;padding:clamp(6px,1.4vw,16px) 0 clamp(26px,3.6vw,40px)}
 .stage{position:relative;display:flex;align-items:center;justify-content:center;gap:clamp(10px,2.2vw,28px);perspective:1700px;perspective-origin:50% 42%}
-.stage-slot{width:min(330px,46%);transition:transform var(--dur-slow) var(--ease-soft)}
-.stage-slot--b{margin-top:clamp(20px,3.4vw,44px)}
+/* Sized off the viewport as well as the column: a phone is about twice as
+   tall as it is wide, so an unbounded width pushes the examples past the
+   bottom of a laptop screen. 30vh keeps the pair inside one screenful. */
+.stage-slot{width:min(300px,44%,30vh);transition:transform var(--dur-slow) var(--ease-soft)}
+.stage-slot--b{margin-top:clamp(14px,2.6vw,34px)}
 .work-visual:hover .stage-slot{transform:translateY(-7px)}
 /* Each phone turns toward the middle, so the pair reads as one object seen
    slightly off-axis rather than two stickers side by side. The tilt lives in
