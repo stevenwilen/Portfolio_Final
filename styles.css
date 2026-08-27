@@ -77,7 +77,11 @@ img{max-width:100%;display:block}
    turn away from the viewer so it reads as an object rather than a rectangle.
    Nothing is drawn over the screen - no gloss, no tint, no overlay - because
    the screens are real screenshots and have to stay exactly that. */
-.phone{position:relative;border-radius:34px;padding:8px;border:2px solid transparent;
+/* Bezel, rim and corner are one set of numbers per size, so a smaller
+   device is the same phone scaled rather than the same frame around a
+   smaller picture. */
+.phone{position:relative;--bezel:9px;--rim:2px;--radius:34px;
+  border-radius:var(--radius);padding:var(--bezel);border:var(--rim) solid transparent;
   background:
     linear-gradient(158deg,#4C525A 0%,#31363D 15%,#22272C 41%,#171B1F 64%,#1D2226 84%,#262B31 100%) padding-box,
     linear-gradient(168deg,#A9B0B8 0%,#5C626A 10%,#14171A 42%,#0C0E10 72%,#121417 92%,#1E2227 100%) border-box;
@@ -94,8 +98,8 @@ img{max-width:100%;display:block}
    runs straight into the bezel and the whole thing reads as a shape with a
    hole cut in it. The ring outside the mask is the polished chamfer where the
    frame meets the glass; the one inside is the edge of the panel itself. */
-.phone-screen{position:relative;border-radius:26px;overflow:hidden;padding:2px;background:#000;aspect-ratio:620/1248;
-  box-shadow:0 0 0 1px rgba(255,255,255,.12),0 0 0 2px rgba(0,0,0,.55),inset 0 1px 2px rgba(0,0,0,.9)}
+.phone-screen{position:relative;border-radius:calc(var(--radius) - var(--bezel) - var(--rim));overflow:hidden;background:#000;aspect-ratio:620/1248;
+  box-shadow:0 0 0 1px rgba(255,255,255,.12),0 0 0 3px rgba(0,0,0,.6)}
 .phone-screen>img{width:100%;height:100%;object-fit:cover;display:block}
 /* The front page of all four guides, cross-faded. Which one is showing is
    driven from script.js rather than from a keyframe offset, because the url
@@ -147,6 +151,7 @@ img{max-width:100%;display:block}
 .stage-slot{width:min(240px,47%);transition:transform var(--dur-slow) var(--ease-soft)}
 .stage-slot--b{order:2;margin-top:clamp(4px,.8vw,10px)}
 .work-visual:hover .stage-slot{transform:translateY(-5px)}
+.stage-slot .phone{--bezel:7.5px;--rim:1.5px;--radius:27px}
 .stage-slot--a .phone{transform:rotateY(7deg) rotateX(1.5deg);animation:floatLeft 8s ease-in-out infinite}
 .stage-slot--b .phone{transform:rotateY(-7deg) rotateX(1.5deg) translateZ(-22px);animation:floatRight 8s ease-in-out infinite;animation-delay:-4s}
 @keyframes floatLeft{0%,100%{transform:rotateY(7deg) rotateX(1.5deg) translateY(0)}50%{transform:rotateY(7deg) rotateX(1.5deg) translateY(-4px)}}
@@ -228,6 +233,8 @@ img{max-width:100%;display:block}
      front one big enough to read, the second angled behind it. */
   .stage-slot--a{width:62%;z-index:1}
   .stage-slot--b{position:absolute;top:7%;right:0;width:54%;margin-top:0;z-index:0}
+  .stage-slot--a .phone{--bezel:6.5px;--rim:1.5px;--radius:25px}
+  .stage-slot--b .phone{--bezel:5.5px;--rim:1.5px;--radius:23px}
   .note ul{columns:1}
   .inquiry{grid-template-columns:1fr}
   .contact-mobile{display:flex;gap:12px}
