@@ -140,11 +140,11 @@ document.addEventListener('DOMContentLoaded',function(){
      ],
      inGuide:['Door and gate codes','Wi-Fi, heat, hot water','Hot tub, fire pit, grill','Nearby, with drive times','Check-out at 10am'],
      result:'The binder on the kitchen counter nobody opens.'},
-    {title:'Woodstock Boulevard',
-     meta:'Handover · Northbridge Energy, Portland',
+    {title:'Whole-house electrification',
+     meta:'Handover · Woodstock Boulevard, Portland',
      url:'https://handover-example.vercel.app/',
      frames:[
-       {src:'guide-handover-home.webp',alt:'The guide’s opening screen: the finished solar array over Woodstock Boulevard and the installer’s name.'},
+       {src:'guide-handover-home.webp',alt:'The guide’s opening screen: the finished array over the roof, the job named as whole-house electrification, with the address, the client and the installer under it.'},
        {src:'guide-handover-equipment.webp',alt:'Further down the same guide: the installed equipment gallery, opening on the Powerwall mounted on the garage wall.'}
      ],
      inGuide:['What was installed','Equipment, model by model','Cover and expiry','What to do, and when','Trades and suppliers'],
