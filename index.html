@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Steven Wilen · Web Guides</title>
-<meta name="description" content="Designed web guides that replace the printed handout: listings, treatment aftercare, guest check-in, project handovers. One link, opens on any phone. Flat pricing from $150.">
+<title>QR web guides for listings, rentals and clinics · Steven Wilen</title>
+<meta name="description" content="One-page web guides that replace the printed handout: listings, treatment aftercare, guest check-in, project handovers. Print it as a QR card or send the link. From $150.">
 <link rel="canonical" href="https://stevenwilen.dev/">
 <meta name="theme-color" content="#FAF8F5">
 <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
@@ -13,8 +13,8 @@
 <link rel="manifest" href="/site.webmanifest">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://stevenwilen.dev/">
-<meta property="og:title" content="Steven Wilen · Web Guides">
-<meta property="og:description" content="Designed web guides that replace the printed handout. One link, opens on any phone.">
+<meta property="og:title" content="Everything they need to know, in one link.">
+<meta property="og:description" content="One-page web guides for listings, aftercare, guest check-in and handovers. Print it as a QR card or send the link. From $150.">
 <meta property="og:image" content="https://stevenwilen.dev/og-image.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
@@ -25,6 +25,48 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://stevenwilen.dev/#business",
+      "name": "Steven Wilen · Web Guides",
+      "url": "https://stevenwilen.dev/",
+      "image": "https://stevenwilen.dev/og-image.jpg",
+      "email": "steven.wilen@gmail.com",
+      "priceRange": "$150+",
+      "description": "One-page web guides that replace the printed handout: property listings, treatment aftercare, guest check-in and project handovers. Printed as a QR card or sent as a link, they open on any phone with nothing to download.",
+      "founder": { "@id": "https://stevenwilen.dev/#steven" },
+      "provider": { "@id": "https://stevenwilen.dev/#steven" },
+      "makesOffer": [
+        { "@type": "Offer", "priceCurrency": "USD", "price": "150", "itemOffered": { "@type": "Service", "name": "Listing guide", "description": "A single page for a property: the address over a photo, the figures, the gallery, the area, and the agent’s number. Replaces the paper flyer at an open house." } },
+        { "@type": "Offer", "priceCurrency": "USD", "price": "150", "itemOffered": { "@type": "Service", "name": "Treatment aftercare guide", "description": "A single page a clinic sends a patient home with: what to call about, the first 24 hours, every medication and when, and the next appointment." } },
+        { "@type": "Offer", "priceCurrency": "USD", "price": "150", "itemOffered": { "@type": "Service", "name": "Guest check-in guide", "description": "A single page for a rental: door and gate codes, Wi-Fi, how the house works, what is nearby, and the check-out steps." } },
+        { "@type": "Offer", "priceCurrency": "USD", "price": "150", "itemOffered": { "@type": "Service", "name": "Project handover guide", "description": "A single page a trade leaves behind: what was installed, model by model, warranty cover and expiry, the maintenance schedule, and who to call." } }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://stevenwilen.dev/#steven",
+      "name": "Steven Wilen",
+      "url": "https://stevenwilen.dev/",
+      "email": "steven.wilen@gmail.com",
+      "jobTitle": "Designer and developer",
+      "worksFor": { "@id": "https://stevenwilen.dev/#business" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://stevenwilen.dev/#website",
+      "url": "https://stevenwilen.dev/",
+      "name": "Steven Wilen · Web Guides",
+      "publisher": { "@id": "https://stevenwilen.dev/#business" },
+      "inLanguage": "en"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -80,7 +122,7 @@
           <span class="eyebrow">Examples</span>
           <h2>What a guide looks like</h2>
         </div>
-        <p class="work-lede">Each one is a single page. You send the link, or print it on a card people scan. It opens on any phone with nothing to download and nothing to sign into.</p>
+        <p class="work-lede">Each one is a single page. You send the link, or print it as a QR card people scan. It opens on any phone with nothing to download and nothing to sign into.</p>
       </div>
       <div class="tabs" role="tablist" aria-label="Examples" data-reveal data-reveal-delay="1">
         <button class="tab" type="button" role="tab" aria-selected="true">Listings</button>
