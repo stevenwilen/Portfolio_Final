@@ -116,9 +116,9 @@ document.addEventListener('DOMContentLoaded',function(){
     {title:'268 Harper’s Mill Drive',
      meta:'Settlers Landing, Nocatee · Sold $1,800,000',
      facts:'5 beds · 5.5 baths · 4,252 sq ft',
-     url:'https://open-house-example.vercel.app/',
+     url:'https://268-harpers-mill.vercel.app/',
      frames:[
-       {src:'guide-harpersmill-home.webp',alt:'The guide’s opening screen: 268 Harper’s Mill Drive over a photo of the home, the sold price below it, and the agent’s call band along the bottom.'},
+       {src:'guide-harpersmill-home.webp',alt:'The guide’s opening screen: 268 Harper’s Mill Drive over a photo of the home, the listing agent’s photo in the corner, and the sold price, beds, baths and square feet below it.'},
        {src:'guide-harpersmill-pool.webp',alt:'Further down the same guide: the screened pool and spa across the full width of the screen, captioned, with the outdoor kitchen starting below it.'}
      ]},
     {title:'673 Park Lake Drive',
