@@ -22,8 +22,7 @@ document.addEventListener('DOMContentLoaded',function(){
     {slug:'268-harpers-mill-drive'},
     {slug:'673-park-lake-drive'},
     {slug:'209-gull-circle'},
-    {slug:'118-vista-lake-circle'},
-    {slug:'6620-solomon-road'}
+    {slug:'118-vista-lake-circle'}
   ];
   var HERO_HOLD=5200;   // per guide, typing included
   var TYPE_MS=46;       // per character
@@ -145,14 +144,6 @@ document.addEventListener('DOMContentLoaded',function(){
      frames:[
        {src:'guide-vistalake-home.webp',alt:'The guide’s opening screen: 118 Vista Lake Circle over a photo of the house, the price and the beds, baths and square feet under it.'},
        {src:'guide-vistalake-kitchen.webp',alt:'Further down the same guide: the kitchen island under pendant lights, captioned, above the dining room.'}
-     ]},
-    {title:'6620 Solomon Road',
-     meta:'Jacksonville Heights · $850,000',
-     facts:'3 beds · 3 baths · 2,441 sq ft · 6 acres',
-     url:'https://6620-solomon-road.vercel.app/',
-     frames:[
-       {src:'guide-solomon-home.webp',alt:'The guide’s opening screen: 6620 Solomon Road photographed at dusk, the listing agent’s photo in the corner, and $850,000 with the beds, baths and square feet below it.'},
-       {src:'guide-solomon-dusk.webp',alt:'Further down the same guide: the house at dusk over its private pond, captioned, with the figures starting underneath.'}
      ]}
   ];
   var tabs=Array.prototype.slice.call(document.querySelectorAll('.tab'));
