@@ -118,9 +118,10 @@ img{max-width:100%;display:block}
 /* Heading and lede share a line, so the pitch costs one block of height
    instead of two and the screens stay in view with it. */
 .work-intro{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:var(--sp-4) clamp(24px,4vw,64px)}
+.work-intro>div{flex:1 1 300px;max-width:30ch}
 .work h2{font-size:clamp(28px,3.2vw,42px);margin:var(--sp-2) 0 0}
 /* A note beside the heading rather than a subtitle floating under it. */
-.work-lede{color:var(--text-muted);max-width:58ch;font-size:16px;line-height:1.55;flex:0 1 520px;margin-top:var(--sp-4);padding:var(--sp-4);border:1px solid var(--border-hairline);border-radius:var(--radius-md);background:var(--surface-card)}
+.work-lede{color:var(--text-muted);max-width:52ch;font-size:16px;line-height:1.55;flex:0 1 470px;margin-top:var(--sp-4);padding:var(--sp-4);border:1px solid var(--border-hairline);border-radius:var(--radius-md);background:var(--surface-card)}
 .tabs{display:flex;gap:var(--sp-2);flex-wrap:wrap;margin:clamp(16px,2.2vw,24px) 0}
 .tab{border:1px solid var(--border-hairline);background:var(--surface-card);color:var(--text-muted);padding:9px 15px;border-radius:var(--radius-pill);font-size:15px;font-family:var(--font-sans);line-height:1.2;white-space:nowrap;cursor:pointer;transition:background var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard)}
 .tab[aria-selected="true"]{background:var(--ink-800);border-color:var(--ink-800);color:var(--text-inverse)}
@@ -155,6 +156,14 @@ img{max-width:100%;display:block}
 .stage-slot--b .phone{transform:rotateY(-7deg) rotateX(1.5deg) translateZ(-22px);animation:floatRight 8s ease-in-out infinite;animation-delay:-4s}
 @keyframes floatLeft{0%,100%{transform:rotateY(7deg) rotateX(1.5deg) translateY(0)}50%{transform:rotateY(7deg) rotateX(1.5deg) translateY(-4px)}}
 @keyframes floatRight{0%,100%{transform:rotateY(-7deg) rotateX(1.5deg) translateZ(-22px) translateY(0)}50%{transform:rotateY(-7deg) rotateX(1.5deg) translateZ(-22px) translateY(-4px)}}
+.ex-facts{font-family:var(--font-mono);font-size:14px;color:var(--text-muted);margin-top:-2px}
+/* The printed half of the job. The guide is the thing they scan into; this is
+   the thing they scan. Showing one card next to the screens is the only way a
+   page explains a physical deliverable. */
+.card-row{margin-top:clamp(30px,4vw,52px);padding-top:clamp(26px,3.4vw,40px);border-top:1px solid var(--border-soft);display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center}
+.card-shot{width:100%;height:auto;border-radius:var(--radius-sm);box-shadow:var(--shadow-md)}
+.card-copy h3{font-size:clamp(21px,2.4vw,28px);margin:var(--sp-3) 0 var(--sp-3)}
+.card-copy p{font-size:16px;color:var(--text-muted);max-width:56ch}
 .flow{margin-top:clamp(36px,5vw,64px);display:flex;align-items:center;gap:clamp(12px,2vw,22px);flex-wrap:wrap;font-family:var(--font-mono);font-size:13px;color:var(--text-muted)}
 .flow .rule{width:clamp(24px,4vw,56px);height:1px;background:var(--border-soft)}
 .price{margin-top:clamp(32px,5vw,56px);padding-top:var(--sp-6);border-top:1px solid var(--border-soft);display:flex;flex-wrap:wrap;gap:var(--sp-5);align-items:center}
@@ -222,6 +231,8 @@ img{max-width:100%;display:block}
 
 @media (max-width:900px){
   .hero-grid{grid-template-columns:minmax(0,1fr)}
+  .card-row{grid-template-columns:minmax(0,1fr);gap:var(--sp-5)}
+  .card-shot{max-width:460px}
   .work-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "visual" "aside";row-gap:clamp(14px,2.4vw,24px)}
   .work-visual{justify-self:start;width:min(480px,100%)}
   /* Text first, as on desktop. order:-1 pushed the placeholder device above

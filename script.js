@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded',function(){
   // the hero still paints on one image.
   var HERO=[
     {slug:'268-harpers-mill-drive'},
-    {slug:'riverside-eye-aftercare'},
-    {slug:'laurel-fork-cabin'},
-    {slug:'woodstock-boulevard'}
+    {slug:'673-park-lake-drive'},
+    {slug:'209-gull-circle'},
+    {slug:'118-vista-lake-circle'}
   ];
   var HERO_HOLD=5200;   // per guide, typing included
   var TYPE_MS=46;       // per character
@@ -114,60 +114,54 @@ document.addEventListener('DOMContentLoaded',function(){
   // url below is both what the tab links to and where the image came from.
   var EXAMPLES=[
     {title:'268 Harper’s Mill Drive',
-     meta:'Listing · Settlers Landing, Ponte Vedra',
+     meta:'Settlers Landing, Nocatee · Sold $1,800,000',
+     facts:'5 beds · 5.5 baths · 4,252 sq ft',
      url:'https://open-house-example.vercel.app/',
      frames:[
-       {src:'guide-openhouse-home.webp',alt:'The guide’s opening screen: 268 Harper’s Mill Drive over a photo of the home, the sold price below it, and the agent’s call band along the bottom.'},
-       {src:'guide-openhouse-pool.webp',alt:'Further down the same guide: the screened pool and spa across the full width of the screen, captioned, with the outdoor kitchen starting below it.'}
-     ],
-     inGuide:['The line','Gallery','The figures','The house','The area'],
-     result:'The paper flyer buyers leave in the car.'},
-    {title:'After your cataract surgery',
-     meta:'Aftercare · Riverside Eye Centre, Bristol',
-     url:'https://aftercare-example.vercel.app/',
+       {src:'guide-harpersmill-home.webp',alt:'The guide’s opening screen: 268 Harper’s Mill Drive over a photo of the home, the sold price below it, and the agent’s call band along the bottom.'},
+       {src:'guide-harpersmill-pool.webp',alt:'Further down the same guide: the screened pool and spa across the full width of the screen, captioned, with the outdoor kitchen starting below it.'}
+     ]},
+    {title:'673 Park Lake Drive',
+     meta:'Lakeside at Town Center, Nocatee · $769,000',
+     facts:'4 beds · 3.5 baths · 2,919 sq ft',
+     url:'https://673-park-lake-drive.vercel.app/',
      frames:[
-       {src:'guide-aftercare-home.webp',alt:'The guide’s opening screen: After your cataract surgery, marked right eye, over the red list of reasons to call the clinic.'},
-       {src:'guide-aftercare-drops.webp',alt:'Further down the same guide: a photo of the drop going into the pulled-down lower lid, captioned, above what to expect over the first week.'}
-     ],
-     inGuide:['Call us if','The first 24 hours','Do, and do not','Every drop, and when','Next appointment'],
-     result:'The discharge sheet that gets folded into a bag.'},
-    {title:'Laurel Fork Cabin',
-     meta:'Guest check-in · Gatlinburg, Tennessee',
-     url:'https://cabin-example.vercel.app/',
+       {src:'guide-parklake-home.webp',alt:'The guide’s opening screen: 673 Park Lake Drive over a photo of the house, the price and the beds, baths and square feet under it, with the listing agent’s photo in the corner.'},
+       {src:'guide-parklake-figures.webp',alt:'Further down the same guide: the lake across the street, then the figures — 2,919 square feet at $263, the list price and the days on market.'}
+     ]},
+    {title:'209 Gull Circle',
+     meta:'Ponte Vedra Beach · $1,299,000',
+     facts:'5 beds · 4 baths · 3,495 sq ft',
+     url:'https://209-gull-cir.vercel.app/',
      frames:[
-       {src:'guide-checkin-home.webp',alt:'The guide’s opening screen: the cabin’s fireplace over the address, the check-in time and the door code.'},
-       {src:'guide-checkin-hottub.webp',alt:'Further down the same guide: how the hot tub works, 102 degrees and 45 minutes to heat, above a photo of it on the deck.'}
-     ],
-     inGuide:['Door and gate codes','Wi-Fi, heat, hot water','Hot tub, fire pit, grill','Nearby, with drive times','Check-out at 10am'],
-     result:'The binder on the kitchen counter nobody opens.'},
-    {title:'Whole-house electrification',
-     meta:'Handover · Woodstock Boulevard, Portland',
-     url:'https://handover-example.vercel.app/',
+       {src:'guide-gullcir-home.webp',alt:'The guide’s opening screen: 209 Gull Circle, a beach house photographed at sunset, with the price, the beds, the baths and the square feet under it.'},
+       {src:'guide-gullcir-pool.webp',alt:'Further down the same guide: the pool at the ground floor, captioned, above an aerial of the street at dusk with the Atlantic beyond it.'}
+     ]},
+    {title:'118 Vista Lake Circle',
+     meta:'Liberty Cove at Crosswater, Nocatee · $599,999',
+     facts:'4 beds · 3 baths · 2,187 sq ft',
+     url:'https://118-vista-lake-circle.vercel.app/',
      frames:[
-       {src:'guide-handover-home.webp',alt:'The guide’s opening screen: the finished array over the roof, the job named as whole-house electrification, with the address, the client and the installer under it.'},
-       {src:'guide-handover-equipment.webp',alt:'Further down the same guide: the installed equipment gallery, opening on the Powerwall mounted on the garage wall.'}
-     ],
-     inGuide:['What was installed','Equipment, model by model','Cover and expiry','What to do, and when','Trades and suppliers'],
-     result:'The folder of manuals and warranty cards.'}
+       {src:'guide-vistalake-home.webp',alt:'The guide’s opening screen: 118 Vista Lake Circle over a photo of the house, the price and the beds, baths and square feet under it.'},
+       {src:'guide-vistalake-kitchen.webp',alt:'Further down the same guide: the kitchen island under pendant lights, captioned, above the dining room.'}
+     ]}
   ];
   var tabs=Array.prototype.slice.call(document.querySelectorAll('.tab'));
-  var listEl=document.getElementById('in-guide');
-  var resultEl=document.getElementById('result');
-  var frameEls=[document.getElementById('work-img-a'),document.getElementById('work-img-b')];
   var titleEl=document.getElementById('ex-title');
   var metaEl=document.getElementById('ex-meta');
+  var factsEl=document.getElementById('ex-facts');
   var linkEls=[document.getElementById('ex-link'),document.getElementById('work-visual')];
+  var frameEls=[document.getElementById('work-img-a'),document.getElementById('work-img-b')];
   function show(n){
     tabs.forEach(function(t,k){t.setAttribute('aria-selected',String(k===n));t.tabIndex=k===n?0:-1});
     var e=EXAMPLES[n];
-    listEl.innerHTML=e.inGuide.map(function(s){return '<li>'+s+'</li>'}).join('');
     frameEls.forEach(function(img,k){
       var f=e.frames[k];
       if(img&&f){img.src='images/'+f.src;img.alt=f.alt}
     });
-    resultEl.textContent=e.result;
     if(titleEl){titleEl.textContent=e.title}
     if(metaEl){metaEl.textContent=e.meta}
+    if(factsEl){factsEl.textContent=e.facts}
     linkEls.forEach(function(a){if(a){a.href=e.url}});
     if(linkEls[1]){linkEls[1].setAttribute('aria-label','Open the '+e.title+' guide')}
   }
