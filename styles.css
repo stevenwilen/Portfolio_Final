@@ -46,10 +46,10 @@ img{max-width:100%;display:block}
 /* hero */
 .hero{padding:clamp(18px,2.6vw,36px) var(--pad-x) clamp(32px,3.4vw,46px)}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,5vw,72px);align-items:center}
-.hero h1{font-size:clamp(38px,6vw,74px);line-height:1.06;margin-bottom:var(--sp-5)}
+.hero h1{font-size:clamp(33px,4.9vw,62px);line-height:1.07;margin-bottom:var(--sp-5)}
 .hero h1 .line{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em}
 .hero h1 .line:last-child{margin-bottom:0}
-.hero h1 .line>span{display:block;transform:translateY(120%);transition:transform 720ms var(--ease-soft)}
+.hero h1 .line>span{display:block;white-space:nowrap;transform:translateY(120%);transition:transform 720ms var(--ease-soft)}
 .hero h1.in .line>span{transform:none}
 .hero h1.in .line:nth-child(2)>span{transition-delay:90ms}
 .hero h1.in .line:nth-child(3)>span{transition-delay:180ms}
@@ -118,7 +118,7 @@ img{max-width:100%;display:block}
 /* Heading and lede share a line, so the pitch costs one block of height
    instead of two and the screens stay in view with it. */
 .work-intro{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:var(--sp-4) clamp(24px,4vw,64px)}
-.work-intro>div{flex:1 1 300px;max-width:30ch}
+.work-intro>div{flex:1 1 340px;max-width:480px}
 .work h2{font-size:clamp(28px,3.2vw,42px);margin:var(--sp-2) 0 0}
 /* A note beside the heading rather than a subtitle floating under it. */
 .work-lede{color:var(--text-muted);max-width:52ch;font-size:16px;line-height:1.55;flex:0 1 470px;margin-top:var(--sp-4);padding:var(--sp-4);border:1px solid var(--border-hairline);border-radius:var(--radius-md);background:var(--surface-card)}
@@ -238,6 +238,9 @@ img{max-width:100%;display:block}
   /* Text first, as on desktop. order:-1 pushed the placeholder device above
      the headline, so the whole pitch started ~690px down the page. */
   .phone-wrap{order:0}
+}
+@media (max-width:340px){
+  .hero h1{font-size:29px}
 }
 @media (max-width:640px){
   /* Side by side, two screens this narrow are thumbnails. Overlap them: the
