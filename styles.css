@@ -268,6 +268,7 @@ img{max-width:100%;display:block}
      instead, so the row breaks where it is supposed to. */
   .tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-width:440px}
   .tab{width:100%;font-size:14px;padding:8px 10px;justify-content:center}
+  .tab:last-child:nth-child(odd){grid-column:1 / -1}
   .wordmark i,.wordmark span{display:none}
   .site-nav a:not(.strong){display:none}
   .wordmark b,.site-nav a{white-space:nowrap}
